@@ -61,6 +61,8 @@ After successful merge and validation of CyberAi:
 - All development will continue in the CyberAi repository
 - Historical references will be preserved for continuity
 
+📄 **[View Complete Migration Summary →](MIGRATION.md)**
+
 ---
 
 ## ✨ Key Features
