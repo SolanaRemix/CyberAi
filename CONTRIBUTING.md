@@ -1,125 +1,116 @@
-# Contributing to SmartContractAudit
+# Contributing to CyberAi
 
-Thank you for your interest in contributing to SmartContractAudit! This document outlines the process for contributing to this project.
-
-## Developer Certificate of Origin (DCO)
-
-All contributors must sign off on their commits to certify that they have the right to contribute the code. This is done by adding a `Signed-off-by` line to your commit messages.
-
-### How to Sign Your Commits
-
-Use the `-s` or `--signoff` flag when committing:
-
-```bash
-git commit -s -m "Your commit message"
-```
-
-This will add a line like this to your commit message:
-
-```
-Signed-off-by: Your Name <your.email@example.com>
-```
-
-By signing off, you agree to the [Developer Certificate of Origin](https://developercertificate.org/).
-
-## Pull Request Process
-
-1. **Fork the repository** and create your branch from `main`
-2. **Make your changes** following our code style guidelines
-3. **Add tests** if applicable to validate your changes
-4. **Run local checks** (linting, tests) before submitting
-5. **Sign your commits** using `git commit -s`
-6. **Submit a pull request** with a clear description of your changes
-7. **Respond to feedback** from maintainers during code review
-8. **Ensure CI passes** before the PR can be merged
-
-## Code Style
-
-- Follow existing code patterns and conventions in the repository
-- Use meaningful variable and function names
-- Keep functions focused and concise
-- Comment complex logic or non-obvious decisions
-- Format shell scripts consistently with existing scripts
-
-### Shell Scripts
-
-- Use `#!/bin/bash` or `#!/bin/sh` as appropriate
-- Set proper permissions: `chmod +x` for executable scripts
-- Use shellcheck for linting when available
-- Handle errors gracefully with proper exit codes
-
-### JavaScript/Node.js
-
-- Use consistent indentation (2 spaces)
-- Follow modern ES6+ syntax
-- Use meaningful variable names
-- Add JSDoc comments for functions when appropriate
-
-## Testing
-
-- Write tests for new functionality
-- Ensure existing tests pass: run test commands if available
-- Test edge cases and error conditions
-- Validate that scripts work in dry-run mode before testing with actual operations
-
-## Running Local Checks
-
-Before submitting your PR, run these checks locally:
-
-### Linting
-
-```bash
-# For shell scripts (if shellcheck is installed)
-shellcheck scripts/*.sh
-
-# For JavaScript (if eslint is configured)
-npm run lint
-```
-
-### Tests
-
-```bash
-# Run any existing test suite
-npm test
-
-# Or run specific test files
-npm test path/to/test.js
-```
-
-### Dry-Run Testing
-
-For workflows and automation scripts:
-
-```bash
-# Test with DRY_RUN enabled
-DRY_RUN=true ./scripts/master.sh
-
-# Verify no actual changes are made
-git status
-```
-
-## Reporting Issues
-
-- Use the GitHub issue tracker to report bugs or suggest features
-- Provide detailed reproduction steps for bugs
-- Include relevant logs, error messages, and environment details
-- Check if a similar issue already exists before creating a new one
-
-## Security Issues
-
-**Do not report security vulnerabilities through public GitHub issues.**
-
-Please refer to [SECURITY.md](SECURITY.md) for instructions on reporting security vulnerabilities.
+Thank you for your interest in contributing to CyberAi! This document provides guidelines for contributing to the project.
 
 ## Code of Conduct
 
-This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+- Be respectful and inclusive
+- Focus on constructive feedback
+- Help create a positive community
+
+## How to Contribute
+
+### Reporting Bugs
+
+1. Check if the bug has already been reported in [Issues](https://github.com/SolanaRemix/CyberAi/issues)
+2. If not, create a new issue with:
+   - Clear title and description
+   - Steps to reproduce
+   - Expected vs actual behavior
+   - Environment details
+
+### Suggesting Features
+
+1. Open an issue with the `enhancement` label
+2. Describe the feature and its benefits
+3. Provide examples of how it would work
+
+### Pull Requests
+
+1. **Fork the repository** and create a new branch
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Make your changes**
+   - Follow existing code style
+   - Add tests for new functionality
+   - Update documentation as needed
+
+3. **Commit your changes**
+   - Use conventional commits format:
+     ```
+     type(scope): description
+     
+     [optional body]
+     [optional footer]
+     ```
+   - Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+4. **Push to your fork**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. **Create a Pull Request**
+   - Provide a clear description
+   - Link related issues
+   - Wait for review
+
+## Development Setup
+
+```bash
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/CyberAi.git
+cd CyberAi
+
+# Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Run linter
+npm run lint
+
+# Build project
+npm run build
+```
+
+## Coding Standards
+
+- **JavaScript/TypeScript**: Follow the project's ESLint configuration
+- **Python**: Follow PEP 8 style guide
+- **Comments**: Write clear, concise comments for complex logic
+- **Tests**: Aim for high test coverage
+- **Documentation**: Update docs for any user-facing changes
+
+## Testing
+
+- Write unit tests for new functions
+- Write integration tests for new features
+- Ensure all tests pass before submitting PR
+- Include edge cases in your tests
+
+## Documentation
+
+- Update README.md for major changes
+- Add JSDoc/docstring comments for functions
+- Update relevant documentation in `/docs`
+- Include examples where appropriate
+
+## Review Process
+
+1. Automated checks must pass (CI, linting, tests)
+2. At least one maintainer review required
+3. All feedback must be addressed
+4. No merge conflicts with main branch
 
 ## Questions?
 
-If you have questions about contributing, feel free to:
-- Open a discussion on GitHub
-- Check existing documentation
-- Review closed PRs for examples
+Feel free to ask questions by:
+- Opening an issue
+- Joining our community discussions
+- Reaching out to maintainers
 
-Thank you for contributing! 🎉
+Thank you for contributing to CyberAi! 🚀
