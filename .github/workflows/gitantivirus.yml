@@ -1,0 +1,164 @@
+name: Git Antivirus Scanner
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yara-python requests
+          
+      - name: Download YARA rules
+        run: |
+          mkdir -p yara-rules
+          # Download malware detection rules
+          curl -L https://raw.githubusercontent.com/Yara-Rules/rules/master/malware/MALW_Eicar.yar -o yara-rules/malware.yar
+          curl -L https://raw.githubusercontent.com/Yara-Rules/rules/master/crypto/crypto_signatures.yar -o yara-rules/crypto.yar
+          
+      - name: Scan repository
+        id: scan
+        run: |
+          cat > scan.py << 'EOF'
+          import yara
+          import os
+          import sys
+          import json
+          from pathlib import Path
+          
+          def scan_file(filepath, rules):
+              """Scan a single file with YARA rules"""
+              try:
+                  matches = rules.match(filepath)
+                  return matches
+              except Exception as e:
+                  print(f"Error scanning {filepath}: {e}")
+                  return []
+          
+          def scan_directory(directory, rules):
+              """Recursively scan directory"""
+              results = []
+              excluded_dirs = {'.git', 'node_modules', '__pycache__', '.venv', 'venv'}
+              
+              for root, dirs, files in os.walk(directory):
+                  # Remove excluded directories
+                  dirs[:] = [d for d in dirs if d not in excluded_dirs]
+                  
+                  for file in files:
+                      filepath = os.path.join(root, file)
+                      matches = scan_file(filepath, rules)
+                      if matches:
+                          results.append({
+                              'file': filepath,
+                              'matches': [str(m) for m in matches]
+                          })
+              
+              return results
+          
+          def main():
+              # Load YARA rules
+              rule_files = []
+              yara_dir = 'yara-rules'
+              
+              if os.path.exists(yara_dir):
+                  for rule_file in Path(yara_dir).glob('*.yar'):
+                      rule_files.append(str(rule_file))
+              
+              if not rule_files:
+                  print("No YARA rules found")
+                  sys.exit(1)
+              
+              # Compile rules
+              rules_dict = {}
+              for i, rule_file in enumerate(rule_files):
+                  rules_dict[f'rule_{i}'] = rule_file
+              
+              try:
+                  rules = yara.compile(filepaths=rules_dict)
+              except Exception as e:
+                  print(f"Error compiling rules: {e}")
+                  sys.exit(1)
+              
+              # Scan repository
+              print("Starting repository scan...")
+              results = scan_directory('.', rules)
+              
+              # Output results
+              if results:
+                  print("\n⚠️  THREATS DETECTED ⚠️\n")
+                  for result in results:
+                      print(f"File: {result['file']}")
+                      print(f"Matches: {', '.join(result['matches'])}")
+                      print("-" * 50)
+                  
+                  # Save results to file
+                  with open('scan-results.json', 'w') as f:
+                      json.dump(results, f, indent=2)
+                  
+                  sys.exit(1)
+              else:
+                  print("✅ No threats detected")
+                  sys.exit(0)
+          
+          if __name__ == '__main__':
+              main()
+          EOF
+          
+          python scan.py
+        continue-on-error: true
+        
+      - name: Upload scan results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-results
+          path: scan-results.json
+          if-no-files-found: ignore
+          
+      - name: Comment on PR
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let comment = '## ⚠️ Security Scan Results\n\n';
+            
+            try {
+              const results = JSON.parse(fs.readFileSync('scan-results.json', 'utf8'));
+              comment += 'Potential threats detected:\n\n';
+              
+              for (const result of results) {
+                comment += `- **${result.file}**\n`;
+                comment += `  - Matches: ${result.matches.join(', ')}\n\n`;
+              }
+            } catch (e) {
+              comment += 'Scan completed with issues. Check the workflow logs for details.\n';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

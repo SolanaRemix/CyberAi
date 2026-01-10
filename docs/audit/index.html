@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuberAi Control Panel - SmartBrain Orchestrator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        .card h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card .icon {
+            font-size: 1.8em;
+        }
+
+        .card p {
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .status.active {
+            background: rgba(46, 213, 115, 0.3);
+            border: 1px solid rgba(46, 213, 115, 0.6);
+        }
+
+        .status.warning {
+            background: rgba(255, 184, 0, 0.3);
+            border: 1px solid rgba(255, 184, 0, 0.6);
+        }
+
+        .status.safe {
+            background: rgba(0, 184, 217, 0.3);
+            border: 1px solid rgba(0, 184, 217, 0.6);
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .agent {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .agent:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .agent-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .agent-role {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .quick-links {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .quick-links h2 {
+            margin-bottom: 15px;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .link-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        .dry-run-notice {
+            background: rgba(255, 184, 0, 0.2);
+            border: 2px solid rgba(255, 184, 0, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .agents-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 CuberAi Control Panel</h1>
+            <p class="subtitle">SmartBrain Orchestrator Dashboard</p>
+        </header>
+
+        <div class="dry-run-notice">
+            <strong>⚠️ SAFETY MODE ACTIVE</strong><br>
+            All scripts default to DRY_RUN=true for non-destructive testing
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2><span class="icon">🔍</span>System Status</h2>
+                <p>SmartBrain orchestration system is ready. All agents are operational and monitoring the codebase.</p>
+                <span class="status active">● OPERATIONAL</span>
+                <div class="actions">
+                    <button class="btn" onclick="alert('Run: ./scripts/master.sh health')">Health Check</button>
+                    <button class="btn" onclick="alert('Run: ./scripts/master.sh audit')">Run Audit</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🛡️</span>Security</h2>
+                <p>GitAntivirus workflow monitors all commits for suspicious patterns and malware.</p>
+                <span class="status safe">● DRY-RUN MODE</span>
+                <div class="actions">
+                    <button class="btn" onclick="alert('Run: ./scripts/master.sh scan')">Scan Now</button>
+                    <button class="btn" onclick="alert('View: .quarantine/')">Quarantine</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🔧</span>Auto-Heal</h2>
+                <p>Automated healing agents repair UI components, clean ports, and fix common issues.</p>
+                <span class="status warning">● STANDBY</span>
+                <div class="actions">
+                    <button class="btn" onclick="alert('Run: ./scripts/master.sh heal')">Heal</button>
+                    <button class="btn" onclick="alert('Run: ./scripts/master.sh integrity')">Integrity</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🤖 SmartBrain Agents</h2>
+            <p>Multi-agent system for comprehensive codebase management</p>
+            <div class="agents-grid">
+                <div class="agent">
+                    <div class="agent-name">Agent A</div>
+                    <div class="agent-role">Code Auditor</div>
+                </div>
+                <div class="agent">
+                    <div class="agent-name">Agent B</div>
+                    <div class="agent-role">Fixer & Optimizer</div>
+                </div>
+                <div class="agent">
+                    <div class="agent-name">Agent C</div>
+                    <div class="agent-role">Security</div>
+                </div>
+                <div class="agent">
+                    <div class="agent-name">Agent D</div>
+                    <div class="agent-role">Documentation</div>
+                </div>
+                <div class="agent">
+                    <div class="agent-name">Agent E</div>
+                    <div class="agent-role">UI/UX Healer</div>
+                </div>
+                <div class="agent">
+                    <div class="agent-name">Agent F</div>
+                    <div class="agent-role">CI/CD</div>
+                </div>
+                <div class="agent">
+                    <div class="agent-name">Agent X</div>
+                    <div class="agent-role">Antivirus</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-links">
+            <h2>📚 Quick Links</h2>
+            <div class="links-grid">
+                <a href="cuberai-setup.html" class="link-item">
+                    <strong>📖 Setup Guide</strong><br>
+                    <small>Installation & Configuration</small>
+                </a>
+                <a href="../templates/onboarding.md" class="link-item">
+                    <strong>🚀 Onboarding</strong><br>
+                    <small>Get Started Guide</small>
+                </a>
+                <a href="https://github.com/CyberAi/CyberAi" class="link-item">
+                    <strong>💻 Repository</strong><br>
+                    <small>View on GitHub</small>
+                </a>
+                <a href="https://github.com/CyberAi/CyberAi/actions" class="link-item">
+                    <strong>⚡ Actions</strong><br>
+                    <small>CI/CD Workflows</small>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>CyberAi SmartBrain Orchestrator v1.0.0</p>
+            <p>Conservative Safety Configuration | Non-Destructive by Default</p>
+            <p>© 2024 CyberAi | All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add interactivity if needed
+        console.log('CuberAi Control Panel Loaded');
+        console.log('All operations default to DRY_RUN=true for safety');
+    </script>
+</body>
+</html>

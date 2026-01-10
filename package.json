@@ -1,0 +1,18 @@
+{
+  "name": "cyberai",
+  "version": "1.0.0",
+  "description": "**CyberAi (formerly CuberAi)** - AI-Powered Smart Contract Security & Orchestration Platform",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts"
+  },
+  "dependencies": {
+    "openai": "^6.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.3.3"
+  }
+}

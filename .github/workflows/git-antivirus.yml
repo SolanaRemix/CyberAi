@@ -1,0 +1,80 @@
+name: GitAntivirus Workflow
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main, master]
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  git-antivirus-scan:
+    name: Git Antivirus Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up environment
+        run: |
+          echo "DRY_RUN=true" >> $GITHUB_ENV
+          mkdir -p .quarantine
+      
+      - name: Run antivirus scan
+        run: |
+          if [ -x "./scripts/master.sh" ]; then
+            chmod +x ./scripts/*.sh
+            ./scripts/master.sh scan
+          else
+            echo "Warning: master.sh not found or not executable"
+            exit 0
+          fi
+      
+      - name: Check for suspicious files
+        run: |
+          if [ -f ".quarantine/suspicious-files.txt" ]; then
+            echo "⚠️ Suspicious files detected:"
+            cat .quarantine/suspicious-files.txt
+            echo "::warning::Suspicious patterns found in some files"
+          fi
+          
+          if [ -f ".quarantine/archives-review.txt" ]; then
+            echo "⚠️ Archives flagged for review:"
+            cat .quarantine/archives-review.txt
+            echo "::warning::Archive files found that need review"
+          fi
+      
+      - name: Upload quarantine artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quarantine-report
+          path: .quarantine/
+          retention-days: 30
+          if-no-files-found: ignore
+      
+      - name: Generate scan summary
+        if: always()
+        run: |
+          echo "## 🛡️ GitAntivirus Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "SMARTBRAIN.log" ]; then
+            echo "### Agent X Scan Log" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            grep "AgentX" SMARTBRAIN.log | tail -20 >> $GITHUB_STEP_SUMMARY || echo "No logs found"
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Scan completed at: $(date -u)" >> $GITHUB_STEP_SUMMARY

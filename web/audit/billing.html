@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <meta name="description" content="SmartContractAudit - Sponsorship and Billing">
+    <title>Billing & Sponsorship - SmartContractAudit</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Stripe.js (for future integration) -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+=======
+    <title>Billing - CyberAi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+>>>>>>> origin/pr10
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+<<<<<<< HEAD
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">💳 Billing & Sponsorship</h1>
+                    <p class="text-sm opacity-90">Support SmartContractAudit</p>
+                </div>
+                <nav class="space-x-4">
+                    <a href="index.html" class="hover:underline">Dashboard</a>
+                    <a href="#tiers" class="hover:underline">Tiers</a>
+                    <a href="#payment" class="hover:underline">Payment</a>
+                    <a href="https://github.com/SolanaRemix/SmartContractAudit" class="hover:underline" target="_blank">GitHub</a>
+                </nav>
+            </div>
+        </div>
+=======
+    <title>Billing - SmartContractAudit</title>
+    <meta name="description" content="Support SmartContractAudit through various payment options">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">SmartContractAudit</a>
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Dashboard</a>
+                    <a href="billing.html" class="text-blue-600 font-semibold">Billing</a>
+                    <a href="https://github.com/SolanaRemix/SmartContractAudit" class="text-gray-700 hover:text-blue-600">GitHub</a>
+                </div>
+            </div>
+        </nav>
+>>>>>>> origin/pr9
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+<<<<<<< HEAD
+        <!-- Notice Banner -->
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-blue-700">
+                        <strong>Placeholder:</strong> This is a demo billing page. To enable live payments, integrate Stripe API with test keys and configure webhook endpoints.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sponsorship Tiers -->
+        <div id="tiers" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8">Sponsorship Tiers</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                <!-- Supporter Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-gray-400">
+                    <h3 class="text-xl font-bold mb-2">🤝 Supporter</h3>
+                    <p class="text-3xl font-bold mb-4">$100<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ Logo on website</li>
+                        <li>✅ Newsletter mention</li>
+                        <li>✅ Sponsor badge</li>
+                        <li>✅ Community support</li>
+                    </ul>
+                    <button onclick="selectTier('supporter', 100)" class="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 transition">
+                        Select Supporter
+                    </button>
+                </div>
+
+                <!-- Bronze Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-orange-400">
+                    <h3 class="text-xl font-bold mb-2">🥉 Bronze</h3>
+                    <p class="text-3xl font-bold mb-4">$500<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ All Supporter benefits</li>
+                        <li>✅ Priority support (48h)</li>
+                        <li>✅ Early feature access</li>
+                        <li>✅ Quarterly check-ins</li>
+                    </ul>
+                    <button onclick="selectTier('bronze', 500)" class="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition">
+                        Select Bronze
+                    </button>
+                </div>
+
+                <!-- Silver Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-gray-300 transform scale-105">
+                    <div class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full inline-block mb-2">POPULAR</div>
+                    <h3 class="text-xl font-bold mb-2">🥈 Silver</h3>
+                    <p class="text-3xl font-bold mb-4">$2,000<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ All Bronze benefits</li>
+                        <li>✅ Account manager</li>
+                        <li>✅ Co-marketing</li>
+                        <li>✅ Monthly reviews</li>
+                        <li>✅ 99% uptime SLA</li>
+                    </ul>
+                    <button onclick="selectTier('silver', 2000)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                        Select Silver
+                    </button>
+                </div>
+
+                <!-- Gold Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-yellow-400">
+                    <h3 class="text-xl font-bold mb-2">🥇 Gold</h3>
+                    <p class="text-3xl font-bold mb-4">$5,000<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ All Silver benefits</li>
+                        <li>✅ Custom features</li>
+                        <li>✅ Strategic input</li>
+                        <li>✅ Bi-weekly calls</li>
+                        <li>✅ 99.5% uptime SLA</li>
+                    </ul>
+                    <button onclick="selectTier('gold', 5000)" class="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition">
+                        Select Gold
+                    </button>
+                </div>
+
+                <!-- Platinum Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-purple-500 col-span-full md:col-span-2 lg:col-span-1">
+                    <div class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full inline-block mb-2">ENTERPRISE</div>
+                    <h3 class="text-xl font-bold mb-2">💎 Platinum</h3>
+                    <p class="text-3xl font-bold mb-4">$10,000+<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ All Gold benefits</li>
+                        <li>✅ White-label options</li>
+                        <li>✅ 24/7 support</li>
+                        <li>✅ Dedicated engineer</li>
+                        <li>✅ 99.9% uptime SLA</li>
+                    </ul>
+                    <button onclick="contactSales()" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Section -->
+        <div id="payment" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-6">Complete Your Order</h2>
+            
+            <!-- Selected Tier Display -->
+            <div id="selected-tier" class="hidden mb-6 p-4 bg-blue-50 rounded-lg">
+                <p class="text-sm text-gray-700">Selected Tier: <span id="tier-name" class="font-bold"></span></p>
+                <p class="text-2xl font-bold text-blue-700">$<span id="tier-price"></span>/month</p>
+            </div>
+
+            <!-- Stripe Checkout Placeholder -->
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center mb-6">
+                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                </svg>
+                <h3 class="text-lg font-semibold mb-2">Stripe Checkout Integration</h3>
+                <p class="text-sm text-gray-600 mb-4">This is a placeholder for Stripe Checkout integration.</p>
+                
+                <button id="stripe-checkout-btn" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition" disabled>
+                    Proceed to Stripe Checkout (Demo)
+                </button>
+                
+                <p class="text-xs text-gray-500 mt-4">
+                    To enable: Configure Stripe API keys and create checkout session endpoint.
+                </p>
+            </div>
+
+            <!-- Alternative Payment Methods -->
+            <div class="border-t pt-6">
+                <h3 class="text-lg font-semibold mb-4">Alternative Payment Methods</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Cash App -->
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-2">💵 Cash App</h4>
+                        <p class="text-sm text-gray-600 mb-3">Pay via Cash App for flexible amounts</p>
+                        <p class="text-sm font-mono bg-gray-100 p-2 rounded">$CuberAI (placeholder)</p>
+                        <p class="text-xs text-gray-500 mt-2">Include your email in the note</p>
+                    </div>
+
+                    <!-- Cryptocurrency -->
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-2">₿ Cryptocurrency</h4>
+                        <p class="text-sm text-gray-600 mb-3">Accept BTC, ETH, USDC, and more</p>
+                        <button onclick="showCryptoOptions()" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                            View Crypto Addresses →
+                        </button>
+                    </div>
+
+                    <!-- GitHub Sponsors -->
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-2">💖 GitHub Sponsors</h4>
+                        <p class="text-sm text-gray-600 mb-3">Sponsor via GitHub</p>
+                        <a href="https://github.com/sponsors/PLACEHOLDER" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                            Sponsor on GitHub →
+                        </a>
+                    </div>
+
+                    <!-- OpenCollective -->
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-2">🌐 OpenCollective</h4>
+                        <p class="text-sm text-gray-600 mb-3">Transparent funding via OpenCollective</p>
+                        <a href="https://opencollective.com/PLACEHOLDER" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                            Contribute on OpenCollective →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact for Custom -->
+            <div class="mt-6 bg-purple-50 border-l-4 border-purple-400 p-4">
+                <p class="text-sm text-purple-700">
+                    <strong>Need a custom package?</strong> Contact our partnerships team at 
+                    <a href="mailto:partners@cuberai.example" class="underline">partners@cuberai.example</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Integration Instructions -->
+        <div class="bg-gray-800 text-white rounded-lg p-8">
+            <h2 class="text-2xl font-bold mb-4">🔧 Integration Instructions</h2>
+            <p class="mb-4">To enable live payments, follow these steps:</p>
+            
+            <div class="space-y-4 text-sm">
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="font-semibold mb-2">1. Stripe Integration</h3>
+                    <code class="text-xs block bg-gray-900 p-2 rounded mt-2 overflow-x-auto">
+// Initialize Stripe with your test keys<br/>
+const stripe = Stripe('pk_test_...');<br/>
+<br/>
+// Create checkout session<br/>
+const session = await stripe.checkout.sessions.create({...});
+                    </code>
+                </div>
+
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="font-semibold mb-2">2. Backend Endpoint</h3>
+                    <code class="text-xs block bg-gray-900 p-2 rounded mt-2 overflow-x-auto">
+POST /api/create-checkout-session<br/>
+- Validate tier selection<br/>
+- Create Stripe session<br/>
+- Return session ID
+                    </code>
+                </div>
+
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="font-semibold mb-2">3. Webhook Handler</h3>
+                    <code class="text-xs block bg-gray-900 p-2 rounded mt-2 overflow-x-auto">
+POST /api/stripe-webhook<br/>
+- Verify signature<br/>
+- Handle checkout.session.completed<br/>
+- Provision access
+                    </code>
+                </div>
+
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="font-semibold mb-2">4. Environment Variables</h3>
+                    <code class="text-xs block bg-gray-900 p-2 rounded mt-2 overflow-x-auto">
+STRIPE_SECRET_KEY=sk_test_...<br/>
+STRIPE_WEBHOOK_SECRET=whsec_...<br/>
+CASH_APP_HANDLE=$YourHandle
+                    </code>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-yellow-900 rounded">
+                <p class="text-sm">
+                    <strong>⚠️ Security:</strong> Never commit API keys to the repository. Use environment variables or GitHub Secrets.
+                </p>
+            </div>
+=======
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Support SmartContractAudit</h1>
+                <p class="text-xl text-gray-600">Choose your preferred payment method to support open-source security</p>
+            </div>
+
+            <!-- Payment Options -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Stripe Checkout -->
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Credit/Debit Card</h3>
+                            <p class="text-sm text-gray-500">via Stripe</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">Secure payment processing with Stripe. One-time or recurring donations.</p>
+                    
+                    <!-- Amount Selection -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Select Amount</label>
+                        <div class="grid grid-cols-3 gap-3 mb-3">
+                            <button onclick="selectAmount(10)" class="amount-btn border-2 border-gray-300 rounded-lg py-2 hover:border-blue-500 hover:bg-blue-50 transition">
+                                $10
+                            </button>
+                            <button onclick="selectAmount(25)" class="amount-btn border-2 border-gray-300 rounded-lg py-2 hover:border-blue-500 hover:bg-blue-50 transition">
+                                $25
+                            </button>
+                            <button onclick="selectAmount(50)" class="amount-btn border-2 border-blue-500 bg-blue-50 rounded-lg py-2 font-semibold">
+                                $50
+                            </button>
+                        </div>
+                        <input type="number" id="custom-amount" placeholder="Custom amount" class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 focus:outline-none">
+                    </div>
+                    
+                    <button id="stripe-checkout-btn" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition font-semibold">
+                        Continue with Stripe
+                    </button>
+                    
+                    <p class="text-xs text-gray-500 mt-4">
+                        ⚠️ Test mode only. Use test card: 4242 4242 4242 4242
+                    </p>
+                </div>
+
+                <!-- Cash App -->
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Cash App</h3>
+                            <p class="text-sm text-gray-500">Direct P2P</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">Send directly via Cash App. No fees, instant transfer.</p>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <p class="text-sm text-gray-600 mb-2">Cash App Tag:</p>
+                        <div class="flex items-center justify-between">
+                            <code class="text-lg font-mono font-semibold text-gray-900">$SmartContractAudit</code>
+                            <button onclick="copyCashTag()" class="text-blue-600 hover:text-blue-700 text-sm font-semibold">
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a href="https://cash.app/$SmartContractAudit" target="_blank" class="block w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition font-semibold text-center">
+                        Open Cash App
+                    </a>
+                    
+                    <p class="text-xs text-gray-500 mt-4">
+                        💡 Include your GitHub username in the note for recognition
+                    </p>
+                </div>
+            </div>
+
+            <!-- Other Payment Methods -->
+            <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Other Payment Methods</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- GitHub Sponsors -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold mb-2">GitHub Sponsors</h4>
+                        <p class="text-sm text-gray-600 mb-4">Monthly recurring support</p>
+                        <a href="https://github.com/sponsors" target="_blank" class="inline-block bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition text-sm">
+                            Sponsor
+                        </a>
+                    </div>
+
+                    <!-- Open Collective -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold mb-2">Open Collective</h4>
+                        <p class="text-sm text-gray-600 mb-4">Transparent community funding</p>
+                        <a href="https://opencollective.com" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
+                            Contribute
+                        </a>
+                    </div>
+
+                    <!-- Crypto -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold mb-2">Cryptocurrency</h4>
+                        <p class="text-sm text-gray-600 mb-4">BTC, ETH, USDC accepted</p>
+                        <button onclick="showCryptoInfo()" class="inline-block bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition text-sm">
+                            View Addresses
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integration Instructions -->
+            <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 mb-8">
+                <h3 class="text-lg font-bold text-blue-900 mb-3">🔧 Integration Instructions</h3>
+                <div class="text-sm text-blue-800 space-y-2">
+                    <p><strong>For Stripe Checkout:</strong></p>
+                    <ol class="list-decimal list-inside space-y-1 ml-4">
+                        <li>Create a Stripe account at <a href="https://stripe.com" class="underline" target="_blank">stripe.com</a></li>
+                        <li>Get your publishable key from the Stripe dashboard</li>
+                        <li>Replace <code class="bg-white px-1 py-0.5 rounded">STRIPE_PUBLISHABLE_KEY</code> in the script below</li>
+                        <li>Create products and prices in Stripe dashboard</li>
+                        <li>Update the checkout session with your price IDs</li>
+                    </ol>
+                    <p class="mt-3"><strong>Test Mode:</strong> Use test keys for testing. Test card: 4242 4242 4242 4242</p>
+                    <p><strong>Production:</strong> Switch to live keys when ready. Never commit keys to source control!</p>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Is my payment secure?</h4>
+                        <p class="text-gray-600">Yes! All payments are processed through secure, industry-standard payment providers. We never store your payment information.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Can I get a receipt?</h4>
+                        <p class="text-gray-600">Yes, you'll receive an email receipt for all transactions. For GitHub Sponsors and Open Collective, receipts are available in your account dashboard.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Are donations tax-deductible?</h4>
+                        <p class="text-gray-600">This depends on your jurisdiction and the payment method. Consult your tax advisor for specific guidance.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">What are the funds used for?</h4>
+                        <p class="text-gray-600">All funds support open-source development, security audits, infrastructure costs, and community programs. See our transparency reports for details.</p>
+                    </div>
+                </div>
+            </div>
+>>>>>>> origin/pr9
+        </div>
+    </main>
+
+    <!-- Footer -->
+<<<<<<< HEAD
+    <footer class="bg-gray-800 text-white mt-12 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm">&copy; 2026 SmartContractAudit. Licensed under Apache-2.0.</p>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="../docs/partners/sponsorship_tiers.md" class="hover:text-gray-300">Full Tier Details</a>
+                    <a href="../PRIVACY.md" class="hover:text-gray-300">Privacy</a>
+                    <a href="mailto:partners@cuberai.example" class="hover:text-gray-300">Contact</a>
+                </div>
+            </div>
+=======
+    <footer class="bg-gray-900 text-white mt-12 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2026 SmartContractAudit. Licensed under Apache 2.0.</p>
+            <p class="text-gray-500 text-xs mt-2">No secrets included. Test keys only for demonstration.</p>
+>>>>>>> origin/pr9
+=======
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">
+                    <i class="fas fa-shield-alt"></i> CyberAi
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Dashboard</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-blue-600">Pricing</a>
+                    <a href="https://github.com/CyberAi/CyberAi" class="text-gray-700 hover:text-blue-600">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold mb-4">Sponsorship & Billing</h1>
+            <p class="text-xl text-blue-100">Support open-source security and get premium features</p>
+        </div>
+    </section>
+
+    <!-- Pricing Tiers -->
+    <section id="pricing" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Choose Your Tier</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Bronze -->
+                <div class="bg-white rounded-lg shadow-lg p-8 border-2 border-gray-200">
+                    <div class="text-4xl mb-4 text-center">🥉</div>
+                    <h3 class="text-2xl font-bold text-center mb-4">Bronze</h3>
+                    <div class="text-center mb-6">
+                        <div class="text-4xl font-bold">$100</div>
+                        <div class="text-gray-500">/month</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Name in README</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Sponsor badge</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Community access</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Sponsor updates</span>
+                        </li>
+                    </ul>
+                    <a href="#stripe" class="block w-full bg-gray-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-gray-700 transition">
+                        Select Bronze
+                    </a>
+                </div>
+
+                <!-- Silver -->
+                <div class="bg-white rounded-lg shadow-lg p-8 border-2 border-gray-300">
+                    <div class="text-4xl mb-4 text-center">🥈</div>
+                    <h3 class="text-2xl font-bold text-center mb-4">Silver</h3>
+                    <div class="text-center mb-6">
+                        <div class="text-4xl font-bold">$500</div>
+                        <div class="text-gray-500">/month</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>All Bronze benefits</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Small logo in README</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Priority support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Roadmap preview</span>
+                        </li>
+                    </ul>
+                    <a href="#stripe" class="block w-full bg-gray-500 text-white text-center py-3 rounded-lg font-semibold hover:bg-gray-600 transition">
+                        Select Silver
+                    </a>
+                </div>
+
+                <!-- Gold (Popular) -->
+                <div class="bg-white rounded-lg shadow-xl p-8 border-4 border-yellow-500 transform scale-105 relative">
+                    <div class="absolute top-0 right-0 bg-yellow-500 text-white px-4 py-1 rounded-bl-lg rounded-tr-lg text-sm font-bold">
+                        POPULAR
+                    </div>
+                    <div class="text-4xl mb-4 text-center">🥇</div>
+                    <h3 class="text-2xl font-bold text-center mb-4">Gold</h3>
+                    <div class="text-center mb-6">
+                        <div class="text-4xl font-bold">$2,000</div>
+                        <div class="text-gray-500">/month</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>All Silver benefits</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Medium logo placement</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Dedicated support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>3 feature requests/year</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Co-marketing</span>
+                        </li>
+                    </ul>
+                    <a href="#stripe" class="block w-full bg-yellow-500 text-white text-center py-3 rounded-lg font-semibold hover:bg-yellow-600 transition">
+                        Select Gold
+                    </a>
+                </div>
+
+                <!-- Platinum -->
+                <div class="bg-white rounded-lg shadow-lg p-8 border-2 border-purple-500">
+                    <div class="text-4xl mb-4 text-center">💎</div>
+                    <h3 class="text-2xl font-bold text-center mb-4">Platinum</h3>
+                    <div class="text-center mb-6">
+                        <div class="text-4xl font-bold">$50k+</div>
+                        <div class="text-gray-500">/year</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>All Gold benefits</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Large logo homepage</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Weekly liaison</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Custom SLA</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Private security alerts</span>
+                        </li>
+                    </ul>
+                    <a href="mailto:funding@cyberai.network" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-600">All tiers support open-source development. No control over project decisions. See <a href="https://github.com/CyberAi/CyberAi/blob/main/GOVERNANCE.md" class="text-blue-600 hover:underline">GOVERNANCE.md</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section id="stripe" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Payment Methods</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Stripe -->
+                <div class="bg-gray-50 rounded-lg p-8 mb-8">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-credit-card text-4xl text-blue-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-2xl font-bold">Stripe Checkout</h3>
+                            <p class="text-gray-600">Credit card, debit card, or bank transfer</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded p-6 border-2 border-blue-200">
+                        <h4 class="font-semibold mb-3">How to Pay with Stripe:</h4>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                            <li>Click "Sponsor" button on our <a href="https://github.com/sponsors/CyberAi" class="text-blue-600 hover:underline">GitHub Sponsors</a> page</li>
+                            <li>Select your desired tier</li>
+                            <li>Complete payment through Stripe Checkout</li>
+                            <li>Automatic recognition within 24 hours</li>
+                        </ol>
+                        <div class="mt-6">
+                            <a href="https://github.com/sponsors/CyberAi" class="bg-blue-600 text-white px-6 py-3 rounded-lg inline-block hover:bg-blue-700 transition">
+                                <i class="fab fa-github"></i> Sponsor on GitHub
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">
+                            <i class="fas fa-lock"></i> Secure payment processing by Stripe. No credit card info stored on our servers.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Cash App -->
+                <div class="bg-gray-50 rounded-lg p-8 mb-8">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-dollar-sign text-4xl text-green-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-2xl font-bold">Cash App</h3>
+                            <p class="text-gray-600">Direct payment via Cash App</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded p-6 border-2 border-green-200">
+                        <h4 class="font-semibold mb-3">How to Pay with Cash App:</h4>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                            <li>Send payment to <strong>$CyberAi</strong> (placeholder)</li>
+                            <li>Include your GitHub username in the note</li>
+                            <li>Email receipt to <a href="mailto:funding@cyberai.network" class="text-blue-600 hover:underline">funding@cyberai.network</a></li>
+                            <li>We'll confirm and add you to sponsors list</li>
+                        </ol>
+                        <div class="mt-6 p-4 bg-yellow-50 rounded border border-yellow-200">
+                            <p class="text-sm text-yellow-800">
+                                <i class="fas fa-info-circle"></i> <strong>Note:</strong> Cash App payments are manual. Please allow 2-3 business days for processing and recognition.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cryptocurrency -->
+                <div class="bg-gray-50 rounded-lg p-8 mb-8">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-bitcoin text-4xl text-orange-500 mr-4"></i>
+                        <div>
+                            <h3 class="text-2xl font-bold">Cryptocurrency</h3>
+                            <p class="text-gray-600">Bitcoin, Ethereum, Solana, USDC, USDT</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded p-6 border-2 border-orange-200">
+                        <h4 class="font-semibold mb-3">Crypto Payments:</h4>
+                        <p class="text-gray-700 mb-4">Contact us for wallet addresses:</p>
+                        <ul class="space-y-2 text-gray-700 mb-4">
+                            <li><i class="fab fa-bitcoin text-orange-500"></i> Bitcoin (BTC)</li>
+                            <li><i class="fab fa-ethereum text-blue-500"></i> Ethereum (ETH)</li>
+                            <li><i class="fas fa-coins text-purple-500"></i> Solana (SOL)</li>
+                            <li><i class="fas fa-dollar-sign text-green-500"></i> USDC / USDT</li>
+                        </ul>
+                        <div class="mt-6">
+                            <a href="mailto:funding@cyberai.network?subject=Crypto%20Payment%20Request" class="bg-orange-600 text-white px-6 py-3 rounded-lg inline-block hover:bg-orange-700 transition">
+                                Request Wallet Address
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">
+                            <i class="fas fa-shield-alt"></i> Always verify wallet addresses directly with us before sending.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bank Transfer / Invoice -->
+                <div class="bg-gray-50 rounded-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-invoice-dollar text-4xl text-purple-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-2xl font-bold">Bank Transfer / Invoice</h3>
+                            <p class="text-gray-600">For Platinum sponsors and enterprise</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded p-6 border-2 border-purple-200">
+                        <h4 class="font-semibold mb-3">Payment via Invoice:</h4>
+                        <p class="text-gray-700 mb-4">
+                            For Platinum tier or custom sponsorships, we can provide invoices and accept bank transfers.
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+                            <li>Net 30 payment terms available</li>
+                            <li>Annual invoicing options</li>
+                            <li>PO numbers accepted</li>
+                            <li>Multiple currency support</li>
+                        </ul>
+                        <div class="mt-6">
+                            <a href="mailto:funding@cyberai.network?subject=Invoice%20Request" class="bg-purple-600 text-white px-6 py-3 rounded-lg inline-block hover:bg-purple-700 transition">
+                                Request Invoice
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white rounded-lg p-6 shadow">
+                    <h3 class="font-bold text-lg mb-2">Can I cancel anytime?</h3>
+                    <p class="text-gray-700">Yes! Monthly subscriptions can be canceled with 30 days notice. Annual subscriptions are non-refundable but won't auto-renew if canceled.</p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow">
+                    <h3 class="font-bold text-lg mb-2">Do sponsors control the project?</h3>
+                    <p class="text-gray-700">No. All sponsors are appreciated but have no control over project decisions. See our <a href="https://github.com/CyberAi/CyberAi/blob/main/GOVERNANCE.md" class="text-blue-600 hover:underline">GOVERNANCE.md</a> for details.</p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow">
+                    <h3 class="font-bold text-lg mb-2">Do you provide invoices?</h3>
+                    <p class="text-gray-700">Yes! GitHub Sponsors provides automatic invoices. For direct payments, we'll send invoices upon request.</p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow">
+                    <h3 class="font-bold text-lg mb-2">What if I can't afford sponsorship?</h3>
+                    <p class="text-gray-700">No problem! Contributing code, documentation, or community support is equally valued. The tools are free and open source for everyone.</p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow">
+                    <h3 class="font-bold text-lg mb-2">How are funds used?</h3>
+                    <p class="text-gray-700">50% development, 25% infrastructure, 15% community, 10% operations. Full transparency in our governance documents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4">Questions about billing or sponsorship?</p>
+            <p class="text-gray-400">
+                Email: <a href="mailto:funding@cyberai.network" class="text-blue-400 hover:underline">funding@cyberai.network</a>
+            </p>
+            <p class="mt-6 text-sm text-gray-400">
+                &copy; 2026 CyberAi. Apache-2.0 License.
+            </p>
+>>>>>>> origin/pr10
+        </div>
+    </footer>
+
+    <script>
+<<<<<<< HEAD
+<<<<<<< HEAD
+        // Tier selection
+        function selectTier(tierName, price) {
+            document.getElementById('selected-tier').classList.remove('hidden');
+            document.getElementById('tier-name').textContent = tierName.charAt(0).toUpperCase() + tierName.slice(1);
+            document.getElementById('tier-price').textContent = price.toLocaleString();
+            
+            // Scroll to payment section
+            document.getElementById('payment').scrollIntoView({ behavior: 'smooth' });
+            
+            console.log(`Selected tier: ${tierName} - $${price}/month`);
+        }
+
+        // Contact sales
+        function contactSales() {
+            window.location.href = 'mailto:partners@cuberai.example?subject=Platinum Tier Inquiry';
+        }
+
+        // Show crypto options
+        function showCryptoOptions() {
+            alert('Cryptocurrency payment addresses:\n\nBTC: (To be configured)\nETH: (To be configured)\nUSDC: (To be configured)\n\nPlease email us after payment with transaction hash.');
+        }
+
+        // Stripe checkout (placeholder)
+        document.getElementById('stripe-checkout-btn')?.addEventListener('click', function() {
+            alert('Stripe Checkout integration needed.\n\nTo enable:\n1. Add Stripe API keys\n2. Create checkout session endpoint\n3. Configure webhook handler\n\nSee integration instructions below.');
+        });
+
+        // Future: Real Stripe integration
+        // const stripe = Stripe('pk_test_...');
+        // async function createCheckoutSession(tier, price) {
+        //     const response = await fetch('/api/create-checkout-session', {
+        //         method: 'POST',
+        //         headers: { 'Content-Type': 'application/json' },
+        //         body: JSON.stringify({ tier, price })
+        //     });
+        //     const session = await response.json();
+        //     return stripe.redirectToCheckout({ sessionId: session.id });
+        // }
+=======
+        // ⚠️ IMPORTANT: Replace with your actual Stripe publishable key
+        // Use TEST key for development: pk_test_xxxxx
+        // Use LIVE key for production: pk_live_xxxxx
+        // NEVER commit secret keys to source control!
+        const STRIPE_PUBLISHABLE_KEY = 'pk_test_REPLACE_WITH_YOUR_TEST_KEY';
+        
+        // Initialize Stripe (only if key is configured)
+        let stripe;
+        if (STRIPE_PUBLISHABLE_KEY !== 'pk_test_REPLACE_WITH_YOUR_TEST_KEY') {
+            stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+        }
+        
+        let selectedAmount = 50;
+        
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('border-blue-500', 'bg-blue-50', 'font-semibold');
+                btn.classList.add('border-gray-300');
+            });
+            event.target.classList.remove('border-gray-300');
+            event.target.classList.add('border-blue-500', 'bg-blue-50', 'font-semibold');
+            document.getElementById('custom-amount').value = '';
+        }
+        
+        document.getElementById('stripe-checkout-btn').addEventListener('click', async () => {
+            const customAmount = document.getElementById('custom-amount').value;
+            const amount = customAmount || selectedAmount;
+            
+            if (!stripe) {
+                alert('Stripe is not configured. Please add your Stripe publishable key to enable payments.');
+                return;
+            }
+            
+            alert(`This would redirect to Stripe Checkout for $${amount}.\n\nTo enable:\n1. Get Stripe API keys\n2. Replace STRIPE_PUBLISHABLE_KEY\n3. Create Checkout Session on backend\n4. Redirect to session.url`);
+            
+            // Production code would look like:
+            // const response = await fetch('/create-checkout-session', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ amount: amount * 100 }) // Convert to cents
+            // });
+            // const session = await response.json();
+            // await stripe.redirectToCheckout({ sessionId: session.id });
+        });
+        
+        function copyCashTag() {
+            navigator.clipboard.writeText('$SmartContractAudit');
+            alert('Cash App tag copied to clipboard!');
+        }
+        
+        function showCryptoInfo() {
+            alert('Cryptocurrency Addresses:\n\nBTC: [Your BTC Address]\nETH: [Your ETH Address]\nUSDC: [Your USDC Address]\n\n⚠️ Update with real addresses before use!');
+        }
+        
+        console.log('Billing page loaded - Test mode only');
+        console.log('Configure Stripe keys to enable payments');
+>>>>>>> origin/pr9
+=======
+        // Security note: No actual payment keys included
+        // Real Stripe integration would happen server-side
+        console.log('Billing page loaded - placeholder interface');
+        console.log('No actual payment keys or secrets included (as required)');
+>>>>>>> origin/pr10
+    </script>
+</body>
+</html>

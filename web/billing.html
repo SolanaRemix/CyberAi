@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SmartContractAudit - Sponsorship and Billing">
+    <title>Billing & Sponsorship - SmartContractAudit</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Stripe.js (for future integration) -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">💳 Billing & Sponsorship</h1>
+                    <p class="text-sm opacity-90">Support SmartContractAudit</p>
+                </div>
+                <nav class="space-x-4">
+                    <a href="index.html" class="hover:underline">Dashboard</a>
+                    <a href="#tiers" class="hover:underline">Tiers</a>
+                    <a href="#payment" class="hover:underline">Payment</a>
+                    <a href="https://github.com/SolanaRemix/SmartContractAudit" class="hover:underline" target="_blank">GitHub</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Notice Banner -->
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-blue-700">
+                        <strong>Placeholder:</strong> This is a demo billing page. To enable live payments, integrate Stripe API with test keys and configure webhook endpoints.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sponsorship Tiers -->
+        <div id="tiers" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8">Sponsorship Tiers</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                <!-- Supporter Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-gray-400">
+                    <h3 class="text-xl font-bold mb-2">🤝 Supporter</h3>
+                    <p class="text-3xl font-bold mb-4">$100<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ Logo on website</li>
+                        <li>✅ Newsletter mention</li>
+                        <li>✅ Sponsor badge</li>
+                        <li>✅ Community support</li>
+                    </ul>
+                    <button onclick="selectTier('supporter', 100)" class="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 transition">
+                        Select Supporter
+                    </button>
+                </div>
+
+                <!-- Bronze Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-orange-400">
+                    <h3 class="text-xl font-bold mb-2">🥉 Bronze</h3>
+                    <p class="text-3xl font-bold mb-4">$500<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ All Supporter benefits</li>
+                        <li>✅ Priority support (48h)</li>
+                        <li>✅ Early feature access</li>
+                        <li>✅ Quarterly check-ins</li>
+                    </ul>
+                    <button onclick="selectTier('bronze', 500)" class="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition">
+                        Select Bronze
+                    </button>
+                </div>
+
+                <!-- Silver Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-gray-300 transform scale-105">
+                    <div class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full inline-block mb-2">POPULAR</div>
+                    <h3 class="text-xl font-bold mb-2">🥈 Silver</h3>
+                    <p class="text-3xl font-bold mb-4">$2,000<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ All Bronze benefits</li>
+                        <li>✅ Account manager</li>
+                        <li>✅ Co-marketing</li>
+                        <li>✅ Monthly reviews</li>
+                        <li>✅ 99% uptime SLA</li>
+                    </ul>
+                    <button onclick="selectTier('silver', 2000)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                        Select Silver
+                    </button>
+                </div>
+
+                <!-- Gold Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-yellow-400">
+                    <h3 class="text-xl font-bold mb-2">🥇 Gold</h3>
+                    <p class="text-3xl font-bold mb-4">$5,000<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ All Silver benefits</li>
+                        <li>✅ Custom features</li>
+                        <li>✅ Strategic input</li>
+                        <li>✅ Bi-weekly calls</li>
+                        <li>✅ 99.5% uptime SLA</li>
+                    </ul>
+                    <button onclick="selectTier('gold', 5000)" class="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition">
+                        Select Gold
+                    </button>
+                </div>
+
+                <!-- Platinum Tier -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-purple-500 col-span-full md:col-span-2 lg:col-span-1">
+                    <div class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full inline-block mb-2">ENTERPRISE</div>
+                    <h3 class="text-xl font-bold mb-2">💎 Platinum</h3>
+                    <p class="text-3xl font-bold mb-4">$10,000+<span class="text-sm font-normal text-gray-600">/month</span></p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                        <li>✅ All Gold benefits</li>
+                        <li>✅ White-label options</li>
+                        <li>✅ 24/7 support</li>
+                        <li>✅ Dedicated engineer</li>
+                        <li>✅ 99.9% uptime SLA</li>
+                    </ul>
+                    <button onclick="contactSales()" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Section -->
+        <div id="payment" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-6">Complete Your Order</h2>
+            
+            <!-- Selected Tier Display -->
+            <div id="selected-tier" class="hidden mb-6 p-4 bg-blue-50 rounded-lg">
+                <p class="text-sm text-gray-700">Selected Tier: <span id="tier-name" class="font-bold"></span></p>
+                <p class="text-2xl font-bold text-blue-700">$<span id="tier-price"></span>/month</p>
+            </div>
+
+            <!-- Stripe Checkout Placeholder -->
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center mb-6">
+                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                </svg>
+                <h3 class="text-lg font-semibold mb-2">Stripe Checkout Integration</h3>
+                <p class="text-sm text-gray-600 mb-4">This is a placeholder for Stripe Checkout integration.</p>
+                
+                <button id="stripe-checkout-btn" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition" disabled>
+                    Proceed to Stripe Checkout (Demo)
+                </button>
+                
+                <p class="text-xs text-gray-500 mt-4">
+                    To enable: Configure Stripe API keys and create checkout session endpoint.
+                </p>
+            </div>
+
+            <!-- Alternative Payment Methods -->
+            <div class="border-t pt-6">
+                <h3 class="text-lg font-semibold mb-4">Alternative Payment Methods</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Cash App -->
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-2">💵 Cash App</h4>
+                        <p class="text-sm text-gray-600 mb-3">Pay via Cash App for flexible amounts</p>
+                        <p class="text-sm font-mono bg-gray-100 p-2 rounded">$CuberAI (placeholder)</p>
+                        <p class="text-xs text-gray-500 mt-2">Include your email in the note</p>
+                    </div>
+
+                    <!-- Cryptocurrency -->
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-2">₿ Cryptocurrency</h4>
+                        <p class="text-sm text-gray-600 mb-3">Accept BTC, ETH, USDC, and more</p>
+                        <button onclick="showCryptoOptions()" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                            View Crypto Addresses →
+                        </button>
+                    </div>
+
+                    <!-- GitHub Sponsors -->
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-2">💖 GitHub Sponsors</h4>
+                        <p class="text-sm text-gray-600 mb-3">Sponsor via GitHub</p>
+                        <a href="https://github.com/sponsors/PLACEHOLDER" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                            Sponsor on GitHub →
+                        </a>
+                    </div>
+
+                    <!-- OpenCollective -->
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-2">🌐 OpenCollective</h4>
+                        <p class="text-sm text-gray-600 mb-3">Transparent funding via OpenCollective</p>
+                        <a href="https://opencollective.com/PLACEHOLDER" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                            Contribute on OpenCollective →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact for Custom -->
+            <div class="mt-6 bg-purple-50 border-l-4 border-purple-400 p-4">
+                <p class="text-sm text-purple-700">
+                    <strong>Need a custom package?</strong> Contact our partnerships team at 
+                    <a href="mailto:partners@cuberai.example" class="underline">partners@cuberai.example</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Integration Instructions -->
+        <div class="bg-gray-800 text-white rounded-lg p-8">
+            <h2 class="text-2xl font-bold mb-4">🔧 Integration Instructions</h2>
+            <p class="mb-4">To enable live payments, follow these steps:</p>
+            
+            <div class="space-y-4 text-sm">
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="font-semibold mb-2">1. Stripe Integration</h3>
+                    <code class="text-xs block bg-gray-900 p-2 rounded mt-2 overflow-x-auto">
+// Initialize Stripe with your test keys<br/>
+const stripe = Stripe('pk_test_...');<br/>
+<br/>
+// Create checkout session<br/>
+const session = await stripe.checkout.sessions.create({...});
+                    </code>
+                </div>
+
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="font-semibold mb-2">2. Backend Endpoint</h3>
+                    <code class="text-xs block bg-gray-900 p-2 rounded mt-2 overflow-x-auto">
+POST /api/create-checkout-session<br/>
+- Validate tier selection<br/>
+- Create Stripe session<br/>
+- Return session ID
+                    </code>
+                </div>
+
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="font-semibold mb-2">3. Webhook Handler</h3>
+                    <code class="text-xs block bg-gray-900 p-2 rounded mt-2 overflow-x-auto">
+POST /api/stripe-webhook<br/>
+- Verify signature<br/>
+- Handle checkout.session.completed<br/>
+- Provision access
+                    </code>
+                </div>
+
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="font-semibold mb-2">4. Environment Variables</h3>
+                    <code class="text-xs block bg-gray-900 p-2 rounded mt-2 overflow-x-auto">
+STRIPE_SECRET_KEY=sk_test_...<br/>
+STRIPE_WEBHOOK_SECRET=whsec_...<br/>
+CASH_APP_HANDLE=$YourHandle
+                    </code>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-yellow-900 rounded">
+                <p class="text-sm">
+                    <strong>⚠️ Security:</strong> Never commit API keys to the repository. Use environment variables or GitHub Secrets.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm">&copy; 2026 SmartContractAudit. Licensed under Apache-2.0.</p>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="../docs/partners/sponsorship_tiers.md" class="hover:text-gray-300">Full Tier Details</a>
+                    <a href="../PRIVACY.md" class="hover:text-gray-300">Privacy</a>
+                    <a href="mailto:partners@cuberai.example" class="hover:text-gray-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tier selection
+        function selectTier(tierName, price) {
+            document.getElementById('selected-tier').classList.remove('hidden');
+            document.getElementById('tier-name').textContent = tierName.charAt(0).toUpperCase() + tierName.slice(1);
+            document.getElementById('tier-price').textContent = price.toLocaleString();
+            
+            // Scroll to payment section
+            document.getElementById('payment').scrollIntoView({ behavior: 'smooth' });
+            
+            console.log(`Selected tier: ${tierName} - $${price}/month`);
+        }
+
+        // Contact sales
+        function contactSales() {
+            window.location.href = 'mailto:partners@cuberai.example?subject=Platinum Tier Inquiry';
+        }
+
+        // Show crypto options
+        function showCryptoOptions() {
+            alert('Cryptocurrency payment addresses:\n\nBTC: (To be configured)\nETH: (To be configured)\nUSDC: (To be configured)\n\nPlease email us after payment with transaction hash.');
+        }
+
+        // Stripe checkout (placeholder)
+        document.getElementById('stripe-checkout-btn')?.addEventListener('click', function() {
+            alert('Stripe Checkout integration needed.\n\nTo enable:\n1. Add Stripe API keys\n2. Create checkout session endpoint\n3. Configure webhook handler\n\nSee integration instructions below.');
+        });
+
+        // Future: Real Stripe integration
+        // const stripe = Stripe('pk_test_...');
+        // async function createCheckoutSession(tier, price) {
+        //     const response = await fetch('/api/create-checkout-session', {
+        //         method: 'POST',
+        //         headers: { 'Content-Type': 'application/json' },
+        //         body: JSON.stringify({ tier, price })
+        //     });
+        //     const session = await response.json();
+        //     return stripe.redirectToCheckout({ sessionId: session.id });
+        // }
+    </script>
+</body>
+</html>

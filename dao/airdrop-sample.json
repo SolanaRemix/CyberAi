@@ -1,0 +1,32 @@
+[
+  {
+    "address": "0x1234567890123456789012345678901234567890",
+    "amount": "1000000000000000000000",
+    "score": 500,
+    "contributions": "Major feature implementation + security review"
+  },
+  {
+    "address": "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+    "amount": "500000000000000000000",
+    "score": 250,
+    "contributions": "Multiple bug fixes and documentation"
+  },
+  {
+    "address": "0x9876543210987654321098765432109876543210",
+    "amount": "750000000000000000000",
+    "score": 375,
+    "contributions": "Security vulnerability report + code reviews"
+  },
+  {
+    "address": "0xfedcba9876543210fedcba9876543210fedcba98",
+    "amount": "300000000000000000000",
+    "score": 150,
+    "contributions": "Community support and issue triage"
+  },
+  {
+    "address": "0x1111111111111111111111111111111111111111",
+    "amount": "200000000000000000000",
+    "score": 100,
+    "contributions": "Documentation improvements"
+  }
+]
