@@ -1,0 +1,165 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Quickstart - CyberAi Network">
+  <main class="docs-container">
+    <h1>Quickstart Guide</h1>
+    
+    <section>
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Node.js 18 or higher</li>
+        <li>npm or yarn</li>
+        <li>Git</li>
+        <li>GitHub account</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Installation</h2>
+      
+      <h3>1. Clone the Repository</h3>
+      <pre><code>git clone https://github.com/SolanaRemix/CyberAi.git
+cd CyberAi</code></pre>
+
+      <h3>2. Run Bootstrap</h3>
+      <p>The bootstrap script will verify your environment, install dependencies, and build the site:</p>
+      <pre><code>./tools/bootstrap/bootstrap.sh</code></pre>
+
+      <h3>3. Verify Installation</h3>
+      <p>Run the audit script to ensure everything is set up correctly:</p>
+      <pre><code>./tools/audit/audit.sh</code></pre>
+    </section>
+
+    <section>
+      <h2>Development</h2>
+      
+      <h3>Start the Development Server</h3>
+      <pre><code>cd site
+npm run dev</code></pre>
+      <p>The site will be available at <code>http://localhost:4321</code></p>
+
+      <h3>Build for Production</h3>
+      <pre><code>cd site
+npm run build</code></pre>
+    </section>
+
+    <section>
+      <h2>Project Structure</h2>
+      <pre><code>CyberAi/
+├── contracts/          # Machine-readable contracts
+│   ├── agents/        # Agent contracts
+│   ├── repositories/  # Repository contracts
+│   └── contract.schema.json
+├── prompts/           # Operator and agent prompts
+│   ├── agents/
+│   ├── operators/
+│   └── workflows/
+├── tools/             # Operational tools
+│   ├── bootstrap/
+│   └── audit/
+├── site/              # GitHub Pages site
+│   └── src/
+│       ├── pages/
+│       └── layouts/
+└── docs/              # Documentation</code></pre>
+    </section>
+
+    <section>
+      <h2>Next Steps</h2>
+      <ul>
+        <li><a href="/docs/architecture">Learn about the architecture</a></li>
+        <li><a href="/docs/contracts">Explore contract specifications</a></li>
+        <li><a href="/docs/agents">Deploy your first agent</a></li>
+        <li><a href="/docs/contributing">Contribute to the project</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Getting Help</h2>
+      <p>If you encounter any issues:</p>
+      <ul>
+        <li>Check the <a href="/docs/troubleshooting">Troubleshooting Guide</a></li>
+        <li>Review <a href="https://github.com/SolanaRemix/CyberAi/issues" target="_blank">GitHub Issues</a></li>
+        <li>Join the community discussions</li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .docs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+  }
+
+  a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  p code {
+    background: #f1f5f9;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    color: #1e293b;
+  }
+</style>

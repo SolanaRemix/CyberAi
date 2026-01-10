@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="CyberAi Network - AI-Powered Smart Contract Security">
+  <main>
+    <div class="hero">
+      <h1>🔒 <span class="text-gradient">CyberAi Network</span></h1>
+      <p class="tagline">
+        AI-Powered Smart Contract Security & Orchestration Platform
+      </p>
+      <p class="description">
+        CyberAi is the central control plane for the decentralized AI ecosystem,
+        providing contract registry, automated workflows, and security tools for
+        blockchain applications.
+      </p>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <h2>📋 Contract Registry</h2>
+        <p>
+          Machine-readable contracts for agents, repositories, and runners.
+          Discover and integrate AI capabilities across the ecosystem.
+        </p>
+        <a href="/docs/contracts">Learn more →</a>
+      </div>
+
+      <div class="feature-card">
+        <h2>🤖 AI Agents</h2>
+        <p>
+          Deploy specialized AI agents for security audits, code analysis,
+          and automated workflows.
+        </p>
+        <a href="/docs/agents">Explore agents →</a>
+      </div>
+
+      <div class="feature-card">
+        <h2>🔧 Automation Tools</h2>
+        <p>
+          Bootstrap scripts, audit tools, and CI/CD workflows for
+          streamlined development and deployment.
+        </p>
+        <a href="/docs/tools">View tools →</a>
+      </div>
+
+      <div class="feature-card">
+        <h2>📚 Documentation</h2>
+        <p>
+          Comprehensive guides, architecture docs, and runbooks for
+          operators and developers.
+        </p>
+        <a href="/docs">Read docs →</a>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Get Started</h2>
+      <p>Bootstrap your CyberAi environment in minutes:</p>
+      <pre><code>git clone https://github.com/SolanaRemix/CyberAi.git
+cd CyberAi
+./tools/bootstrap/bootstrap.sh</code></pre>
+      <a href="/docs/quickstart" class="button">View Quickstart Guide</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    max-width: 1200px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(45deg, #4f46e5 30%, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+    color: #555;
+    margin: 1rem 0;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 1rem auto;
+    line-height: 1.6;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+
+  .feature-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: #f9f9f9;
+  }
+
+  .feature-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+
+  .feature-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .feature-card a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .feature-card a:hover {
+    text-decoration: underline;
+  }
+
+  .cta {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+
+  .cta h2 {
+    margin-top: 0;
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    text-align: left;
+    max-width: 600px;
+    margin: 1.5rem auto;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #4f46e5;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  .button:hover {
+    background: #4338ca;
+  }
+</style>

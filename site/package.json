@@ -1,0 +1,17 @@
+{
+  "name": "cyberai-site",
+  "version": "1.0.0",
+  "description": "CyberAi.network static site",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/markdown-remark": "^4.0.0"
+  }
+}

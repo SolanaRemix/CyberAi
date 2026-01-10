@@ -4,6 +4,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate
-        run: echo 'CI running'
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Run Bootstrap
+        run: |
+          chmod +x tools/bootstrap/bootstrap.sh
+          ./tools/bootstrap/bootstrap.sh
+      
+      - name: Run Audit
+        run: |
+          chmod +x tools/audit/audit.sh
+          ./tools/audit/audit.sh
