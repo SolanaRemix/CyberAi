@@ -1,0 +1,49 @@
+{
+  "$schema": "../contract.schema.json",
+  "version": "1.0.0",
+  "type": "repository",
+  "metadata": {
+    "name": "cyberai-control-plane",
+    "description": "Central control plane and contract registry for CyberAi ecosystem",
+    "owner": "SolanaRemix",
+    "repository": "https://github.com/SolanaRemix/CyberAi",
+    "documentation": "https://cyberai.network/docs",
+    "tags": ["control-plane", "registry", "infrastructure"]
+  },
+  "capabilities": {
+    "endpoints": [
+      {
+        "path": "/api/contracts",
+        "method": "GET",
+        "description": "List all registered contracts"
+      },
+      {
+        "path": "/api/agents",
+        "method": "GET",
+        "description": "List all registered agents"
+      }
+    ],
+    "workflows": [
+      "contract-validation",
+      "pages-deployment",
+      "ci"
+    ]
+  },
+  "requirements": {
+    "runtime": "github-pages",
+    "dependencies": [
+      "node>=18.0.0"
+    ],
+    "permissions": [
+      "pages:write",
+      "contents:read"
+    ]
+  },
+  "compliance": {
+    "security": {
+      "audited": false,
+      "lastAuditDate": null
+    },
+    "certifications": []
+  }
+}
