@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "dependencies": {
+    "openai": "^6.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "tsx": "^4.7.0"
+  },
+  "scripts": {
+    "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts"
+  }
+}

@@ -1,0 +1,39 @@
+name: CyberAi Terminal Agent
+description: Autonomous engineering agent for the CyberAi ecosystem.
+
+app:
+  slug: terminal-mobile
+  events:
+    - pull_request
+    - issue_comment
+    - pull_request_review
+    - push
+
+runtime:
+  type: local
+  url: "REPLACE_WITH_TUNNEL_URL"
+
+commands:
+  terminal-help:
+    description: Show all commands
+    triggers: ["/terminal help"]
+    steps:
+      - run: echo 'CyberAi Terminal Agent Online'
+
+  terminal-status:
+    description: Repo status
+    triggers: ["/terminal status"]
+    steps:
+      - run: git status
+
+ecosystem:
+  enabled: true
+  repos:
+    - SolanaRemix/CyberAi
+    - SolanaRemix/SmartContractAudit
+    - SolanaRemix/SmartBrain
+    - SolanaRemix/Terminal
+    - SolanaRemix/GitAntivirus
+    - SolanaRemix/NodeAudit
+  exclude_archived: true
+  bootstrap_branch: "cyberai/pipeline-bootstrap"
