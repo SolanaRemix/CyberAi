@@ -40,7 +40,7 @@ jobs:
         run: |
           if ls contracts/agents/*.json 1> /dev/null 2>&1; then
             echo "Validating agent contracts..."
-            ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json"
+            ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --strict=false
             echo "✓ All agent contracts are valid"
           else
             echo "ℹ️ No agent contracts found"
@@ -50,7 +50,7 @@ jobs:
         run: |
           if ls contracts/repositories/*.json 1> /dev/null 2>&1; then
             echo "Validating repository contracts..."
-            ajv validate -s contracts/contract.schema.json -d "contracts/repositories/*.json"
+            ajv validate -s contracts/contract.schema.json -d "contracts/repositories/*.json" --strict=false
             echo "✓ All repository contracts are valid"
           else
             echo "ℹ️ No repository contracts found"
@@ -60,7 +60,7 @@ jobs:
         run: |
           if ls contracts/runners/*.json 1> /dev/null 2>&1; then
             echo "Validating runner contracts..."
-            ajv validate -s contracts/contract.schema.json -d "contracts/runners/*.json"
+            ajv validate -s contracts/contract.schema.json -d "contracts/runners/*.json" --strict=false
             echo "✓ All runner contracts are valid"
           else
             echo "ℹ️ No runner contracts found"

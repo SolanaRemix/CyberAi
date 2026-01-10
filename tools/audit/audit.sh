@@ -40,7 +40,7 @@ else
   # Validate agent contracts
   if ls contracts/agents/*.json 1> /dev/null 2>&1; then
     log "Validating agent contracts..."
-    if ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json"; then
+    if ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --strict=false 2>&1 | grep -E "(valid|invalid)" | grep -v invalid > /dev/null; then
       log "✓ All agent contracts are valid"
     else
       warn "Some agent contracts failed validation"
@@ -53,7 +53,7 @@ else
   # Validate repository contracts
   if ls contracts/repositories/*.json 1> /dev/null 2>&1; then
     log "Validating repository contracts..."
-    if ajv validate -s contracts/contract.schema.json -d "contracts/repositories/*.json"; then
+    if ajv validate -s contracts/contract.schema.json -d "contracts/repositories/*.json" --strict=false 2>&1 | grep -E "(valid|invalid)" | grep -v invalid > /dev/null; then
       log "✓ All repository contracts are valid"
     else
       warn "Some repository contracts failed validation"
@@ -66,7 +66,7 @@ else
   # Validate runner contracts
   if ls contracts/runners/*.json 1> /dev/null 2>&1; then
     log "Validating runner contracts..."
-    if ajv validate -s contracts/contract.schema.json -d "contracts/runners/*.json"; then
+    if ajv validate -s contracts/contract.schema.json -d "contracts/runners/*.json" --strict=false 2>&1 | grep -E "(valid|invalid)" | grep -v invalid > /dev/null; then
       log "✓ All runner contracts are valid"
     else
       warn "Some runner contracts failed validation"

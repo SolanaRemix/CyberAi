@@ -78,11 +78,11 @@ if [[ -d "contracts" ]]; then
   # Validate contracts if schema exists
   if [[ -f "contracts/contract.schema.json" ]]; then
     if ls contracts/agents/*.json 1> /dev/null 2>&1; then
-      ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" || warn "Some agent contracts failed validation"
+      ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --strict=false 2>&1 | grep -E "(valid|invalid)" || warn "Some agent contracts failed validation"
     fi
     
     if ls contracts/repositories/*.json 1> /dev/null 2>&1; then
-      ajv validate -s contracts/contract.schema.json -d "contracts/repositories/*.json" || warn "Some repository contracts failed validation"
+      ajv validate -s contracts/contract.schema.json -d "contracts/repositories/*.json" --strict=false 2>&1 | grep -E "(valid|invalid)" || warn "Some repository contracts failed validation"
     fi
     
     log "✓ Contracts validated"

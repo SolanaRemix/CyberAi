@@ -46,18 +46,7 @@ import Layout from '../../layouts/Layout.astro';
       </p>
 
       <h3>Required Fields</h3>
-      <pre><code>{
-  "version": "1.0.0",          // Semantic version
-  "type": "agent",             // agent | repository | runner
-  "metadata": {
-    "name": "example-agent",   // Unique name
-    "description": "...",      // Clear description
-    "owner": "org-name"        // Owner identifier
-  },
-  "capabilities": {
-    // What the entity can do
-  }
-}</code></pre>
+      <pre><code>{'{'}{'\n'}  "version": "1.0.0",          // Semantic version{'\n'}  "type": "agent",             // agent | repository | runner{'\n'}  "metadata": {'{'}{'\n'}    "name": "example-agent",   // Unique name{'\n'}    "description": "...",      // Clear description{'\n'}    "owner": "org-name"        // Owner identifier{'\n'}  {'},'}{'\n'}  "capabilities": {'{'}{'\n'}    // What the entity can do{'\n'}  {'}'}{'\n'}{'}'}</code></pre>
 
       <h3>Optional Fields</h3>
       <ul>
@@ -77,29 +66,7 @@ import Layout from '../../layouts/Layout.astro';
       </ul>
 
       <h3>Step 2: Fill in Details</h3>
-      <pre><code>{
-  "$schema": "../contract.schema.json",
-  "version": "1.0.0",
-  "type": "agent",
-  "metadata": {
-    "name": "my-security-agent",
-    "description": "Custom security analysis agent",
-    "owner": "my-org",
-    "repository": "https://github.com/my-org/my-agent",
-    "tags": ["security", "analysis"]
-  },
-  "capabilities": {
-    "actions": [
-      {
-        "name": "scan",
-        "description": "Scan code for vulnerabilities",
-        "parameters": {
-          "target": "string"
-        }
-      }
-    ]
-  }
-}</code></pre>
+      <pre><code>{'{'}{'\n'}  "$schema": "../contract.schema.json",{'\n'}  "version": "1.0.0",{'\n'}  "type": "agent",{'\n'}  "metadata": {'{'}{'\n'}    "name": "my-security-agent",{'\n'}    "description": "Custom security analysis agent",{'\n'}    "owner": "my-org",{'\n'}    "repository": "https://github.com/my-org/my-agent",{'\n'}    "tags": ["security", "analysis"]{'\n'}  {'},'}{'\n'}  "capabilities": {'{'}{'\n'}    "actions": [{'\n'}      {'{'}{'\n'}        "name": "scan",{'\n'}        "description": "Scan code for vulnerabilities",{'\n'}        "parameters": {'{'}{'\n'}          "target": "string"{'\n'}        {'}'}{'\n'}      {'}'}{'\n'}    ]{'\n'}  {'}'}{'\n'}{'}'}</code></pre>
 
       <h3>Step 3: Validate</h3>
       <pre><code>npm install -g ajv-cli

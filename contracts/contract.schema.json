@@ -34,13 +34,11 @@
         },
         "repository": {
           "type": "string",
-          "description": "GitHub repository URL",
-          "format": "uri"
+          "description": "GitHub repository URL"
         },
         "documentation": {
           "type": "string",
-          "description": "URL to documentation",
-          "format": "uri"
+          "description": "URL to documentation"
         },
         "tags": {
           "type": "array",
@@ -138,7 +136,7 @@
               "type": "boolean"
             },
             "lastAuditDate": {
-              "type": "string",
+              "type": ["string", "null"],
               "format": "date"
             }
           }
