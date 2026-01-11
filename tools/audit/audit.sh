@@ -52,9 +52,9 @@ else
   fi
   
   # Validate repository contracts
-  if ls contracts/repositories/*.json 1> /dev/null 2>&1; then
+  if ls contracts/repos/*.json 1> /dev/null 2>&1; then
     log "Validating repository contracts..."
-    VALIDATION_OUTPUT=$(ajv validate -s contracts/contract.schema.json -d "contracts/repositories/*.json" --strict=false 2>&1)
+    VALIDATION_OUTPUT=$(ajv validate -s contracts/contract.schema.json -d "contracts/repos/*.json" --strict=false 2>&1)
     if echo "$VALIDATION_OUTPUT" | grep -q "valid" && ! echo "$VALIDATION_OUTPUT" | grep -q "invalid"; then
       log "✓ All repository contracts are valid"
     else
