@@ -42,7 +42,7 @@ curl -I https://cyberai.network</code></pre>
       
       <h3>Adding a New Contract</h3>
       <ol>
-        <li>Create contract JSON in appropriate directory (<code>contracts/agents/</code> or <code>contracts/repositories/</code>)</li>
+        <li>Create contract JSON in appropriate directory (<code>contracts/agents/</code> or <code>contracts/repos/</code>)</li>
         <li>Validate against schema: <code>ajv validate -s contracts/contract.schema.json -d "contracts/agents/your-contract.json"</code></li>
         <li>Create PR with the new contract</li>
         <li>Wait for automated validation to pass</li>
