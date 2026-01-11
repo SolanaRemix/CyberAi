@@ -3,7 +3,7 @@
  * This file demonstrates the test structure and patterns
  */
 
-import { describe, it, expect } from 'vitest';
+// Note: Install vitest to run tests: npm install --save-dev vitest
 
 describe('Example Test Suite', () => {
   it('should pass a basic assertion', () => {

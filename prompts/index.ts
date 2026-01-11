@@ -3,7 +3,5 @@
  * Re-exports all prompt templates
  */
 
-export * from './agents';
-export * from './operators';
-export * from './systems';
-export * from './workflows';
+// Subdirectories contain prompt template files
+// They will be loaded dynamically at runtime

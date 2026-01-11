@@ -67,3 +67,11 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# TypeScript compiled output
+*.js.map
+*.d.ts
+*.d.ts.map
+!commitlint.config.js
+!dao/**/*.js
+

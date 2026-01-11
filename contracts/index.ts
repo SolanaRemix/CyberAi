@@ -3,8 +3,8 @@
  * Re-exports all contract types and schemas
  */
 
-export * from './agents';
-export * from './repos';
-
 // Contract schema location
 export const SCHEMA_PATH = './contract.schema.json';
+
+// Subdirectories contain JSON contract files
+// They will be loaded dynamically at runtime

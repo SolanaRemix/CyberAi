@@ -3,5 +3,5 @@
  * Re-exports all operational tools
  */
 
-export * from './audit';
-export * from './bootstrap';
+// Subdirectories contain shell scripts and tools
+// They will be executed directly

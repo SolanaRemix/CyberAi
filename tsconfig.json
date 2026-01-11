@@ -1,1 +1,30 @@
-{  "compilerOptions": {    "target": "ES2020",    "module": "ESNext",    "moduleResolution": "node",    "esModuleInterop": true,    "resolveJsonModule": true,    "allowSyntheticDefaultImports": true,    "strict": true,    "skipLibCheck": true  }}
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "include": [
+    "src/**/*",
+    "contracts/**/*.ts",
+    "prompts/**/*.ts",
+    "tools/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "scripts/**/*",
+    "tests/**/*"
+  ]
+}
