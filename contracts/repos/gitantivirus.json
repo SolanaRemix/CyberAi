@@ -1,0 +1,65 @@
+{
+  "$schema": "../repositories/contract.schema.json",
+  "version": "1.0.0",
+  "type": "repository",
+  "metadata": {
+    "name": "gitantivirus",
+    "description": "Automated security scanning and vulnerability detection for Git repositories",
+    "owner": "SolanaRemix",
+    "repository": "https://github.com/SolanaRemix/GitAntivirus",
+    "documentation": "https://cyberai.network/docs/ecosystem/gitantivirus",
+    "tags": ["security", "scanning", "audit"]
+  },
+  "capabilities": {
+    "actions": [
+      {
+        "name": "scan-repository",
+        "description": "Scan repository for security vulnerabilities and compliance issues",
+        "parameters": {
+          "repositoryUrl": "string",
+          "depth": "string",
+          "scanTypes": "array"
+        }
+      },
+      {
+        "name": "validate-contracts",
+        "description": "Validate CyberAi contracts for security best practices",
+        "parameters": {
+          "contractPath": "string"
+        }
+      },
+      {
+        "name": "audit-workflows",
+        "description": "Audit GitHub Actions workflows for security issues",
+        "parameters": {
+          "workflowPath": "string"
+        }
+      }
+    ],
+    "workflows": [
+      "security-scan",
+      "compliance-check",
+      "vulnerability-report"
+    ]
+  },
+  "requirements": {
+    "runtime": "github-actions",
+    "dependencies": [
+      "codeql",
+      "semgrep",
+      "trivy"
+    ],
+    "permissions": [
+      "read:code",
+      "read:security-events",
+      "write:issues"
+    ]
+  },
+  "compliance": {
+    "security": {
+      "audited": false,
+      "lastAuditDate": null
+    },
+    "certifications": []
+  }
+}

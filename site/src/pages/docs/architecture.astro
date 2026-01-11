@@ -1,0 +1,217 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Architecture - CyberAi Network">
+  <main class="docs-container">
+    <h1>Architecture Overview</h1>
+    
+    <section>
+      <h2>System Design</h2>
+      <p>
+        CyberAi is designed as a GitHub-native control plane that coordinates
+        AI agents, repositories, and runners in a decentralized ecosystem. The
+        architecture follows a hub-and-spoke model where this repository serves
+        as the central hub.
+      </p>
+    </section>
+
+    <section>
+      <h2>Core Components</h2>
+      
+      <h3>1. Contract Registry</h3>
+      <p>
+        The contract registry (<code>/contracts</code>) contains machine-readable
+        contracts that define capabilities, requirements, and metadata for all
+        ecosystem participants.
+      </p>
+      <ul>
+        <li><strong>Agents:</strong> AI services that perform specific tasks</li>
+        <li><strong>Repositories:</strong> Code repositories that provide functionality</li>
+        <li><strong>Runners:</strong> Execution environments for agents</li>
+      </ul>
+
+      <h3>2. Prompt Library</h3>
+      <p>
+        The prompt library (<code>/prompts</code>) provides standardized
+        instructions for operators and agents, ensuring consistent behavior
+        across the ecosystem.
+      </p>
+
+      <h3>3. Automation Tools</h3>
+      <p>
+        Tools (<code>/tools</code>) provide operational scripts for:
+      </p>
+      <ul>
+        <li><strong>Bootstrap:</strong> Environment setup and validation</li>
+        <li><strong>Audit:</strong> Continuous validation and security checks</li>
+      </ul>
+
+      <h3>4. Static Site</h3>
+      <p>
+        The site (<code>/site</code>) serves as the public face of CyberAi,
+        providing documentation, contract browsing, and API access.
+      </p>
+    </section>
+
+    <section>
+      <h2>Data Flow</h2>
+      <pre><code>┌─────────────┐
+│   GitHub    │
+│   Actions   │
+└──────┬──────┘
+       │
+       ├─→ Bootstrap Tool
+       ├─→ Audit Tool
+       ├─→ Contract Validation
+       │
+       v
+┌─────────────────┐
+│   Contracts     │◄─── Agents
+│   Registry      │◄─── Repositories
+└─────────────────┘
+       │
+       v
+┌─────────────────┐
+│  GitHub Pages   │
+│  (cyberai.net)  │
+└─────────────────┘</code></pre>
+    </section>
+
+    <section>
+      <h2>Integration Points</h2>
+      
+      <h3>GitHub Actions</h3>
+      <p>Automated workflows handle:</p>
+      <ul>
+        <li>Contract validation on every commit</li>
+        <li>Site deployment to GitHub Pages</li>
+        <li>Continuous integration and testing</li>
+      </ul>
+
+      <h3>GitHub Pages</h3>
+      <p>
+        The site is automatically deployed from the <code>main</code> branch's
+        <code>/site/dist</code> folder after build.
+      </p>
+
+      <h3>DNS Configuration</h3>
+      <p>
+        Custom domain <code>cyberai.network</code> is configured via CNAME
+        file and DNS records pointing to GitHub Pages.
+      </p>
+    </section>
+
+    <section>
+      <h2>Security Model</h2>
+      <ul>
+        <li><strong>Contract Validation:</strong> All contracts must pass schema validation</li>
+        <li><strong>Audit Tools:</strong> Automated security scanning on every commit</li>
+        <li><strong>Permissions:</strong> Least-privilege access for all components</li>
+        <li><strong>Transparency:</strong> All operations logged and auditable</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Scalability</h2>
+      <p>
+        The system is designed to scale horizontally:
+      </p>
+      <ul>
+        <li>Static site deployment via CDN (GitHub Pages)</li>
+        <li>Decentralized agent execution</li>
+        <li>Contract registry as source of truth</li>
+        <li>No central server dependencies</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Further Reading</h2>
+      <ul>
+        <li><a href="/docs/contracts">Contract Specification</a></li>
+        <li><a href="/docs/workflows">Workflow Documentation</a></li>
+        <li><a href="/docs/runbook">Operations Runbook</a></li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .docs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+  }
+
+  a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  p code, li code {
+    background: #f1f5f9;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    color: #1e293b;
+  }
+
+  strong {
+    color: #1e293b;
+  }
+</style>

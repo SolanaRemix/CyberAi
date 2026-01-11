@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Documentation - CyberAi Network">
+  <main class="docs-container">
+    <h1>CyberAi Documentation</h1>
+    
+    <section>
+      <h2>Getting Started</h2>
+      <ul>
+        <li><a href="/docs/quickstart">Quickstart Guide</a> - Get up and running in minutes</li>
+        <li><a href="/docs/architecture">Architecture Overview</a> - Understand the system design</li>
+        <li><a href="/docs/contributing">Contributing Guide</a> - Join the community</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Core Concepts</h2>
+      <ul>
+        <li><a href="/docs/contracts">Contracts</a> - Machine-readable contracts for ecosystem participants</li>
+        <li><a href="/docs/agents">Agents</a> - AI agents for security and automation</li>
+        <li><a href="/docs/tools">Tools</a> - Bootstrap and audit scripts</li>
+        <li><a href="/docs/workflows">Workflows</a> - GitHub Actions workflows</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Operator Guides</h2>
+      <ul>
+        <li><a href="/docs/runbook">Runbook</a> - Operational procedures</li>
+        <li><a href="/docs/security">Security</a> - Security best practices</li>
+        <li><a href="/docs/troubleshooting">Troubleshooting</a> - Common issues and solutions</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>API Reference</h2>
+      <ul>
+        <li><a href="/docs/contract-schema">Contract Schema</a> - JSON Schema specification</li>
+        <li><a href="/docs/api">API Endpoints</a> - REST API documentation</li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .docs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #4f46e5;
+  }
+
+  a {
+    color: #1e293b;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  a:hover {
+    color: #4f46e5;
+    text-decoration: underline;
+  }
+</style>

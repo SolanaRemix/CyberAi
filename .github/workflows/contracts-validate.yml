@@ -1,0 +1,87 @@
+name: Validate Contracts
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'contracts/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'contracts/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ajv-cli
+        run: npm install -g ajv-cli
+
+      - name: Validate contract schema
+        run: |
+          echo "Validating contract schema..."
+          if [ ! -f "contracts/contract.schema.json" ]; then
+            echo "❌ Contract schema not found"
+            exit 1
+          fi
+          echo "✓ Contract schema exists"
+
+      - name: Validate agent contracts
+        run: |
+          if ls contracts/agents/*.json 1> /dev/null 2>&1; then
+            echo "Validating agent contracts..."
+            ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --strict=false
+            echo "✓ All agent contracts are valid"
+          else
+            echo "ℹ️ No agent contracts found"
+          fi
+
+      - name: Validate repository contracts
+        run: |
+          if ls contracts/repositories/*.json 1> /dev/null 2>&1; then
+            echo "Validating repository contracts..."
+            ajv validate -s contracts/contract.schema.json -d "contracts/repositories/*.json" --strict=false
+            echo "✓ All repository contracts are valid"
+          else
+            echo "ℹ️ No repository contracts found"
+          fi
+
+      - name: Validate runner contracts
+        run: |
+          if ls contracts/runners/*.json 1> /dev/null 2>&1; then
+            echo "Validating runner contracts..."
+            ajv validate -s contracts/contract.schema.json -d "contracts/runners/*.json" --strict=false
+            echo "✓ All runner contracts are valid"
+          else
+            echo "ℹ️ No runner contracts found"
+          fi
+
+      - name: Check for sensitive data
+        run: |
+          echo "Checking for sensitive data in contracts..."
+          if grep -r "password\|secret\|api_key\|token" contracts/ --include="*.json" 2>/dev/null; then
+            echo "⚠️ Potential secrets found in contracts"
+            exit 1
+          else
+            echo "✓ No obvious secrets in contracts"
+          fi
+
+      - name: Summary
+        run: |
+          echo ""
+          echo "=========================================="
+          echo "✓ Contract validation completed successfully"
+          echo "=========================================="

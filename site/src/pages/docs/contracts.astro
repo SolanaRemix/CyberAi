@@ -1,0 +1,201 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Contracts - CyberAi Network">
+  <main class="docs-container">
+    <h1>Contracts Documentation</h1>
+    
+    <section>
+      <h2>Overview</h2>
+      <p>
+        Contracts are machine-readable JSON documents that define capabilities,
+        requirements, and metadata for participants in the CyberAi ecosystem.
+      </p>
+    </section>
+
+    <section>
+      <h2>Contract Types</h2>
+      
+      <h3>Agent Contracts</h3>
+      <p>
+        Define AI agents that perform specific tasks such as security audits,
+        code analysis, or automated workflows.
+      </p>
+      <p>Location: <code>/contracts/agents/</code></p>
+
+      <h3>Repository Contracts</h3>
+      <p>
+        Define code repositories that provide functionality, tools, or services
+        to the ecosystem.
+      </p>
+      <p>Location: <code>/contracts/repos/</code></p>
+
+      <h3>Runner Contracts</h3>
+      <p>
+        Define execution environments where agents can run. (Coming soon)
+      </p>
+      <p>Location: <code>/contracts/runners/</code></p>
+    </section>
+
+    <section>
+      <h2>Contract Schema</h2>
+      <p>
+        All contracts must conform to the contract schema defined in
+        <code>/contracts/contract.schema.json</code>.
+      </p>
+
+      <h3>Required Fields</h3>
+      <pre><code>{'{'}{'\n'}  "version": "1.0.0",          // Semantic version{'\n'}  "type": "agent",             // agent | repository | runner{'\n'}  "metadata": {'{'}{'\n'}    "name": "example-agent",   // Unique name{'\n'}    "description": "...",      // Clear description{'\n'}    "owner": "org-name"        // Owner identifier{'\n'}  {'},'}{'\n'}  "capabilities": {'{'}{'\n'}    // What the entity can do{'\n'}  {'}'}{'\n'}{'}'}</code></pre>
+
+      <h3>Optional Fields</h3>
+      <ul>
+        <li><code>requirements</code> - Dependencies and permissions</li>
+        <li><code>compliance</code> - Security and certification info</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Creating a Contract</h2>
+      
+      <h3>Step 1: Choose a Template</h3>
+      <p>Start with an example contract:</p>
+      <ul>
+        <li><code>contracts/agents/example-agent.json</code></li>
+        <li><code>contracts/repos/cyberai.json</code></li>
+      </ul>
+
+      <h3>Step 2: Fill in Details</h3>
+      <pre><code>{'{'}{'\n'}  "$schema": "../contract.schema.json",{'\n'}  "version": "1.0.0",{'\n'}  "type": "agent",{'\n'}  "metadata": {'{'}{'\n'}    "name": "my-security-agent",{'\n'}    "description": "Custom security analysis agent",{'\n'}    "owner": "my-org",{'\n'}    "repository": "https://github.com/my-org/my-agent",{'\n'}    "tags": ["security", "analysis"]{'\n'}  {'},'}{'\n'}  "capabilities": {'{'}{'\n'}    "actions": [{'\n'}      {'{'}{'\n'}        "name": "scan",{'\n'}        "description": "Scan code for vulnerabilities",{'\n'}        "parameters": {'{'}{'\n'}          "target": "string"{'\n'}        {'}'}{'\n'}      {'}'}{'\n'}    ]{'\n'}  {'}'}{'\n'}{'}'}</code></pre>
+
+      <h3>Step 3: Validate</h3>
+      <pre><code>npm install -g ajv-cli
+ajv validate -s contracts/contract.schema.json -d "contracts/agents/my-security-agent.json"</code></pre>
+
+      <h3>Step 4: Submit</h3>
+      <p>Create a pull request with your contract.</p>
+    </section>
+
+    <section>
+      <h2>Validation</h2>
+      <p>
+        Contracts are automatically validated on every commit via the
+        <code>contracts-validate.yml</code> workflow.
+      </p>
+      
+      <h3>Manual Validation</h3>
+      <pre><code># Validate all contracts
+./tools/audit/audit.sh
+
+# Validate specific contract
+ajv validate -s contracts/contract.schema.json -d "contracts/agents/your-contract.json"</code></pre>
+    </section>
+
+    <section>
+      <h2>Best Practices</h2>
+      <ul>
+        <li>Use semantic versioning for contract versions</li>
+        <li>Provide clear, detailed descriptions</li>
+        <li>Include all required permissions</li>
+        <li>Document all capabilities and actions</li>
+        <li>Keep contracts up-to-date with implementation</li>
+        <li>Tag contracts appropriately for discoverability</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Examples</h2>
+      <ul>
+        <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/example-agent.json" target="_blank">Example Agent Contract</a></li>
+        <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/cyberai.json" target="_blank">CyberAi Repository Contract</a></li>
+        <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/contract.schema.json" target="_blank">Contract Schema</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>API Access</h2>
+      <p>Contracts can be accessed via the GitHub API or directly from the repository:</p>
+      <pre><code># Get all agent contracts
+curl https://api.github.com/repos/SolanaRemix/CyberAi/contents/contracts/agents
+
+# Get specific contract
+curl https://raw.githubusercontent.com/SolanaRemix/CyberAi/main/contracts/agents/example-agent.json</code></pre>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .docs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+  }
+
+  a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  p code, li code {
+    background: #f1f5f9;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    color: #1e293b;
+  }
+</style>

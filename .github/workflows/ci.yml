@@ -1,11 +1,8 @@
-name: CI Build and Test
+name: CI
+on: [push, pull_request]
 
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main, develop ]
-  workflow_dispatch:
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -15,46 +12,20 @@ jobs:
       contents: read
     
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: |
-        if [ -f package.json ]; then
-          npm ci || npm install
-        fi
-        
-    - name: Run linter
-      run: |
-        if [ -f package.json ] && npm run lint --if-present; then
-          echo "Linting passed"
-        fi
-        
-    - name: Run tests
-      run: |
-        if [ -f package.json ] && npm test --if-present; then
-          echo "Tests passed"
-        fi
-        
-    - name: Build project
-      run: |
-        if [ -f package.json ] && npm run build --if-present; then
-          echo "Build completed"
-        fi
-        
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      if: success()
-      with:
-        name: build-artifacts
-        path: |
-          dist/
-          build/
-          out/
-        retention-days: 7
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Run Bootstrap
+        run: |
+          chmod +x tools/bootstrap/bootstrap.sh
+          ./tools/bootstrap/bootstrap.sh
+      
+      - name: Run Audit
+        run: |
+          chmod +x tools/audit/audit.sh
+          ./tools/audit/audit.sh

@@ -1,105 +1,126 @@
-# 🤖 CyberAi
+# CyberAi.network
 
-[![CI](https://github.com/SolanaRemix/CyberAi/actions/workflows/ci.yml/badge.svg)](https://github.com/SolanaRemix/CyberAi/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/SolanaRemix/CyberAi/actions/workflows/codeql.yml/badge.svg)](https://github.com/SolanaRemix/CyberAi/actions/workflows/codeql.yml)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+**AI-Powered Smart Contract Security & Orchestration Platform**
 
-**Autonomous Engineering Agent for the SolanaRemix Ecosystem**
+CyberAi is the central control plane for the decentralized AI ecosystem, providing contract registry, automated workflows, and security tools for blockchain applications.
 
-CyberAi is an advanced AI-powered autonomous agent designed to streamline engineering workflows, enhance code quality, and automate security audits across the entire SolanaRemix organization.
-
-## 🌐 Live Site
-
-Visit: **[cyberai.network](https://cyberai.network)**
-
-### Subdomains
-
-- **[docs.cyberai.network](https://docs.cyberai.network)** - Documentation hub
-- **[app.cyberai.network](https://app.cyberai.network)** - Main application
-- **[dashboard.cyberai.network](https://dashboard.cyberai.network)** - Monitoring dashboard
-- **[api.cyberai.network](https://api.cyberai.network)** - API endpoints
-- **[terminal.cyberai.network](https://terminal.cyberai.network)** - Terminal interface
-- **[smartbrain.cyberai.network](https://smartbrain.cyberai.network)** - AI intelligence
-- **[audit.cyberai.network](https://audit.cyberai.network)** - Security auditing
-
-## 🚀 Features
-
-- **Autonomous Code Generation**: AI-powered code generation and optimization
-- **Security First**: Automated security scanning and vulnerability detection
-- **Smart Intelligence**: Advanced AI analysis with SmartBrain
-- **CI/CD Integration**: Seamless GitHub Actions integration
-- **Terminal Mobile**: Command-line interface for all operations
-- **Real-time Dashboard**: Unified ecosystem monitoring
-
-## 🛠️ CyberAi Terminal Commands
-
-```bash
-/terminal help              # Display available commands
-/terminal status            # Check service status
-/terminal scan              # Run security scan
-/terminal audit             # Comprehensive audit
-/terminal fix               # Auto-fix detected issues
-/terminal deploy            # Deploy to production
-/terminal SmartContractAudit # Audit smart contracts
-/terminal SmartBrain        # AI code analysis
-/terminal GitAntivirus      # Malicious code scanning
-/terminal node audit        # Node.js dependency audit
-/terminal ConflictsResolver # Auto-resolve conflicts
-/terminal CyberAi           # Full ecosystem analysis
-```
-
-## 📦 Installation
+## 🚀 Quick Start
 
 ```bash
 # Clone the repository
 git clone https://github.com/SolanaRemix/CyberAi.git
 cd CyberAi
 
-# Install dependencies
-npm install
+# Run bootstrap (installs dependencies, validates contracts, builds site)
+./tools/bootstrap/bootstrap.sh
 
-# Run development server
-npm run dev
+# Start development server
+cd site && npm run dev
 ```
 
-## 🏗️ Project Structure
+Visit [cyberai.network](https://cyberai.network) for full documentation.
+
+## 📁 Repository Structure
 
 ```
 CyberAi/
-├── app/          # Main application
-├── dashboard/    # Monitoring dashboard
-├── docs/         # Documentation
-├── api/          # API services
-├── terminal/     # Terminal interface
-├── smartbrain/   # AI intelligence
-├── audit/        # Security auditing
-├── .github/
-│   ├── workflows/   # CI/CD workflows
-│   ├── copilot/     # Agent configuration
-│   └── dependabot.yml
-└── CNAME         # Custom domain configuration
+├── contracts/          # Machine-readable contracts for ecosystem participants
+│   ├── agents/        # AI agent contracts
+│   ├── repositories/  # Repository contracts
+│   ├── runners/       # Runner contracts (future)
+│   └── contract.schema.json
+├── prompts/           # Operator-grade instruction prompts
+│   ├── agents/        # Agent prompts
+│   ├── operators/     # Operator prompts
+│   └── workflows/     # Workflow prompts
+├── tools/             # Operational tools
+│   ├── bootstrap/     # Bootstrap script
+│   └── audit/         # Audit script
+├── site/              # GitHub Pages site (Astro)
+│   └── src/
+│       ├── pages/     # Documentation and site pages
+│       └── layouts/   # Page layouts
+├── docs/              # Additional documentation
+└── .github/
+    └── workflows/     # CI/CD workflows
 ```
+
+## 🔑 Key Features
+
+### Contract Registry
+Machine-readable contracts define capabilities, requirements, and metadata for:
+- **Agents**: AI services for security audits, code analysis, and automation
+- **Repositories**: Code repositories providing functionality
+- **Runners**: Execution environments for agents
+
+### Automation Tools
+- **Bootstrap**: Verifies environment, installs dependencies, validates contracts, builds site
+- **Audit**: Validates contracts, workflows, and site integrity
+
+### GitHub Pages Site
+Static site powered by Astro, serving:
+- Comprehensive documentation
+- Contract browsing
+- API reference
+- Quickstart guides
+
+## 🛠️ Development
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- Git
+
+### Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Validate contracts
+./tools/audit/audit.sh
+
+# Build site
+cd site
+npm run build
+
+# Preview site
+npm run preview
+```
+
+### Adding Contracts
+
+1. Create contract JSON in `contracts/agents/` or `contracts/repositories/`
+2. Validate: `ajv validate -s contracts/contract.schema.json -d "contracts/agents/your-contract.json" --strict=false`
+3. Submit PR
+
+See [Contract Documentation](https://cyberai.network/docs/contracts) for details.
+
+## 📚 Documentation
+
+- [Quickstart Guide](https://cyberai.network/docs/quickstart)
+- [Architecture Overview](https://cyberai.network/docs/architecture)
+- [Operations Runbook](https://cyberai.network/docs/runbook)
+- [Contract Specification](https://cyberai.network/docs/contracts)
 
 ## 🤝 Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
+## 🔒 Security
+
+See [SECURITY.md](SECURITY.md) for security policies and vulnerability reporting.
+
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Licensed under the Apache 2.0 License. See [LICENSE](LICENSE) for details.
 
-## 🔗 Related Repositories
+## 🌐 Links
 
-- [SmartContractAudit](https://github.com/SolanaRemix/SmartContractAudit)
-- [SmartBrain](https://github.com/SolanaRemix/SmartBrain)
-- [Terminal](https://github.com/SolanaRemix/Terminal)
-- [GitAntivirus](https://github.com/SolanaRemix/GitAntivirus)
-- [Node-Audit](https://github.com/SolanaRemix/Node-Audit)
-
-## 📞 Support
-
-For support, please open an issue in the [GitHub repository](https://github.com/SolanaRemix/CyberAi/issues).
+- **Website**: [cyberai.network](https://cyberai.network)
+- **GitHub**: [SolanaRemix/CyberAi](https://github.com/SolanaRemix/CyberAi)
+- **Documentation**: [cyberai.network/docs](https://cyberai.network/docs)
 
 ---
 
-Made with ❤️ by the SolanaRemix team
+Built with ❤️ by the CyberAi community

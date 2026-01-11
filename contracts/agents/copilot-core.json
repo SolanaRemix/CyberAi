@@ -1,0 +1,76 @@
+{
+  "$schema": "../contract.schema.json",
+  "version": "1.0.0",
+  "type": "agent",
+  "metadata": {
+    "name": "copilot-core",
+    "description": "GitHub Copilot core agent for code generation, analysis, and repository maintenance",
+    "owner": "GitHub",
+    "repository": "https://github.com/SolanaRemix/CyberAi",
+    "documentation": "https://cyberai.network/docs/agents/copilot-core",
+    "tags": ["agent", "copilot", "code-generation", "analysis"]
+  },
+  "capabilities": {
+    "actions": [
+      {
+        "name": "bootstrap",
+        "description": "Bootstrap a fresh clone of CyberAi repository - analyze structure, validate contracts, ensure site builds",
+        "parameters": {
+          "repositoryPath": "string",
+          "validateContracts": "boolean",
+          "buildSite": "boolean"
+        }
+      },
+      {
+        "name": "repair",
+        "description": "Given failing CI or missing files, infer minimal changes to restore contracts and site functionality",
+        "parameters": {
+          "errorContext": "string",
+          "failingComponent": "string"
+        }
+      },
+      {
+        "name": "analyze",
+        "description": "Analyze code for issues, improvements, or security concerns",
+        "parameters": {
+          "scope": "string",
+          "analysisType": "string"
+        }
+      },
+      {
+        "name": "generate",
+        "description": "Generate code based on specifications and contracts",
+        "parameters": {
+          "specification": "string",
+          "targetPath": "string"
+        }
+      }
+    ],
+    "workflows": [
+      "bootstrap-workflow",
+      "repair-workflow",
+      "code-review",
+      "contract-validation"
+    ]
+  },
+  "requirements": {
+    "runtime": "github-copilot",
+    "dependencies": [
+      "openai>=6.0.0",
+      "typescript>=5.0.0"
+    ],
+    "permissions": [
+      "read:code",
+      "write:code",
+      "read:contracts",
+      "write:issues"
+    ]
+  },
+  "compliance": {
+    "security": {
+      "audited": true,
+      "lastAuditDate": "2026-01-01"
+    },
+    "certifications": ["SOC2", "ISO27001"]
+  }
+}

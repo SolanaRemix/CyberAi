@@ -1,0 +1,54 @@
+{
+  "$schema": "../contract.schema.json",
+  "version": "1.0.0",
+  "type": "agent",
+  "metadata": {
+    "name": "example-agent",
+    "description": "Example agent contract for CyberAi ecosystem",
+    "owner": "cyberai",
+    "repository": "https://github.com/SolanaRemix/CyberAi",
+    "documentation": "https://cyberai.network/docs/agents/example-agent",
+    "tags": ["example", "agent", "template"]
+  },
+  "capabilities": {
+    "actions": [
+      {
+        "name": "analyze",
+        "description": "Analyze smart contract code for vulnerabilities",
+        "parameters": {
+          "contractAddress": "string",
+          "blockchain": "string"
+        }
+      },
+      {
+        "name": "audit",
+        "description": "Perform comprehensive security audit",
+        "parameters": {
+          "repositoryUrl": "string",
+          "depth": "string"
+        }
+      }
+    ],
+    "workflows": [
+      "security-audit",
+      "vulnerability-scan"
+    ]
+  },
+  "requirements": {
+    "runtime": "node:20",
+    "dependencies": [
+      "openai>=6.0.0"
+    ],
+    "permissions": [
+      "read:code",
+      "write:issues"
+    ]
+  },
+  "compliance": {
+    "security": {
+      "audited": false,
+      "lastAuditDate": null
+    },
+    "certifications": []
+  }
+}

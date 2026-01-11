@@ -1,0 +1,260 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Operations Runbook - CyberAi Network">
+  <main class="docs-container">
+    <h1>Operations Runbook</h1>
+    
+    <section>
+      <h2>Overview</h2>
+      <p>
+        This runbook provides operational procedures for maintaining and
+        operating the CyberAi control plane. Follow these procedures for
+        common operational tasks.
+      </p>
+    </section>
+
+    <section>
+      <h2>Daily Operations</h2>
+      
+      <h3>Health Check</h3>
+      <pre><code># Run audit to verify system health
+./tools/audit/audit.sh
+
+# Check workflow status
+gh workflow list
+
+# Verify site deployment
+curl -I https://cyberai.network</code></pre>
+
+      <h3>Monitoring</h3>
+      <ul>
+        <li>Check GitHub Actions for failed workflows</li>
+        <li>Review contract validation results</li>
+        <li>Monitor site uptime and performance</li>
+        <li>Check for security alerts in the Security tab</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Common Tasks</h2>
+      
+      <h3>Adding a New Contract</h3>
+      <ol>
+        <li>Create contract JSON in appropriate directory (<code>contracts/agents/</code> or <code>contracts/repos/</code>)</li>
+        <li>Validate against schema: <code>ajv validate -s contracts/contract.schema.json -d "contracts/agents/your-contract.json"</code></li>
+        <li>Create PR with the new contract</li>
+        <li>Wait for automated validation to pass</li>
+        <li>Merge after review</li>
+      </ol>
+
+      <h3>Updating Documentation</h3>
+      <ol>
+        <li>Edit files in <code>site/src/pages/docs/</code></li>
+        <li>Test locally: <code>cd site && npm run dev</code></li>
+        <li>Build: <code>npm run build</code></li>
+        <li>Commit and push to trigger deployment</li>
+      </ol>
+
+      <h3>Deploying Site Updates</h3>
+      <pre><code># Build the site
+cd site
+npm run build
+
+# Commit and push
+git add .
+git commit -m "Update site"
+git push origin main
+
+# Deployment happens automatically via GitHub Actions</code></pre>
+    </section>
+
+    <section>
+      <h2>Incident Response</h2>
+      
+      <h3>Site Down</h3>
+      <ol>
+        <li>Check GitHub Pages status: <a href="https://www.githubstatus.com/" target="_blank">githubstatus.com</a></li>
+        <li>Verify DNS records for cyberai.network</li>
+        <li>Check latest workflow runs for deployment failures</li>
+        <li>Review recent commits for breaking changes</li>
+        <li>Rollback if necessary: <code>git revert &lt;commit-sha&gt;</code></li>
+      </ol>
+
+      <h3>Contract Validation Failures</h3>
+      <ol>
+        <li>Review workflow logs in GitHub Actions</li>
+        <li>Identify failing contracts</li>
+        <li>Validate manually: <code>./tools/audit/audit.sh</code></li>
+        <li>Fix schema violations or contract issues</li>
+        <li>Re-run validation</li>
+      </ol>
+
+      <h3>Security Alert</h3>
+      <ol>
+        <li>Review alert details in GitHub Security tab</li>
+        <li>Assess severity and impact</li>
+        <li>Create incident ticket</li>
+        <li>Apply fix or mitigation</li>
+        <li>Verify fix with audit tool</li>
+        <li>Document incident and resolution</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Maintenance Windows</h2>
+      
+      <h3>Scheduled Maintenance</h3>
+      <p>For planned maintenance:</p>
+      <ol>
+        <li>Announce maintenance window in advance</li>
+        <li>Create maintenance branch</li>
+        <li>Perform updates and testing</li>
+        <li>Merge to main during maintenance window</li>
+        <li>Verify deployment</li>
+        <li>Announce completion</li>
+      </ol>
+
+      <h3>Emergency Maintenance</h3>
+      <p>For critical issues requiring immediate attention:</p>
+      <ol>
+        <li>Assess impact and urgency</li>
+        <li>Create hotfix branch from main</li>
+        <li>Apply minimal fix</li>
+        <li>Fast-track review and merge</li>
+        <li>Monitor post-deployment</li>
+        <li>Schedule follow-up for complete fix</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Backup and Recovery</h2>
+      
+      <h3>Data Backup</h3>
+      <p>All data is version-controlled in Git:</p>
+      <ul>
+        <li>Contracts are backed up in the repository</li>
+        <li>Site content is version-controlled</li>
+        <li>Configuration files are tracked in Git</li>
+      </ul>
+
+      <h3>Recovery Procedures</h3>
+      <pre><code># Restore from a specific commit
+git checkout &lt;commit-sha&gt; -- contracts/
+
+# Rebuild site
+cd site && npm run build
+
+# Redeploy
+git push origin main</code></pre>
+    </section>
+
+    <section>
+      <h2>Escalation</h2>
+      <p>Escalate issues when:</p>
+      <ul>
+        <li>Security vulnerability affects production</li>
+        <li>Site is down for more than 15 minutes</li>
+        <li>Data integrity is compromised</li>
+        <li>Unable to resolve within SLA</li>
+      </ul>
+      <p>
+        Contact: See <a href="https://github.com/SolanaRemix/CyberAi/blob/main/SECURITY.md" target="_blank">SECURITY.md</a>
+        for escalation contacts.
+      </p>
+    </section>
+
+    <section>
+      <h2>Related Documentation</h2>
+      <ul>
+        <li><a href="/docs/architecture">Architecture Overview</a></li>
+        <li><a href="/docs/security">Security Practices</a></li>
+        <li><a href="/docs/troubleshooting">Troubleshooting Guide</a></li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .docs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul, ol {
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+  }
+
+  a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  p code, li code {
+    background: #f1f5f9;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    color: #1e293b;
+  }
+</style>

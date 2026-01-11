@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cyberai.network/contracts/contract.schema.json",
+  "title": "CyberAi Contract Schema",
+  "description": "Schema for machine-readable contracts for agents and repositories in the CyberAi ecosystem",
+  "type": "object",
+  "required": ["version", "type", "metadata", "capabilities"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of contract",
+      "enum": ["agent", "repository", "runner"]
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["name", "description", "owner"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the agent or repository"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the agent or repository"
+        },
+        "owner": {
+          "type": "string",
+          "description": "Owner of the agent or repository"
+        },
+        "repository": {
+          "type": "string",
+          "description": "GitHub repository URL"
+        },
+        "documentation": {
+          "type": "string",
+          "description": "URL to documentation"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags for categorization",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "description": "Capabilities provided by this agent or repository",
+      "properties": {
+        "endpoints": {
+          "type": "array",
+          "description": "API endpoints provided",
+          "items": {
+            "type": "object",
+            "required": ["path", "method"],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "method": {
+                "type": "string",
+                "enum": ["GET", "POST", "PUT", "DELETE", "PATCH"]
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "actions": {
+          "type": "array",
+          "description": "Actions that can be performed",
+          "items": {
+            "type": "object",
+            "required": ["name", "description"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "parameters": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "workflows": {
+          "type": "array",
+          "description": "GitHub Actions workflows provided",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requirements": {
+      "type": "object",
+      "description": "Requirements and dependencies",
+      "properties": {
+        "runtime": {
+          "type": "string",
+          "description": "Required runtime environment"
+        },
+        "dependencies": {
+          "type": "array",
+          "description": "List of dependencies",
+          "items": {
+            "type": "string"
+          }
+        },
+        "permissions": {
+          "type": "array",
+          "description": "Required permissions",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "description": "Compliance and security information",
+      "properties": {
+        "security": {
+          "type": "object",
+          "properties": {
+            "audited": {
+              "type": "boolean"
+            },
+            "lastAuditDate": {
+              "type": ["string", "null"],
+              "format": "date"
+            }
+          }
+        },
+        "certifications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

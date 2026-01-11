@@ -1,0 +1,361 @@
+# Operator Runbooks
+
+Operational procedures for maintaining and operating CyberAi.
+
+## Runbook: CI Failing
+
+### Symptoms
+- GitHub Actions showing red X
+- PR blocked from merging
+- Deployment failed
+
+### Diagnosis Steps
+
+1. **Check GitHub Actions tab**
+   - Identify which workflow failed
+   - Review error logs
+   - Note the failing step
+
+2. **Reproduce locally**
+   ```bash
+   ./tools/bootstrap/bootstrap.sh
+   ./tools/audit/audit.sh
+   ```
+
+3. **Identify root cause**
+   - Contract validation failure?
+   - Site build error?
+   - Workflow configuration issue?
+
+### Resolution
+
+#### Contract Validation Failure
+```bash
+# Validate locally
+ajv validate -s contracts/contract.schema.json -d "contracts/**/*.json" --strict=false
+
+# Fix identified issues
+# - JSON syntax errors
+# - Missing required fields
+# - Invalid field values
+
+# Re-validate
+./tools/audit/audit.sh
+```
+
+#### Site Build Failure
+```bash
+cd site
+npm run build
+
+# Fix errors shown in output
+# Common issues:
+# - Syntax errors in .astro files
+# - Missing dependencies
+# - Configuration issues
+
+# Rebuild
+npm run build
+```
+
+#### Workflow Configuration Issue
+```bash
+# Validate workflow syntax
+cat .github/workflows/ci.yml
+
+# Check for:
+# - Invalid YAML syntax
+# - Missing permissions
+# - Incorrect job dependencies
+```
+
+### Prevention
+- Run `./tools/audit/audit.sh` before pushing
+- Validate contracts locally
+- Test site builds before committing
+
+---
+
+## Runbook: Contracts Changed
+
+### Symptoms
+- New contract added
+- Existing contract modified
+- Contract validation failing
+
+### Actions
+
+1. **Review changes**
+   ```bash
+   git diff contracts/
+   ```
+
+2. **Validate new/modified contracts**
+   ```bash
+   ajv validate -s contracts/contract.schema.json -d "contracts/agents/new-contract.json" --strict=false
+   ```
+
+3. **Check contract references**
+   - Ensure prompts reference valid contracts
+   - Update documentation if needed
+   - Notify consumers (SmartBrain, agents)
+
+4. **Verify contract consumers**
+   - Test agents that consume this contract
+   - Check SmartBrain runners
+   - Update integration tests
+
+### Validation Checklist
+- [ ] JSON syntax valid
+- [ ] Schema compliance
+- [ ] Required fields present
+- [ ] URLs accessible
+- [ ] No sensitive data
+- [ ] Documentation updated
+- [ ] Consumers notified
+
+---
+
+## Runbook: Custom Domain Broken (cyberai.network)
+
+### Symptoms
+- cyberai.network not resolving
+- SSL certificate errors
+- Pages showing 404
+
+### Diagnosis
+
+1. **Check DNS records**
+   ```bash
+   dig cyberai.network
+   nslookup cyberai.network
+   ```
+
+2. **Verify CNAME file**
+   ```bash
+   cat CNAME
+   # Should contain: cyberai.network
+   ```
+
+3. **Check GitHub Pages settings**
+   - Go to repository Settings → Pages
+   - Verify custom domain: cyberai.network
+   - Check DNS status
+   - Verify HTTPS enforcement
+
+4. **Review PR #1**
+   - Check DNS configuration from initial setup
+   - Verify all changes merged
+
+### Resolution
+
+#### DNS Not Resolving
+- Update DNS records at domain registrar
+- Point to GitHub Pages:
+  - A records: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+  - CNAME record: SolanaRemix.github.io
+
+#### CNAME File Missing
+```bash
+echo "cyberai.network" > CNAME
+git add CNAME
+git commit -m "Restore CNAME for custom domain"
+git push
+```
+
+#### GitHub Pages Configuration
+- Go to Settings → Pages
+- Set custom domain to: cyberai.network
+- Save and wait for DNS check (can take up to 24 hours)
+
+### Prevention
+- Don't delete CNAME file
+- Monitor DNS propagation after changes
+- Keep GitHub Pages settings documented
+
+---
+
+## Runbook: Site Build Failure
+
+### Symptoms
+- `npm run build` fails in /site
+- GitHub Pages deployment failing
+- Site showing old content
+
+### Diagnosis
+
+1. **Check build locally**
+   ```bash
+   cd site
+   npm run build
+   ```
+
+2. **Review error messages**
+   - Syntax errors in .astro files
+   - Missing dependencies
+   - Import errors
+   - Configuration issues
+
+3. **Check recent changes**
+   ```bash
+   git log -5 --oneline site/
+   git diff HEAD~1 site/
+   ```
+
+### Resolution
+
+#### Syntax Errors
+- Fix errors in .astro, .ts, or .js files
+- Check line numbers in error messages
+- Validate JSX/TSX syntax
+
+#### Missing Dependencies
+```bash
+cd site
+npm install
+# or
+npm ci
+```
+
+#### Configuration Issues
+- Check `site/astro.config.mjs`
+- Verify `site/package.json` scripts
+- Ensure all plugins properly configured
+
+#### Build Cache Issues
+```bash
+cd site
+rm -rf dist .astro node_modules
+npm ci
+npm run build
+```
+
+### Prevention
+- Test builds locally before pushing
+- Keep dependencies up to date
+- Use `npm ci` for reproducible installs
+- Commit package-lock.json
+
+---
+
+## Runbook: Contract Registry Issues
+
+### Symptoms
+- Agents can't discover contracts
+- SmartBrain runners not finding agents
+- Contract validation passing but consumers failing
+
+### Diagnosis
+
+1. **Verify contract structure**
+   ```bash
+   tree contracts/
+   # Should show agents/ and repos/ subdirectories
+   ```
+
+2. **Check contract accessibility**
+   ```bash
+   # Test GitHub API access
+   curl https://api.github.com/repos/SolanaRemix/CyberAi/contents/contracts/agents
+   ```
+
+3. **Validate contracts**
+   ```bash
+   ./tools/audit/audit.sh
+   ```
+
+4. **Check consumer logs**
+   - Review SmartBrain runner logs
+   - Check agent execution logs
+   - Look for contract loading errors
+
+### Resolution
+
+#### Missing Contracts
+```bash
+# Ensure contracts committed
+git add contracts/
+git commit -m "Add missing contracts"
+git push
+```
+
+#### Invalid Contract Format
+```bash
+# Validate and fix
+ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --strict=false
+# Fix reported issues
+```
+
+#### Consumer Configuration
+- Update consumer contract paths
+- Verify consumer has correct repository URL
+- Check consumer permissions
+
+### Prevention
+- Validate contracts before committing
+- Test with actual consumers
+- Document contract structure
+- Version contracts appropriately
+
+---
+
+## Runbook: Security Alert
+
+### Symptoms
+- Dependabot alert
+- CodeQL finding
+- npm audit vulnerability
+
+### Actions
+
+1. **Assess severity**
+   - Critical: Immediate action required
+   - High: Fix within 24 hours
+   - Medium: Fix within 1 week
+   - Low: Fix in next release
+
+2. **Review alert details**
+   - Affected package
+   - Vulnerability type
+   - Exploitability
+   - Available fix
+
+3. **Update dependencies**
+   ```bash
+   npm update <package>
+   # or for security-specific updates
+   npm audit fix
+   ```
+
+4. **Test after updates**
+   ```bash
+   npm test
+   npm run build
+   ./tools/audit/audit.sh
+   ```
+
+5. **Document changes**
+   - List updated packages
+   - Note security fixes
+   - Update CHANGELOG if needed
+
+### Prevention
+- Enable Dependabot
+- Run `npm audit` regularly
+- Keep dependencies updated
+- Review security advisories
+
+---
+
+## Emergency Contacts
+
+- Repository owner: @SolanaRemix
+- CI/CD issues: Check GitHub Actions logs
+- Custom domain: Review DNS settings and PR #1
+- Security: See SECURITY.md
+
+## Additional Resources
+
+- Architecture: [/docs/architecture.mdx](../architecture.mdx)
+- Quickstart: [/docs/operators/quickstart.mdx](./quickstart.mdx)
+- GitHub Issues: https://github.com/SolanaRemix/CyberAi/issues

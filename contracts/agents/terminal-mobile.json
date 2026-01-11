@@ -1,0 +1,65 @@
+{
+  "$schema": "../contract.schema.json",
+  "version": "1.0.0",
+  "type": "agent",
+  "metadata": {
+    "name": "terminal-mobile",
+    "description": "Mobile terminal agent for iOS/Terminal-based repository operations and local execution",
+    "owner": "SolanaRemix",
+    "repository": "https://github.com/SolanaRemix/CyberAi",
+    "documentation": "https://cyberai.network/docs/agents/terminal-mobile",
+    "tags": ["agent", "terminal", "mobile", "ios"]
+  },
+  "capabilities": {
+    "actions": [
+      {
+        "name": "local-bootstrap",
+        "description": "Run bootstrap script on iOS/Terminal environment and report status",
+        "parameters": {
+          "repositoryPath": "string",
+          "reportFormat": "string"
+        }
+      },
+      {
+        "name": "mobile-sync",
+        "description": "Sync repository state with mobile environment",
+        "parameters": {
+          "syncDirection": "string",
+          "includeAssets": "boolean"
+        }
+      },
+      {
+        "name": "execute-script",
+        "description": "Execute shell scripts in mobile terminal environment",
+        "parameters": {
+          "scriptPath": "string",
+          "arguments": "array"
+        }
+      }
+    ],
+    "workflows": [
+      "mobile-bootstrap",
+      "mobile-validation",
+      "mobile-sync"
+    ]
+  },
+  "requirements": {
+    "runtime": "ios-terminal",
+    "dependencies": [
+      "node>=18.0.0",
+      "git>=2.30.0"
+    ],
+    "permissions": [
+      "read:code",
+      "execute:scripts",
+      "read:contracts"
+    ]
+  },
+  "compliance": {
+    "security": {
+      "audited": false,
+      "lastAuditDate": null
+    },
+    "certifications": []
+  }
+}
