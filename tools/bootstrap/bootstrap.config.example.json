@@ -1,0 +1,26 @@
+{
+  "nodeVersion": "18",
+  "npmCommand": "npm",
+  "skipSteps": [],
+  "validateContracts": true,
+  "buildSite": true,
+  "runAudit": true,
+  "verbose": false,
+  "timeout": 300,
+  "siteDir": "site",
+  "contractsDir": "contracts",
+  "toolsDir": "tools",
+  "docsDir": "docs",
+  "ajvOptions": {
+    "strict": false,
+    "allErrors": true
+  },
+  "npmInstallOptions": {
+    "production": false,
+    "legacyPeerDeps": false
+  },
+  "buildOptions": {
+    "minify": true,
+    "sourcemap": false
+  }
+}

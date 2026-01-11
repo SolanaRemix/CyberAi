@@ -1,0 +1,422 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Ecosystem Map - CyberAi">
+  <main class="ecosystem">
+    <h1>🌐 CyberAi Ecosystem</h1>
+    <p class="subtitle">Visual map of all CyberAi repositories and their relationships</p>
+
+    <div class="ecosystem-diagram">
+      <div class="central-node">
+        <div class="node control-plane">
+          <h3>🎯 CyberAi</h3>
+          <p>Control Plane</p>
+          <a href="https://github.com/SolanaRemix/CyberAi" target="_blank">View Repository</a>
+        </div>
+      </div>
+
+      <div class="connected-nodes">
+        <div class="node-group">
+          <h4>🤖 Agents</h4>
+          <div class="node agent-node">
+            <h3>Copilot Core</h3>
+            <p>Code generation & analysis</p>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/copilot-core.json" target="_blank">Contract</a>
+          </div>
+          <div class="node agent-node">
+            <h3>Terminal Mobile</h3>
+            <p>iOS/Terminal operations</p>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/terminal-mobile.json" target="_blank">Contract</a>
+          </div>
+        </div>
+
+        <div class="node-group">
+          <h4>🏃 Runners & Infrastructure</h4>
+          <div class="node runner-node">
+            <h3>SmartBrain</h3>
+            <p>Runner infrastructure</p>
+            <a href="https://github.com/SolanaRemix/SmartBrain" target="_blank">Repository</a>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/smartbrain.json" target="_blank">Contract</a>
+          </div>
+        </div>
+
+        <div class="node-group">
+          <h4>🔒 Security & Auditing</h4>
+          <div class="node security-node">
+            <h3>GitAntivirus</h3>
+            <p>Security scanning & audits</p>
+            <a href="https://github.com/SolanaRemix/GitAntivirus" target="_blank">Repository</a>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/gitantivirus.json" target="_blank">Contract</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ecosystem-details">
+      <h2>Repository Details</h2>
+
+      <div class="repo-cards">
+        <div class="repo-card">
+          <h3>🎯 CyberAi (Control Plane)</h3>
+          <p><strong>Role:</strong> Central control plane, contract registry, documentation</p>
+          <p><strong>Components:</strong></p>
+          <ul>
+            <li>Contract registry with JSON schema validation</li>
+            <li>Operator prompts for agents</li>
+            <li>Bootstrap and audit tools</li>
+            <li>GitHub Pages site (cyberai.network)</li>
+          </ul>
+          <p><strong>Links:</strong></p>
+          <div class="repo-links">
+            <a href="https://github.com/SolanaRemix/CyberAi" target="_blank">Repository</a>
+            <a href="/docs">Documentation</a>
+            <a href="/operators">Operator Console</a>
+          </div>
+        </div>
+
+        <div class="repo-card">
+          <h3>🏃 SmartBrain</h3>
+          <p><strong>Role:</strong> Runner infrastructure for agent execution</p>
+          <p><strong>Capabilities:</strong></p>
+          <ul>
+            <li>Discovers contracts from CyberAi</li>
+            <li>Executes agents based on contract definitions</li>
+            <li>Manages agent lifecycle and execution</li>
+            <li>Provides runtime environment for agents</li>
+          </ul>
+          <p><strong>Links:</strong></p>
+          <div class="repo-links">
+            <a href="https://github.com/SolanaRemix/SmartBrain" target="_blank">Repository</a>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/smartbrain.json" target="_blank">Contract</a>
+          </div>
+        </div>
+
+        <div class="repo-card">
+          <h3>🔒 GitAntivirus</h3>
+          <p><strong>Role:</strong> Automated security scanning and vulnerability detection</p>
+          <p><strong>Capabilities:</strong></p>
+          <ul>
+            <li>Scans repositories for security vulnerabilities</li>
+            <li>Validates CyberAi contracts for security</li>
+            <li>Audits GitHub Actions workflows</li>
+            <li>Generates security reports and alerts</li>
+          </ul>
+          <p><strong>Links:</strong></p>
+          <div class="repo-links">
+            <a href="https://github.com/SolanaRemix/GitAntivirus" target="_blank">Repository</a>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/gitantivirus.json" target="_blank">Contract</a>
+          </div>
+        </div>
+
+        <div class="repo-card">
+          <h3>🤖 Copilot Core Agent</h3>
+          <p><strong>Role:</strong> GitHub Copilot core agent for code generation and analysis</p>
+          <p><strong>Capabilities:</strong></p>
+          <ul>
+            <li>Bootstrap fresh CyberAi clones</li>
+            <li>Repair failing CI and missing files</li>
+            <li>Analyze code for issues and improvements</li>
+            <li>Generate code based on specifications</li>
+          </ul>
+          <p><strong>Links:</strong></p>
+          <div class="repo-links">
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/copilot-core.json" target="_blank">Contract</a>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/prompts/agents/copilot-core/bootstrap.md" target="_blank">Bootstrap Prompt</a>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/prompts/agents/copilot-core/repair.md" target="_blank">Repair Prompt</a>
+          </div>
+        </div>
+
+        <div class="repo-card">
+          <h3>📱 Terminal Mobile Agent</h3>
+          <p><strong>Role:</strong> Mobile terminal agent for iOS/Terminal operations</p>
+          <p><strong>Capabilities:</strong></p>
+          <ul>
+            <li>Local bootstrap on iOS/Terminal environments</li>
+            <li>Sync repository with mobile environment</li>
+            <li>Execute scripts in mobile terminal</li>
+            <li>Report status in multiple formats</li>
+          </ul>
+          <p><strong>Links:</strong></p>
+          <div class="repo-links">
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/terminal-mobile.json" target="_blank">Contract</a>
+            <a href="https://github.com/SolanaRemix/CyberAi/blob/main/prompts/agents/terminal-mobile/local-bootstrap.md" target="_blank">Bootstrap Prompt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="integration-flow">
+      <h2>Integration Flow</h2>
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <h4>Contract Definition</h4>
+          <p>Agents and repos define contracts in CyberAi</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <h4>Discovery</h4>
+          <p>SmartBrain runners discover contracts via GitHub API</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <h4>Execution</h4>
+          <p>Agents execute based on contract definitions</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="step-number">4</div>
+          <h4>Validation</h4>
+          <p>GitAntivirus audits and validates</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="explore-more">
+      <h2>Explore More</h2>
+      <div class="explore-links">
+        <a href="/docs">Documentation</a>
+        <a href="/operators">Operator Console</a>
+        <a href="https://github.com/SolanaRemix" target="_blank">GitHub Organization</a>
+        <a href="/docs/operators/quickstart">Get Started</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .ecosystem {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .ecosystem-diagram {
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .central-node {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .node {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .control-plane {
+    border: 3px solid #4f46e5;
+    min-width: 250px;
+  }
+
+  .node h3 {
+    margin: 0 0 0.5rem 0;
+    color: #1e293b;
+  }
+
+  .node p {
+    margin: 0 0 1rem 0;
+    color: #666;
+  }
+
+  .node a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .connected-nodes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .node-group h4 {
+    color: #4f46e5;
+    margin-bottom: 1rem;
+  }
+
+  .agent-node {
+    border: 2px solid #10b981;
+  }
+
+  .runner-node {
+    border: 2px solid #f59e0b;
+  }
+
+  .security-node {
+    border: 2px solid #ef4444;
+  }
+
+  .ecosystem-details {
+    margin: 4rem 0;
+  }
+
+  .ecosystem-details h2 {
+    font-size: 2rem;
+    color: #4f46e5;
+    margin-bottom: 2rem;
+  }
+
+  .repo-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .repo-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .repo-card h3 {
+    margin-top: 0;
+    color: #1e293b;
+  }
+
+  .repo-card ul {
+    padding-left: 1.5rem;
+  }
+
+  .repo-card li {
+    margin-bottom: 0.5rem;
+    color: #666;
+  }
+
+  .repo-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .repo-links a {
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .repo-links a:hover {
+    border-color: #4f46e5;
+    background: #f0f9ff;
+  }
+
+  .integration-flow {
+    margin: 4rem 0;
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .integration-flow h2 {
+    font-size: 2rem;
+    color: #4f46e5;
+    margin-bottom: 2rem;
+  }
+
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .flow-step {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    background: #4f46e5;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-weight: 600;
+  }
+
+  .flow-step h4 {
+    margin: 0 0 0.5rem 0;
+    color: #1e293b;
+  }
+
+  .flow-step p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .flow-arrow {
+    font-size: 2rem;
+    color: #4f46e5;
+    font-weight: bold;
+  }
+
+  .explore-more {
+    margin: 4rem 0;
+    text-align: center;
+  }
+
+  .explore-more h2 {
+    font-size: 2rem;
+    color: #4f46e5;
+    margin-bottom: 2rem;
+  }
+
+  .explore-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .explore-links a {
+    padding: 0.75rem 2rem;
+    background: #4f46e5;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  .explore-links a:hover {
+    background: #4338ca;
+  }
+</style>

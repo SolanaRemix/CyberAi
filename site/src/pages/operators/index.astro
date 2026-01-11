@@ -1,0 +1,267 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Operator Console - CyberAi">
+  <main class="operator-console">
+    <h1>🎛️ Operator Console</h1>
+    <p class="subtitle">Control plane for CyberAi ecosystem operators</p>
+
+    <div class="console-grid">
+      <section class="console-card">
+        <h2>📚 Documentation</h2>
+        <ul>
+          <li><a href="/docs/operators/quickstart">Quickstart Guide</a> - Get started in minutes</li>
+          <li><a href="/docs/operators/runbooks">Runbooks</a> - Operational procedures</li>
+          <li><a href="/docs/architecture">Architecture</a> - System design</li>
+          <li><a href="/docs">Full Documentation</a></li>
+        </ul>
+      </section>
+
+      <section class="console-card">
+        <h2>🔧 Tools</h2>
+        <div class="tool-commands">
+          <div class="command">
+            <strong>Bootstrap:</strong>
+            <code>./tools/bootstrap/bootstrap.sh</code>
+            <p>Verify environment, install dependencies, validate contracts, build site</p>
+          </div>
+          <div class="command">
+            <strong>Audit:</strong>
+            <code>./tools/audit/audit.sh</code>
+            <p>Validate contracts, check workflows, scan for security issues</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="console-card">
+        <h2>📝 Contracts</h2>
+        <div class="contract-links">
+          <div>
+            <strong>Agents:</strong>
+            <ul>
+              <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/copilot-core.json" target="_blank">copilot-core</a></li>
+              <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/terminal-mobile.json" target="_blank">terminal-mobile</a></li>
+              <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/example-agent.json" target="_blank">example-agent</a></li>
+            </ul>
+          </div>
+          <div>
+            <strong>Repositories:</strong>
+            <ul>
+              <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/smartbrain.json" target="_blank">smartbrain</a></li>
+              <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/gitantivirus.json" target="_blank">gitantivirus</a></li>
+              <li><a href="https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repositories/cyberai.json" target="_blank">cyberai</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="console-card">
+        <h2>🚨 Quick Actions</h2>
+        <div class="quick-actions">
+          <a href="https://github.com/SolanaRemix/CyberAi/actions" target="_blank" class="action-button">
+            View CI Status
+          </a>
+          <a href="https://github.com/SolanaRemix/CyberAi/issues" target="_blank" class="action-button">
+            Open Issues
+          </a>
+          <a href="https://github.com/SolanaRemix/CyberAi/pulls" target="_blank" class="action-button">
+            Pull Requests
+          </a>
+          <a href="https://github.com/SolanaRemix/CyberAi/security" target="_blank" class="action-button">
+            Security Alerts
+          </a>
+        </div>
+      </section>
+
+      <section class="console-card full-width">
+        <h2>📊 Repository Status</h2>
+        <div class="status-grid">
+          <div class="status-item">
+            <strong>Contracts:</strong>
+            <span class="status-value">7 validated</span>
+          </div>
+          <div class="status-item">
+            <strong>Prompts:</strong>
+            <span class="status-value">4 agent prompts</span>
+          </div>
+          <div class="status-item">
+            <strong>Tools:</strong>
+            <span class="status-value">2 operational scripts</span>
+          </div>
+          <div class="status-item">
+            <strong>Workflows:</strong>
+            <span class="status-value">3 automated</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="console-card full-width">
+        <h2>🌐 Ecosystem Links</h2>
+        <div class="ecosystem-links">
+          <a href="/ecosystem">Ecosystem Map</a>
+          <a href="https://github.com/SolanaRemix/SmartBrain" target="_blank">SmartBrain Runners</a>
+          <a href="https://github.com/SolanaRemix" target="_blank">All Repositories</a>
+          <a href="/docs">Documentation</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .operator-console {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .console-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .console-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .console-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .console-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: #4f46e5;
+  }
+
+  .console-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .console-card li {
+    margin-bottom: 0.5rem;
+  }
+
+  .console-card a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+
+  .console-card a:hover {
+    text-decoration: underline;
+  }
+
+  .tool-commands .command {
+    margin-bottom: 1.5rem;
+  }
+
+  .tool-commands code {
+    display: block;
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    font-family: monospace;
+  }
+
+  .tool-commands p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .contract-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .contract-links strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .action-button {
+    display: block;
+    padding: 0.75rem;
+    background: #4f46e5;
+    color: white !important;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none !important;
+    font-weight: 600;
+  }
+
+  .action-button:hover {
+    background: #4338ca;
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .status-item {
+    text-align: center;
+  }
+
+  .status-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+
+  .status-value {
+    display: block;
+    font-size: 1.5rem;
+    color: #4f46e5;
+    font-weight: 600;
+  }
+
+  .ecosystem-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .ecosystem-links a {
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .ecosystem-links a:hover {
+    border-color: #4f46e5;
+    background: #f0f9ff;
+  }
+</style>
