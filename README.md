@@ -1,5 +1,11 @@
 # CyberAi.network
 
+[![CI](https://github.com/SolanaRemix/CyberAi/workflows/CI/badge.svg)](https://github.com/SolanaRemix/CyberAi/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/SolanaRemix/CyberAi/workflows/CodeQL/badge.svg)](https://github.com/SolanaRemix/CyberAi/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://nodejs.org/)
+[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://cyberai.network)
+
 **AI-Powered Smart Contract Security & Orchestration Platform**
 
 CyberAi is the central control plane for the decentralized AI ecosystem, providing contract registry, automated workflows, and security tools for blockchain applications.
@@ -26,23 +32,79 @@ Visit [cyberai.network](https://cyberai.network) for full documentation.
 CyberAi/
 ├── contracts/          # Machine-readable contracts for ecosystem participants
 │   ├── agents/        # AI agent contracts
-│   ├── repositories/  # Repository contracts
-│   ├── runners/       # Runner contracts (future)
+│   ├── repos/         # Repository contracts
 │   └── contract.schema.json
 ├── prompts/           # Operator-grade instruction prompts
 │   ├── agents/        # Agent prompts
 │   ├── operators/     # Operator prompts
+│   ├── systems/       # System prompts
 │   └── workflows/     # Workflow prompts
+├── src/               # Core source code
+│   ├── agents/        # Agent implementations
+│   ├── contracts/     # Contract validation
+│   ├── security/      # Security tools
+│   └── utils/         # Shared utilities
+├── tests/             # Test suites
+│   ├── unit/          # Unit tests
+│   └── integration/   # Integration tests
 ├── tools/             # Operational tools
 │   ├── bootstrap/     # Bootstrap script
 │   └── audit/         # Audit script
-├── site/              # GitHub Pages site (Astro)
+├── site/              # Main Astro site (cyberai.network)
 │   └── src/
 │       ├── pages/     # Documentation and site pages
 │       └── layouts/   # Page layouts
-├── docs/              # Additional documentation
+├── docs/              # Documentation portal (docs.cyberai.network)
+├── app/               # Main application (app.cyberai.network)
+├── dashboard/         # Dashboard interface (dashboard.cyberai.network)
+├── terminal/          # Terminal interface (terminal.cyberai.network)
+├── smartbrain/        # SmartBrain AI (smartbrain.cyberai.network)
+├── audit/             # Audit tools (audit.cyberai.network)
+├── api/               # API documentation (api.cyberai.network)
+├── scripts/           # Build and automation scripts
 └── .github/
-    └── workflows/     # CI/CD workflows
+    ├── workflows/     # CI/CD workflows
+    └── copilot/       # GitHub Copilot agent configuration
+```
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      CyberAi Platform                        │
+│                   cyberai.network (Main)                     │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+       ┌───────────────┼───────────────┬──────────────┐
+       │               │               │              │
+┌──────▼──────┐ ┌─────▼─────┐ ┌──────▼──────┐ ┌────▼─────┐
+│ Documentation│ │ Dashboard │ │  Terminal   │ │   API    │
+│    Portal    │ │ Interface │ │  Interface  │ │ Gateway  │
+└──────────────┘ └───────────┘ └─────────────┘ └──────────┘
+   docs.*          dashboard.*    terminal.*       api.*
+       │               │               │              │
+       └───────────────┼───────────────┴──────────────┘
+                       │
+       ┌───────────────┼───────────────┬──────────────┐
+       │               │               │              │
+┌──────▼──────┐ ┌─────▼─────┐ ┌──────▼──────┐ ┌────▼─────┐
+│ SmartBrain  │ │   Audit   │ │ GitAntivirus│ │   Main   │
+│     AI      │ │   Tools   │ │   Scanner   │ │   App    │
+└─────────────┘ └───────────┘ └─────────────┘ └──────────┘
+ smartbrain.*     audit.*                        app.*
+       │               │               │              │
+       └───────────────┴───────────────┴──────────────┘
+                       │
+              ┌────────▼────────┐
+              │  Contract Layer │
+              │  ┌───────────┐  │
+              │  │  Agents   │  │
+              │  ├───────────┤  │
+              │  │   Repos   │  │
+              │  ├───────────┤  │
+              │  │  Runners  │  │
+              │  └───────────┘  │
+              └─────────────────┘
 ```
 
 ## 🔑 Key Features
