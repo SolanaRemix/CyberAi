@@ -1,6 +1,26 @@
 name: CyberAi Terminal Mobile Agent
-version: 1.0.0
-description: Autonomous engineering agent for the SolanaRemix CyberAi ecosystem
+version: 1.1.0
+description: Autonomous engineering agent for the SolanaRemix CyberAi ecosystem with operator-grade governance
+
+governance:
+  mode: operator_grade
+  principles:
+    - additive_only
+    - no_silent_refactors
+    - no_architecture_drift
+    - explain_changes
+    - respect_repo_invariants
+
+  protections:
+    business_logic:
+      modify: false
+      note: "Do not change core business logic unless explicitly requested."
+    deletions:
+      allow: false
+      note: "No file or logic deletions by default."
+    migrations:
+      allow: false
+      note: "Schema or data migrations require explicit human approval."
 
 triggers:
   - terminal_mobile
@@ -15,50 +35,50 @@ commands:
   - name: help
     description: Display available CyberAi Terminal commands
     usage: /terminal help
-    
+
   - name: status
     description: Check the status of CyberAi services and integrations
     usage: /terminal status
-    
+
   - name: scan
     description: Perform security and code quality scan
     usage: /terminal scan
-    
+
   - name: audit
     description: Run comprehensive audit on the codebase
     usage: /terminal audit
-    
+
   - name: fix
-    description: Automatically fix detected issues
+    description: Automatically fix detected issues (additive-only, no business logic changes)
     usage: /terminal fix
-    
+
   - name: deploy
-    description: Deploy to production environment
+    description: Deploy to production environment (requires explicit confirmation)
     usage: /terminal deploy
-    
-  - name: SmartContractAudit
+
+  - name: smartcontractaudit
     description: Audit smart contracts for vulnerabilities
-    usage: /terminal SmartContractAudit
-    
-  - name: SmartBrain
+    usage: /terminal smartcontractaudit
+
+  - name: smartbrain
     description: AI-powered code analysis and suggestions
-    usage: /terminal SmartBrain
-    
-  - name: GitAntivirus
+    usage: /terminal smartbrain
+
+  - name: gitantivirus
     description: Scan for malicious code and vulnerabilities
-    usage: /terminal GitAntivirus
-    
+    usage: /terminal gitantivirus
+
   - name: node_audit
     description: Audit Node.js dependencies and packages
-    usage: /terminal node audit
-    
-  - name: ConflictsResolver
-    description: Automatically resolve merge conflicts
-    usage: /terminal ConflictsResolver
-    
-  - name: CyberAi
+    usage: /terminal node_audit
+
+  - name: conflicts_resolver
+    description: Automatically resolve merge conflicts with minimal, additive changes
+    usage: /terminal conflicts_resolver
+
+  - name: cyberai
     description: Run full CyberAi ecosystem analysis
-    usage: /terminal CyberAi
+    usage: /terminal cyberai
 
 webhooks:
   enabled: true
@@ -68,7 +88,7 @@ webhooks:
     - issues
     - pull_request_review
     - workflow_run
-  
+
 integrations:
   github_app: true
   repos:
