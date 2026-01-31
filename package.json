@@ -8,7 +8,7 @@
     "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts"
   },
   "dependencies": {
-    "openai": "^6.16.0"
+    "openai": "^6.17.0"
   },
   "devDependencies": {
     "@types/node": "^25.0.10",
