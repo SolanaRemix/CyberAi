@@ -77,17 +77,25 @@ if command -v python3 &> /dev/null; then
   find . -name "*.yml" -o -name "*.yaml" | grep -v node_modules | while read -r yaml_file; do
     if [[ -f "$yaml_file" ]]; then
       log "Validating $yaml_file"
-      # Basic YAML syntax validation
-      python3 -c "
+      # Basic YAML syntax validation with better error handling
+      VALIDATION_RESULT=$(python3 -c "
 import yaml
 import sys
 try:
     with open('$yaml_file') as f:
         yaml.safe_load(f)
     print('Valid')
-except:
-    print('Invalid')
-" 2>/dev/null | grep -q "Valid" && success "$yaml_file is valid" || warn "$yaml_file may have syntax issues"
+except yaml.YAMLError as e:
+    print(f'Invalid: {e}')
+except Exception as e:
+    print(f'Error: {e}')
+" 2>&1)
+      
+      if echo "$VALIDATION_RESULT" | grep -q "^Valid"; then
+        success "$yaml_file is valid"
+      else
+        warn "$yaml_file: $VALIDATION_RESULT"
+      fi
       SYNC_COUNT=$((SYNC_COUNT + 1))
     fi
   done
@@ -107,8 +115,8 @@ log "Step 4: Syncing Markdown documentation..."
 # Find all markdown files and check for common issues
 find docs -name "*.md" -type f 2>/dev/null | while read -r md_file; do
   if [[ -f "$md_file" ]]; then
-    # Check for merge conflicts
-    if grep -q "<<<<<<< HEAD\|=======\|>>>>>>>" "$md_file" 2>/dev/null; then
+# Check for merge conflicts using extended regex
+    if grep -E -q '<<<<<<< HEAD|=======|>>>>>>>' "$md_file" 2>/dev/null; then
       warn "$md_file contains unresolved merge conflicts"
     else
       success "$md_file is clean"
@@ -139,15 +147,27 @@ log "Step 6: Syncing DB schemas and API specifications..."
 find . -name "openapi.json" -o -name "swagger.json" -o -name "api-spec.json" | grep -v node_modules | while read -r api_file; do
   if [[ -f "$api_file" ]]; then
     log "Validating API spec: $api_file"
-    node -e "
+    VALIDATION_RESULT=$(node -e "
       const fs = require('fs');
       try {
         const spec = JSON.parse(fs.readFileSync('$api_file', 'utf8'));
-        console.log(spec.openapi || spec.swagger ? 'Valid' : 'Invalid');
+        if (spec.openapi && /^3\.\d+\.\d+$/.test(spec.openapi)) {
+          console.log('Valid: OpenAPI ' + spec.openapi);
+        } else if (spec.swagger && /^2\.\d+$/.test(spec.swagger)) {
+          console.log('Valid: Swagger ' + spec.swagger);
+        } else {
+          console.log('Invalid: Missing or invalid version field');
+        }
       } catch(e) {
-        console.log('Invalid');
+        console.log('Invalid: ' + e.message);
       }
-    " 2>/dev/null | grep -q "Valid" && success "$api_file is valid" || warn "$api_file may have issues"
+    " 2>&1)
+    
+    if echo "$VALIDATION_RESULT" | grep -q "^Valid"; then
+      success "$api_file: $VALIDATION_RESULT"
+    else
+      warn "$api_file: $VALIDATION_RESULT"
+    fi
     SYNC_COUNT=$((SYNC_COUNT + 1))
   fi
 done
