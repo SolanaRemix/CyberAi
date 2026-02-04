@@ -15,10 +15,14 @@ CyberAi uses the **Neo Glow FX Auras** styling system to provide a modern, polis
 ## Color Palette
 
 ```css
---neo-primary: #00d9ff /* Cyan - Primary actions */ --neo-secondary: #ff006e
-  /* Magenta - Secondary actions */ --neo-accent: #8338ec /* Purple - Accent elements */
-  --neo-success: #06ffa5 /* Green - Success states */ --neo-warning: #ffbe0b
-  /* Yellow - Warning states */ --neo-danger: #ff006e /* Red - Danger/Error states */;
+:root {
+  --neo-primary: #00d9ff;  /* Cyan - Primary actions */
+  --neo-secondary: #ff006e; /* Magenta - Secondary actions */
+  --neo-accent: #8338ec;    /* Purple - Accent elements */
+  --neo-success: #06ffa5;   /* Green - Success states */
+  --neo-warning: #ffbe0b;   /* Yellow - Warning states */
+  --neo-danger: #ff006e;    /* Red - Danger/Error states */
+}
 ```
 
 ## Utility Classes
