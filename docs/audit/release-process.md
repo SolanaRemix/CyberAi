@@ -451,8 +451,9 @@ If critical issues discovered post-release:
 
 - [RELEASE.md](../RELEASE.md) - Current release checklist
 - [GOVERNANCE.md](../GOVERNANCE.md) - Release authority
-- # [SECURITY.md](../SECURITY.md) - Security process
-  This document describes the release process for CyberAi, including planning, testing, deployment, and communication.
+- [SECURITY.md](../SECURITY.md) - Security process
+
+This document describes the release process for CyberAi, including planning, testing, deployment, and communication.
 
 ## Release Types
 
