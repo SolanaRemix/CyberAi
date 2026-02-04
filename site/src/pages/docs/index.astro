@@ -4,66 +4,185 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="Documentation - CyberAi Network">
   <main class="docs-container">
-    <h1>CyberAi Documentation</h1>
+    <div class="docs-header">
+      <h1>📚 CyberAi Documentation</h1>
+      <p class="subtitle">Comprehensive guides for developers, operators, and contributors</p>
+      
+      <div class="search-box">
+        <input type="search" id="docs-search" placeholder="Search documentation..." />
+      </div>
+    </div>
     
-    <section>
-      <h2>Getting Started</h2>
-      <ul>
-        <li><a href="/docs/quickstart">Quickstart Guide</a> - Get up and running in minutes</li>
-        <li><a href="/docs/architecture">Architecture Overview</a> - Understand the system design</li>
-        <li><a href="/docs/contributing">Contributing Guide</a> - Join the community</li>
-      </ul>
-    </section>
+    <div class="docs-grid">
+      <section class="doc-card featured">
+        <div class="card-icon">🚀</div>
+        <h2>Getting Started</h2>
+        <ul>
+          <li><a href="/docs/quickstart">Quickstart Guide</a> - Get up and running in 5 minutes</li>
+          <li><a href="/docs/architecture">Architecture Overview</a> - Understand the system design</li>
+          <li><a href="/docs/contributing">Contributing Guide</a> - Join the community</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>Core Concepts</h2>
-      <ul>
-        <li><a href="/docs/contracts">Contracts</a> - Machine-readable contracts for ecosystem participants</li>
-        <li><a href="/docs/agents">Agents</a> - AI agents for security and automation</li>
-        <li><a href="/docs/tools">Tools</a> - Bootstrap and audit scripts</li>
-        <li><a href="/docs/workflows">Workflows</a> - GitHub Actions workflows</li>
-      </ul>
-    </section>
+      <section class="doc-card">
+        <div class="card-icon">📋</div>
+        <h2>Core Concepts</h2>
+        <ul>
+          <li><a href="/docs/contracts">Contracts</a> - Machine-readable contracts</li>
+          <li><a href="/docs/agents">Agents</a> - AI-powered automation</li>
+          <li><a href="/docs/tools">Tools</a> - Bootstrap & audit scripts</li>
+          <li><a href="/docs/workflows">Workflows</a> - GitHub Actions CI/CD</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>Operator Guides</h2>
-      <ul>
-        <li><a href="/docs/runbook">Runbook</a> - Operational procedures</li>
-        <li><a href="/docs/security">Security</a> - Security best practices</li>
-        <li><a href="/docs/troubleshooting">Troubleshooting</a> - Common issues and solutions</li>
-      </ul>
-    </section>
+      <section class="doc-card">
+        <div class="card-icon">🎛️</div>
+        <h2>Operator Guides</h2>
+        <ul>
+          <li><a href="/docs/runbook">Runbook</a> - Operational procedures</li>
+          <li><a href="/docs/security">Security</a> - Best practices & policies</li>
+          <li><a href="/docs/troubleshooting">Troubleshooting</a> - Common issues</li>
+          <li><a href="/docs/deployment">Deployment</a> - Production deployment</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>API Reference</h2>
-      <ul>
-        <li><a href="/docs/contract-schema">Contract Schema</a> - JSON Schema specification</li>
-        <li><a href="/docs/api">API Endpoints</a> - REST API documentation</li>
-      </ul>
-    </section>
+      <section class="doc-card">
+        <div class="card-icon">🔌</div>
+        <h2>API Reference</h2>
+        <ul>
+          <li><a href="/docs/contract-schema">Contract Schema</a> - JSON Schema spec</li>
+          <li><a href="/docs/api">REST API</a> - API endpoints</li>
+          <li><a href="/docs/webhooks">Webhooks</a> - Event notifications</li>
+          <li><a href="/docs/graphql">GraphQL</a> - Query API</li>
+        </ul>
+      </section>
+
+      <section class="doc-card">
+        <div class="card-icon">🔒</div>
+        <h2>Security & Compliance</h2>
+        <ul>
+          <li><a href="/docs/security-policy">Security Policy</a> - Vulnerability reporting</li>
+          <li><a href="/docs/audit-logs">Audit Logs</a> - Security event tracking</li>
+          <li><a href="/docs/compliance">Compliance</a> - Standards & certifications</li>
+        </ul>
+      </section>
+
+      <section class="doc-card">
+        <div class="card-icon">🛠️</div>
+        <h2>Development</h2>
+        <ul>
+          <li><a href="/docs/local-development">Local Setup</a> - Dev environment</li>
+          <li><a href="/docs/testing">Testing</a> - Test strategies</li>
+          <li><a href="/docs/debugging">Debugging</a> - Debug tools & tips</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="community-section">
+      <h2>Join the Community</h2>
+      <p>Get help, share ideas, and collaborate with other developers.</p>
+      <div class="community-links">
+        <a href="https://github.com/SolanaRemix/CyberAi/discussions" class="community-button">
+          💬 Discussions
+        </a>
+        <a href="https://github.com/SolanaRemix/CyberAi/issues" class="community-button">
+          🐛 Report Issues
+        </a>
+        <a href="https://github.com/SolanaRemix/CyberAi" class="community-button">
+          ⭐ Star on GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="theme-toggle-container">
+      <button id="theme-toggle" aria-label="Toggle theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+    </div>
   </main>
 </Layout>
 
 <style>
   .docs-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
   }
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-
-  section {
+  .docs-header {
+    text-align: center;
     margin-bottom: 3rem;
   }
 
-  h2 {
-    font-size: 1.8rem;
+  h1 {
+    font-size: 3rem;
     margin-bottom: 1rem;
-    color: #4f46e5;
+    color: var(--text-primary);
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .search-box {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  #docs-search {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    transition: all 0.2s;
+  }
+
+  #docs-search:focus {
+    outline: none;
+    border-color: #4f46e5;
+  }
+
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .doc-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    background: var(--card-bg);
+    transition: all 0.2s;
+  }
+
+  .doc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .doc-card.featured {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+    border: 2px solid #4f46e5;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
   }
 
   ul {
@@ -85,13 +204,156 @@ import Layout from '../../layouts/Layout.astro';
   }
 
   a {
-    color: #1e293b;
+    color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.2s;
   }
 
   a:hover {
     color: #4f46e5;
-    text-decoration: underline;
+  }
+
+  .community-section {
+    text-align: center;
+    padding: 3rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+  }
+
+  .community-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .community-section p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .community-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .community-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #4f46e5;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .community-button:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  .theme-toggle-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+  }
+
+  #theme-toggle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background: var(--card-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  #theme-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .sun-icon {
+    display: none;
+  }
+
+  .moon-icon {
+    display: block;
+  }
+
+  :global(body.dark-mode) .sun-icon {
+    display: block;
+  }
+
+  :global(body.dark-mode) .moon-icon {
+    display: none;
+  }
+
+  :global(:root) {
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+  }
+
+  :global(body.dark-mode) {
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    background: #0a0a0a;
+    color: #e0e0e0;
+  }
+
+  @media (max-width: 768px) {
+    .doc-card.featured {
+      grid-column: span 1;
+    }
+
+    .docs-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
+
+<script>
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  function setTheme(isDark: boolean) {
+    document.body.classList.toggle('dark-mode', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    setTheme(savedTheme === 'dark');
+  } else {
+    setTheme(prefersDark.matches);
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    const isDark = !document.body.classList.contains('dark-mode');
+    setTheme(isDark);
+  });
+
+  // Search functionality (placeholder)
+  const searchInput = document.getElementById('docs-search') as HTMLInputElement;
+  searchInput?.addEventListener('input', (e) => {
+    const query = (e.target as HTMLInputElement).value.toLowerCase();
+    // Placeholder for actual search implementation
+    console.log('Search query:', query);
+  });
+</script>
+
