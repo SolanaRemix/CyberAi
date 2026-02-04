@@ -1,0 +1,280 @@
+/* 
+ * Neo Glow FX Auras - Advanced UI Styling
+ * CyberAi Network Enhanced UI Configuration
+ * 
+ * Features:
+ * - Neon glow effects for interactive elements
+ * - Smooth transitions and animations
+ * - Modern glassmorphism design
+ * - Cyberpunk-inspired color palette
+ */
+
+:root {
+  /* Neo Glow FX Color Palette */
+  --neo-primary: #00d9ff;
+  --neo-secondary: #ff006e;
+  --neo-accent: #8338ec;
+  --neo-success: #06ffa5;
+  --neo-warning: #ffbe0b;
+  --neo-danger: #ff006e;
+  
+  /* Glow intensities */
+  --glow-sm: 0 0 5px;
+  --glow-md: 0 0 10px;
+  --glow-lg: 0 0 20px;
+  --glow-xl: 0 0 30px;
+  
+  /* Background colors with transparency */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  
+  /* Animation timings */
+  --transition-fast: 0.2s;
+  --transition-medium: 0.3s;
+  --transition-slow: 0.5s;
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-bg: rgba(0, 0, 0, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Glow effect utility classes */
+.neo-glow-primary {
+  box-shadow: var(--glow-md) var(--neo-primary),
+              var(--glow-lg) var(--neo-primary),
+              inset var(--glow-sm) var(--neo-primary);
+  transition: box-shadow var(--transition-medium) ease;
+}
+
+.neo-glow-primary:hover {
+  box-shadow: var(--glow-lg) var(--neo-primary),
+              var(--glow-xl) var(--neo-primary),
+              inset var(--glow-md) var(--neo-primary);
+}
+
+.neo-glow-secondary {
+  box-shadow: var(--glow-md) var(--neo-secondary),
+              var(--glow-lg) var(--neo-secondary),
+              inset var(--glow-sm) var(--neo-secondary);
+  transition: box-shadow var(--transition-medium) ease;
+}
+
+.neo-glow-secondary:hover {
+  box-shadow: var(--glow-lg) var(--neo-secondary),
+              var(--glow-xl) var(--neo-secondary),
+              inset var(--glow-md) var(--neo-secondary);
+}
+
+.neo-glow-accent {
+  box-shadow: var(--glow-md) var(--neo-accent),
+              var(--glow-lg) var(--neo-accent),
+              inset var(--glow-sm) var(--neo-accent);
+  transition: box-shadow var(--transition-medium) ease;
+}
+
+.neo-glow-accent:hover {
+  box-shadow: var(--glow-lg) var(--neo-accent),
+              var(--glow-xl) var(--neo-accent),
+              inset var(--glow-md) var(--neo-accent);
+}
+
+/* Glassmorphism effects */
+.neo-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+.neo-glass-strong {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+/* Button with Neo Glow effect */
+.neo-button {
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--neo-primary);
+  background: transparent;
+  color: var(--neo-primary);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-medium) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--neo-primary), transparent);
+  opacity: 0.3;
+  transition: left var(--transition-slow) ease;
+}
+
+.neo-button:hover::before {
+  left: 100%;
+}
+
+.neo-button:hover {
+  background: var(--neo-primary);
+  color: #000;
+  box-shadow: var(--glow-lg) var(--neo-primary),
+              var(--glow-xl) var(--neo-primary);
+  transform: translateY(-2px);
+}
+
+/* Card with Neo Glow effect */
+.neo-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all var(--transition-medium) ease;
+  position: relative;
+}
+
+.neo-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity var(--transition-medium) ease;
+  box-shadow: var(--glow-lg) var(--neo-primary),
+              inset var(--glow-sm) var(--neo-primary);
+  pointer-events: none;
+}
+
+.neo-card:hover::after {
+  opacity: 1;
+}
+
+.neo-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--neo-primary);
+}
+
+/* Text glow effects */
+.neo-text-glow {
+  text-shadow: var(--glow-sm) var(--neo-primary),
+               var(--glow-md) var(--neo-primary);
+  transition: text-shadow var(--transition-medium) ease;
+}
+
+.neo-text-glow:hover {
+  text-shadow: var(--glow-md) var(--neo-primary),
+               var(--glow-lg) var(--neo-primary);
+}
+
+/* Pulse animation for important elements */
+@keyframes neo-pulse {
+  0%, 100% {
+    box-shadow: var(--glow-md) var(--neo-primary);
+  }
+  50% {
+    box-shadow: var(--glow-xl) var(--neo-primary);
+  }
+}
+
+.neo-pulse {
+  animation: neo-pulse 2s ease-in-out infinite;
+}
+
+/* Gradient border animation */
+@keyframes neo-border-flow {
+  0% {
+    border-image-source: linear-gradient(0deg, var(--neo-primary), var(--neo-accent));
+  }
+  50% {
+    border-image-source: linear-gradient(180deg, var(--neo-accent), var(--neo-secondary));
+  }
+  100% {
+    border-image-source: linear-gradient(360deg, var(--neo-secondary), var(--neo-primary));
+  }
+}
+
+.neo-border-flow {
+  border: 2px solid;
+  border-image-slice: 1;
+  animation: neo-border-flow 3s linear infinite;
+}
+
+/* Status indicators with glow */
+.neo-status-active {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--neo-success);
+  box-shadow: var(--glow-md) var(--neo-success),
+              var(--glow-lg) var(--neo-success);
+  animation: neo-pulse 2s ease-in-out infinite;
+}
+
+.neo-status-warning {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--neo-warning);
+  box-shadow: var(--glow-md) var(--neo-warning),
+              var(--glow-lg) var(--neo-warning);
+}
+
+.neo-status-danger {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--neo-danger);
+  box-shadow: var(--glow-md) var(--neo-danger),
+              var(--glow-lg) var(--neo-danger);
+  animation: neo-pulse 1s ease-in-out infinite;
+}
+
+/* Loading spinner with Neo Glow */
+@keyframes neo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.neo-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--neo-primary);
+  border-radius: 50%;
+  animation: neo-spin 1s linear infinite;
+  box-shadow: var(--glow-md) var(--neo-primary);
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

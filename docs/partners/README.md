@@ -37,6 +37,7 @@ Welcome to the SmartContractAudit Partner Program! We collaborate with organizat
 ### 1. Technology Partners
 
 Integrate SmartContractAudit into your platform:
+
 - API access and integration support
 - White-label options (enterprise tier)
 - Custom feature development
@@ -47,6 +48,7 @@ Integrate SmartContractAudit into your platform:
 ### 2. Ecosystem Partners
 
 Collaborate on blockchain ecosystem growth:
+
 - Cross-promotion opportunities
 - Shared community initiatives
 - Co-hosted events and workshops
@@ -57,6 +59,7 @@ Collaborate on blockchain ecosystem growth:
 ### 3. Sponsorship Partners
 
 Support the project financially:
+
 - Logo placement and recognition
 - Access to partnership benefits
 - Tax-deductible contributions (where applicable)
@@ -69,6 +72,7 @@ See [sponsorship_tiers.md](sponsorship_tiers.md) for detailed tiers.
 ### 4. Research Partners
 
 Advance smart contract security research:
+
 - Collaborate on vulnerability research
 - Joint academic papers and publications
 - Access to early findings
@@ -79,6 +83,7 @@ Advance smart contract security research:
 ### 5. Integration Partners
 
 Build on or extend SmartContractAudit:
+
 - Commercial integrations
 - Plugin development
 - Custom tooling
@@ -91,18 +96,21 @@ Build on or extend SmartContractAudit:
 ### All Partners Receive
 
 ✅ **Recognition**
+
 - Listed in partner directory
 - Logo on website (where applicable)
 - Mentions in release notes
 - Social media acknowledgment
 
 ✅ **Access**
+
 - Priority issue triage
 - Direct maintainer contact
 - Partner-only updates
 - Early feature previews
 
 ✅ **Support**
+
 - Technical onboarding
 - Integration assistance
 - Best practices guidance
@@ -111,6 +119,7 @@ Build on or extend SmartContractAudit:
 ### Tier-Specific Benefits
 
 Higher sponsorship tiers receive additional benefits:
+
 - Enhanced visibility
 - Priority support SLAs
 - Custom feature development
@@ -140,6 +149,7 @@ Reach out to discuss partnership opportunities:
 **Website**: [Contact form - TBD]
 
 Include in your inquiry:
+
 - Organization name and website
 - Partnership type of interest
 - Use case and goals
@@ -148,6 +158,7 @@ Include in your inquiry:
 ### 4. Partnership Agreement
 
 Once aligned, we'll:
+
 - Discuss terms and benefits
 - Draft partnership agreement
 - Complete onboarding process
@@ -158,6 +169,7 @@ Once aligned, we'll:
 See [use_cases.md](use_cases.md) for detailed examples of how partners leverage SmartContractAudit.
 
 **Common Scenarios**:
+
 - DeFi protocol using automated auditing in CI/CD
 - Blockchain platform integrating security checks
 - Security firm complementing manual audits
@@ -166,11 +178,11 @@ See [use_cases.md](use_cases.md) for detailed examples of how partners leverage 
 
 ## Success Stories
 
-*Partner success stories will be featured here as partnerships develop.*
+_Partner success stories will be featured here as partnerships develop._
 
 ### Testimonials
 
-*"SmartContractAudit has become an essential part of our security workflow."*  
+_"SmartContractAudit has become an essential part of our security workflow."_  
 — [Partner Name], [Company]
 
 ## Partner Resources

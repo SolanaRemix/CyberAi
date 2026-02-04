@@ -1,9 +1,10 @@
-<<<<<<< HEAD
----
+## <<<<<<< HEAD
+
 <<<<<<< HEAD
 title: Partnership Agreements
 description: Terms and structure for SmartContractAudit partnerships
 keywords: partnership, agreements, terms, collaboration
+
 ---
 
 # Partnership Agreements
@@ -21,6 +22,7 @@ This document outlines the standard partnership terms and agreement structure fo
 **Typical Use**: Ecosystem partnerships, research collaborations
 
 **Key Elements**:
+
 - Partnership objectives
 - Roles and responsibilities
 - Term and renewal
@@ -36,6 +38,7 @@ This document outlines the standard partnership terms and agreement structure fo
 **Typical Use**: Corporate sponsors, financial backers
 
 **Key Elements**:
+
 - Sponsorship tier and amount
 - Payment terms
 - Benefits and deliverables
@@ -52,6 +55,7 @@ This document outlines the standard partnership terms and agreement structure fo
 **Typical Use**: Platform integrations, API partnerships
 
 **Key Elements**:
+
 - Integration scope
 - Technical responsibilities
 - Support commitments
@@ -69,6 +73,7 @@ This document outlines the standard partnership terms and agreement structure fo
 **Typical Use**: Enterprise deployments, resellers
 
 **Key Elements**:
+
 - License scope and restrictions
 - Fees and payment terms
 - Support and maintenance
@@ -292,11 +297,12 @@ A: Early termination is possible with notice. See specific agreement for terms.
 **Last Updated**: 2026-01-01  
 **Next Review**: 2026-07-01
 
-**Note**: This document provides general information. Specific agreements will contain complete terms and conditions.
-=======
+# **Note**: This document provides general information. Specific agreements will contain complete terms and conditions.
+
 title: Partnership Models
 description: Different ways to partner with SmartContractAudit
 keywords: partnerships, collaboration, integration
+
 ---
 
 # Partnership Models
@@ -312,6 +318,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 **Description**: Integrate our security scanning into your platform
 
 **Best for**:
+
 - Development tools
 - CI/CD platforms
 - IDE extensions
@@ -319,6 +326,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 - Wallet providers
 
 **What we provide**:
+
 - API access
 - Technical documentation
 - Integration support
@@ -326,6 +334,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 - Joint case studies
 
 **What we need**:
+
 - Technical POC
 - API usage commitment
 - Attribution/branding
@@ -336,6 +345,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 **Description**: Offer SmartContractAudit services to your clients
 
 **Best for**:
+
 - Consulting firms
 - Security companies
 - Development agencies
@@ -343,6 +353,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 - System integrators
 
 **What we provide**:
+
 - White-label options
 - Revenue sharing
 - Sales enablement
@@ -350,6 +361,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 - Marketing support
 
 **What we need**:
+
 - Sales commitment
 - Client support capability
 - Brand alignment
@@ -360,6 +372,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 **Description**: Long-term strategic collaboration
 
 **Best for**:
+
 - Major blockchain protocols
 - Industry leaders
 - Ecosystem players
@@ -367,6 +380,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 - Research institutions
 
 **What we provide**:
+
 - Custom development
 - Priority features
 - Dedicated resources
@@ -374,6 +388,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 - IP collaboration
 
 **What we need**:
+
 - Strategic alignment
 - Resource commitment
 - Long-term vision
@@ -384,6 +399,7 @@ SmartContractAudit offers flexible partnership models to suit different organiza
 **Description**: Financial support for open-source development
 
 **Best for**:
+
 - Any organization using our tools
 - Community supporters
 - Companies needing recognition
@@ -466,6 +482,7 @@ See [sponsorship_tiers.md](sponsorship_tiers.md) for details.
 ### Minimum Requirements
 
 For all partnerships:
+
 - Alignment with our mission
 - Commitment to security
 - Professional conduct
@@ -475,6 +492,7 @@ For all partnerships:
 ### Technical Requirements
 
 For technology integrations:
+
 - API usage best practices
 - Security standards compliance
 - Error handling
@@ -484,6 +502,7 @@ For technology integrations:
 ### Business Requirements
 
 For commercial partnerships:
+
 - Active business entity
 - Financial stability
 - Market presence
@@ -517,6 +536,7 @@ For commercial partnerships:
 We measure partnership success through:
 
 **Technical Metrics**:
+
 - Integration quality
 - API usage
 - Uptime and reliability
@@ -524,6 +544,7 @@ We measure partnership success through:
 - Performance
 
 **Business Metrics**:
+
 - User adoption
 - Revenue generated
 - Customer satisfaction
@@ -531,6 +552,7 @@ We measure partnership success through:
 - Brand awareness
 
 **Relationship Metrics**:
+
 - Communication quality
 - Issue resolution time
 - Collaboration effectiveness
@@ -543,7 +565,8 @@ We measure partnership success through:
 
 **Partner**: [DeFi Platform Name]  
 **Type**: Technology Integration  
-**Result**: 
+**Result**:
+
 - 50% reduction in security incidents
 - 10,000+ contracts scanned
 - Improved user trust
@@ -554,6 +577,7 @@ We measure partnership success through:
 **Partner**: [Consulting Firm]  
 **Type**: Reseller Partnership  
 **Result**:
+
 - 20+ clients onboarded
 - $500K+ revenue generated
 - 95% client satisfaction
@@ -585,9 +609,10 @@ A: Defined in partnership agreement. Generally, each party retains their IP.
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+
 # Partnership Opportunities
 
 ## Overview
@@ -601,6 +626,7 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 **Description**: Support the project with funding
 
 **Benefits:**
+
 - Logo placement and recognition
 - Priority support channels
 - Input on roadmap (non-binding)
@@ -618,6 +644,7 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 **Description**: Integrate our tools into your platform or contribute technical resources
 
 **Benefits:**
+
 - Deep technical integration support
 - Custom feature development (community approved)
 - Co-branded solutions
@@ -625,11 +652,13 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 - Early access to features
 
 **Requirements:**
+
 - Technical integration plan
 - Community benefit alignment
 - Open source contribution
 
 **Examples:**
+
 - CI/CD platform integration
 - Blockchain explorer integration
 - IDE plugin partnerships
@@ -640,6 +669,7 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 **Description**: Enhance your audit workflow with our automated tools
 
 **Benefits:**
+
 - White-label deployment options
 - Custom rule sets for your methodology
 - Training for your team
@@ -647,11 +677,13 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 - Priority bug fixes
 
 **Requirements:**
+
 - Active audit practice
 - Alignment with security best practices
 - Feedback on tool improvements
 
 **Value Proposition:**
+
 - Reduce manual review time
 - Catch common vulnerabilities automatically
 - Focus auditor time on complex issues
@@ -662,6 +694,7 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 **Description**: Academic or industry research collaboration
 
 **Benefits:**
+
 - Access to anonymized usage data (opt-in)
 - Co-authorship on papers
 - Dataset collaboration
@@ -669,12 +702,14 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 - Student contributions welcomed
 
 **Requirements:**
+
 - Research proposal aligned with project goals
 - Ethical review approval
 - Open publication of results
 - Attribution and citation
 
 **Focus Areas:**
+
 - Smart contract vulnerability patterns
 - Automated security analysis techniques
 - Machine learning for code analysis
@@ -685,6 +720,7 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 **Description**: Use our tools in teaching smart contract security
 
 **Benefits:**
+
 - Free access for educational use
 - Curriculum development support
 - Guest lectures from maintainers
@@ -692,11 +728,13 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 - Academic license terms
 
 **Requirements:**
+
 - Accredited educational institution or recognized training program
 - Smart contract or blockchain security focus
 - Attribution in course materials
 
 **Opportunities:**
+
 - Semester-long projects
 - Capstone contributions
 - Workshop facilitation
@@ -707,6 +745,7 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 **Description**: Non-financial collaboration to grow the ecosystem
 
 **Benefits:**
+
 - Cross-promotion
 - Resource sharing
 - Event collaboration
@@ -714,6 +753,7 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 - Knowledge exchange
 
 **Examples:**
+
 - Blockchain communities
 - Developer meetup groups
 - Security research communities
@@ -726,6 +766,7 @@ CyberAi welcomes partnerships with organizations that share our commitment to bl
 ### 1. Initial Contact
 
 Reach out via:
+
 - **Email**: funding@cyberai.network
 - **GitHub**: Open an issue with tag `partnership`
 - **Community**: Introduce yourself in Discussions
@@ -733,6 +774,7 @@ Reach out via:
 ### 2. Discovery Call
 
 We'll schedule a call to discuss:
+
 - Your goals and needs
 - How we can help each other
 - Alignment with project values
@@ -741,6 +783,7 @@ We'll schedule a call to discuss:
 ### 3. Proposal
 
 You or we submit a proposal including:
+
 - Partnership type and objectives
 - Expected benefits for both parties
 - Timeline and milestones
@@ -750,6 +793,7 @@ You or we submit a proposal including:
 ### 4. Community Review
 
 For significant partnerships:
+
 - Announcement in GitHub Discussions
 - Community feedback period (7-14 days)
 - Maintainer review and decision
@@ -778,7 +822,7 @@ For significant partnerships:
 ✅ **Sustainability**: Long-term commitment  
 ✅ **Transparency**: Open communication  
 ✅ **Quality**: High standards and professionalism  
-✅ **Ethics**: Strong ethical practices  
+✅ **Ethics**: Strong ethical practices
 
 ### We Avoid:
 
@@ -786,7 +830,7 @@ For significant partnerships:
 ❌ **Control Attempts**: Partners trying to control project  
 ❌ **Closed Source**: Pressure to close source  
 ❌ **Unethical Practices**: Misalignment with our values  
-❌ **Short-term Focus**: Purely transactional relationships  
+❌ **Short-term Focus**: Purely transactional relationships
 
 ## Case Studies
 
@@ -796,12 +840,14 @@ For significant partnerships:
 **Type**: Technical Partnership
 
 **Collaboration:**
+
 - Native integration of security scanning
 - Marketplace listing
 - Co-marketing campaign
 - Shared documentation
 
 **Results:**
+
 - 10,000+ developers using integration
 - Improved security coverage
 - Increased project visibility
@@ -813,12 +859,14 @@ For significant partnerships:
 **Type**: Research Partnership
 
 **Collaboration:**
+
 - Joint research on vulnerability patterns
 - Student contributions to codebase
 - Published research papers
 - Conference presentations
 
 **Results:**
+
 - 3 published papers
 - 15 student contributors
 - New vulnerability detection techniques
@@ -829,6 +877,7 @@ For significant partnerships:
 See [GOVERNANCE.md](/GOVERNANCE.md) for how partnerships interact with project governance.
 
 **Key Points:**
+
 - Partners participate as community members
 - No special voting or veto rights
 - Input welcomed but not binding
@@ -854,6 +903,7 @@ Partnerships may be terminated by either party:
 - **Mutual Agreement**: Collaborative conclusion
 
 **Process:**
+
 - Written notice
 - Wind-down period
 - Asset/recognition removal timeline
@@ -871,4 +921,5 @@ Partnerships may be terminated by either party:
 **Last Updated**: 2026-01-01  
 **Partnership Applications**: Open  
 **Response Time**: 5-10 business days
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10

@@ -49,7 +49,7 @@ Resolved version:
     model: 'gpt-4',
     messages: [
       { role: 'system', content: 'You are SmartBrain, an AI conflict resolver.' },
-      { role: 'user', content: prompt }
+      { role: 'user', content: prompt },
     ],
     temperature: 0.2,
     max_tokens: 2048,

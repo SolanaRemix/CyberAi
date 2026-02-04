@@ -17,6 +17,7 @@ Visit: `https://docs.cyberai.network` (or `https://cyberai.network/docs`)
 ## Development
 
 To update documentation:
+
 1. Edit files in this directory
 2. Run `npm run build` to generate static site
 3. Changes deploy automatically via GitHub Actions

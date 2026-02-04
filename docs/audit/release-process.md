@@ -11,6 +11,7 @@ This document outlines the complete release process for SmartContractAudit, from
 **Frequency**: As needed, typically monthly for minor releases, quarterly for major releases
 
 **Versioning**: Semantic Versioning (SemVer)
+
 - **MAJOR.MINOR.PATCH** (e.g., 1.2.3)
 - **MAJOR**: Breaking changes
 - **MINOR**: New features, backwards compatible
@@ -29,6 +30,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 1: Planning (2-4 weeks before)
 
 **Activities**:
+
 1. **Feature Freeze**: Decide what goes in the release
 2. **Create Milestone**: GitHub milestone for tracking
 3. **Assign Issues**: Assign remaining work
@@ -40,6 +42,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 2: Development (ongoing)
 
 **Activities**:
+
 1. **Feature Development**: Complete planned features
 2. **Bug Fixes**: Address issues
 3. **Code Review**: All PRs reviewed
@@ -47,6 +50,7 @@ This document outlines the complete release process for SmartContractAudit, from
 5. **Testing**: Unit and integration tests
 
 **Quality Gates**:
+
 - All PRs reviewed and approved
 - Tests passing
 - No critical/high bugs
@@ -55,6 +59,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 3: Code Freeze (1 week before)
 
 **Activities**:
+
 1. **Freeze Code**: No new features
 2. **Bug Fixes Only**: Critical/high priority bugs only
 3. **Release Branch**: Create release branch (e.g., `release/v1.2.0`)
@@ -62,6 +67,7 @@ This document outlines the complete release process for SmartContractAudit, from
 5. **Documentation Review**: Final docs check
 
 **Checklist**:
+
 - [ ] Release branch created
 - [ ] All tests passing
 - [ ] No blockers
@@ -71,21 +77,25 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 4: Pre-Release Testing (3-5 days)
 
 **Activities**:
+
 1. **Integration Testing**: Test all integrations
 2. **Security Scan**: Run security checks
+
    ```bash
    # Run GitAntivirus in dry-run
    DRY_RUN=true ./scripts/master.sh scan
-   
+
    # Run any code quality checks
    npm run lint
    npm test
    ```
+
 3. **Performance Testing**: Verify performance
 4. **Compatibility Testing**: Test across environments
 5. **Documentation Testing**: Verify examples work
 
 **Environments**:
+
 - Development
 - Staging (if applicable)
 - Test installations
@@ -93,6 +103,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 5: Security Review (2-3 days)
 
 **Activities**:
+
 1. **Security Scan**: Automated security checks
 2. **Dependency Audit**: Check for vulnerable dependencies
    ```bash
@@ -105,6 +116,7 @@ This document outlines the complete release process for SmartContractAudit, from
 5. **Sign-off**: Security lead approval
 
 **Tools**:
+
 - CodeQL
 - GitAntivirus
 - npm audit / pip-audit
@@ -113,6 +125,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 6: Release Candidate (RC)
 
 **Activities**:
+
 1. **Tag RC**: Create release candidate tag (e.g., `v1.2.0-rc.1`)
 2. **Build Artifacts**: Generate release artifacts
 3. **Beta Testing**: Limited release to partners/testers
@@ -120,12 +133,14 @@ This document outlines the complete release process for SmartContractAudit, from
 5. **Fix Critical Issues**: Address showstoppers
 
 **Criteria for RC**:
+
 - All planned features complete
 - All tests passing
 - Security review complete
 - Documentation ready
 
 **RC Timeline**:
+
 - RC.1: First candidate
 - RC.2+: Additional if needed
 - Minimum 48 hours between RCs
@@ -134,6 +149,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 7: Final Release
 
 **Activities**:
+
 1. **Final Approval**: Get sign-off from:
    - Release Manager
    - Technical Lead
@@ -141,12 +157,14 @@ This document outlines the complete release process for SmartContractAudit, from
    - QA Lead
 
 2. **Version Bump**: Update version numbers
+
    ```bash
    # Update version in relevant files
    # package.json, version files, etc.
    ```
 
 3. **Tag Release**: Create official release tag
+
    ```bash
    git tag -a v1.2.0 -m "Release version 1.2.0"
    git push origin v1.2.0
@@ -165,12 +183,14 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 8: Deployment (if applicable)
 
 **Activities**:
+
 1. **Deploy to Production**: If hosted services exist
 2. **Verify Deployment**: Health checks
 3. **Monitor**: Watch for issues
 4. **Rollback Plan**: Ready if needed
 
 **Deployment Checklist**:
+
 - [ ] Backup current state
 - [ ] Deploy new version
 - [ ] Run smoke tests
@@ -180,6 +200,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 9: Communication
 
 **Activities**:
+
 1. **Release Announcement**:
    - GitHub Release page
    - GitHub Discussions
@@ -201,6 +222,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 10: Post-Release
 
 **Activities**:
+
 1. **Monitor**: Watch for bugs and issues
 2. **Hot Fixes**: Address critical issues quickly
 3. **Feedback Collection**: Gather user feedback
@@ -214,6 +236,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Pre-Release Checklist
 
 Technical:
+
 - [ ] All features complete
 - [ ] All tests passing
 - [ ] No known critical bugs
@@ -223,6 +246,7 @@ Technical:
 - [ ] Backwards compatibility verified
 
 Documentation:
+
 - [ ] CHANGELOG.md updated
 - [ ] README.md updated
 - [ ] API docs updated
@@ -231,6 +255,7 @@ Documentation:
 - [ ] Examples updated
 
 Process:
+
 - [ ] Version numbers updated
 - [ ] Release branch created
 - [ ] Release candidate tested
@@ -263,6 +288,7 @@ Process:
 For critical security or bug fixes:
 
 **Process**:
+
 1. **Assess Severity**: Confirm need for emergency release
 2. **Create Hotfix Branch**: From main or release branch
 3. **Minimal Changes**: Only fix the critical issue
@@ -278,6 +304,7 @@ For critical security or bug fixes:
 ### Major Releases (X.0.0)
 
 **When**:
+
 - Breaking changes
 - Major architecture changes
 - Significant feature additions
@@ -290,6 +317,7 @@ For critical security or bug fixes:
 ### Minor Releases (x.Y.0)
 
 **When**:
+
 - New features
 - Non-breaking enhancements
 - Significant improvements
@@ -301,6 +329,7 @@ For critical security or bug fixes:
 ### Patch Releases (x.y.Z)
 
 **When**:
+
 - Bug fixes
 - Security patches
 - Minor improvements
@@ -315,49 +344,61 @@ For critical security or bug fixes:
 # Release v1.2.0
 
 ## Release Date
+
 YYYY-MM-DD
 
 ## Overview
+
 Brief description of the release
 
 ## ✨ New Features
+
 - Feature 1 (#123)
 - Feature 2 (#456)
 
 ## 🐛 Bug Fixes
+
 - Fix 1 (#789)
 - Fix 2 (#012)
 
 ## 🔒 Security
+
 - Security improvement 1
 - Vulnerability fix 1
 
 ## 📚 Documentation
+
 - New guide added
 - API docs updated
 
 ## ⚡ Performance
+
 - Optimization 1
 - Improvement 1
 
 ## 🔧 Maintenance
+
 - Dependency updates
 - Internal improvements
 
 ## ⚠️ Breaking Changes
+
 - Breaking change 1 (if any)
 - Migration guide: [link]
 
 ## 📦 Upgrade Instructions
+
 1. Step 1
 2. Step 2
 
 ## 🙏 Contributors
+
 Thank you to all contributors!
 
 @contributor1, @contributor2, @contributor3
 
 ## 📝 Full Changelog
+
 https://github.com/SolanaRemix/SmartContractAudit/compare/v1.1.0...v1.2.0
 ```
 
@@ -410,9 +451,8 @@ If critical issues discovered post-release:
 
 - [RELEASE.md](../RELEASE.md) - Current release checklist
 - [GOVERNANCE.md](../GOVERNANCE.md) - Release authority
-- [SECURITY.md](../SECURITY.md) - Security process
-=======
-This document describes the release process for CyberAi, including planning, testing, deployment, and communication.
+- # [SECURITY.md](../SECURITY.md) - Security process
+  This document describes the release process for CyberAi, including planning, testing, deployment, and communication.
 
 ## Release Types
 
@@ -425,6 +465,7 @@ We follow [Semantic Versioning 2.0.0](https://semver.org/):
 - **PATCH** (0.0.X): Bug fixes, backward compatible
 
 **Examples**:
+
 - `v1.0.0` → `v2.0.0`: Breaking API changes
 - `v1.0.0` → `v1.1.0`: New scan rules added
 - `v1.0.0` → `v1.0.1`: Bug fix in parser
@@ -448,12 +489,14 @@ We follow [Semantic Versioning 2.0.0](https://semver.org/):
 ### Roadmap Management
 
 **Public Roadmap**:
+
 - GitHub Projects board
 - Quarterly planning documents
 - Community input welcomed
 - No guarantees on timeline
 
 **Priority Criteria**:
+
 1. Security fixes (highest)
 2. Breaking bugs
 3. Community-requested features
@@ -465,6 +508,7 @@ We follow [Semantic Versioning 2.0.0](https://semver.org/):
 See [RELEASE.md](../RELEASE.md) for detailed checklist.
 
 **Summary**:
+
 - [ ] All planned features merged
 - [ ] Tests passing
 - [ ] Security scans clean
@@ -479,12 +523,14 @@ See [RELEASE.md](../RELEASE.md) for detailed checklist.
 ### Pre-Release Testing
 
 **Automated Tests**:
+
 - Unit tests: 100% pass required
 - Integration tests: 100% pass required
 - Security scans: No critical/high issues
 - Linting: All checks pass
 
 **Manual Testing**:
+
 - Smoke tests on major workflows
 - Test installations on major platforms
 - Verify documentation accuracy
@@ -493,6 +539,7 @@ See [RELEASE.md](../RELEASE.md) for detailed checklist.
 ### Beta Testing
 
 **For Major/Minor Releases**:
+
 1. **Beta Release**: 2 weeks before GA
 2. **Beta Testers**: Partners, community volunteers
 3. **Feedback Period**: 1-2 weeks
@@ -527,21 +574,26 @@ npm version major|minor|patch
 ### 3. CHANGELOG Update
 
 Format:
+
 ```markdown
 ## [X.Y.Z] - YYYY-MM-DD
 
 ### Added
+
 - New feature 1 (#123)
 - New feature 2 (#456)
 
 ### Changed
+
 - Updated dependency X to v2.0 (#789)
 
 ### Fixed
+
 - Bug fix 1 (#234)
 - Bug fix 2 (#567)
 
 ### Security
+
 - Security fix for vulnerability (#890)
 ```
 
@@ -584,6 +636,7 @@ git push origin vX.Y.Z
 ### 7. GitHub Release
 
 **Draft Release**:
+
 1. Go to GitHub Releases
 2. Click "Draft a new release"
 3. Select tag: vX.Y.Z
@@ -595,6 +648,7 @@ git push origin vX.Y.Z
 9. Save as draft
 
 **Review**:
+
 - All maintainers review
 - Final approval needed
 - Publish when ready
@@ -602,11 +656,13 @@ git push origin vX.Y.Z
 ### 8. Publish Packages
 
 **npm** (if applicable):
+
 ```bash
 npm publish
 ```
 
 **Docker**:
+
 ```bash
 docker build -t cyberai/scanner:vX.Y.Z .
 docker push cyberai/scanner:vX.Y.Z
@@ -624,6 +680,7 @@ docker push cyberai/scanner:latest
 ### 10. Announcements
 
 **Channels**:
+
 1. GitHub Discussions (pinned)
 2. GitHub Release published
 3. Social media (Twitter, LinkedIn)
@@ -632,10 +689,12 @@ docker push cyberai/scanner:latest
 6. Blog post (for major releases)
 
 **Template**:
+
 ```markdown
 🎉 CyberAi vX.Y.Z Released!
 
 Highlights:
+
 - [Major feature 1]
 - [Major feature 2]
 - [Security improvements]
@@ -653,12 +712,14 @@ Thank you to all contributors! 🙏
 ### Monitoring
 
 **First 24 Hours**:
+
 - Watch GitHub issues for bug reports
 - Monitor social media mentions
 - Check download/install metrics
 - Verify CI/CD integrations work
 
 **First Week**:
+
 - Address critical bugs immediately
 - Collect feedback
 - Update FAQ if needed
@@ -667,6 +728,7 @@ Thank you to all contributors! 🙏
 ### Hotfix Process
 
 **For Critical Bugs**:
+
 1. Create hotfix branch from release tag
 2. Fix bug, add test
 3. Update version (patch bump)
@@ -684,6 +746,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 ### Retrospective
 
 **Within 1 Week After Release**:
+
 - Team retrospective meeting
 - What went well?
 - What could improve?
@@ -695,12 +758,14 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 ### Pre-Release
 
 **2 Weeks Before**:
+
 - Announce upcoming release
 - Highlight major changes
 - Call for testing volunteers
 - Feature freeze announcement
 
 **1 Week Before**:
+
 - Beta release (if applicable)
 - Reminder of upcoming release
 - Known issues documented
@@ -708,6 +773,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 ### Release Day
 
 **Announcements**:
+
 - GitHub Release published
 - Discussion post
 - Social media
@@ -715,6 +781,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 - Community channels
 
 **Content**:
+
 - What's new
 - Breaking changes (if any)
 - Installation instructions
@@ -724,6 +791,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 ### Post-Release
 
 **Follow-Up**:
+
 - Thank community for feedback
 - Address questions
 - Hotfix announcements if needed
@@ -734,6 +802,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 ### Release Manager
 
 **Responsibilities**:
+
 - Coordinate release process
 - Ensure checklist completion
 - Make go/no-go decisions
@@ -764,6 +833,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 - **Older Versions**: Community support only
 
 **Example**:
+
 - v2.0.0 released: Full support
 - v1.x.x: Security fixes until v2.1.0
 - v0.x.x: No official support
@@ -771,6 +841,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 ### End of Life
 
 **6 Months Notice**:
+
 - Announce EOL date
 - Encourage upgrades
 - Document migration path
@@ -781,6 +852,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 ### Security Releases
 
 **Process**:
+
 1. Fix developed privately
 2. Coordinated disclosure timeline
 3. Release prepared in private
@@ -789,6 +861,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 6. Disclosure follows responsible timeline
 
 **Timeline**:
+
 - Critical: 7 days target
 - High: 14 days target
 - Coordinated with security researchers
@@ -796,6 +869,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 ### Rollback Plan
 
 **If Major Issues Discovered**:
+
 1. Assess severity
 2. Communicate issue immediately
 3. Prepare hotfix or rollback
@@ -803,6 +877,7 @@ git tag -a vX.Y.Z+1 -m "Hotfix for critical bug"
 5. Post-mortem and prevention
 
 **Rollback Steps**:
+
 ```bash
 # Unpublish bad version (npm)
 npm unpublish @cyberai/cli@vX.Y.Z
@@ -819,11 +894,13 @@ docker push cyberai/scanner:latest
 **Format**: v2026.01.01 (YYYY.MM.DD)
 
 **Benefits**:
+
 - Clear age of release
 - Predictable schedule
 - Easy mental model
 
 **Still Use SemVer for Minor/Patch**:
+
 - v2026.01.01 (January 1, 2026 release)
 - v2026.01.02 (patch)
 - v2026.02.00 (minor, February update)
@@ -840,7 +917,8 @@ docker push cyberai/scanner:latest
 **Release Questions**: GitHub Discussions  
 **Release Manager**: Current maintainer rotation  
 **Emergency**: security@cyberai.network
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10
 
 ---
 
@@ -876,9 +954,10 @@ See [RELEASE.md](../RELEASE.md) for detailed procedures.
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
-**Next Major Release**: v2026.01.01  
-**Current Version**: Check GitHub releases
->>>>>>> origin/pr10
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+> > > > > > >
+> > > > > > > **Next Major Release**: v2026.01.01  
+> > > > > > > **Current Version**: Check GitHub releases
+> > > > > > > origin/pr10

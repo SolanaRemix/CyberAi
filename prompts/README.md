@@ -11,6 +11,7 @@ This directory contains operator-grade instruction prompts for agents in the Cyb
 ## Prompt Guidelines
 
 Prompts should be:
+
 - Clear and unambiguous
 - Include context about the CyberAi ecosystem
 - Specify expected inputs and outputs
@@ -22,6 +23,7 @@ Prompts should be:
 Prompts are referenced in agent contracts and can be loaded dynamically by agents at runtime.
 
 Example:
+
 ```json
 {
   "prompt": "prompts/agents/security-audit.md",

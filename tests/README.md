@@ -47,9 +47,9 @@ describe('AgentManager', () => {
       id: 'test-agent',
       name: 'Test Agent',
       type: 'security',
-      capabilities: ['scan']
+      capabilities: ['scan'],
     };
-    
+
     manager.register(agent);
     expect(manager.getAgent('test-agent')).toEqual(agent);
   });

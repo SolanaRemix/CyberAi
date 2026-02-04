@@ -14,18 +14,21 @@ Welcome to the **CuberAi SmartBrain Orchestration System**! This guide will help
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/SolanaRemix/SmartContractAudit.git
    cd SmartContractAudit
    ```
 
 2. **Set up environment**
+
    ```bash
    cp .env.example .env
    # Edit .env and ensure DRY_RUN=true for testing
    ```
 
 3. **Make scripts executable**
+
    ```bash
    chmod +x scripts/*.sh
    ```

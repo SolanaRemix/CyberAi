@@ -2,11 +2,11 @@
 
 /**
  * CuberAi Node Bot Template
- * 
+ *
  * A template for creating automated bot workflows with SmartBrain integration.
  * This bot is designed to work with the SmartBrain orchestrator and follows
  * conservative safety practices.
- * 
+ *
  * @requires - Node.js 16+
  * @safety - Defaults to DRY_RUN mode for non-destructive testing
  */
@@ -34,10 +34,10 @@ class BotLogger {
   log(level, message) {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}][${this.agentName}][${level}] ${message}\n`;
-    
+
     // Write to console
     console.log(logEntry.trim());
-    
+
     // Append to SmartBrain log
     try {
       fs.appendFileSync(CONFIG.LOG_FILE, logEntry);
@@ -46,10 +46,18 @@ class BotLogger {
     }
   }
 
-  info(message) { this.log('INFO', message); }
-  warn(message) { this.log('WARN', message); }
-  error(message) { this.log('ERROR', message); }
-  alert(message) { this.log('ALERT', message); }
+  info(message) {
+    this.log('INFO', message);
+  }
+  warn(message) {
+    this.log('WARN', message);
+  }
+  error(message) {
+    this.log('ERROR', message);
+  }
+  alert(message) {
+    this.log('ALERT', message);
+  }
 }
 
 /**
@@ -94,7 +102,7 @@ class NodeBot {
    */
   async healthCheck() {
     this.logger.info('Starting health check...');
-    
+
     // Check if master.sh exists
     const masterScript = path.join(CONFIG.ROOT_DIR, 'scripts', 'master.sh');
     if (!fs.existsSync(masterScript)) {
@@ -123,7 +131,7 @@ class NodeBot {
 
       // Add your bot logic here
       this.logger.info('Bot workflow execution would go here');
-      
+
       // Example: Call SmartBrain orchestrator
       // this.safeExec('bash scripts/master.sh health');
 

@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+
 # Snapshot Integration
 
 ## Overview
@@ -45,7 +46,9 @@ Once created, the space will be accessible at:
 ```
 
 #### Voting Settings
+
 =======
+
 # Snapshot Space Setup & Strategies
 
 ## Overview
@@ -79,7 +82,8 @@ Snapshot is a gasless, off-chain voting platform used by SmartContractAudit DAO 
 ```
 
 ### Proposal Settings
->>>>>>> origin/pr9
+
+> > > > > > > origin/pr9
 
 ```json
 {
@@ -95,6 +99,7 @@ Snapshot is a gasless, off-chain voting platform used by SmartContractAudit DAO 
 ```
 
 **Explanation**:
+
 - `delay`: 0 seconds (voting starts immediately)
 - `period`: 604800 seconds (7 days)
 - `type`: basic (yes/no/abstain)
@@ -114,6 +119,7 @@ Snapshot is a gasless, off-chain voting platform used by SmartContractAudit DAO 
 ```
 
 **Requirements to create proposals**:
+
 - Minimum 100 tokens
 - Prevents spam proposals
 
@@ -123,7 +129,7 @@ Snapshot is a gasless, off-chain voting platform used by SmartContractAudit DAO 
 
 **Primary Strategy**: ERC20 balance snapshot
 
-```json
+````json
 {
 =======
   },
@@ -240,13 +246,14 @@ gh issue list --state all --limit 1000 \
 
 # Get code reviews
 gh api /repos/OWNER/REPO/pulls/PR_NUMBER/reviews
-```
+````
 
 **Timestamp:** All data uses GitHub's timestamps (UTC)
 
 ### Security Contributions
 
 **Private vulnerability reports:**
+
 - Collected separately from security@cyberai.network
 - Manually scored by security team
 - Privacy maintained (no public disclosure)
@@ -254,6 +261,7 @@ gh api /repos/OWNER/REPO/pulls/PR_NUMBER/reviews
 ### Community Contributions
 
 **External contributions:**
+
 - Tutorials and blog posts (self-reported + verified)
 - Event organization (documented in issues)
 - Social media promotion (significant only)
@@ -308,6 +316,7 @@ gh api /repos/OWNER/REPO/pulls/PR_NUMBER/reviews
 ```
 
 <<<<<<< HEAD
+
 ### Multi-Strategy (Advanced)
 
 Can combine multiple strategies:
@@ -349,6 +358,7 @@ Can combine multiple strategies:
 ```
 
 **Supports**:
+
 - Token holdings
 - Delegated voting power
 - LP token holdings (if applicable)
@@ -363,9 +373,9 @@ For complex voting power calculations:
 function calculateVotingPower(address) {
   const tokens = getTokenBalance(address);
   const contributionScore = getContributionScore(address);
-  
+
   // 50% from tokens, 50% from contributions
-  return (tokens * 0.5) + (contributionScore * 0.5);
+  return tokens * 0.5 + contributionScore * 0.5;
 }
 ```
 
@@ -374,20 +384,22 @@ function calculateVotingPower(address) {
 ### Governance Proposals
 
 **Format**:
+
 ```markdown
 # [Proposal Title]
+
 =======
-        "symbol": "SCA",
-        "strategies": []
-      }
-    }
-  ],
-  "validation": {
-    "name": "basic",
-    "params": {
-      "minScore": 1
-    }
-  }
+"symbol": "SCA",
+"strategies": []
+}
+}
+],
+"validation": {
+"name": "basic",
+"params": {
+"minScore": 1
+}
+}
 }
 ```
 
@@ -459,6 +471,7 @@ Bonus voting power based on contribution history.
 ```
 
 **Calculation**:
+
 - Pull contribution scores from API
 - Contribution score / 100 = bonus votes
 - Capped at 20% of token-based voting power
@@ -505,21 +518,26 @@ Bonus for staked tokens.
 
 ```markdown
 Title: [Proposal Name]
->>>>>>> origin/pr9
+
+> > > > > > > origin/pr9
 
 ## Summary
+
 Brief description of the proposal
 
 ## Motivation
+
 Why this proposal is needed
 
 ## Specification
+
 <<<<<<< HEAD
 Detailed proposal implementation
 
 ## Voting Options
+
 - For: Support the proposal
-- Against: Oppose the proposal  
+- Against: Oppose the proposal
 - Abstain: No opinion
 ```
 
@@ -586,6 +604,7 @@ Detailed proposal implementation
 ### For Token Holders
 
 1. **Visit Snapshot Space**
+
    ```
    https://snapshot.org/#/smartcontractaudit.eth
    ```
@@ -613,6 +632,7 @@ Detailed proposal implementation
 ### Voting Power
 
 Your voting power is determined by:
+
 - Token holdings at snapshot block
 - Delegated tokens (if any)
 - Contribution score (if applicable)
@@ -643,6 +663,7 @@ Don't have time to vote? Delegate to someone you trust:
 ### Accepting Delegations
 
 To accept delegations:
+
 - Publicly share your address
 - Communicate voting philosophy
 - Vote regularly and responsibly
@@ -653,6 +674,7 @@ To accept delegations:
 ### What Makes a Good Proposal?
 
 ✅ **Good proposals**:
+
 - Clear and concise
 - Well-researched
 - Community support
@@ -661,6 +683,7 @@ To accept delegations:
 - Define success metrics
 
 ❌ **Poor proposals**:
+
 - Vague or unclear
 - No community discussion
 - Unrealistic or impossible
@@ -674,31 +697,41 @@ To accept delegations:
 # [Title]: [Brief Description]
 
 ## Summary
+
 One paragraph summary of the proposal.
 
 ## Motivation
+
 Why should we implement this? What problem does it solve?
 
 ## Specification
+
 ### Overview
+
 High-level description
 
 ### Details
+
 Specific implementation details
 
 ### Timeline
+
 When and how will this be implemented?
 
 ### Cost
+
 Resource requirements (funding, time, people)
 
 ## Risks & Considerations
+
 What could go wrong? Alternative approaches?
 
 ## Success Metrics
+
 How will we measure success?
 
 ## Voting Options
+
 - **For**: Approve and implement the proposal
 - **Against**: Reject the proposal
 - **Abstain**: No opinion
@@ -729,6 +762,7 @@ For urgent matters:
 **Current**: No quorum (may be added later)
 
 **Potential future requirements**:
+
 - Minimum 10% of total supply votes
 - Scales with proposal importance
 - Adjusted via governance proposal
@@ -773,12 +807,14 @@ After proposal passes:
 ### Common Scams
 
 ⚠️ **Watch out for**:
+
 - Fake Snapshot spaces
 - Phishing sites mimicking Snapshot
 - Malicious proposals requesting approvals
 - Impersonators claiming to be team
 
 ✅ **Verify**:
+
 - Official Snapshot URL: `snapshot.org`
 - Correct space name
 - Team announcements on GitHub
@@ -840,24 +876,29 @@ Questions about Snapshot or governance?
 
 **Snapshot Space**: Not yet created
 
-**Last Updated**: 2026-01-01
-=======
+# **Last Updated**: 2026-01-01
+
 Technical details and implementation
 
 ## Benefits
+
 Expected positive outcomes
 
 ## Risks
+
 Potential downsides or concerns
 
 ## Timeline
+
 Implementation schedule
 
 ## Voting Options
+
 - For
 - Against
 - Abstain
-```
+
+````
 
 ### Financial Proposal
 
@@ -884,7 +925,7 @@ How progress will be reported
 - Approve
 - Reject
 - Abstain
-```
+````
 
 ## Creating Proposals
 
@@ -958,6 +999,7 @@ How progress will be reported
 4. Sign message
 
 **As a Delegate**:
+
 - Act in best interest of delegators
 - Provide reasoning for votes
 - Stay informed on proposals
@@ -968,6 +1010,7 @@ How progress will be reported
 ### Space Settings
 
 Admins can modify:
+
 - Space information
 - Voting strategies
 - Validation rules
@@ -977,6 +1020,7 @@ Admins can modify:
 ### Proposal Moderation
 
 Admins can:
+
 - Mark proposals as spam
 - Close malicious proposals
 - Update proposal categories
@@ -985,6 +1029,7 @@ Admins can:
 ### Validation Rules
 
 Current validation:
+
 - Minimum 1 token to vote
 - Minimum 1000 tokens to propose
 - Account age > 30 days (if using GitHub)
@@ -1008,7 +1053,7 @@ jobs:
     steps:
       - name: Parse issue
         # Extract proposal details from issue
-      
+
       - name: Create Snapshot proposal
         # Use Snapshot API to create proposal
 ```
@@ -1053,7 +1098,7 @@ const query = `
 const response = await fetch('https://hub.snapshot.org/graphql', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ query })
+  body: JSON.stringify({ query }),
 });
 ```
 
@@ -1100,7 +1145,7 @@ await client.proposal(web3Provider, address, {
   end: Math.floor(Date.now() / 1000) + 604800, // 7 days
   snapshot: blockNumber,
   plugins: JSON.stringify({}),
-  app: 'smartcontractaudit'
+  app: 'smartcontractaudit',
 });
 ```
 
@@ -1114,6 +1159,7 @@ await client.proposal(web3Provider, address, {
 ## Support
 
 For help with Snapshot:
+
 - **General**: GitHub Discussions
 - **Technical**: dao@cuberai.example
 - **Snapshot Support**: discord.snapshot.org
@@ -1121,22 +1167,26 @@ For help with Snapshot:
 ---
 
 Last updated: 2026-01-01
->>>>>>> origin/pr9
-=======
+
+> > > > > > > # origin/pr9
+
 ## Address Collection
 
 ### How Addresses are Collected
 
 **Option 1: GitHub Profile**
+
 - Add address to GitHub profile bio or special field
 - Format: `Wallet: 0x1234...` or similar
 
 **Option 2: Registration Issue**
+
 - Open issue with specific template
 - Provide address + GitHub username
 - Sign message to prove ownership
 
 **Option 3: Later Registration**
+
 - Can register address even after snapshot
 - Allocation reserved for 12 months
 - Claim when ready
@@ -1213,6 +1263,7 @@ Community members can:
 ### Valid Appeal Reasons
 
 ✅ **Will consider:**
+
 - Contributions not counted in snapshot
 - Calculation errors (mathematical)
 - Misclassification of contribution type
@@ -1220,6 +1271,7 @@ Community members can:
 - Special circumstances (with evidence)
 
 ❌ **Will NOT consider:**
+
 - Disagreement with point values
 - Contributions after snapshot date
 - Requests to change methodology retroactively
@@ -1228,12 +1280,14 @@ Community members can:
 ### Appeal Outcomes
 
 **Approved:**
+
 - Score recalculated
 - Allocation updated
 - Merkle tree regenerated (if needed)
 - Announced publicly
 
 **Denied:**
+
 - Explanation provided
 - Original score stands
 - Can dispute in governance (if persistent)
@@ -1274,7 +1328,7 @@ Community members can:
 **Day 35:** Appeal period ends  
 **Day 40:** Final allocations published  
 **Day 45:** Merkle tree generated  
-**Day 50:** Claiming opens  
+**Day 50:** Claiming opens
 
 ## Technical Details
 
@@ -1284,6 +1338,7 @@ Community members can:
 **Blockchain data:** Uses block height (more deterministic)
 
 **Example:**
+
 - GitHub: 2026-01-01T00:00:00Z
 - Solana: Block 150,000,000
 - Ethereum: Block 18,000,000
@@ -1333,7 +1388,7 @@ A: Only if they choose to share. Merkle tree allows private claiming.
 ## Contact
 
 - **Questions**: GitHub Discussions with tag `dao-snapshot`
-- **Appeals**: GitHub Issues with tag `dao-snapshot-appeal`  
+- **Appeals**: GitHub Issues with tag `dao-snapshot-appeal`
 - **Technical Issues**: GitHub Issues with tag `dao-technical`
 
 ---
@@ -1341,4 +1396,5 @@ A: Only if they choose to share. Merkle tree allows private claiming.
 **Last Updated**: 2026-01-01  
 **Next Snapshot**: TBD (announced 14+ days in advance)  
 **Current Phase**: Planning
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10

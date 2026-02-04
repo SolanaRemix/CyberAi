@@ -12,14 +12,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 
 ## Support Tiers by Partnership Level
 
-| Tier | Response Time | Support Channels | Hours | Uptime SLA |
-|------|---------------|------------------|-------|------------|
-| **Community** | Best effort | GitHub Issues | Business hours | None |
-| **Supporter** | 5 business days | GitHub Issues, Email | Business hours | None |
-| **Bronze** | 48 hours | Email, GitHub | Business hours | None |
-| **Silver** | 24 hours | Email, Video | Business + extended | 99% |
-| **Gold** | 12 hours | Email, Video, Slack | 12×6 | 99.5% |
-| **Platinum** | 4 hours | All channels, dedicated | 24×7 | 99.9% |
+| Tier          | Response Time   | Support Channels        | Hours               | Uptime SLA |
+| ------------- | --------------- | ----------------------- | ------------------- | ---------- |
+| **Community** | Best effort     | GitHub Issues           | Business hours      | None       |
+| **Supporter** | 5 business days | GitHub Issues, Email    | Business hours      | None       |
+| **Bronze**    | 48 hours        | Email, GitHub           | Business hours      | None       |
+| **Silver**    | 24 hours        | Email, Video            | Business + extended | 99%        |
+| **Gold**      | 12 hours        | Email, Video, Slack     | 12×6                | 99.5%      |
+| **Platinum**  | 4 hours         | All channels, dedicated | 24×7                | 99.9%      |
 
 **Business Hours**: Monday-Friday, 9 AM - 5 PM UTC  
 **Extended Hours**: Monday-Friday, 6 AM - 10 PM UTC  
@@ -32,6 +32,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Purpose**: Bug reports, feature requests, general questions
 
 **How to Use**:
+
 1. Search existing issues first
 2. Use issue templates
 3. Provide reproduction steps
@@ -40,6 +41,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Response Time**: Varies by tier (see table above)
 
 **Best For**:
+
 - Bug reports
 - Feature requests
 - Public discussions
@@ -50,6 +52,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Email**: support@cuberai.example
 
 **Include in Request**:
+
 - Partnership tier
 - Organization name
 - Detailed description
@@ -60,6 +63,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Response Time**: Per tier SLA
 
 **Best For**:
+
 - Private issues
 - Account questions
 - Billing inquiries
@@ -72,11 +76,13 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Duration**: 30-60 minutes per session
 
 **Frequency**:
+
 - **Silver**: Monthly check-ins available
 - **Gold**: Bi-weekly check-ins
 - **Platinum**: Weekly + on-demand
 
 **Best For**:
+
 - Complex troubleshooting
 - Integration planning
 - Training sessions
@@ -87,6 +93,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Access**: Provided upon partnership activation
 
 **Features**:
+
 - Direct messaging with support team
 - File sharing
 - Screen sharing
@@ -95,6 +102,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Response Time**: Per tier SLA during support hours
 
 **Best For**:
+
 - Quick questions
 - Real-time collaboration
 - Ongoing projects
@@ -103,6 +111,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 ### Dedicated Support Engineer (Platinum)
 
 **Features**:
+
 - Named engineer assigned to your account
 - Proactive monitoring
 - Regular check-ins
@@ -112,6 +121,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Availability**: 24×7 for critical issues
 
 **Best For**:
+
 - Enterprise deployments
 - Mission-critical integrations
 - Custom development
@@ -134,12 +144,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Definition**: System down, major security vulnerability, blocking production deployment
 
 **Examples**:
+
 - Core functionality unavailable
 - Data loss or corruption
 - Security breach or vulnerability
 - Complete service outage
 
 **Response Times**:
+
 - **Silver**: 4 hours
 - **Gold**: 2 hours
 - **Platinum**: 1 hour
@@ -151,12 +163,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Definition**: Significant feature impairment, workaround available
 
 **Examples**:
+
 - Major feature not working
 - Performance degradation
 - Integration failures
 - Incorrect results
 
 **Response Times**:
+
 - **Silver**: 12 hours
 - **Gold**: 6 hours
 - **Platinum**: 2 hours
@@ -168,12 +182,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Definition**: Minor feature issues, cosmetic problems
 
 **Examples**:
+
 - UI/UX issues
 - Documentation errors
 - Minor bugs with workarounds
 - Feature enhancements
 
 **Response Times**:
+
 - **Silver**: 24 hours
 - **Gold**: 12 hours
 - **Platinum**: 4 hours
@@ -185,12 +201,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Definition**: Questions, minor issues, feature requests
 
 **Examples**:
+
 - General questions
 - Documentation requests
 - Nice-to-have features
 - Best practice advice
 
 **Response Times**:
+
 - **Bronze**: 48 hours
 - **Silver**: 24 hours
 - **Gold**: 12 hours
@@ -205,6 +223,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Measured**: Monthly uptime percentage for core services
 
 **Core Services**:
+
 - GitHub Actions workflows
 - API endpoints (if applicable)
 - Documentation site
@@ -239,15 +258,18 @@ This document outlines service level agreements (SLAs) and support policies for 
 ### Planned Maintenance
 
 **Notice Period**:
+
 - **Standard Maintenance**: 7 days advance notice
 - **Emergency Maintenance**: As soon as possible
 
 **Windows**:
+
 - **Preferred**: Weekends, outside business hours
 - **Duration**: Typically 1-4 hours
 - **Frequency**: Monthly or as needed
 
 **Notification Channels**:
+
 - Email to partners
 - Status page updates
 - Slack/Discord announcements (if applicable)
@@ -257,6 +279,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Monitoring**: 24/7 automated monitoring
 
 **Response Process**:
+
 1. **Detection**: Automated or reported
 2. **Triage**: Assess severity and impact
 3. **Communication**: Notify affected partners
@@ -264,6 +287,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 5. **Post-Mortem**: Document and prevent recurrence
 
 **Status Updates**:
+
 - **Status Page**: Real-time status
 - **Email**: For affected partners
 - **Social**: Major incidents only
@@ -279,18 +303,19 @@ This document outlines service level agreements (SLAs) and support policies for 
 ✅ Include reproduction steps  
 ✅ Sanitize sensitive data  
 ✅ Use appropriate severity level  
-✅ Follow up when asked  
+✅ Follow up when asked
 
 **Don't**:
 ❌ Open duplicate tickets  
 ❌ Mark everything as critical  
 ❌ Share private keys/secrets  
 ❌ Expect immediate responses for low priority  
-❌ Use multiple channels simultaneously  
+❌ Use multiple channels simultaneously
 
 ### Information to Include
 
 **For Bug Reports**:
+
 - Steps to reproduce
 - Expected behavior
 - Actual behavior
@@ -299,6 +324,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 - Screenshots/logs
 
 **For Integration Issues**:
+
 - Integration type
 - Configuration files (sanitized)
 - Error logs
@@ -306,6 +332,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 - Attempted solutions
 
 **For Performance Issues**:
+
 - Specific operation
 - Performance metrics
 - Comparison (before/after)
@@ -330,6 +357,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Level 4**: Executive contact (Platinum only)
 
 **Include**:
+
 - Original ticket number
 - Timeline of issue
 - Business impact
@@ -340,6 +368,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 ### Training (All Tiers, Fee-Based)
 
 **Team Training**: $2,000 per session
+
 - 2-hour interactive training
 - Up to 20 participants
 - Custom curriculum
@@ -347,6 +376,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 - Recording provided
 
 **Workshops**: $5,000 per day
+
 - Full-day intensive workshop
 - Hands-on exercises
 - Custom to your use case
@@ -355,12 +385,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 ### Professional Services (Gold+)
 
 **Integration Assistance**: $200/hour
+
 - Custom integration help
 - Code review
 - Best practices guidance
 - Performance optimization
 
 **Custom Development**: Starting at $10,000
+
 - Custom features
 - Plugin development
 - Workflow customization
@@ -373,6 +405,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Cost**: Travel + daily rate
 
 **Includes**:
+
 - In-person technical support
 - Training and workshops
 - Integration assistance
@@ -398,7 +431,7 @@ To receive full SLA benefits:
 ✅ **Follow Best Practices**: Per our documentation  
 ✅ **Provide Information**: Complete details for support requests  
 ✅ **Respond Timely**: To our questions and requests  
-✅ **Test Updates**: In non-production first  
+✅ **Test Updates**: In non-production first
 
 ## Monitoring and Reporting
 
@@ -407,6 +440,7 @@ To receive full SLA benefits:
 **URL**: [TO BE ANNOUNCED]
 
 **Shows**:
+
 - Current system status
 - Incident history
 - Scheduled maintenance
@@ -417,6 +451,7 @@ To receive full SLA benefits:
 ### Monthly Reports (Silver+)
 
 **Includes**:
+
 - Uptime statistics
 - Support ticket summary
 - Resolution times
@@ -428,6 +463,7 @@ To receive full SLA benefits:
 ### Quarterly Business Reviews (Gold+)
 
 **Agenda**:
+
 - Partnership performance
 - Usage analysis
 - Support review
@@ -447,6 +483,7 @@ We continuously improve our support:
 **Feedback**: Always welcome via partners@cuberai.example
 
 **We track**:
+
 - Response times
 - Resolution times
 - Customer satisfaction

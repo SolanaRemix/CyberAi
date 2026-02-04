@@ -2,11 +2,11 @@ name: Validate Contracts
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
       - 'contracts/**'
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
       - 'contracts/**'
   workflow_dispatch:
@@ -17,7 +17,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6

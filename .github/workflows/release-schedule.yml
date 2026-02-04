@@ -3,8 +3,8 @@ name: Release Schedule
 on:
   schedule:
     # Scheduled for 2026-01-01 at 00:00 UTC
-    - cron: '0 0 1 1 *'  # January 1st at midnight UTC
-  
+    - cron: '0 0 1 1 *' # January 1st at midnight UTC
+
   workflow_dispatch:
     inputs:
       release_version:
@@ -32,17 +32,17 @@ jobs:
   prepare-release:
     name: Prepare Release
     runs-on: ubuntu-latest
-    
+
     outputs:
       version: ${{ steps.version.outputs.version }}
       changelog: ${{ steps.changelog.outputs.changelog }}
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          fetch-depth: 0  # Full history for changelog
-      
+          fetch-depth: 0 # Full history for changelog
+
       - name: Determine release version
         id: version
         run: |
@@ -53,11 +53,11 @@ jobs:
           fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "📦 Release version: $VERSION"
-      
+
       - name: Validate release readiness
         run: |
           echo "🔍 Validating release readiness..."
-          
+
           # Check for required files
           REQUIRED_FILES=(
             "README.md"
@@ -67,14 +67,14 @@ jobs:
             "GOVERNANCE.md"
             "RELEASE.md"
           )
-          
+
           MISSING_FILES=()
           for file in "${REQUIRED_FILES[@]}"; do
             if [ ! -f "$file" ]; then
               MISSING_FILES+=("$file")
             fi
           done
-          
+
           if [ ${#MISSING_FILES[@]} -gt 0 ]; then
             echo "❌ Missing required files:"
             printf '  - %s\n' "${MISSING_FILES[@]}"
@@ -83,7 +83,7 @@ jobs:
           else
             echo "✅ All required files present"
           fi
-          
+
           # Check for uncommitted changes
           if [ -n "$(git status --porcelain)" ]; then
             echo "⚠️  Warning: Uncommitted changes detected"
@@ -91,15 +91,15 @@ jobs:
           else
             echo "✅ No uncommitted changes"
           fi
-      
+
       - name: Generate changelog
         id: changelog
         run: |
           echo "📝 Generating changelog..."
-          
+
           # Get list of commits since last release (or all if no previous release)
           LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-          
+
           if [ -z "$LAST_TAG" ]; then
             echo "📋 Generating initial changelog (no previous release)"
             COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges)
@@ -107,34 +107,34 @@ jobs:
             echo "📋 Generating changelog since $LAST_TAG"
             COMMITS=$(git log $LAST_TAG..HEAD --pretty=format:"- %s (%h)" --no-merges)
           fi
-          
+
           # Create changelog content
           cat > CHANGELOG_DRAFT.md << 'CHANGELOG_EOF'
           # Release ${{ steps.version.outputs.version }}
-          
+
           **Release Date**: ${{ env.RELEASE_DATE }}
-          
+
           ## Overview
-          
+
           This release introduces comprehensive governance, DAO infrastructure, partner documentation, 
           GitAntivirus workflow enhancements, and web control panel scaffold for SmartContractAudit.
-          
+
           ## ✨ New Features
-          
+
           ### Governance Framework
           - Complete governance model and documentation
           - Contribution guidelines with DCO requirement
           - Code of Conduct (Contributor Covenant)
           - Comprehensive security policy
           - Privacy and data retention policies
-          
+
           ### DAO Infrastructure
           - DAO documentation and governance flow
           - Contributor eligibility and scoring system
           - Merkle tree airdrop infrastructure
           - Snapshot integration documentation
           - Token claiming process documentation
-          
+
           ### Partner Program
           - Comprehensive partner documentation
           - Tiered sponsorship structure (Supporter to Platinum)
@@ -142,121 +142,121 @@ jobs:
           - SLA and support documentation
           - Use cases and success stories
           - Press kit and brand assets
-          
+
           ### Automation & Safety
           - Enhanced GitAntivirus workflow with dry-run defaults
           - Release schedule workflow
           - Conservative repair configuration
           - Automated artifact management
           - Safety-first workflow design
-          
+
           ### Web Control Panel
           - GitHub Pages scaffold
           - Dashboard for monitoring runs
           - Billing integration placeholder (Stripe + Cash App)
           - Documentation for publishing
-          
+
           ### Additional Files
           - Apache-2.0 LICENSE
           - FUNDING.yml for sponsors
           - TRIO.md (Product · Governance · Security summary)
           - Resume/project overview
           - Release process documentation
-          
+
           ## 🔒 Security
-          
+
           ### Safety Features
           - **DRY_RUN**: Enabled by default in all workflows
           - **BOT_PINGS_ENABLED**: Disabled by default
           - **ALLOWLIST_ORGS**: Empty by default (restrictive)
           - **Permissions**: Minimal required permissions only
-          
+
           ### Security Practices
           - No secrets included in any files
           - All destructive operations require explicit opt-in
           - Workflows run in dry-run mode unless overridden
           - Write operations require scoped GitHub token or App
           - Manual approval required for releases
-          
+
           ## 📚 Documentation
-          
+
           - 10 top-level governance files
           - 6 DAO documentation files
           - 9 partner documentation files
           - Complete technical onboarding guide
           - Release process documentation
-          
+
           ## 🛠️ Developer Experience
-          
+
           - Availability checker script for handle/package names
           - Merkle tree generator for airdrops
           - Sample DAO allocation data
           - Executable scripts with proper permissions
-          
+
           ## ⚠️ Breaking Changes
-          
+
           None. This release is additive and does not modify existing functionality.
-          
+
           ## 📦 Installation
-          
+
           ```bash
           git clone https://github.com/SolanaRemix/SmartContractAudit.git
           cd SmartContractAudit
           ```
-          
+
           ## 🚀 Getting Started
-          
+
           1. Review the [README.md](README.md)
           2. Read [CONTRIBUTING.md](CONTRIBUTING.md) to contribute
           3. Check [SECURITY.md](SECURITY.md) for security practices
           4. Explore [docs/](docs/) for comprehensive documentation
           5. See [GOVERNANCE.md](GOVERNANCE.md) for project governance
-          
+
           ## 📋 Requirements
-          
+
           - Git 2.x+
           - Node.js 20+ (for JavaScript tools)
           - GitHub account
           - Basic command-line knowledge
-          
+
           ## 🤝 Contributing
-          
+
           We welcome contributions! Please see:
           - [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
           - [docs/dao/](docs/dao/) for DAO participation
           - [docs/partners/](docs/partners/) for partnership opportunities
-          
+
           ## 💬 Community
-          
+
           - **GitHub Issues**: Bug reports and features
           - **GitHub Discussions**: Community Q&A
           - **Security**: security@cuberai.example
           - **Partners**: partners@cuberai.example
-          
+
           ## 📜 License
-          
+
           Apache-2.0 - See [LICENSE](LICENSE) for details
-          
+
           ## 🙏 Acknowledgments
-          
+
           Thank you to all contributors and supporters who made this release possible!
-          
+
           ---
-          
+
           **Note**: This is a DRAFT release. Final deployment requires manual approval.
-          
+
           For detailed changes, see the commit history:
           https://github.com/SolanaRemix/SmartContractAudit/commits/${{ steps.version.outputs.version }}
           CHANGELOG_EOF
-          
+
           # Output for use in release notes
           CHANGELOG_CONTENT=$(cat CHANGELOG_DRAFT.md)
           echo "changelog<<CHANGELOG_DELIMITER" >> $GITHUB_OUTPUT
           echo "$CHANGELOG_CONTENT" >> $GITHUB_OUTPUT
           echo "CHANGELOG_DELIMITER" >> $GITHUB_OUTPUT
-          
+
           echo "✅ Changelog generated"
-      
+
       - name: Upload changelog
         uses: actions/upload-artifact@v6
         with:
@@ -268,11 +268,11 @@ jobs:
     name: Create Draft Release
     runs-on: ubuntu-latest
     needs: prepare-release
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-      
+
       - name: Create draft release
         id: create_release
         uses: actions/github-script@v8
@@ -280,9 +280,9 @@ jobs:
           script: |
             const version = '${{ needs.prepare-release.outputs.version }}';
             const isDraft = '${{ github.event.inputs.create_draft || 'true' }}' === 'true';
-            
+
             console.log(`Creating ${isDraft ? 'draft' : 'public'} release ${version}`);
-            
+
             try {
               const release = await github.rest.repos.createRelease({
                 owner: context.repo.owner,
@@ -290,14 +290,14 @@ jobs:
                 tag_name: version,
                 name: `SmartContractAudit ${version}`,
                 body: `# SmartContractAudit ${version}
-            
+
             **Release Date**: ${{ env.RELEASE_DATE }}
             **Status**: ${isDraft ? 'DRAFT - Pending Manual Approval' : 'Released'}
-            
+
             ## 🎉 Highlights
-            
+
             This release introduces comprehensive governance, DAO infrastructure, partner program, and enhanced security workflows.
-            
+
             ### Key Features
             - ✅ Complete governance framework
             - ✅ DAO infrastructure and documentation
@@ -305,56 +305,56 @@ jobs:
             - ✅ GitAntivirus safe workflow (dry-run by default)
             - ✅ Web control panel scaffold
             - ✅ Apache-2.0 license
-            
+
             ### Security
             - 🔒 DRY_RUN enabled by default
             - 🔒 No secrets included
             - 🔒 Non-destructive operations
             - 🔒 Manual approval required
-            
+
             ## 📚 Documentation
-            
+
             Complete documentation for:
             - Governance and contribution
             - DAO participation and airdrops
             - Partner program and sponsorship
             - Security and privacy policies
             - Technical onboarding
-            
+
             ## ⚠️ Important Notes
-            
+
             **This is a ${isDraft ? 'DRAFT' : ''} release and requires:**
             - Manual review and approval before deployment
             - Testing in non-production environment
             - Security review completion
             - Community announcement coordination
-            
+
             **Do NOT deploy to production without:**
             1. Complete security review
             2. Testing all new features
             3. Backup of current state
             4. Approval from maintainers
-            
+
             ## 📦 What's Included
-            
+
             See full changelog in workflow artifacts or commit history for details.
-            
+
             ## 🚀 Getting Started
-            
+
             \`\`\`bash
             git clone https://github.com/SolanaRemix/SmartContractAudit.git
             cd SmartContractAudit
             git checkout ${version}
             \`\`\`
-            
+
             ## 🆘 Support
-            
+
             - **Issues**: GitHub Issues
             - **Security**: security@cuberai.example
             - **Partners**: partners@cuberai.example
-            
+
             ---
-            
+
             *For detailed release checklist, see [RELEASE.md](RELEASE.md)*
             `,
                 draft: isDraft,
@@ -385,7 +385,7 @@ jobs:
                 throw error;
               }
             }
-      
+
       - name: Summary
         if: always()
         run: |

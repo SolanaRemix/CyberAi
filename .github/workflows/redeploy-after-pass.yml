@@ -2,7 +2,7 @@ name: Redeploy After Pass
 
 on:
   workflow_run:
-    workflows: ["CI"]
+    workflows: ['CI']
     types:
       - completed
     branches:
@@ -22,43 +22,43 @@ jobs:
     if: |
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event == 'push'
-    
+
     steps:
       - name: Log deployment trigger
         run: |
           echo "CI workflow passed for: ${{ github.event.workflow_run.head_branch }}"
           echo "Commit SHA: ${{ github.event.workflow_run.head_sha }}"
           echo "Workflow run ID: ${{ github.event.workflow_run.id }}"
-      
+
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build Astro site
         working-directory: site
         run: |
           npm ci
           npm run build
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: 'site/dist'
-      
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      
+
       - name: Log deployment status
         run: |
           echo "Deployment completed"

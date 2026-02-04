@@ -46,25 +46,12 @@
         }
       }
     ],
-    "workflows": [
-      "bootstrap-workflow",
-      "repair-workflow",
-      "code-review",
-      "contract-validation"
-    ]
+    "workflows": ["bootstrap-workflow", "repair-workflow", "code-review", "contract-validation"]
   },
   "requirements": {
     "runtime": "github-copilot",
-    "dependencies": [
-      "openai>=6.0.0",
-      "typescript>=5.0.0"
-    ],
-    "permissions": [
-      "read:code",
-      "write:code",
-      "read:contracts",
-      "write:issues"
-    ]
+    "dependencies": ["openai>=6.0.0", "typescript>=5.0.0"],
+    "permissions": ["read:code", "write:code", "read:contracts", "write:issues"]
   },
   "compliance": {
     "security": {

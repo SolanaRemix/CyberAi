@@ -14,13 +14,13 @@ governance:
   protections:
     business_logic:
       modify: false
-      note: "Do not change core business logic unless explicitly requested."
+      note: 'Do not change core business logic unless explicitly requested.'
     deletions:
       allow: false
-      note: "No file or logic deletions by default."
+      note: 'No file or logic deletions by default.'
     migrations:
       allow: false
-      note: "Schema or data migrations require explicit human approval."
+      note: 'Schema or data migrations require explicit human approval.'
 
 triggers:
   - terminal_mobile

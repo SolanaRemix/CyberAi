@@ -9,11 +9,11 @@ Control your repo from your phone using terminal-style commands inside GitHub PR
 
 ## 🚀 Features
 
-- `/terminal help` — show available commands  
-- `/terminal status` — check PR state  
-- `/terminal merge` — squash merge PR  
-- `/terminal tag <name>` — tag latest commit  
-- `/terminal scan` — run CI scan (stub)  
+- `/terminal help` — show available commands
+- `/terminal status` — check PR state
+- `/terminal merge` — squash merge PR
+- `/terminal tag <name>` — tag latest commit
+- `/terminal scan` — run CI scan (stub)
 - `/terminal ai` — SmartBrain agent (coming soon)
 
 ## 🧠 SmartBrain (v0.2+)

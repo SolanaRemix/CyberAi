@@ -28,6 +28,7 @@ Thank you for your interest in contributing to CyberAi! This document provides g
 ### Pull Requests
 
 1. **Fork the repository** and create a new branch
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -39,15 +40,18 @@ Thank you for your interest in contributing to CyberAi! This document provides g
 
 3. **Commit your changes**
    - Use conventional commits format:
+
      ```
      type(scope): description
-     
+
      [optional body]
      [optional footer]
      ```
+
    - Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 4. **Push to your fork**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -109,6 +113,7 @@ npm run build
 ## Questions?
 
 Feel free to ask questions by:
+
 - Opening an issue
 - Joining our community discussions
 - Reaching out to maintainers

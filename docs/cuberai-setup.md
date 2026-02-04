@@ -72,6 +72,7 @@ nano .env
 ```
 
 Required settings:
+
 ```bash
 DRY_RUN=true              # Start in safe mode
 PNPM=pnpm                 # Package manager
@@ -174,6 +175,7 @@ Comprehensive code audit:
 ```
 
 Outputs:
+
 - `AUDIT-REPORT.md` - Summary report
 - `SMARTBRAIN.log` - Detailed logs
 
@@ -186,6 +188,7 @@ Auto-healing and optimization:
 ```
 
 Actions:
+
 - Clean hanging ports
 - Run UI healers
 - Fix common issues
@@ -199,6 +202,7 @@ Validate consistency:
 ```
 
 Checks:
+
 - ABI ↔ SDK consistency
 - Type definitions
 - Contract interfaces
@@ -212,6 +216,7 @@ System health check:
 ```
 
 Validates:
+
 - Linting status
 - Test results
 - Type checking
@@ -225,6 +230,7 @@ Security scan:
 ```
 
 Detects:
+
 - Suspicious patterns
 - Dangerous commands
 - Archive files
@@ -312,6 +318,7 @@ watch -n 1 "tail -20 SMARTBRAIN.log"
 Location: `AUDIT-REPORT.md`
 
 Contains:
+
 - Agent summaries
 - Findings and improvements
 - TODOs and risks
@@ -322,6 +329,7 @@ Contains:
 Location: `.quarantine/`
 
 Files:
+
 - `suspicious-files.txt` - Flagged files
 - `archives-review.txt` - Archives to review
 

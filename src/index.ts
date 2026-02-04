@@ -27,13 +27,13 @@ export interface CyberAiConfig {
  */
 export function initialize(config: CyberAiConfig = {}): void {
   console.log(`CyberAi v${VERSION} initializing...`);
-  
+
   // Platform initialization logic will be implemented here
   const defaultConfig: CyberAiConfig = {
     enableSecurity: true,
     enableAuditing: true,
     ...config,
   };
-  
+
   console.log('Configuration:', defaultConfig);
 }

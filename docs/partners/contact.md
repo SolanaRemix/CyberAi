@@ -23,6 +23,7 @@ keywords: contact, support, email, communication
 **Response Time**: 2-3 business days
 
 **For**:
+
 - Partnership inquiries
 - Integration discussions
 - Strategic collaborations
@@ -34,6 +35,7 @@ keywords: contact, support, email, communication
 **Response Time**: 2-3 business days
 
 **For**:
+
 - Sponsorship information
 - Tier questions
 - Billing inquiries
@@ -50,6 +52,7 @@ keywords: contact, support, email, communication
 **Response Time**: Best effort, community-driven
 
 **For**:
+
 - Bug reports
 - Feature requests
 - General questions
@@ -61,6 +64,7 @@ keywords: contact, support, email, communication
 **Response Time**: Per SLA (see [sla_and_support.md](sla_and_support.md))
 
 **For**: Partners with Bronze tier or higher
+
 - Technical issues
 - Integration support
 - Bug reports
@@ -73,6 +77,7 @@ keywords: contact, support, email, communication
 **Response Time**: Per enterprise SLA
 
 **For**: Platinum tier partners
+
 - Dedicated support
 - Strategic technical consultation
 - Custom development
@@ -89,6 +94,7 @@ keywords: contact, support, email, communication
 **Response Time**: 24-48 hours
 
 **For**:
+
 - Security vulnerability reports
 - Responsible disclosure
 - Security incidents
@@ -102,6 +108,7 @@ keywords: contact, support, email, communication
 **Response Time**: 5-7 business days
 
 **For**:
+
 - Data privacy questions
 - GDPR/CCPA requests
 - Data deletion requests
@@ -118,6 +125,7 @@ keywords: contact, support, email, communication
 **Response Time**: 5-7 business days
 
 **For**:
+
 - DAO questions
 - Token distribution
 - Governance proposals
@@ -130,6 +138,7 @@ keywords: contact, support, email, communication
 **Telegram**: [TO BE PROVIDED]
 
 **For**:
+
 - Community discussions
 - Project updates
 - Collaboration
@@ -145,6 +154,7 @@ keywords: contact, support, email, communication
 **Response Time**: 3-5 business days
 
 **For**:
+
 - Invoice requests
 - Payment questions
 - Subscription changes
@@ -156,6 +166,7 @@ keywords: contact, support, email, communication
 **Response Time**: 5-7 business days
 
 **For**:
+
 - Legal questions
 - Contract negotiations
 - Compliance inquiries
@@ -171,6 +182,7 @@ keywords: contact, support, email, communication
 **Response Time**: 1-2 business days
 
 **For**:
+
 - Press releases
 - Interview requests
 - Media kits
@@ -184,6 +196,7 @@ keywords: contact, support, email, communication
 **Response Time**: 3-5 business days
 
 **For**:
+
 - Co-marketing opportunities
 - Case studies
 - Blog posts
@@ -199,6 +212,7 @@ keywords: contact, support, email, communication
 **Contributing**: See [CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 **For**:
+
 - Code contributions
 - Pull requests
 - Technical discussions
@@ -277,14 +291,14 @@ keywords: contact, support, email, communication
 
 ## Partnership Tiers Contact Summary
 
-| Tier | Primary Contact | Response Time |
-|------|----------------|---------------|
-| Community | GitHub Issues | Best effort |
-| Supporter | support@cuberai.example | 5 days |
-| Bronze | support@cuberai.example | 48 hours |
-| Silver | support@cuberai.example | 24 hours |
-| Gold | Dedicated account manager | 12 hours |
-| Platinum | Direct contact + 24/7 | 4 hours |
+| Tier      | Primary Contact           | Response Time |
+| --------- | ------------------------- | ------------- |
+| Community | GitHub Issues             | Best effort   |
+| Supporter | support@cuberai.example   | 5 days        |
+| Bronze    | support@cuberai.example   | 48 hours      |
+| Silver    | support@cuberai.example   | 24 hours      |
+| Gold      | Dedicated account manager | 12 hours      |
+| Platinum  | Direct contact + 24/7     | 4 hours       |
 
 ---
 
@@ -351,6 +365,7 @@ For those preferring web form over email.
 ### Out of Office
 
 During holidays or planned absences:
+
 - Auto-reply with expected response time
 - Emergency contacts provided
 - Backup support available for partners
@@ -373,6 +388,7 @@ During holidays or planned absences:
 All official emails end in: `@cuberai.example`
 
 Be wary of:
+
 - Misspelled domains
 - Personal email addresses
 - Unsolicited contact

@@ -57,6 +57,7 @@ Once created, the space will be accessible at:
 ```
 
 **Explanation**:
+
 - `delay`: 0 seconds (voting starts immediately)
 - `period`: 604800 seconds (7 days)
 - `type`: basic (yes/no/abstain)
@@ -76,6 +77,7 @@ Once created, the space will be accessible at:
 ```
 
 **Requirements to create proposals**:
+
 - Minimum 100 tokens
 - Prevents spam proposals
 
@@ -137,6 +139,7 @@ Can combine multiple strategies:
 ```
 
 **Supports**:
+
 - Token holdings
 - Delegated voting power
 - LP token holdings (if applicable)
@@ -151,9 +154,9 @@ For complex voting power calculations:
 function calculateVotingPower(address) {
   const tokens = getTokenBalance(address);
   const contributionScore = getContributionScore(address);
-  
+
   // 50% from tokens, 50% from contributions
-  return (tokens * 0.5) + (contributionScore * 0.5);
+  return tokens * 0.5 + contributionScore * 0.5;
 }
 ```
 
@@ -162,21 +165,26 @@ function calculateVotingPower(address) {
 ### Governance Proposals
 
 **Format**:
+
 ```markdown
 # [Proposal Title]
 
 ## Summary
+
 Brief description of the proposal
 
 ## Motivation
+
 Why this proposal is needed
 
 ## Specification
+
 Detailed proposal implementation
 
 ## Voting Options
+
 - For: Support the proposal
-- Against: Oppose the proposal  
+- Against: Oppose the proposal
 - Abstain: No opinion
 ```
 
@@ -243,6 +251,7 @@ Detailed proposal implementation
 ### For Token Holders
 
 1. **Visit Snapshot Space**
+
    ```
    https://snapshot.org/#/smartcontractaudit.eth
    ```
@@ -270,6 +279,7 @@ Detailed proposal implementation
 ### Voting Power
 
 Your voting power is determined by:
+
 - Token holdings at snapshot block
 - Delegated tokens (if any)
 - Contribution score (if applicable)
@@ -300,6 +310,7 @@ Don't have time to vote? Delegate to someone you trust:
 ### Accepting Delegations
 
 To accept delegations:
+
 - Publicly share your address
 - Communicate voting philosophy
 - Vote regularly and responsibly
@@ -310,6 +321,7 @@ To accept delegations:
 ### What Makes a Good Proposal?
 
 ✅ **Good proposals**:
+
 - Clear and concise
 - Well-researched
 - Community support
@@ -318,6 +330,7 @@ To accept delegations:
 - Define success metrics
 
 ❌ **Poor proposals**:
+
 - Vague or unclear
 - No community discussion
 - Unrealistic or impossible
@@ -331,31 +344,41 @@ To accept delegations:
 # [Title]: [Brief Description]
 
 ## Summary
+
 One paragraph summary of the proposal.
 
 ## Motivation
+
 Why should we implement this? What problem does it solve?
 
 ## Specification
+
 ### Overview
+
 High-level description
 
 ### Details
+
 Specific implementation details
 
 ### Timeline
+
 When and how will this be implemented?
 
 ### Cost
+
 Resource requirements (funding, time, people)
 
 ## Risks & Considerations
+
 What could go wrong? Alternative approaches?
 
 ## Success Metrics
+
 How will we measure success?
 
 ## Voting Options
+
 - **For**: Approve and implement the proposal
 - **Against**: Reject the proposal
 - **Abstain**: No opinion
@@ -386,6 +409,7 @@ For urgent matters:
 **Current**: No quorum (may be added later)
 
 **Potential future requirements**:
+
 - Minimum 10% of total supply votes
 - Scales with proposal importance
 - Adjusted via governance proposal
@@ -430,12 +454,14 @@ After proposal passes:
 ### Common Scams
 
 ⚠️ **Watch out for**:
+
 - Fake Snapshot spaces
 - Phishing sites mimicking Snapshot
 - Malicious proposals requesting approvals
 - Impersonators claiming to be team
 
 ✅ **Verify**:
+
 - Official Snapshot URL: `snapshot.org`
 - Correct space name
 - Team announcements on GitHub
