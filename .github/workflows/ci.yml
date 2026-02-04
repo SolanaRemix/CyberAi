@@ -12,6 +12,12 @@ jobs:
       contents: read
     
     steps:
+      - name: Pre-firewall environment setup
+        run: |
+          npm config set fund false
+          npm config set audit false
+          echo "Pre-firewall setup complete"
+
       - name: Checkout repository
         uses: actions/checkout@v6
       
