@@ -71,12 +71,14 @@ done
 # ============================================================
 log "Step 3: Syncing YAML configurations..."
 
-# Find all YAML files and validate
-find . -name "*.yml" -o -name "*.yaml" | grep -v node_modules | while read -r yaml_file; do
-  if [[ -f "$yaml_file" ]]; then
-    log "Validating $yaml_file"
-    # Basic YAML syntax validation
-    python3 -c "
+# Check if Python is available for YAML validation
+if command -v python3 &> /dev/null; then
+  # Find all YAML files and validate
+  find . -name "*.yml" -o -name "*.yaml" | grep -v node_modules | while read -r yaml_file; do
+    if [[ -f "$yaml_file" ]]; then
+      log "Validating $yaml_file"
+      # Basic YAML syntax validation
+      python3 -c "
 import yaml
 import sys
 try:
@@ -86,9 +88,16 @@ try:
 except:
     print('Invalid')
 " 2>/dev/null | grep -q "Valid" && success "$yaml_file is valid" || warn "$yaml_file may have syntax issues"
-    SYNC_COUNT=$((SYNC_COUNT + 1))
-  fi
-done
+      SYNC_COUNT=$((SYNC_COUNT + 1))
+    fi
+  done
+else
+  log "Python3 not available, skipping YAML validation"
+  log "Counting YAML files..."
+  YAML_COUNT=$(find . -name "*.yml" -o -name "*.yaml" | grep -v node_modules | wc -l)
+  log "Found $YAML_COUNT YAML files"
+  SYNC_COUNT=$((SYNC_COUNT + YAML_COUNT))
+fi
 
 # ============================================================
 # Step 4: Sync Markdown documentation
