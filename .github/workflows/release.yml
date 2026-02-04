@@ -22,12 +22,12 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
         
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '20'
         registry-url: 'https://registry.npmjs.org'
@@ -58,7 +58,7 @@ jobs:
         echo "EOF" >> $GITHUB_OUTPUT
         
     - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}

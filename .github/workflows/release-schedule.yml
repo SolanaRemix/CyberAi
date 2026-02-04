@@ -39,7 +39,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Full history for changelog
       
@@ -258,7 +258,7 @@ jobs:
           echo "✅ Changelog generated"
       
       - name: Upload changelog
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: release-changelog
           path: CHANGELOG_DRAFT.md
@@ -271,11 +271,11 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       
       - name: Create draft release
         id: create_release
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const version = '${{ needs.prepare-release.outputs.version }}';
