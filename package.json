@@ -3,15 +3,27 @@
   "version": "1.0.0",
   "description": "**CyberAi (formerly CuberAi)** - AI-Powered Smart Contract Security & Orchestration Platform",
   "type": "module",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts"
+    "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts",
+    "build": "tsc",
+    "test": "echo \"Tests will be implemented with vitest\"",
+    "test:unit": "echo \"Unit tests will be implemented\"",
+    "test:integration": "echo \"Integration tests will be implemented\"",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
+    "lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\"",
+    "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\""
   },
   "dependencies": {
     "openai": "^6.17.0"
   },
   "devDependencies": {
     "@types/node": "^25.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.3.3"
   }

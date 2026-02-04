@@ -9,6 +9,13 @@ assignees: ''
 ## Bug Description
 A clear and concise description of what the bug is.
 
+## Scale
+How large is the scope of this bug?
+- [ ] Small - Single file or component
+- [ ] Medium - Multiple files or features
+- [ ] Large - System-wide or architectural
+- [ ] Ecosystem - Affects multiple repositories
+
 ## Steps to Reproduce
 1. Go to '...'
 2. Click on '...'
@@ -29,6 +36,23 @@ If applicable, add screenshots to help explain your problem.
 - Browser: [e.g. Chrome 120, Firefox 121]
 - Node.js Version: [e.g. 20.10.0]
 - CyberAi Version: [e.g. 1.0.0]
+
+## Full Context / Prompt
+Provide complete context for the repo-brain and fleet-brain to understand this issue:
+
+```
+[Paste any relevant logs, error messages, configuration files, or additional details here]
+```
+
+## Auto-Fix Request
+Would you like the control-plane to attempt an automated fix?
+- [ ] Yes - Auto-fix this issue
+- [ ] No - Manual review required
+
+## Redeploy After Pass
+Should this trigger a redeploy once all checks pass?
+- [ ] Yes - Redeploy automatically
+- [ ] No - Manual deployment
 
 ## Additional Context
 Add any other context about the problem here.

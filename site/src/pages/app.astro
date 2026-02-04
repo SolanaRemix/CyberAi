@@ -1,0 +1,333 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="CyberAi App - Autonomous Engineering Agent">
+  <main>
+    <div class="hero">
+      <h1>🚀 <span class="text-gradient">CyberAi App</span></h1>
+      <p class="tagline">
+        Your Autonomous Engineering Agent Platform
+      </p>
+      <p class="description">
+        Harness the power of AI-driven development with automated code generation,
+        real-time collaboration, and seamless CI/CD integration.
+      </p>
+      
+      <div class="auth-section">
+        <a href="https://github.com/apps/cyberai-agent/installations/new" class="button primary">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          Install GitHub App
+        </a>
+        <button id="github-login" class="button secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          Sign in with GitHub
+        </button>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <h2>⚡ Autonomous Code Generation</h2>
+        <p>
+          AI-powered code generation that understands your project context
+          and coding standards. Generate components, tests, and documentation automatically.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h2>🤝 Real-time Collaboration</h2>
+        <p>
+          Collaborate with AI agents and team members in real-time.
+          Review, approve, and iterate on generated code together.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h2>🔄 CI/CD Integration</h2>
+        <p>
+          Seamlessly integrates with your existing CI/CD pipelines.
+          Automated testing, deployment, and quality checks.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h2>🔒 Security Scanning</h2>
+        <p>
+          Built-in security scanning and vulnerability detection.
+          Ensure your code is safe before it reaches production.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h2>📊 Project Dashboard</h2>
+        <p>
+          Monitor your projects with comprehensive analytics.
+          Track code quality, deployment status, and team productivity.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h2>🎨 Smart Refactoring</h2>
+        <p>
+          AI-powered refactoring suggestions that improve code quality
+          while maintaining functionality and performance.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>See It In Action</h2>
+      <div class="demo-video">
+        <div class="video-placeholder">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <p>Demo Coming Soon</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-toggle-container">
+      <button id="theme-toggle" aria-label="Toggle theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    max-width: 1200px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(45deg, #4f46e5 30%, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin: 1rem 0;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 1rem auto;
+    line-height: 1.6;
+  }
+
+  .auth-section {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+
+  .button.primary {
+    background: #4f46e5;
+    color: white;
+  }
+
+  .button.primary:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+  }
+
+  .button.secondary {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+  }
+
+  .button.secondary:hover {
+    border-color: #4f46e5;
+    transform: translateY(-2px);
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+
+  .feature-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    transition: all 0.2s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .feature-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+  }
+
+  .feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .demo-section {
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .demo-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+  }
+
+  .demo-video {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+  }
+
+  .video-placeholder {
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+  }
+
+  .theme-toggle-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+  }
+
+  #theme-toggle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background: var(--card-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.2s;
+  }
+
+  #theme-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .sun-icon {
+    display: none;
+  }
+
+  .moon-icon {
+    display: block;
+  }
+
+  :global(body.dark-mode) .sun-icon {
+    display: block;
+  }
+
+  :global(body.dark-mode) .moon-icon {
+    display: none;
+  }
+
+  :global(:root) {
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --card-bg: #f9f9f9;
+    --border-color: #e0e0e0;
+  }
+
+  :global(body.dark-mode) {
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    background: #0a0a0a;
+    color: #e0e0e0;
+  }
+</style>
+
+<script>
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  function setTheme(isDark: boolean) {
+    document.body.classList.toggle('dark-mode', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    setTheme(savedTheme === 'dark');
+  } else {
+    setTheme(prefersDark.matches);
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    const isDark = !document.body.classList.contains('dark-mode');
+    setTheme(isDark);
+  });
+
+  // GitHub login functionality
+  const githubLogin = document.getElementById('github-login');
+  githubLogin?.addEventListener('click', () => {
+    // Placeholder for GitHub OAuth
+    window.location.href = 'https://github.com/login/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=https://cyberai.network/auth/callback&scope=read:user,repo';
+  });
+</script>
