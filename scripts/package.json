@@ -11,5 +11,6 @@
   },
   "scripts": {
     "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts"
-  }
+  },
+  "version": "1.0.0"
 }
