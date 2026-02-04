@@ -2,7 +2,7 @@ name: Deploy Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -20,24 +20,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
           cache-dependency-path: 'site/package-lock.json'
-      
+
       - name: Install dependencies
         run: |
           cd site
           npm ci
-      
+
       - name: Build site
         run: |
           cd site
           npm run build
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:

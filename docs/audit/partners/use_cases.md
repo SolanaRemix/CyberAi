@@ -1,9 +1,10 @@
-<<<<<<< HEAD
----
+## <<<<<<< HEAD
+
 <<<<<<< HEAD
 title: Partner Use Cases
 description: Real-world applications of SmartContractAudit
 keywords: use cases, examples, applications, integrations
+
 ---
 
 # Partner Use Cases
@@ -23,18 +24,21 @@ Discover how different types of organizations leverage SmartContractAudit to enh
 **Challenge**: Ensure security across frequent updates and deployments
 
 **Solution**:
+
 - Integrated SmartContractAudit into CI/CD pipeline
 - Automated security checks on every PR
 - Pre-deployment validation
 - Continuous monitoring of deployed contracts
 
 **Results**:
+
 - 85% reduction in security issues reaching production
 - Faster deployment cycles with confidence
 - Early detection of vulnerabilities
 - Complement to manual security audits
 
 **Tools Used**:
+
 - GitHub Actions workflow
 - Pre-commit hooks
 - Automated reporting
@@ -48,12 +52,14 @@ Discover how different types of organizations leverage SmartContractAudit to enh
 **Challenge**: Maintain security standards across multiple chains
 
 **Solution**:
+
 - Unified security scanning across all chains
 - Chain-specific rule sets
 - Centralized audit reporting
 - Cross-chain vulnerability detection
 
 **Results**:
+
 - Consistent security posture across chains
 - Reduced audit costs
 - Faster time to market on new chains
@@ -70,18 +76,21 @@ Discover how different types of organizations leverage SmartContractAudit to enh
 **Challenge**: Help developers build secure smart contracts on the platform
 
 **Solution**:
+
 - Integrated SmartContractAudit into platform IDE
 - Provided default security templates
 - Built-in scanning before deployment
 - Developer education on security best practices
 
 **Results**:
+
 - Higher quality dApps on platform
 - Reduced security incidents ecosystem-wide
 - Improved platform reputation
 - Increased developer adoption
 
 **Tools Used**:
+
 - IDE plugin integration
 - API access for real-time scanning
 - Custom rule sets for platform-specific patterns
@@ -95,12 +104,14 @@ Discover how different types of organizations leverage SmartContractAudit to enh
 **Challenge**: Ensure grant recipients build secure applications
 
 **Solution**:
+
 - Mandatory security audits for grant projects
 - SmartContractAudit as first-pass screening
 - Automated compliance checking
 - Continuous monitoring post-grant
 
 **Results**:
+
 - 95% of grant projects meet security baseline
 - Reduced grant review time by 40%
 - Fewer post-deployment security issues
@@ -117,18 +128,21 @@ Discover how different types of organizations leverage SmartContractAudit to enh
 **Challenge**: Ensure corporate security standards for internal contracts
 
 **Solution**:
+
 - Private deployment of SmartContractAudit
 - Custom rules aligned with corporate policies
 - Integration with enterprise DevOps pipeline
 - Compliance reporting for auditors
 
 **Results**:
+
 - 100% contract security coverage
 - Automated compliance documentation
 - Reduced audit preparation time
 - Improved internal security culture
 
 **Features Used**:
+
 - On-premise deployment
 - Custom rule development
 - Enterprise SSO integration
@@ -145,18 +159,21 @@ Discover how different types of organizations leverage SmartContractAudit to enh
 **Challenge**: Scale audit capacity without sacrificing quality
 
 **Solution**:
+
 - Use SmartContractAudit for initial automated scan
 - Focus manual audits on complex logic
 - Standardize initial assessment phase
 - Continuous monitoring post-audit
 
 **Results**:
+
 - 3x increase in audit throughput
 - More time for deep security analysis
 - Consistent baseline quality
 - Additional revenue stream (continuous monitoring)
 
 **Integration**:
+
 - Custom API integration
 - White-label reporting
 - Client portal integration
@@ -171,12 +188,14 @@ Discover how different types of organizations leverage SmartContractAudit to enh
 **Challenge**: Monitor client contracts 24/7 for emerging threats
 
 **Solution**:
+
 - Automated continuous scanning
 - Real-time alert system
 - Integration with client systems
 - Threat intelligence updates
 
 **Results**:
+
 - Early detection of zero-day vulnerabilities
 - 24/7 coverage without manual intervention
 - Scalable monitoring service
@@ -193,23 +212,26 @@ Discover how different types of organizations leverage SmartContractAudit to enh
 **Challenge**: Teach secure smart contract development
 
 **Solution**:
+
 - Integrated SmartContractAudit into coursework
 - Students scan their assignments
 - Learn from automated feedback
 - Hands-on security education
 
 **Results**:
+
 - Students learn security best practices
 - Immediate feedback on code quality
 - Practical hands-on experience
 - Industry-ready graduates
 
 **Benefits**:
+
 - Free for educational use
 - Student accounts
 - Educational materials
-- Teacher dashboards
-=======
+- # Teacher dashboards
+
 # Use Cases and Success Stories
 
 ## Overview
@@ -224,6 +246,7 @@ This document showcases how partners and users successfully integrate and use Cy
 **Solution**: Automated pre-deployment scanning + continuous monitoring
 
 **Example Workflow**:
+
 1. Developer writes lending protocol contract
 2. CI/CD automatically scans on each commit
 3. Critical issues block deployment
@@ -231,12 +254,14 @@ This document showcases how partners and users successfully integrate and use Cy
 5. Continuous monitoring post-deployment
 
 **Results**:
+
 - 100% of critical bugs caught pre-deployment
 - 60% reduction in audit preparation time
 - Zero security incidents in production
 - Faster time-to-market with confidence
 
 **Vulnerabilities Caught**:
+
 - Reentrancy in withdrawal functions
 - Integer overflow in interest calculations
 - Access control issues in admin functions
@@ -250,6 +275,7 @@ This document showcases how partners and users successfully integrate and use Cy
 **Solution**: Scanner integration in marketplace verification
 
 **Example Workflow**:
+
 1. Creator submits NFT contract for listing
 2. Marketplace automatically scans contract
 3. Security score displayed to buyers
@@ -257,12 +283,14 @@ This document showcases how partners and users successfully integrate and use Cy
 5. Verified contracts get "security badge"
 
 **Results**:
+
 - 95% reduction in scam contracts listed
 - Increased user trust and engagement
 - Differentiation from competitors
 - Reduced customer support burden
 
 **Vulnerabilities Caught**:
+
 - Hidden minting functions
 - Ownership transfer backdoors
 - Malicious royalty implementations
@@ -276,6 +304,7 @@ This document showcases how partners and users successfully integrate and use Cy
 **Solution**: Automated first-pass + manual expert review
 
 **Example Workflow**:
+
 1. Client submits contract for audit
 2. Automated scan runs immediately
 3. Common issues identified and reported
@@ -283,23 +312,26 @@ This document showcases how partners and users successfully integrate and use Cy
 5. Combined automated + manual report delivered
 
 **Results**:
+
 - 3x increase in audit throughput
 - 40% cost reduction for clients
 - More time for deep security analysis
 - Consistent baseline quality
 
 **Benefits**:
+
 - Catch low-hanging fruit automatically
 - Free auditors for complex analysis
 - Standardized initial assessment
 - Comprehensive vulnerability coverage
->>>>>>> origin/pr10
+  > > > > > > > origin/pr10
 
 ---
 
 ### Development Teams
 
 <<<<<<< HEAD
+
 #### Use Case: Pre-Deployment Validation
 
 **Profile**: Smart contract development team
@@ -307,12 +339,14 @@ This document showcases how partners and users successfully integrate and use Cy
 **Challenge**: Catch security issues before production
 
 **Solution**:
+
 - Required security scan before mainnet deployment
 - Automated checks in staging environment
 - Team review of findings
 - Documentation of remediation
 
 **Results**:
+
 - Zero critical vulnerabilities in production
 - Faster review cycles
 - Improved code quality
@@ -327,12 +361,14 @@ This document showcases how partners and users successfully integrate and use Cy
 **Challenge**: Maintain security with community contributions
 
 **Solution**:
+
 - Automated security checks on all PRs
 - Public audit reports
 - Contributor education
 - Transparent security process
 
 **Results**:
+
 - Community confidence in security
 - Higher quality contributions
 - Reduced maintainer burden
@@ -344,12 +380,13 @@ This document showcases how partners and users successfully integrate and use Cy
 
 ### CI/CD Integration
 
-**Scenario**: Automated security in development pipeline
-=======
+# **Scenario**: Automated security in development pipeline
+
 **Challenge**: Catch bugs early in development cycle  
 **Solution**: IDE integration with real-time feedback
 
 **Example Workflow**:
+
 1. Developer writes contract in VS Code
 2. Real-time scanning highlights issues
 3. Inline suggestions for fixes
@@ -357,12 +394,14 @@ This document showcases how partners and users successfully integrate and use Cy
 5. Pre-commit hooks prevent vulnerable code
 
 **Results**:
+
 - Bugs found in minutes, not weeks
 - Developers learn security best practices
 - Reduced cost of fixes (earlier = cheaper)
 - Security becomes part of workflow
 
 **Developer Feedback**:
+
 > "It's like having a security expert looking over my shoulder. I've learned so much about secure coding patterns." - Smart Contract Developer
 
 ---
@@ -373,6 +412,7 @@ This document showcases how partners and users successfully integrate and use Cy
 **Solution**: Display security scores and scan results
 
 **Example Workflow**:
+
 1. User views contract on explorer
 2. Security score displayed prominently
 3. Click for detailed vulnerability report
@@ -380,12 +420,14 @@ This document showcases how partners and users successfully integrate and use Cy
 5. Compare with similar contracts
 
 **Results**:
+
 - Users make informed decisions
 - Explorer becomes trusted security resource
 - Increased user engagement
 - Competitive differentiation
 
 **Integration Points**:
+
 - Contract page security badge
 - Detailed security report tab
 - API for programmatic access
@@ -399,6 +441,7 @@ This document showcases how partners and users successfully integrate and use Cy
 **Solution**: Hands-on learning with immediate feedback
 
 **Example Workflow**:
+
 1. Students write intentionally vulnerable contracts
 2. Scanner identifies vulnerabilities
 3. Students fix issues and rescan
@@ -406,12 +449,14 @@ This document showcases how partners and users successfully integrate and use Cy
 5. Final project: secure smart contract
 
 **Results**:
+
 - Students graduate with security mindset
 - Practical, hands-on learning
 - Reduced time to teach concepts
 - Industry-ready graduates
 
 **Course Integration**:
+
 - Lab assignments using scanner
 - Capture-the-flag style challenges
 - Final project evaluation
@@ -430,13 +475,15 @@ This document showcases how partners and users successfully integrate and use Cy
 New DeFi protocol preparing for $10M TVL launch needed to ensure security without delaying go-to-market.
 
 **Solution**:
+
 - Integrated CyberAi into CI/CD
 - Automated scanning on every PR
 - Weekly security reports to team
 - Pre-audit preparation with automated tools
->>>>>>> origin/pr10
+  > > > > > > > origin/pr10
 
 **Implementation**:
+
 ```yaml
 # .github/workflows/security.yml
 <<<<<<< HEAD
@@ -465,6 +512,7 @@ jobs:
 **Scenario**: Catch issues before committing
 
 **Implementation**:
+
 ```bash
 # .git/hooks/pre-commit
 #!/bin/bash
@@ -480,11 +528,12 @@ jobs:
 **Scenario**: Regular security audits
 
 **Implementation**:
+
 ```yaml
 # .github/workflows/scheduled-audit.yml
 on:
   schedule:
-    - cron: '0 0 * * *'  # Daily
+    - cron: '0 0 * * *' # Daily
 jobs:
   audit:
     # ... audit steps
@@ -499,6 +548,7 @@ jobs:
 **Scenario**: Custom integration into existing tools
 
 **Implementation**:
+
 ```javascript
 const { SmartContractAudit } = require('@scaudit/sdk');
 const audit = new SmartContractAudit({ apiKey: API_KEY });
@@ -524,11 +574,13 @@ Partners typically report:
 ### ROI Examples
 
 **Small Team** (5 developers):
+
 - **Cost**: Bronze tier ($5,000/year)
 - **Savings**: 10 hours/month × 5 devs × $100/hour = $60,000/year
 - **ROI**: 12x
 
 **Enterprise** (50 developers):
+
 - **Cost**: Gold tier ($50,000/year)
 - **Savings**: 5 hours/month × 50 devs × $150/hour = $450,000/year
 - **ROI**: 9x
@@ -569,6 +621,7 @@ Don't see your use case? We can help!
 **Contact**: partners@cuberai.example
 
 **We can assist with**:
+
 - Custom integrations
 - Unique workflows
 - Specific industry requirements
@@ -578,13 +631,13 @@ Don't see your use case? We can help!
 
 ## Partner Testimonials
 
-*"SmartContractAudit has become an essential part of our security workflow. We catch vulnerabilities early and deploy with confidence."*  
+_"SmartContractAudit has become an essential part of our security workflow. We catch vulnerabilities early and deploy with confidence."_  
 — Security Lead, DeFi Protocol
 
-*"The integration was seamless. Within a week, we had automated security checks on every PR."*  
+_"The integration was seamless. Within a week, we had automated security checks on every PR."_  
 — CTO, Blockchain Startup
 
-*"Using SmartContractAudit lets us focus manual audits on complex business logic while automated scanning handles common issues."*  
+_"Using SmartContractAudit lets us focus manual audits on complex business logic while automated scanning handles common issues."_  
 — Senior Auditor, Security Firm
 
 ---
@@ -600,11 +653,12 @@ Don't see your use case? We can help!
 
 **Last Updated**: 2026-01-01
 
-*Your success story could be here! Contact us to share how you use SmartContractAudit.*
-=======
+# _Your success story could be here! Contact us to share how you use SmartContractAudit._
+
 title: Use Cases
 description: Real-world applications of SmartContractAudit
 keywords: use cases, examples, applications, solutions
+
 ---
 
 # Use Cases
@@ -618,12 +672,14 @@ keywords: use cases, examples, applications, solutions
 **Solution**: Integrate SmartContractAudit into CI/CD pipeline to scan every commit.
 
 **Benefits**:
+
 - Catch vulnerabilities before deployment
 - Automated security checks
 - Audit trail for compliance
 - Reduced manual review time
 
 **Results**:
+
 - 80% faster security reviews
 - 95% of issues caught pre-deployment
 - Zero security incidents post-deployment
@@ -637,12 +693,14 @@ keywords: use cases, examples, applications, solutions
 **Solution**: IDE extension powered by SmartContractAudit API.
 
 **Benefits**:
+
 - Real-time vulnerability detection
 - Inline security suggestions
 - Learning tool for developers
 - Faster development cycle
 
 **Results**:
+
 - Developers fix issues immediately
 - Improved code quality
 - Reduced review cycles
@@ -656,12 +714,14 @@ keywords: use cases, examples, applications, solutions
 **Solution**: Display security badges for audited contracts.
 
 **Benefits**:
+
 - Build user trust
 - Reduce fraud
 - Competitive advantage
 - Community confidence
 
 **Results**:
+
 - 40% increase in user confidence
 - Higher transaction volumes
 - Reduced support tickets
@@ -675,6 +735,7 @@ keywords: use cases, examples, applications, solutions
 **Solution**: Integrate security scores on contract pages.
 
 **Benefits**:
+
 - Inform users about risks
 - Encourage secure development
 - Value-added feature
@@ -683,6 +744,7 @@ keywords: use cases, examples, applications, solutions
 ## More Use Cases
 
 See full documentation for 20+ detailed use cases including:
+
 - DAOs
 - Bridges
 - Wallets
@@ -691,14 +753,16 @@ See full documentation for 20+ detailed use cases including:
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+
 - uses: cyberai/cyberai-action@v1
   with:
-    severity-threshold: 'medium'
-    block-on-critical: true
-```
+  severity-threshold: 'medium'
+  block-on-critical: true
+
+````
 
 **Results**:
 - **8 critical vulnerabilities** found and fixed before audit
@@ -713,7 +777,7 @@ See full documentation for 20+ detailed use cases including:
 
 ### Case Study: NFT Marketplace Security
 
-**Partner**: (Hypothetical) NFT Trading Platform  
+**Partner**: (Hypothetical) NFT Trading Platform
 **Industry**: NFT Marketplace
 
 **Background**:
@@ -732,15 +796,17 @@ const scanResult = await scaAPI.scanContract(contractAddress);
 if (scanResult.score < 70) {
   rejectListing("Security concerns detected");
 }
-```
+````
 
 **Results**:
+
 - **95% reduction** in scam reports
 - **30% increase** in user engagement
 - **Featured in press** as security-first marketplace
 - **Competitive advantage** over rivals
 
 **Metrics** (6 months):
+
 - 10,000+ contracts scanned
 - 1,200 high-risk contracts blocked
 - 4.8/5 user satisfaction with security
@@ -757,24 +823,28 @@ if (scanResult.score < 70) {
 Growing demand for audits but limited auditor capacity. Need to scale without compromising quality.
 
 **Solution**:
+
 - White-label deployment
 - Custom rule sets for firm methodology
 - Automated first-pass scanning
 - Integration with audit workflow
 
 **Implementation**:
+
 1. Automated scan generates initial report
 2. Auditors review automated findings
 3. Focus manual effort on complex logic
 4. Combined report delivered to client
 
 **Results**:
+
 - **3x audit throughput** increase
 - **40% cost reduction** for clients
 - **Improved audit quality** (more time for deep analysis)
 - **New revenue stream** (subscription model for continuous monitoring)
 
 **Financial Impact**:
+
 - $500K additional annual revenue
 - 50 additional audits per year
 - Expanded team from 5 to 15 auditors
@@ -787,10 +857,12 @@ Growing demand for audits but limited auditor capacity. Need to scale without co
 ### Time Savings
 
 **Average Time to Find Vulnerability**:
+
 - Manual review: 2-4 hours per vulnerability type
 - Automated scan: 30 seconds for entire codebase
 
 **Development Cycle**:
+
 - Without automation: 4-week security review
 - With automation: 1-week security review
 - **Savings**: 75% reduction in security review time
@@ -798,11 +870,13 @@ Growing demand for audits but limited auditor capacity. Need to scale without co
 ### Cost Savings
 
 **Audit Costs**:
+
 - Full manual audit: $20,000-$50,000
 - With pre-audit automation: $10,000-$25,000
 - **Savings**: 50% reduction in audit costs
 
 **Bug Fix Costs** (average):
+
 - Found in development: $100
 - Found in audit: $1,000
 - Found in production: $10,000-$1,000,000
@@ -811,11 +885,13 @@ Growing demand for audits but limited auditor capacity. Need to scale without co
 ### Risk Reduction
 
 **Security Incidents**:
+
 - Industry average: 5-10% of projects
 - With automated scanning: <1% of projects
 - **Risk Reduction**: 90%+
 
 **Value Protected**:
+
 - Average TVL per protocol: $10M
 - Cost of security incident: $1M average (10% of TVL)
 - Cost of CyberAi: $5,000/year
@@ -828,6 +904,7 @@ Growing demand for audits but limited auditor capacity. Need to scale without co
 ### Quick Wins
 
 **5-Minute Integration** (GitHub Actions):
+
 ```yaml
 name: Security Scan
 on: [pull_request]
@@ -840,6 +917,7 @@ jobs:
 ```
 
 **15-Minute Integration** (CI/CD Pipeline):
+
 ```bash
 # Install CLI
 npm install -g @cyberai/cli
@@ -849,6 +927,7 @@ sca scan ./contracts --format junit > results.xml
 ```
 
 **30-Minute Integration** (IDE Plugin):
+
 1. Install VS Code extension
 2. Configure API key
 3. Start coding with real-time feedback
@@ -896,4 +975,5 @@ Ready to achieve similar results?
 **Last Updated**: 2026-01-01  
 **Success Stories**: 3 detailed cases (more to come)  
 **Total Partners**: Growing ecosystem
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10

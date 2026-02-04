@@ -9,13 +9,13 @@
 
 ### Separation of Concerns
 
-| Belongs in SmartContractAudit | Belongs in CyberAi |
-|-------------------------------|-------------------|
-| Smart contract auditing scripts | AI-powered bot orchestration |
-| GitAntivirus workflow | Multi-bot coordination |
-| SmartBrain orchestrator (master.sh) | Advanced automation logic |
-| Core security functions | DAO & governance features |
-| Base infrastructure | Production web interfaces |
+| Belongs in SmartContractAudit       | Belongs in CyberAi           |
+| ----------------------------------- | ---------------------------- |
+| Smart contract auditing scripts     | AI-powered bot orchestration |
+| GitAntivirus workflow               | Multi-bot coordination       |
+| SmartBrain orchestrator (master.sh) | Advanced automation logic    |
+| Core security functions             | DAO & governance features    |
+| Base infrastructure                 | Production web interfaces    |
 
 ### What to Clone First?
 
@@ -74,6 +74,7 @@ DRY_RUN=true ./scripts/master.sh scan
 **Automated**: `.github/workflows/cyberai-super-workflow.yml`
 
 Runs:
+
 - Health checks
 - Security scans
 - Audit orchestration
@@ -100,7 +101,8 @@ DRY_RUN=false ./scripts/master.sh heal
 
 ### Remember
 
-**No confusion**: 
+**No confusion**:
+
 - SmartContract functions stay in SmartContractAudit
 - CyberAi Bot handles orchestration
 - Keep repositories decoupled
@@ -110,6 +112,7 @@ DRY_RUN=false ./scripts/master.sh heal
 ---
 
 **Quick Links**:
+
 - Architecture: [CYBERAI_ARCHITECTURE.md](CYBERAI_ARCHITECTURE.md)
 - PR Guide: [CYBERAI_PR_MERGE_GUIDE.md](CYBERAI_PR_MERGE_GUIDE.md)
 - Setup: [cuberai-setup.md](cuberai-setup.md)
@@ -117,4 +120,4 @@ DRY_RUN=false ./scripts/master.sh heal
 
 ---
 
-*Last Updated: 2026-01-02*
+_Last Updated: 2026-01-02_

@@ -7,6 +7,7 @@ This document explains the merkle tree airdrop mechanism used for efficient and 
 ## What is a Merkle Airdrop?
 
 A merkle airdrop uses a merkle tree data structure to:
+
 - **Reduce Gas Costs**: Only root hash stored on-chain
 - **Prove Inclusion**: Users prove eligibility with merkle proof
 - **Scale Efficiently**: Support thousands of recipients
@@ -45,6 +46,7 @@ A merkle airdrop uses a merkle tree data structure to:
 ### Phase 2: Merkle Tree Generation
 
 1. **Format Data**: Create allocation list
+
    ```json
    {
      "address": "0x1234...",
@@ -54,8 +56,9 @@ A merkle airdrop uses a merkle tree data structure to:
    ```
 
 2. **Generate Leaves**: Hash each allocation
+
    ```javascript
-   leaf = keccak256(abi.encodePacked(address, amount))
+   leaf = keccak256(abi.encodePacked(address, amount));
    ```
 
 3. **Build Tree**: Combine hashes pairwise up to root
@@ -85,12 +88,14 @@ We provide a merkle tree generator script:
 **Location**: `dao/merkle/generate_merkle.js`
 
 **Usage**:
+
 ```bash
 cd dao/merkle
 node generate_merkle.js ../airdrop-sample.json output.json
 ```
 
 **Input Format** (`airdrop-sample.json`):
+
 ```json
 [
   {
@@ -107,6 +112,7 @@ node generate_merkle.js ../airdrop-sample.json output.json
 ```
 
 **Output Format** (`output.json`):
+
 ```json
 {
   "merkleRoot": "0xabc123...",
@@ -125,6 +131,7 @@ node generate_merkle.js ../airdrop-sample.json output.json
 For custom implementations:
 
 **Step 1: Prepare leaves**
+
 ```javascript
 const leaves = allocations.map((alloc, index) => {
   return ethers.utils.solidityKeccak256(
@@ -135,6 +142,7 @@ const leaves = allocations.map((alloc, index) => {
 ```
 
 **Step 2: Build tree**
+
 ```javascript
 import { MerkleTree } from 'merkletreejs';
 import keccak256 from 'keccak256';
@@ -144,6 +152,7 @@ const root = tree.getRoot();
 ```
 
 **Step 3: Generate proofs**
+
 ```javascript
 const proof = tree.getHexProof(leaves[index]);
 ```
@@ -231,6 +240,7 @@ For projects preferring off-chain distribution:
 ### Common Pitfalls
 
 ❌ **Don't**:
+
 - Regenerate tree with same data (hashes may differ)
 - Modify allocation list after tree generation
 - Lose original tree data
@@ -238,6 +248,7 @@ For projects preferring off-chain distribution:
 - Use weak hashing algorithms
 
 ✅ **Do**:
+
 - Keep original allocation data
 - Version control tree data
 - Test claim process thoroughly
@@ -261,11 +272,8 @@ const keccak256 = require('keccak256');
 const { ethers } = require('ethers');
 
 function verifyProof(address, amount, proof, root) {
-  const leaf = ethers.utils.solidityKeccak256(
-    ['address', 'uint256'],
-    [address, amount]
-  );
-  
+  const leaf = ethers.utils.solidityKeccak256(['address', 'uint256'], [address, amount]);
+
   const tree = new MerkleTree([], keccak256, { sortPairs: true });
   return tree.verify(proof, leaf, root);
 }
@@ -286,6 +294,7 @@ console.log('Valid proof:', isValid);
 ### JavaScript/Node.js
 
 - **merkletreejs**: Full-featured merkle tree library
+
   ```bash
   npm install merkletreejs
   ```
@@ -368,6 +377,7 @@ A: Raise during community review period. After tree deployment, corrections requ
 ## Contact
 
 Questions about merkle airdrops?
+
 - **GitHub Discussions**: Technical questions
 - **GitHub Issues**: Bug reports
 - **Email**: governance@cuberai.example

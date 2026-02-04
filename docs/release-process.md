@@ -9,6 +9,7 @@ This document outlines the complete release process for SmartContractAudit, from
 **Frequency**: As needed, typically monthly for minor releases, quarterly for major releases
 
 **Versioning**: Semantic Versioning (SemVer)
+
 - **MAJOR.MINOR.PATCH** (e.g., 1.2.3)
 - **MAJOR**: Breaking changes
 - **MINOR**: New features, backwards compatible
@@ -27,6 +28,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 1: Planning (2-4 weeks before)
 
 **Activities**:
+
 1. **Feature Freeze**: Decide what goes in the release
 2. **Create Milestone**: GitHub milestone for tracking
 3. **Assign Issues**: Assign remaining work
@@ -38,6 +40,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 2: Development (ongoing)
 
 **Activities**:
+
 1. **Feature Development**: Complete planned features
 2. **Bug Fixes**: Address issues
 3. **Code Review**: All PRs reviewed
@@ -45,6 +48,7 @@ This document outlines the complete release process for SmartContractAudit, from
 5. **Testing**: Unit and integration tests
 
 **Quality Gates**:
+
 - All PRs reviewed and approved
 - Tests passing
 - No critical/high bugs
@@ -53,6 +57,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 3: Code Freeze (1 week before)
 
 **Activities**:
+
 1. **Freeze Code**: No new features
 2. **Bug Fixes Only**: Critical/high priority bugs only
 3. **Release Branch**: Create release branch (e.g., `release/v1.2.0`)
@@ -60,6 +65,7 @@ This document outlines the complete release process for SmartContractAudit, from
 5. **Documentation Review**: Final docs check
 
 **Checklist**:
+
 - [ ] Release branch created
 - [ ] All tests passing
 - [ ] No blockers
@@ -69,21 +75,25 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 4: Pre-Release Testing (3-5 days)
 
 **Activities**:
+
 1. **Integration Testing**: Test all integrations
 2. **Security Scan**: Run security checks
+
    ```bash
    # Run GitAntivirus in dry-run
    DRY_RUN=true ./scripts/master.sh scan
-   
+
    # Run any code quality checks
    npm run lint
    npm test
    ```
+
 3. **Performance Testing**: Verify performance
 4. **Compatibility Testing**: Test across environments
 5. **Documentation Testing**: Verify examples work
 
 **Environments**:
+
 - Development
 - Staging (if applicable)
 - Test installations
@@ -91,6 +101,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 5: Security Review (2-3 days)
 
 **Activities**:
+
 1. **Security Scan**: Automated security checks
 2. **Dependency Audit**: Check for vulnerable dependencies
    ```bash
@@ -103,6 +114,7 @@ This document outlines the complete release process for SmartContractAudit, from
 5. **Sign-off**: Security lead approval
 
 **Tools**:
+
 - CodeQL
 - GitAntivirus
 - npm audit / pip-audit
@@ -111,6 +123,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 6: Release Candidate (RC)
 
 **Activities**:
+
 1. **Tag RC**: Create release candidate tag (e.g., `v1.2.0-rc.1`)
 2. **Build Artifacts**: Generate release artifacts
 3. **Beta Testing**: Limited release to partners/testers
@@ -118,12 +131,14 @@ This document outlines the complete release process for SmartContractAudit, from
 5. **Fix Critical Issues**: Address showstoppers
 
 **Criteria for RC**:
+
 - All planned features complete
 - All tests passing
 - Security review complete
 - Documentation ready
 
 **RC Timeline**:
+
 - RC.1: First candidate
 - RC.2+: Additional if needed
 - Minimum 48 hours between RCs
@@ -132,6 +147,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 7: Final Release
 
 **Activities**:
+
 1. **Final Approval**: Get sign-off from:
    - Release Manager
    - Technical Lead
@@ -139,12 +155,14 @@ This document outlines the complete release process for SmartContractAudit, from
    - QA Lead
 
 2. **Version Bump**: Update version numbers
+
    ```bash
    # Update version in relevant files
    # package.json, version files, etc.
    ```
 
 3. **Tag Release**: Create official release tag
+
    ```bash
    git tag -a v1.2.0 -m "Release version 1.2.0"
    git push origin v1.2.0
@@ -163,12 +181,14 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 8: Deployment (if applicable)
 
 **Activities**:
+
 1. **Deploy to Production**: If hosted services exist
 2. **Verify Deployment**: Health checks
 3. **Monitor**: Watch for issues
 4. **Rollback Plan**: Ready if needed
 
 **Deployment Checklist**:
+
 - [ ] Backup current state
 - [ ] Deploy new version
 - [ ] Run smoke tests
@@ -178,6 +198,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 9: Communication
 
 **Activities**:
+
 1. **Release Announcement**:
    - GitHub Release page
    - GitHub Discussions
@@ -199,6 +220,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Phase 10: Post-Release
 
 **Activities**:
+
 1. **Monitor**: Watch for bugs and issues
 2. **Hot Fixes**: Address critical issues quickly
 3. **Feedback Collection**: Gather user feedback
@@ -212,6 +234,7 @@ This document outlines the complete release process for SmartContractAudit, from
 ### Pre-Release Checklist
 
 Technical:
+
 - [ ] All features complete
 - [ ] All tests passing
 - [ ] No known critical bugs
@@ -221,6 +244,7 @@ Technical:
 - [ ] Backwards compatibility verified
 
 Documentation:
+
 - [ ] CHANGELOG.md updated
 - [ ] README.md updated
 - [ ] API docs updated
@@ -229,6 +253,7 @@ Documentation:
 - [ ] Examples updated
 
 Process:
+
 - [ ] Version numbers updated
 - [ ] Release branch created
 - [ ] Release candidate tested
@@ -261,6 +286,7 @@ Process:
 For critical security or bug fixes:
 
 **Process**:
+
 1. **Assess Severity**: Confirm need for emergency release
 2. **Create Hotfix Branch**: From main or release branch
 3. **Minimal Changes**: Only fix the critical issue
@@ -276,6 +302,7 @@ For critical security or bug fixes:
 ### Major Releases (X.0.0)
 
 **When**:
+
 - Breaking changes
 - Major architecture changes
 - Significant feature additions
@@ -288,6 +315,7 @@ For critical security or bug fixes:
 ### Minor Releases (x.Y.0)
 
 **When**:
+
 - New features
 - Non-breaking enhancements
 - Significant improvements
@@ -299,6 +327,7 @@ For critical security or bug fixes:
 ### Patch Releases (x.y.Z)
 
 **When**:
+
 - Bug fixes
 - Security patches
 - Minor improvements
@@ -313,49 +342,61 @@ For critical security or bug fixes:
 # Release v1.2.0
 
 ## Release Date
+
 YYYY-MM-DD
 
 ## Overview
+
 Brief description of the release
 
 ## ✨ New Features
+
 - Feature 1 (#123)
 - Feature 2 (#456)
 
 ## 🐛 Bug Fixes
+
 - Fix 1 (#789)
 - Fix 2 (#012)
 
 ## 🔒 Security
+
 - Security improvement 1
 - Vulnerability fix 1
 
 ## 📚 Documentation
+
 - New guide added
 - API docs updated
 
 ## ⚡ Performance
+
 - Optimization 1
 - Improvement 1
 
 ## 🔧 Maintenance
+
 - Dependency updates
 - Internal improvements
 
 ## ⚠️ Breaking Changes
+
 - Breaking change 1 (if any)
 - Migration guide: [link]
 
 ## 📦 Upgrade Instructions
+
 1. Step 1
 2. Step 2
 
 ## 🙏 Contributors
+
 Thank you to all contributors!
 
 @contributor1, @contributor2, @contributor3
 
 ## 📝 Full Changelog
+
 https://github.com/SolanaRemix/SmartContractAudit/compare/v1.1.0...v1.2.0
 ```
 

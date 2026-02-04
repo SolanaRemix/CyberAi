@@ -18,6 +18,7 @@ The SmartContractAudit DAO is a governance structure that:
 ### 1. Contribution Phase
 
 Contributors participate by:
+
 - Submitting pull requests
 - Reviewing code
 - Reporting issues
@@ -30,6 +31,7 @@ See [eligibility.md](eligibility.md) for detailed criteria.
 ### 2. Scoring Phase
 
 Contributions are scored based on:
+
 - Impact and quality
 - Difficulty and complexity
 - Timeliness and responsiveness
@@ -40,6 +42,7 @@ See [scoring.md](scoring.md) for the scoring formula.
 ### 3. Snapshot Phase
 
 Periodic snapshots capture:
+
 - Eligible contributors
 - Contribution scores
 - Token allocations
@@ -50,6 +53,7 @@ See [snapshot.md](snapshot.md) for snapshot process.
 ### 4. Airdrop Phase
 
 Token distribution via:
+
 - Merkle tree generation
 - On-chain or off-chain claims
 - Verification and validation
@@ -60,6 +64,7 @@ See [merkle.md](merkle.md) and [claiming.md](claiming.md) for details.
 ### 5. Governance Phase
 
 Token holders can:
+
 - Vote on proposals
 - Submit governance proposals
 - Delegate voting power
@@ -89,6 +94,7 @@ Critical operations require multisig approval:
 - **Emergency Actions**: Security responses
 
 Multisig composition:
+
 - 3-5 core maintainers
 - Requires majority approval (e.g., 3-of-5)
 - Transparent on-chain operations
@@ -98,6 +104,7 @@ Multisig composition:
 ### Token Utility
 
 Governance tokens provide:
+
 - Voting power on proposals
 - Access to exclusive features (planned)
 - Recognition of contributions
@@ -112,6 +119,7 @@ Governance tokens provide:
 ### Vesting Schedule
 
 To ensure long-term alignment:
+
 - Immediate: 25% unlocked at claim
 - Linear vesting: 75% over 12 months
 - Cliff: None (begins vesting immediately)
@@ -121,6 +129,7 @@ To ensure long-term alignment:
 ### Who Can Participate?
 
 Eligible participants include:
+
 - Code contributors (merged PRs)
 - Documentation contributors
 - Security researchers (vulnerability reports)
@@ -133,6 +142,7 @@ See [eligibility.md](eligibility.md) for full criteria.
 ### Snapshot Dates
 
 Snapshots are taken:
+
 - **Frequency**: Quarterly
 - **Announcement**: 2 weeks advance notice
 - **Cut-off**: Specific date/time announced
@@ -163,6 +173,7 @@ Snapshots are taken:
 ### 4. Claim Your Tokens
 
 When airdrop is announced:
+
 - Verify your inclusion in merkle tree
 - Follow [claiming.md](claiming.md) instructions
 - Submit claim transaction
@@ -198,6 +209,7 @@ The DAO infrastructure is currently in **planning phase**:
 ### 📋 Legal Disclaimer
 
 Governance tokens are for utility and governance only:
+
 - Not investment securities
 - No expectation of profit
 - Utility for voting only

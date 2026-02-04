@@ -28,6 +28,7 @@ The SolanaRemix organization is developing two complementary repositories:
 **CyberAi Bot orchestrates and coordinates.**
 
 This means:
+
 - Don't merge features that belong in CyberAi repository into SmartContractAudit
 - Keep SmartContractAudit focused on core security functions
 - Merge only what enhances the foundation infrastructure
@@ -43,6 +44,7 @@ Use the provided scanner script:
 ```
 
 This will identify:
+
 - Branches with CyberAi/CuberAi references
 - Commits mentioning CyberAi
 - Files containing CyberAi references
@@ -71,8 +73,10 @@ gh pr list --search "cyberai OR cuberai" --limit 50
 Classify each CyberAi-related PR into one of these categories:
 
 ### Category 1: Foundation Infrastructure ✅ MERGE
+
 **Description**: Core changes that enhance SmartContractAudit's foundation  
 **Examples**:
+
 - Improvements to `scripts/master.sh` (SmartBrain orchestrator)
 - Enhancements to GitAntivirus workflow
 - Core security script improvements
@@ -81,6 +85,7 @@ Classify each CyberAi-related PR into one of these categories:
 **Action**: Safe to merge into main after review
 
 **Review Checklist**:
+
 - [ ] Enhances core security functionality
 - [ ] No external dependencies on CyberAi repository
 - [ ] Maintains backward compatibility
@@ -88,8 +93,10 @@ Classify each CyberAi-related PR into one of these categories:
 - [ ] Passes all security checks
 
 ### Category 2: Documentation & References ⚠️ REVIEW CAREFULLY
+
 **Description**: Documentation referencing CyberAi architecture  
 **Examples**:
+
 - `docs/CYBERAI_ARCHITECTURE.md`
 - `docs/cuberai-setup.md`
 - Updates to TRIO.md mentioning CyberAi
@@ -98,6 +105,7 @@ Classify each CyberAi-related PR into one of these categories:
 **Action**: Merge if documentation is accurate and helpful
 
 **Review Checklist**:
+
 - [ ] Documentation is accurate
 - [ ] Clearly explains separation of concerns
 - [ ] Helps users understand architecture
@@ -105,8 +113,10 @@ Classify each CyberAi-related PR into one of these categories:
 - [ ] Consistent naming (CyberAi vs CuberAi)
 
 ### Category 3: Orchestration Scripts 🔍 EVALUATE
+
 **Description**: Scripts that coordinate between repositories  
 **Examples**:
+
 - `create_cuberai_and_pr.sh` (repository creation)
 - Integration scripts
 - Bot coordination helpers
@@ -114,6 +124,7 @@ Classify each CyberAi-related PR into one of these categories:
 **Action**: Evaluate if belongs in SmartContractAudit or CyberAi
 
 **Review Checklist**:
+
 - [ ] Truly belongs in SmartContractAudit
 - [ ] Provides value to this repository
 - [ ] Not duplicating functionality
@@ -121,8 +132,10 @@ Classify each CyberAi-related PR into one of these categories:
 - [ ] Well documented
 
 ### Category 4: CyberAi-Specific Features ❌ DO NOT MERGE
+
 **Description**: Features that belong in CyberAi repository  
 **Examples**:
+
 - Advanced AI bot logic
 - DAO token distribution mechanisms
 - CyberAi web interfaces
@@ -132,13 +145,16 @@ Classify each CyberAi-related PR into one of these categories:
 **Action**: Do NOT merge into SmartContractAudit; belongs in CyberAi repository
 
 **Alternative Action**:
+
 - Close PR with explanation
 - Redirect to CyberAi repository
 - Provide guidance on proper repository
 
 ### Category 5: Experimental/WIP 🚧 HOLD
+
 **Description**: Work-in-progress or experimental features  
 **Examples**:
+
 - Proof-of-concept implementations
 - Experimental integrations
 - Draft features without documentation
@@ -146,6 +162,7 @@ Classify each CyberAi-related PR into one of these categories:
 **Action**: Request more information, testing, or documentation
 
 **Review Checklist**:
+
 - [ ] Feature is complete enough to merge
 - [ ] Has proper documentation
 - [ ] Includes tests
@@ -219,16 +236,16 @@ done
 
 ### Step 4: Merge Decision Matrix
 
-| Category | Tests Pass | Docs Included | Security OK | Decision |
-|----------|------------|---------------|-------------|----------|
-| Foundation ✅ | ✅ | ✅ | ✅ | **MERGE** |
-| Foundation ✅ | ❌ | ✅ | ✅ | Request fixes |
-| Foundation ✅ | ✅ | ❌ | ✅ | Request docs |
-| Foundation ✅ | ✅ | ✅ | ❌ | Request security fixes |
-| Documentation ⚠️ | N/A | ✅ | ✅ | **MERGE** |
-| Orchestration 🔍 | ✅ | ✅ | ✅ | **MERGE** if belongs here |
-| CyberAi-Specific ❌ | Any | Any | Any | **REJECT** (wrong repo) |
-| Experimental 🚧 | Any | ❌ | Any | **HOLD** (needs docs) |
+| Category            | Tests Pass | Docs Included | Security OK | Decision                  |
+| ------------------- | ---------- | ------------- | ----------- | ------------------------- |
+| Foundation ✅       | ✅         | ✅            | ✅          | **MERGE**                 |
+| Foundation ✅       | ❌         | ✅            | ✅          | Request fixes             |
+| Foundation ✅       | ✅         | ❌            | ✅          | Request docs              |
+| Foundation ✅       | ✅         | ✅            | ❌          | Request security fixes    |
+| Documentation ⚠️    | N/A        | ✅            | ✅          | **MERGE**                 |
+| Orchestration 🔍    | ✅         | ✅            | ✅          | **MERGE** if belongs here |
+| CyberAi-Specific ❌ | Any        | Any           | Any         | **REJECT** (wrong repo)   |
+| Experimental 🚧     | Any        | ❌            | Any         | **HOLD** (needs docs)     |
 
 ### Step 5: Merge to Main
 
@@ -271,6 +288,7 @@ DRY_RUN=true ./scripts/master.sh health
 ### ❌ DO NOT Auto-Merge All CyberAi PRs
 
 **Reasons:**
+
 1. **Risk of breaking changes**: Untested code could break main
 2. **Wrong repository**: Some features belong in CyberAi repo
 3. **Coupling issues**: Could create unnecessary dependencies
@@ -280,11 +298,13 @@ DRY_RUN=true ./scripts/master.sh health
 ### ⚠️ Limited Auto-Merge Acceptable
 
 You MAY consider auto-merge ONLY for:
+
 - Documentation-only changes (after review)
 - Dependabot security updates
 - Pre-approved bot updates with passing tests
 
 **Configuration** (GitHub Actions):
+
 ```yaml
 # .github/workflows/auto-merge-docs.yml
 name: Auto-merge Documentation
@@ -305,7 +325,7 @@ jobs:
           # Verify only docs changed
           # Verify tests pass
           # Auto-approve if safe
-      
+
       - name: Merge PR
         if: success()
         run: gh pr merge ${{ github.event.pull_request.number }} --auto --merge
@@ -316,6 +336,7 @@ jobs:
 ### Standard: Use "CyberAi"
 
 When reviewing PRs:
+
 1. **Prefer "CyberAi"** for all new content
 2. **Accept "CuberAi"** in existing files if changing causes breakage
 3. **Standardize gradually** in dedicated cleanup PRs
@@ -353,6 +374,7 @@ gh pr create --title "Standardize naming to CyberAi" --body "Consistent naming c
 **Example**: PR adds `docs/CYBERAI_ARCHITECTURE.md`
 
 **Action**:
+
 1. ✅ Review documentation for accuracy
 2. ✅ Verify it helps users understand the architecture
 3. ✅ Check all links and references work
@@ -363,6 +385,7 @@ gh pr create --title "Standardize naming to CyberAi" --body "Consistent naming c
 **Example**: PR adds `scripts/cyberai-bot-advanced.sh` with complex AI logic
 
 **Action**:
+
 1. ❌ This belongs in CyberAi repository, not SmartContractAudit
 2. ❌ Close PR with explanation
 3. ✅ Guide author to create PR in CyberAi repository instead
@@ -372,6 +395,7 @@ gh pr create --title "Standardize naming to CyberAi" --body "Consistent naming c
 **Example**: PR improves `scripts/master.sh` SmartBrain orchestrator
 
 **Action**:
+
 1. ✅ This is core infrastructure improvement
 2. ✅ Test thoroughly in dry-run mode
 3. ✅ Review for security issues
@@ -382,6 +406,7 @@ gh pr create --title "Standardize naming to CyberAi" --body "Consistent naming c
 **Example**: PR includes `create_cuberai_and_pr.sh` script
 
 **Action**:
+
 1. ⚠️ Evaluate if this script belongs here
 2. ✅ If it helps users set up architecture, keep it
 3. ✅ Ensure it's safe (DRY_RUN mode available)
@@ -408,27 +433,27 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Check PR Category
         id: category
         run: |
           # Analyze PR files and categorize
           ./scripts/scan-cyberai-prs.sh
-          
+
           # Determine category based on files changed
           # Set output for next steps
-      
+
       - name: Run Tests
         if: steps.category.outputs.category == 'foundation'
         run: |
           chmod +x scripts/*.sh
           DRY_RUN=true ./scripts/master.sh health
-      
+
       - name: Security Scan
         run: |
           # Run security checks
           git diff origin/main --name-only | xargs grep -i "password\|secret\|key" || true
-      
+
       - name: Comment on PR
         uses: actions/github-script@v7
         with:
@@ -444,6 +469,7 @@ jobs:
 ## Best Practices Summary
 
 ### ✅ DO:
+
 - Review each PR individually
 - Test in dry-run mode before merging
 - Classify PRs by category
@@ -453,6 +479,7 @@ jobs:
 - Keep security as top priority
 
 ### ❌ DON'T:
+
 - Auto-merge all CyberAi PRs blindly
 - Merge CyberAi-specific features into SmartContractAudit
 - Skip security review
@@ -465,6 +492,7 @@ jobs:
 ### Issue: Too many CyberAi PRs to review
 
 **Solution**:
+
 1. Use the scanner script to categorize
 2. Prioritize foundation infrastructure PRs
 3. Batch-review documentation PRs
@@ -473,6 +501,7 @@ jobs:
 ### Issue: PR has both foundation and CyberAi-specific changes
 
 **Solution**:
+
 1. Ask author to split PR
 2. Merge foundation parts first
 3. Move CyberAi-specific parts to separate PR in CyberAi repository
@@ -480,6 +509,7 @@ jobs:
 ### Issue: Uncertainty about which repository PR belongs to
 
 **Solution**:
+
 1. Ask: "Does this enhance core smart contract security functions?"
    - Yes → SmartContractAudit
    - No → Probably CyberAi

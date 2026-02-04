@@ -18,13 +18,13 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 
 ## Tier Overview
 
-| Tier | Monthly | Annual | Key Benefits |
-|------|---------|--------|--------------|
-| **Supporter** | $100 | $1,000 | Logo on website, newsletter mention |
-| **Bronze** | $500 | $5,000 | + Priority support, early features |
-| **Silver** | $2,000 | $20,000 | + Dedicated support, co-marketing |
-| **Gold** | $5,000 | $50,000 | + Custom features, strategic input |
-| **Platinum** | $10,000+ | $100,000+ | + Enterprise SLA, white-label options |
+| Tier          | Monthly  | Annual    | Key Benefits                          |
+| ------------- | -------- | --------- | ------------------------------------- |
+| **Supporter** | $100     | $1,000    | Logo on website, newsletter mention   |
+| **Bronze**    | $500     | $5,000    | + Priority support, early features    |
+| **Silver**    | $2,000   | $20,000   | + Dedicated support, co-marketing     |
+| **Gold**      | $5,000   | $50,000   | + Custom features, strategic input    |
+| **Platinum**  | $10,000+ | $100,000+ | + Enterprise SLA, white-label options |
 
 ## Tier Details
 
@@ -35,6 +35,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Individual developers, small startups, community supporters
 
 **Benefits**:
+
 - ✅ Logo on sponsors page
 - ✅ Mention in monthly newsletter
 - ✅ Sponsor badge on GitHub
@@ -52,6 +53,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Growing startups, small blockchain projects
 
 **Benefits**:
+
 - ✅ All Supporter benefits
 - ✅ Logo on README and documentation
 - ✅ Priority issue triage (24-48 hour response)
@@ -73,6 +75,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Established companies, DeFi protocols, blockchain platforms
 
 **Benefits**:
+
 - ✅ All Bronze benefits
 - ✅ Logo on project website homepage
 - ✅ Dedicated technical account manager
@@ -98,6 +101,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Large enterprises, major blockchain platforms, security firms
 
 **Benefits**:
+
 - ✅ All Silver benefits
 - ✅ Prominent logo placement (homepage, docs, presentations)
 - ✅ Dedicated engineering support
@@ -126,6 +130,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Enterprise deployments, strategic partners, foundations
 
 **Benefits**:
+
 - ✅ All Gold benefits
 - ✅ Custom partnership package
 - ✅ White-label deployment options
@@ -255,6 +260,7 @@ Don't see a tier that fits? We create custom sponsorship packages:
 **Contact**: sponsors@cuberai.example
 
 **Custom packages may include**:
+
 - Adjusted benefit mix
 - Different payment schedules
 - Specific branding requirements
@@ -275,6 +281,7 @@ Don't see a tier that fits? We create custom sponsorship packages:
 ### Private Recognition
 
 If you prefer low-key support:
+
 - Receive benefits without public listing
 - Internal acknowledgment only
 - Still receive technical benefits
@@ -305,7 +312,7 @@ A: Sponsorship doesn't grant governance rights per our independence policy. You'
 
 ## Current Sponsors
 
-*Thank you to our sponsors! Your support makes this project possible.*
+_Thank you to our sponsors! Your support makes this project possible._
 
 ### Platinum Sponsors
 

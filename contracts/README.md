@@ -25,6 +25,7 @@ All contracts must conform to `contract.schema.json`. The schema defines:
 Contracts are automatically validated on push via the `contracts-validate.yml` workflow.
 
 To validate locally:
+
 ```bash
 npm install -g ajv-cli
 ajv validate -s contract.schema.json -d "agents/*.json"

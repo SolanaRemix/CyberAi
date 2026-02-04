@@ -77,15 +77,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'web'
-      
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -100,12 +100,12 @@ To display real scan data, integrate with GitHub API or backend:
 ```javascript
 // In index.html, add:
 async function loadScanData() {
-    const response = await fetch('https://api.github.com/repos/OWNER/REPO/actions/runs');
-    const data = await response.json();
-    
-    // Update dashboard with real data
-    document.querySelector('.total-scans').textContent = data.total_count;
-    // ... etc
+  const response = await fetch('https://api.github.com/repos/OWNER/REPO/actions/runs');
+  const data = await response.json();
+
+  // Update dashboard with real data
+  document.querySelector('.total-scans').textContent = data.total_count;
+  // ... etc
 }
 
 document.addEventListener('DOMContentLoaded', loadScanData);
@@ -144,30 +144,32 @@ Update workflow to post results:
 ```javascript
 // Backend API endpoint
 app.post('/api/create-checkout-session', async (req, res) => {
-    const { tier, price } = req.body;
-    
-    const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items: [{
-            price_data: {
-                currency: 'usd',
-                product_data: {
-                    name: `${tier} Sponsorship`,
-                    description: `Monthly ${tier} tier sponsorship`,
-                },
-                unit_amount: price * 100,
-                recurring: {
-                    interval: 'month',
-                },
-            },
-            quantity: 1,
-        }],
-        mode: 'subscription',
-        success_url: 'https://yourdomain.com/success',
-        cancel_url: 'https://yourdomain.com/billing',
-    });
-    
-    res.json({ sessionId: session.id });
+  const { tier, price } = req.body;
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: `${tier} Sponsorship`,
+            description: `Monthly ${tier} tier sponsorship`,
+          },
+          unit_amount: price * 100,
+          recurring: {
+            interval: 'month',
+          },
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'subscription',
+    success_url: 'https://yourdomain.com/success',
+    cancel_url: 'https://yourdomain.com/billing',
+  });
+
+  res.json({ sessionId: session.id });
 });
 ```
 
@@ -178,20 +180,20 @@ app.post('/api/create-checkout-session', async (req, res) => {
 const stripe = Stripe('pk_test_YOUR_KEY');
 
 async function checkout(tier, price) {
-    const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tier, price })
-    });
-    
-    const session = await response.json();
-    const result = await stripe.redirectToCheckout({
-        sessionId: session.sessionId
-    });
-    
-    if (result.error) {
-        alert(result.error.message);
-    }
+  const response = await fetch('/api/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ tier, price }),
+  });
+
+  const session = await response.json();
+  const result = await stripe.redirectToCheckout({
+    sessionId: session.sessionId,
+  });
+
+  if (result.error) {
+    alert(result.error.message);
+  }
 }
 ```
 
@@ -200,26 +202,22 @@ async function checkout(tier, price) {
 ```javascript
 // Backend webhook endpoint
 app.post('/api/stripe-webhook', async (req, res) => {
-    const sig = req.headers['stripe-signature'];
-    
-    let event;
-    try {
-        event = stripe.webhooks.constructEvent(
-            req.body,
-            sig,
-            process.env.STRIPE_WEBHOOK_SECRET
-        );
-    } catch (err) {
-        return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-    
-    if (event.type === 'checkout.session.completed') {
-        const session = event.data.object;
-        // Provision access, send confirmation email, etc.
-        await provisionAccess(session);
-    }
-    
-    res.json({ received: true });
+  const sig = req.headers['stripe-signature'];
+
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+  } catch (err) {
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
+    // Provision access, send confirmation email, etc.
+    await provisionAccess(session);
+  }
+
+  res.json({ received: true });
 });
 ```
 
@@ -228,6 +226,7 @@ app.post('/api/stripe-webhook', async (req, res) => {
 To accept Cash App payments:
 
 1. **Set your Cash App handle** in `billing.html`:
+
    ```html
    <p class="text-sm font-mono bg-gray-100 p-2 rounded">$YourCashAppHandle</p>
    ```
@@ -258,11 +257,11 @@ For crypto payments:
 4. **Example verification**:
    ```javascript
    async function verifyEthPayment(txHash, expectedAmount) {
-       const response = await fetch(
-           `https://api.etherscan.io/api?module=proxy&action=eth_getTransactionByHash&txhash=${txHash}`
-       );
-       const data = await response.json();
-       // Verify amount and recipient
+     const response = await fetch(
+       `https://api.etherscan.io/api?module=proxy&action=eth_getTransactionByHash&txhash=${txHash}`
+     );
+     const data = await response.json();
+     // Verify amount and recipient
    }
    ```
 
@@ -274,7 +273,7 @@ Update colors in both HTML files:
 
 ```css
 .gradient-bg {
-    background: linear-gradient(135deg, #YOUR_COLOR1 0%, #YOUR_COLOR2 100%);
+  background: linear-gradient(135deg, #YOUR_COLOR1 0%, #YOUR_COLOR2 100%);
 }
 ```
 
@@ -283,7 +282,7 @@ Update colors in both HTML files:
 Replace the emoji (🔒) with your logo:
 
 ```html
-<img src="logo.svg" alt="SmartContractAudit" class="h-8">
+<img src="logo.svg" alt="SmartContractAudit" class="h-8" />
 ```
 
 ### Custom Sections
@@ -292,8 +291,8 @@ Add new sections following the existing pattern:
 
 ```html
 <div class="bg-white rounded-lg shadow p-6">
-    <h3 class="font-bold text-lg mb-3">Your Section</h3>
-    <!-- Your content -->
+  <h3 class="font-bold text-lg mb-3">Your Section</h3>
+  <!-- Your content -->
 </div>
 ```
 
@@ -317,7 +316,7 @@ The billing page integrates with the repository's `FUNDING.yml`:
 # .github/FUNDING.yml
 github: [YOUR_GITHUB_HANDLE]
 open_collective: YOUR_PROJECT
-custom: ["https://yourdomain.com/web/billing.html"]
+custom: ['https://yourdomain.com/web/billing.html']
 ```
 
 This makes the "Sponsor" button on GitHub link to your billing page.
@@ -327,6 +326,7 @@ This makes the "Sponsor" button on GitHub link to your billing page.
 ### Local Testing
 
 1. **Simple HTTP Server**:
+
    ```bash
    cd web
    python -m http.server 8000
@@ -334,6 +334,7 @@ This makes the "Sponsor" button on GitHub link to your billing page.
    ```
 
 2. **Node.js Server**:
+
    ```bash
    npx serve .
    ```
@@ -363,10 +364,12 @@ Add analytics to track usage:
 <!-- Add to <head> -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
 </script>
 ```
 

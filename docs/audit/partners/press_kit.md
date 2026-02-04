@@ -1,5 +1,5 @@
-<<<<<<< HEAD
----
+## <<<<<<< HEAD
+
 title: Press Kit
 <<<<<<< HEAD
 description: Brand assets and media resources for SmartContractAudit
@@ -7,12 +7,15 @@ keywords: press kit, media, brand, logo, assets
 =======
 description: Brand assets and media resources
 keywords: press, media, brand, logos, assets
->>>>>>> origin/pr9
+
+> > > > > > > origin/pr9
+
 ---
 
 # Press Kit
 
 <<<<<<< HEAD
+
 ## Overview
 
 This press kit provides brand assets, key information, and media resources for SmartContractAudit partners, press, and community members.
@@ -28,6 +31,7 @@ This press kit provides brand assets, key information, and media resources for S
 **Mission**: Automated smart contract auditing and security for the blockchain ecosystem
 
 **Key Features**:
+
 - Automated security auditing
 - Multi-chain support (Solana, Ethereum, and more)
 - GitHub Actions integration
@@ -63,12 +67,14 @@ By making professional-grade security tooling accessible to all developers, Smar
 **Primary Logo**: [TO BE PROVIDED]
 
 **Logo Variations**:
+
 - Full color (preferred)
 - White/light backgrounds
 - Dark/black backgrounds
 - Monochrome
 
 **File Formats Available**:
+
 - SVG (vector, preferred)
 - PNG (1000px, 2000px, 4000px)
 - EPS (print)
@@ -82,14 +88,14 @@ By making professional-grade security tooling accessible to all developers, Smar
 ✅ Maintain aspect ratio  
 ✅ Provide clear space around logo  
 ✅ Use on contrasting backgrounds  
-✅ Scale proportionally  
+✅ Scale proportionally
 
 **Don't**:
 ❌ Modify colors or design  
 ❌ Stretch or distort  
 ❌ Add effects or shadows  
 ❌ Use low-resolution versions  
-❌ Combine with other logos  
+❌ Combine with other logos
 
 ### Clear Space
 
@@ -104,33 +110,40 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 
 ### Primary Palette
 
-**Primary Blue**: `#0066CC`  
-- RGB: 0, 102, 204  
-- CMYK: 100, 50, 0, 20  
+**Primary Blue**: `#0066CC`
+
+- RGB: 0, 102, 204
+- CMYK: 100, 50, 0, 20
 - Usage: Primary brand color, CTAs, links
 
-**Dark Gray**: `#2C3E50`  
-- RGB: 44, 62, 80  
-- CMYK: 45, 23, 0, 69  
+**Dark Gray**: `#2C3E50`
+
+- RGB: 44, 62, 80
+- CMYK: 45, 23, 0, 69
 - Usage: Text, headers
 
-**Light Gray**: `#ECF0F1`  
-- RGB: 236, 240, 241  
-- CMYK: 2, 0, 0, 5  
+**Light Gray**: `#ECF0F1`
+
+- RGB: 236, 240, 241
+- CMYK: 2, 0, 0, 5
 - Usage: Backgrounds, secondary elements
 
 ### Secondary Palette
 
-**Success Green**: `#27AE60`  
+**Success Green**: `#27AE60`
+
 - Usage: Success states, positive actions
 
-**Warning Orange**: `#F39C12`  
+**Warning Orange**: `#F39C12`
+
 - Usage: Warnings, cautions
 
-**Error Red**: `#E74C3C`  
+**Error Red**: `#E74C3C`
+
 - Usage: Errors, critical issues
 
-**Info Blue**: `#3498DB`  
+**Info Blue**: `#3498DB`
+
 - Usage: Information, tips
 
 ## Typography
@@ -148,6 +161,7 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 [TO BE PROVIDED]
 
 **Available Screenshots**:
+
 1. GitHub Actions workflow in action
 2. Audit report example
 3. Security dashboard (if applicable)
@@ -177,12 +191,14 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 ## Target Audience
 
 ### Primary
+
 - Smart contract developers
 - Blockchain development teams
 - DeFi protocol teams
 - Security engineers
 
 ### Secondary
+
 - Blockchain platforms
 - Security audit firms
 - Educational institutions
@@ -210,17 +226,18 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 - **Security Issues Detected**: [Cumulative]
 - **Partnerships**: [Current count]
 
-*Note: Current statistics available in repository*
+_Note: Current statistics available in repository_
 
 ## Awards and Recognition
 
-*To be updated as received*
+_To be updated as received_
 
 ## Recent News
 
-*To be updated with announcements*
+_To be updated with announcements_
 
 **Press Releases**:
+
 - Product launch announcement
 - Partnership announcements
 - Major feature releases
@@ -231,11 +248,13 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 ### Naming
 
 **Correct**:
+
 - SmartContractAudit
 - SmartContractAudit platform
 - The SmartContractAudit project
 
 **Incorrect**:
+
 - ~~Smart Contract Audit~~ (as one word)
 - ~~SCA~~ (abbreviation not official)
 - ~~Smart Audit~~
@@ -269,6 +288,7 @@ Partners may display "Powered by SmartContractAudit" badge:
 ## Co-Marketing Opportunities
 
 **For Partners**:
+
 - Joint blog posts
 - Case studies
 - Webinars
@@ -291,6 +311,7 @@ For press releases or announcements:
 **One-Pager**: [LINK TO BE PROVIDED]
 
 Includes:
+
 - Key facts
 - Features overview
 - Partnership information
@@ -301,6 +322,7 @@ Includes:
 [TO BE PROVIDED]
 
 **Available**:
+
 - Product demo videos
 - Tutorial screencast
 - Developer testimonials
@@ -313,6 +335,7 @@ Includes:
 **For Partners**: Presentation templates available
 
 **Includes**:
+
 - PowerPoint/Google Slides templates
 - Brand-compliant designs
 - Editable slides
@@ -355,6 +378,7 @@ This press kit is updated quarterly.
 **Full Press Kit ZIP**: [TO BE PROVIDED]
 
 Includes:
+
 - All logo variations
 - Brand guidelines PDF
 - Screenshots
@@ -365,8 +389,8 @@ Includes:
 
 For additional assets or questions, contact: press@cuberai.example
 
-Thank you for your interest in SmartContractAudit! 📰
-=======
+# Thank you for your interest in SmartContractAudit! 📰
+
 ## Brand Overview
 
 **Name**: SmartContractAudit  
@@ -377,12 +401,14 @@ Thank you for your interest in SmartContractAudit! 📰
 ## Logos
 
 ### Primary Logo
+
 - Full color (PNG, SVG)
 - White version
 - Black version
 - Minimum size: 120px width
 
 ### Icon
+
 - App icon (512x512)
 - Favicon (32x32, 16x16)
 - Social media profile (400x400)
@@ -392,11 +418,13 @@ Thank you for your interest in SmartContractAudit! 📰
 ## Brand Colors
 
 **Primary**:
+
 - Brand Blue: #0066FF
 - Dark: #001133
 - Light: #E6F0FF
 
 **Secondary**:
+
 - Success: #00CC66
 - Warning: #FF9900
 - Error: #FF3333
@@ -411,12 +439,14 @@ Thank you for your interest in SmartContractAudit! 📰
 ## Usage Guidelines
 
 ### Do's ✅
+
 - Use official logos only
 - Maintain minimum spacing
 - Use on contrasting backgrounds
 - Link to official website
 
 ### Don'ts ❌
+
 - Don't modify logos
 - Don't use unofficial colors
 - Don't stretch or distort
@@ -433,6 +463,7 @@ SmartContractAudit is an open-source security platform that provides automated v
 ## Team
 
 **Leadership**:
+
 - [Names and titles]
 - [Contact information]
 
@@ -460,6 +491,7 @@ SmartContractAudit is an open-source security platform that provides automated v
 ## Screenshots
 
 Available in press kit:
+
 - Dashboard views
 - Scan results
 - Integration examples
@@ -467,9 +499,10 @@ Available in press kit:
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+
 # Press Kit
 
 ## Brand Assets
@@ -477,17 +510,20 @@ Available in press kit:
 ### Logo Files
 
 **Full Logo**:
+
 - [SVG (vector)](assets/logo.svg) - Scalable, preferred format
 - [PNG (high-res)](assets/logo-2000px.png) - 2000×2000px
 - [PNG (web)](assets/logo-500px.png) - 500×500px
 
 **Logo Variations**:
+
 - Primary (full color)
 - White (for dark backgrounds)
 - Black (for light backgrounds)
 - Monochrome
 
 **Icon Only**:
+
 - [SVG](assets/icon.svg)
 - [PNG 512×512](assets/icon-512px.png)
 - [PNG 256×256](assets/icon-256px.png)
@@ -497,16 +533,19 @@ Available in press kit:
 ### Brand Colors
 
 **Primary Palette**:
+
 - Primary Blue: `#0066CC` (RGB: 0, 102, 204)
 - Dark Blue: `#004499` (RGB: 0, 68, 153)
 - Light Blue: `#3399FF` (RGB: 51, 153, 255)
 
 **Secondary Palette**:
+
 - Security Green: `#00CC66` (RGB: 0, 204, 102)
 - Warning Orange: `#FF9933` (RGB: 255, 153, 51)
 - Error Red: `#CC3333` (RGB: 204, 51, 51)
 
 **Neutrals**:
+
 - Dark Gray: `#333333`
 - Medium Gray: `#666666`
 - Light Gray: `#CCCCCC`
@@ -515,6 +554,7 @@ Available in press kit:
 ### Typography
 
 **Primary Font**: Inter (Google Fonts)
+
 - Headings: Inter Bold (700)
 - Body: Inter Regular (400)
 - Code: JetBrains Mono
@@ -524,6 +564,7 @@ Available in press kit:
 ### Logo Usage Guidelines
 
 **Do's**:
+
 - ✅ Maintain clear space (minimum 20px on all sides)
 - ✅ Use official logo files
 - ✅ Maintain aspect ratio
@@ -531,6 +572,7 @@ Available in press kit:
 - ✅ Use appropriate logo variation for context
 
 **Don'ts**:
+
 - ❌ Distort or stretch logo
 - ❌ Change logo colors
 - ❌ Add effects (shadows, gradients, etc.)
@@ -599,11 +641,13 @@ For inclusion in press releases and articles:
 ### Screenshots
 
 **Dashboard**:
+
 - [Main Dashboard](screenshots/dashboard.png)
 - [Scan Results](screenshots/results.png)
 - [Vulnerability Detail](screenshots/vulnerability.png)
 
 **Integration Examples**:
+
 - [GitHub PR Comment](screenshots/github-pr.png)
 - [VS Code Plugin](screenshots/vscode.png)
 - [CLI Output](screenshots/cli.png)
@@ -613,14 +657,17 @@ For inclusion in press releases and articles:
 ### Video Resources
 
 **Product Demo** (2 minutes):
+
 - [YouTube Link](#)
 - [Download MP4](videos/demo.mp4)
 
 **Integration Tutorial** (5 minutes):
+
 - [YouTube Link](#)
 - [Download MP4](videos/tutorial.mp4)
 
 **Testimonials Compilation** (3 minutes):
+
 - [YouTube Link](#)
 - [Download MP4](videos/testimonials.mp4)
 
@@ -710,9 +757,11 @@ press@cyberai.network
 ### Complete Press Kit
 
 **Download All Assets**:
+
 - [Press Kit ZIP](assets/smartcontractaudit-press-kit.zip) - Complete package
 
 **Individual Downloads**:
+
 - [Logos ZIP](assets/logos.zip) - All logo variations
 - [Screenshots ZIP](assets/screenshots.zip) - All screenshots
 - [Videos ZIP](assets/videos.zip) - All video assets
@@ -723,6 +772,7 @@ press@cyberai.network
 ### Permitted Uses
 
 You may use our brand assets to:
+
 - ✅ Write news articles or blog posts about CyberAi
 - ✅ Include in partnership announcements (approved partners)
 - ✅ Show integration or usage of our tools
@@ -732,6 +782,7 @@ You may use our brand assets to:
 ### Prohibited Uses
 
 You may NOT:
+
 - ❌ Imply endorsement without permission
 - ❌ Modify or create derivative logos
 - ❌ Use in misleading or false context
@@ -741,6 +792,7 @@ You may NOT:
 ### Attribution
 
 When using our brand assets, please attribute:
+
 - "CyberAi" (proper capitalization)
 - Link to: github.com/CyberAi/CyberAi
 - Mention open-source status when relevant
@@ -770,4 +822,5 @@ A: Open source, community-driven, transparent governance, multi-chain support, a
 **Last Updated**: 2026-01-01  
 **Press Kit Version**: 1.0  
 **Contact**: press@cyberai.network
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10

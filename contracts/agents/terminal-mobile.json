@@ -37,23 +37,12 @@
         }
       }
     ],
-    "workflows": [
-      "mobile-bootstrap",
-      "mobile-validation",
-      "mobile-sync"
-    ]
+    "workflows": ["mobile-bootstrap", "mobile-validation", "mobile-sync"]
   },
   "requirements": {
     "runtime": "ios-terminal",
-    "dependencies": [
-      "node>=18.0.0",
-      "git>=2.30.0"
-    ],
-    "permissions": [
-      "read:code",
-      "execute:scripts",
-      "read:contracts"
-    ]
+    "dependencies": ["node>=18.0.0", "git>=2.30.0"],
+    "permissions": ["read:code", "execute:scripts", "read:contracts"]
   },
   "compliance": {
     "security": {

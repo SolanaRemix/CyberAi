@@ -19,6 +19,7 @@ This document outlines the standard partnership terms and agreement structure fo
 **Typical Use**: Ecosystem partnerships, research collaborations
 
 **Key Elements**:
+
 - Partnership objectives
 - Roles and responsibilities
 - Term and renewal
@@ -34,6 +35,7 @@ This document outlines the standard partnership terms and agreement structure fo
 **Typical Use**: Corporate sponsors, financial backers
 
 **Key Elements**:
+
 - Sponsorship tier and amount
 - Payment terms
 - Benefits and deliverables
@@ -50,6 +52,7 @@ This document outlines the standard partnership terms and agreement structure fo
 **Typical Use**: Platform integrations, API partnerships
 
 **Key Elements**:
+
 - Integration scope
 - Technical responsibilities
 - Support commitments
@@ -67,6 +70,7 @@ This document outlines the standard partnership terms and agreement structure fo
 **Typical Use**: Enterprise deployments, resellers
 
 **Key Elements**:
+
 - License scope and restrictions
 - Fees and payment terms
 - Support and maintenance

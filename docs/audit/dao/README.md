@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+
 # DAO Overview
 
 ## Introduction
@@ -20,6 +21,7 @@ The SmartContractAudit DAO is a governance structure that:
 ### 1. Contribution Phase
 
 Contributors participate by:
+
 - Submitting pull requests
 - Reviewing code
 - Reporting issues
@@ -32,6 +34,7 @@ See [eligibility.md](eligibility.md) for detailed criteria.
 ### 2. Scoring Phase
 
 Contributions are scored based on:
+
 - Impact and quality
 - Difficulty and complexity
 - Timeliness and responsiveness
@@ -42,6 +45,7 @@ See [scoring.md](scoring.md) for the scoring formula.
 ### 3. Snapshot Phase
 
 Periodic snapshots capture:
+
 - Eligible contributors
 - Contribution scores
 - Token allocations
@@ -52,6 +56,7 @@ See [snapshot.md](snapshot.md) for snapshot process.
 ### 4. Airdrop Phase
 
 Token distribution via:
+
 - Merkle tree generation
 - On-chain or off-chain claims
 - Verification and validation
@@ -62,6 +67,7 @@ See [merkle.md](merkle.md) and [claiming.md](claiming.md) for details.
 ### 5. Governance Phase
 
 Token holders can:
+
 - Vote on proposals
 - Submit governance proposals
 - Delegate voting power
@@ -91,6 +97,7 @@ Critical operations require multisig approval:
 - **Emergency Actions**: Security responses
 
 Multisig composition:
+
 - 3-5 core maintainers
 - Requires majority approval (e.g., 3-of-5)
 - Transparent on-chain operations
@@ -100,6 +107,7 @@ Multisig composition:
 ### Token Utility
 
 Governance tokens provide:
+
 - Voting power on proposals
 - Access to exclusive features (planned)
 - Recognition of contributions
@@ -114,6 +122,7 @@ Governance tokens provide:
 ### Vesting Schedule
 
 To ensure long-term alignment:
+
 - Immediate: 25% unlocked at claim
 - Linear vesting: 75% over 12 months
 - Cliff: None (begins vesting immediately)
@@ -123,6 +132,7 @@ To ensure long-term alignment:
 ### Who Can Participate?
 
 Eligible participants include:
+
 - Code contributors (merged PRs)
 - Documentation contributors
 - Security researchers (vulnerability reports)
@@ -135,6 +145,7 @@ See [eligibility.md](eligibility.md) for full criteria.
 ### Snapshot Dates
 
 Snapshots are taken:
+
 - **Frequency**: Quarterly
 - **Announcement**: 2 weeks advance notice
 - **Cut-off**: Specific date/time announced
@@ -165,6 +176,7 @@ Snapshots are taken:
 ### 4. Claim Your Tokens
 
 When airdrop is announced:
+
 - Verify your inclusion in merkle tree
 - Follow [claiming.md](claiming.md) instructions
 - Submit claim transaction
@@ -200,6 +212,7 @@ The DAO infrastructure is currently in **planning phase**:
 ### 📋 Legal Disclaimer
 
 Governance tokens are for utility and governance only:
+
 - Not investment securities
 - No expectation of profit
 - Utility for voting only
@@ -259,8 +272,8 @@ Questions about the DAO?
 
 **Last Updated**: 2026-01-01
 
-**Next Review**: Q1 2026
-=======
+# **Next Review**: Q1 2026
+
 SmartContractAudit DAO enables decentralized governance and community participation through token-based voting and contributor rewards.
 
 ## Governance Flow
@@ -268,6 +281,7 @@ SmartContractAudit DAO enables decentralized governance and community participat
 ### 1. Proposal Creation
 
 Community members can create proposals for:
+
 - Feature requests
 - Budget allocation
 - Partnership decisions
@@ -291,6 +305,7 @@ Community members can create proposals for:
 ### 4. Execution
 
 Approved proposals are executed by:
+
 - **On-chain**: Multisig transactions for financial/contract changes
 - **Off-chain**: Implementation by maintainers for code/policy changes
 
@@ -308,12 +323,14 @@ Approved proposals are executed by:
 We use a hybrid governance model:
 
 **Snapshot (Off-chain Voting)**
+
 - Gas-free voting
 - Token-weighted votes
 - Flexible strategies
 - Transparent results
 
 **Multisig (On-chain Execution)**
+
 - Secure fund management
 - Multi-signature approval
 - On-chain transparency
@@ -322,17 +339,20 @@ We use a hybrid governance model:
 ### Key Roles
 
 **Token Holders**
+
 - Vote on proposals
 - Earn tokens through contributions
 - Participate in governance
 
 **Multisig Signers**
+
 - Execute approved proposals
 - Manage treasury
 - Emergency response
 - Typically 3-5 trusted members
 
 **Maintainers**
+
 - Implement approved changes
 - Technical execution
 - Report progress
@@ -341,6 +361,7 @@ We use a hybrid governance model:
 ## Voting Power
 
 Voting power is based on:
+
 1. Token holdings (primary)
 2. Contribution history (weighted)
 3. Staking duration (bonus)
@@ -351,18 +372,21 @@ See [scoring.md](scoring.md) for detailed calculation.
 ## Proposal Types
 
 ### Standard Proposals
+
 - Feature requests
 - Budget allocation <$10k
 - Minor policy changes
 - Quorum: 10% of tokens
 
 ### Major Proposals
+
 - Protocol upgrades
 - Large budget allocation >$10k
 - Major policy changes
 - Quorum: 25% of tokens
 
 ### Emergency Proposals
+
 - Security issues
 - Critical bug fixes
 - Accelerated timeline
@@ -371,12 +395,14 @@ See [scoring.md](scoring.md) for detailed calculation.
 ## Governance Token
 
 **Token Details**:
+
 - Name: [DAO Token Name]
 - Symbol: [SYMBOL]
 - Network: [Ethereum/Solana/etc.]
 - Contract: [Address]
 
 **Token Distribution**:
+
 - Contributors: 60%
 - Treasury: 20%
 - Early supporters: 10%
@@ -387,6 +413,7 @@ See [eligibility.md](eligibility.md) for earning tokens.
 ## Snapshot Space
 
 **Space Details**:
+
 - URL: snapshot.org/#/smartcontractaudit.eth
 - Voting strategies configured
 - Proposal templates available
@@ -397,12 +424,14 @@ See [snapshot.md](snapshot.md) for setup details.
 ## Multisig Details
 
 **Multisig Wallet**:
+
 - Network: [Network]
 - Address: [Address]
 - Signers: [Number] of [Total]
 - Platform: Gnosis Safe / Squads
 
 **Transaction Flow**:
+
 1. Proposal approved on Snapshot
 2. Multisig signer creates transaction
 3. Other signers review and approve
@@ -431,6 +460,7 @@ See [snapshot.md](snapshot.md) for setup details.
 ### Delegation
 
 Token holders can delegate voting power to:
+
 - Trusted community members
 - Subject matter experts
 - Active participants
@@ -462,6 +492,7 @@ A: It can be resubmitted after refinement and community building.
 ## Contact
 
 For DAO governance questions:
+
 - GitHub Discussions
 - Discord: [Link]
 - Telegram: [Link]
@@ -469,8 +500,9 @@ For DAO governance questions:
 ---
 
 Last updated: 2026-01-01
->>>>>>> origin/pr9
-=======
+
+> > > > > > > # origin/pr9
+
 # DAO Documentation
 
 ## Overview
@@ -588,4 +620,5 @@ See GOVERNANCE.md for how DAO governance integrates with project governance.
 
 **Last Updated**: 2026-01-01  
 **Status**: Planning/Development
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10

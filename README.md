@@ -110,17 +110,22 @@ CyberAi/
 ## 🔑 Key Features
 
 ### Contract Registry
+
 Machine-readable contracts define capabilities, requirements, and metadata for:
+
 - **Agents**: AI services for security audits, code analysis, and automation
 - **Repositories**: Code repositories providing functionality
 - **Runners**: Execution environments for agents
 
 ### Automation Tools
+
 - **Bootstrap**: Verifies environment, installs dependencies, validates contracts, builds site
 - **Audit**: Validates contracts, workflows, and site integrity
 
 ### GitHub Pages Site
+
 Static site powered by Astro, serving:
+
 - Comprehensive documentation
 - Contract browsing
 - API reference
@@ -129,6 +134,7 @@ Static site powered by Astro, serving:
 ## 🛠️ Development
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - Git

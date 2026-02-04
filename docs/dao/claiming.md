@@ -9,16 +9,19 @@ This guide explains how to claim your SmartContractAudit DAO governance tokens a
 Before you can claim:
 
 ✅ **Verify Eligibility**
+
 - Check you're included in the allocation
 - Confirm your address and amount
 - Review your merkle proof
 
 ✅ **Prepare Wallet**
+
 - Have a compatible Web3 wallet (MetaMask, WalletConnect, etc.)
 - Ensure wallet is on the correct network
 - Have sufficient native tokens for gas (if on-chain claiming)
 
 ✅ **Understand Vesting**
+
 - 25% unlocked immediately
 - 75% vests linearly over 12 months
 - No cliff period
@@ -32,6 +35,7 @@ Before you can claim:
 #### Step 1: Visit Claim Interface
 
 Navigate to the official claiming portal:
+
 ```
 [CLAIM_URL_TO_BE_ANNOUNCED]
 ```
@@ -48,6 +52,7 @@ Navigate to the official claiming portal:
 #### Step 3: Verify Allocation
 
 The interface will show:
+
 - Your address
 - Allocated amount
 - Claimed status
@@ -103,6 +108,7 @@ The interface will show:
 #### Using MetaMask
 
 1. **Install MetaMask**
+
    ```
    https://metamask.io
    ```
@@ -124,6 +130,7 @@ The interface will show:
    - Verify connected address
 
 5. **View Claim Details**
+
    ```
    Address: 0x1234...
    Allocation: 1,000 SCAUDIT
@@ -164,6 +171,7 @@ The interface will show:
 #### Simple Sign & Claim
 
 1. **Visit Portal**
+
    ```
    [OFF_CHAIN_CLAIM_URL]
    ```
@@ -200,23 +208,25 @@ The interface will show:
 
 **Total Allocation**: 1,000 tokens
 
-| Time | Available | Vested | Total Claimed |
-|------|-----------|--------|---------------|
-| Day 0 (Claim) | 250 | 0 | 250 |
-| Month 1 | 0 | 62.5 | 312.5 |
-| Month 3 | 0 | 187.5 | 437.5 |
-| Month 6 | 0 | 375 | 625 |
-| Month 12 | 0 | 750 | 1,000 |
+| Time          | Available | Vested | Total Claimed |
+| ------------- | --------- | ------ | ------------- |
+| Day 0 (Claim) | 250       | 0      | 250           |
+| Month 1       | 0         | 62.5   | 312.5         |
+| Month 3       | 0         | 187.5  | 437.5         |
+| Month 6       | 0         | 375    | 625           |
+| Month 12      | 0         | 750    | 1,000         |
 
 ### Claiming Vested Tokens
 
 **On-Chain**:
+
 - Return to claim interface
 - Click "Claim Vested"
 - Sign transaction
 - Gas fee applies
 
 **Off-Chain**:
+
 - Vested tokens automatically included in wallet balance
 - No action needed
 
@@ -245,6 +255,7 @@ The interface will show:
 ### Other Wallets
 
 Most wallets auto-detect tokens. If not:
+
 - Find "Add Token" or "Custom Token"
 - Enter contract address
 - Confirm addition
@@ -256,6 +267,7 @@ Most wallets auto-detect tokens. If not:
 **Cause**: Tokens already claimed for this address
 
 **Solution**:
+
 - Check wallet balance
 - Verify token is added to wallet
 - Review transaction history
@@ -266,6 +278,7 @@ Most wallets auto-detect tokens. If not:
 **Cause**: Merkle proof doesn't match
 
 **Solutions**:
+
 - Refresh page and try again
 - Clear browser cache
 - Verify you're using correct address
@@ -277,6 +290,7 @@ Most wallets auto-detect tokens. If not:
 **Cause**: Not enough native tokens for transaction
 
 **Solutions**:
+
 - Add ETH (or native token) to wallet
 - Gas estimate: ~$10-50 depending on network
 - Wait for lower gas prices
@@ -287,6 +301,7 @@ Most wallets auto-detect tokens. If not:
 **Cause**: Wallet on wrong network
 
 **Solutions**:
+
 - Check required network
 - Switch network in wallet
 - Verify network ID matches
@@ -314,6 +329,7 @@ Most wallets auto-detect tokens. If not:
 ### Can't Sign Message/Transaction
 
 **Solutions**:
+
 - Ensure wallet unlocked
 - Check wallet has sufficient funds
 - Try different wallet/browser
@@ -325,23 +341,27 @@ Most wallets auto-detect tokens. If not:
 Before claiming, verify:
 
 ✅ **Official Site**
+
 - [ ] URL matches official announcement
 - [ ] HTTPS enabled
 - [ ] Certificate valid
 - [ ] No typos in domain
 
 ✅ **Contract Verification**
+
 - [ ] Contract address matches announcement
 - [ ] Contract verified on block explorer
 - [ ] Correct token details
 
 ✅ **Transaction Safety**
+
 - [ ] Review all transaction details
 - [ ] Verify recipient address (should be you)
 - [ ] Reasonable gas fees
 - [ ] No suspicious token approvals
 
 ✅ **Wallet Security**
+
 - [ ] Using trusted wallet
 - [ ] Private keys secure
 - [ ] No wallet compromises
@@ -396,17 +416,20 @@ Before claiming, verify:
 ### Getting Help
 
 **Before Contacting Support**:
+
 1. Read this guide thoroughly
 2. Check FAQ section below
 3. Search GitHub Discussions
 4. Review transaction on block explorer
 
 **Contact Channels**:
+
 - **GitHub Discussions**: Community help
 - **GitHub Issues**: Technical problems
 - **Email**: governance@cuberai.example
 
 **Include in Support Request**:
+
 - Your wallet address (public)
 - Error messages (screenshots)
 - Transaction hashes (if any)

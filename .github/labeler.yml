@@ -1,50 +1,50 @@
 documentation:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'docs/**/*'
-      - '**/*.md'
-      - 'LICENSE'
-      - 'CONTRIBUTING.md'
+      - any-glob-to-any-file:
+          - 'docs/**/*'
+          - '**/*.md'
+          - 'LICENSE'
+          - 'CONTRIBUTING.md'
 
 workflows:
   - changed-files:
-    - any-glob-to-any-file:
-      - '.github/workflows/**/*'
-      - '.github/**/*.yml'
+      - any-glob-to-any-file:
+          - '.github/workflows/**/*'
+          - '.github/**/*.yml'
 
 frontend:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'app/**/*'
-      - 'dashboard/**/*'
-      - '**/*.html'
-      - '**/*.css'
+      - any-glob-to-any-file:
+          - 'app/**/*'
+          - 'dashboard/**/*'
+          - '**/*.html'
+          - '**/*.css'
 
 backend:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'api/**/*'
-      - 'src/**/*'
+      - any-glob-to-any-file:
+          - 'api/**/*'
+          - 'src/**/*'
 
 security:
   - changed-files:
-    - any-glob-to-any-file:
-      - '.github/workflows/codeql.yml'
-      - 'security/**/*'
+      - any-glob-to-any-file:
+          - '.github/workflows/codeql.yml'
+          - 'security/**/*'
 
 dependencies:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'package.json'
-      - 'package-lock.json'
-      - 'requirements.txt'
-      - 'Gemfile'
-      - 'Cargo.toml'
+      - any-glob-to-any-file:
+          - 'package.json'
+          - 'package-lock.json'
+          - 'requirements.txt'
+          - 'Gemfile'
+          - 'Cargo.toml'
 
 tests:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'test/**/*'
-      - 'tests/**/*'
-      - '**/*.test.js'
-      - '**/*.spec.js'
+      - any-glob-to-any-file:
+          - 'test/**/*'
+          - 'tests/**/*'
+          - '**/*.test.js'
+          - '**/*.spec.js'

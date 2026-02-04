@@ -1,12 +1,14 @@
-<<<<<<< HEAD
----
+## <<<<<<< HEAD
+
 title: Sponsorship Tiers
 description: Support SmartContractAudit through sponsorship
 <<<<<<< HEAD
 keywords: sponsorship, tiers, benefits, support, funding
 =======
 keywords: sponsorship, support, open-source, funding
->>>>>>> origin/pr9
+
+> > > > > > > origin/pr9
+
 ---
 
 # Sponsorship Tiers
@@ -24,13 +26,13 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 
 ## Tier Overview
 
-| Tier | Monthly | Annual | Key Benefits |
-|------|---------|--------|--------------|
-| **Supporter** | $100 | $1,000 | Logo on website, newsletter mention |
-| **Bronze** | $500 | $5,000 | + Priority support, early features |
-| **Silver** | $2,000 | $20,000 | + Dedicated support, co-marketing |
-| **Gold** | $5,000 | $50,000 | + Custom features, strategic input |
-| **Platinum** | $10,000+ | $100,000+ | + Enterprise SLA, white-label options |
+| Tier          | Monthly  | Annual    | Key Benefits                          |
+| ------------- | -------- | --------- | ------------------------------------- |
+| **Supporter** | $100     | $1,000    | Logo on website, newsletter mention   |
+| **Bronze**    | $500     | $5,000    | + Priority support, early features    |
+| **Silver**    | $2,000   | $20,000   | + Dedicated support, co-marketing     |
+| **Gold**      | $5,000   | $50,000   | + Custom features, strategic input    |
+| **Platinum**  | $10,000+ | $100,000+ | + Enterprise SLA, white-label options |
 
 ## Tier Details
 
@@ -41,6 +43,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Individual developers, small startups, community supporters
 
 **Benefits**:
+
 - ✅ Logo on sponsors page
 - ✅ Mention in monthly newsletter
 - ✅ Sponsor badge on GitHub
@@ -58,6 +61,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Growing startups, small blockchain projects
 
 **Benefits**:
+
 - ✅ All Supporter benefits
 - ✅ Logo on README and documentation
 - ✅ Priority issue triage (24-48 hour response)
@@ -79,6 +83,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Established companies, DeFi protocols, blockchain platforms
 
 **Benefits**:
+
 - ✅ All Bronze benefits
 - ✅ Logo on project website homepage
 - ✅ Dedicated technical account manager
@@ -104,6 +109,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Large enterprises, major blockchain platforms, security firms
 
 **Benefits**:
+
 - ✅ All Silver benefits
 - ✅ Prominent logo placement (homepage, docs, presentations)
 - ✅ Dedicated engineering support
@@ -132,6 +138,7 @@ Support the SmartContractAudit project and receive recognition, benefits, and ea
 **Perfect for**: Enterprise deployments, strategic partners, foundations
 
 **Benefits**:
+
 - ✅ All Gold benefits
 - ✅ Custom partnership package
 - ✅ White-label deployment options
@@ -261,6 +268,7 @@ Don't see a tier that fits? We create custom sponsorship packages:
 **Contact**: sponsors@cuberai.example
 
 **Custom packages may include**:
+
 - Adjusted benefit mix
 - Different payment schedules
 - Specific branding requirements
@@ -281,6 +289,7 @@ Don't see a tier that fits? We create custom sponsorship packages:
 ### Private Recognition
 
 If you prefer low-key support:
+
 - Receive benefits without public listing
 - Internal acknowledgment only
 - Still receive technical benefits
@@ -311,7 +320,7 @@ A: Sponsorship doesn't grant governance rights per our independence policy. You'
 
 ## Current Sponsors
 
-*Thank you to our sponsors! Your support makes this project possible.*
+_Thank you to our sponsors! Your support makes this project possible._
 
 ### Platinum Sponsors
 
@@ -337,8 +346,8 @@ A: Sponsorship doesn't grant governance rights per our independence policy. You'
 **GitHub Sponsors**: https://github.com/sponsors/PLACEHOLDER  
 **OpenCollective**: https://opencollective.com/PLACEHOLDER
 
-We're excited to partner with you! 🚀
-=======
+# We're excited to partner with you! 🚀
+
 # Sponsorship Tiers
 
 ## Overview
@@ -361,17 +370,20 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 **Monthly**: $100 | **Annual**: $1,000 (save $200)
 
 **Recognition:**
+
 - Name in README sponsors section
 - Name in website footer
 - Sponsor badge on GitHub profile
 - Thank you in release notes
 
 **Benefits:**
+
 - Community Slack/Discord access
 - Sponsor-only updates newsletter
 - Vote in sponsor polls (non-binding input)
 
 **Ideal For:**
+
 - Startups using the project
 - Individual developers
 - Small teams
@@ -384,12 +396,14 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 **Monthly**: $500 | **Annual**: $5,000 (save $1,000)
 
 **Recognition:**
+
 - Small logo in README
 - Small logo on website sponsors page
 - Mention in quarterly blog posts
 - Social media recognition
 
 **Benefits:**
+
 - All Bronze benefits
 - Priority community support
 - Quarterly roadmap preview
@@ -397,6 +411,7 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 - Listed in conference/talk acknowledgments
 
 **Ideal For:**
+
 - Growing blockchain projects
 - Development agencies
 - Mid-size companies
@@ -409,6 +424,7 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 **Monthly**: $2,000 | **Annual**: $20,000 (save $4,000)
 
 **Recognition:**
+
 - Medium logo in README (prominent placement)
 - Medium logo on website homepage
 - Dedicated sponsor spotlight blog post
@@ -416,6 +432,7 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 - Press release mention
 
 **Benefits:**
+
 - All Silver benefits
 - Dedicated support channel
 - Monthly sync with maintainers
@@ -426,6 +443,7 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 - Custom integration support (up to 20 hours/year)
 
 **Ideal For:**
+
 - Established blockchain projects
 - Audit firms
 - Infrastructure providers
@@ -438,6 +456,7 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 **Annual**: $50,000+
 
 **Recognition:**
+
 - Large logo in README (top placement)
 - Large logo on website homepage hero
 - Dedicated case study/success story
@@ -446,6 +465,7 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 - Press releases and announcements
 
 **Benefits:**
+
 - All Gold benefits
 - Weekly technical liaison
 - 10 sponsored feature requests per year
@@ -458,6 +478,7 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 - Custom SLA available
 
 **Ideal For:**
+
 - Major blockchain platforms
 - Enterprise users
 - Foundational infrastructure
@@ -470,6 +491,7 @@ See [GOVERNANCE.md](/GOVERNANCE.md) for sponsor influence policy.
 **Contact for Pricing**
 
 For organizations with unique needs:
+
 - Custom recognition packages
 - Specific feature development
 - Enterprise deployment support
@@ -485,11 +507,13 @@ For organizations with unique needs:
 **Any Amount**: One-time contribution
 
 **Recognition:**
+
 - Thank you in next release notes
 - Name in contributors list
 - Warm fuzzy feeling
 
 **Ideal For:**
+
 - Individuals
 - One-time supporters
 - Project beneficiaries wanting to give back
@@ -501,6 +525,7 @@ For organizations with unique needs:
 **Value Varies**
 
 **Examples:**
+
 - Infrastructure credits (AWS, GCP, Azure)
 - CI/CD service credits
 - Development tools licenses
@@ -517,6 +542,7 @@ For organizations with unique needs:
 **No Cost**
 
 **Examples:**
+
 - Technical contributions (code, docs, reviews)
 - Community moderation and support
 - Content creation (tutorials, videos)
@@ -530,6 +556,7 @@ For organizations with unique needs:
 Your sponsorship supports:
 
 ### Development (50%)
+
 - Core maintainer time
 - Feature development
 - Bug fixes and maintenance
@@ -537,6 +564,7 @@ Your sponsorship supports:
 - Code reviews
 
 ### Infrastructure (25%)
+
 - GitHub organization fees
 - CI/CD compute resources
 - Cloud hosting
@@ -544,6 +572,7 @@ Your sponsorship supports:
 - Development tools and services
 
 ### Community (15%)
+
 - Documentation
 - Tutorial creation
 - Community management
@@ -551,6 +580,7 @@ Your sponsorship supports:
 - Event participation
 
 ### Operations (10%)
+
 - Legal and accounting
 - Marketing and outreach
 - Swag and recognition
@@ -559,15 +589,18 @@ Your sponsorship supports:
 ## Sponsorship Terms
 
 ### Duration
+
 - **Monthly**: Cancel anytime with 30 days notice
 - **Annual**: 12-month commitment, auto-renews unless canceled 60 days before renewal
 
 ### Recognition
+
 - Added within 5 business days of first payment
 - Remains for duration of sponsorship plus 30 days
 - Removed upon cancellation or non-payment
 
 ### Feature Requests
+
 - Subject to community approval
 - Must align with project goals
 - No guarantee of implementation
@@ -575,6 +608,7 @@ Your sponsorship supports:
 - Publicly tracked like all features
 
 ### Support
+
 - Response time targets (not guarantees unless custom SLA)
 - Bronze: 5 business days
 - Silver: 3 business days
@@ -582,6 +616,7 @@ Your sponsorship supports:
 - Platinum: 4 hours (business hours)
 
 ### Changes
+
 - Tier benefits may change with 60 days notice
 - Price increases not applied to existing sponsors for 12 months
 - New sponsors get current pricing and benefits
@@ -614,6 +649,7 @@ For Platinum or Custom sponsorships:
 ### Cryptocurrency
 
 We accept:
+
 - Bitcoin (BTC)
 - Ethereum (ETH)
 - Solana (SOL)
@@ -652,16 +688,20 @@ A: USD primary. Can accommodate EUR, GBP, and cryptocurrency.
 ## Sponsors
 
 ### 💎 Platinum
+
 [<img src="platinum-logo.png" width="300">](https://platinum-sponsor.example)
 
 ### 🥇 Gold
+
 [<img src="gold1-logo.png" width="200">](https://gold1.example)
 [<img src="gold2-logo.png" width="200">](https://gold2.example)
 
 ### 🥈 Silver
+
 [<img src="silver-logo.png" width="150">](https://silver.example)
 
 ### 🥉 Bronze
+
 - Bronze Sponsor 1
 - Bronze Sponsor 2
 ```
@@ -672,7 +712,8 @@ A: USD primary. Can accommodate EUR, GBP, and cryptocurrency.
 **Custom Sponsorship**: funding@cyberai.network  
 **Technical Questions**: GitHub Issues  
 **Existing Sponsors**: Your dedicated channel or funding@cyberai.network
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10
 
 ---
 
@@ -680,8 +721,8 @@ A: USD primary. Can accommodate EUR, GBP, and cryptocurrency.
 <<<<<<< HEAD
 **Version**: 1.0
 
-**Note**: Prices and benefits subject to change with 30 days notice to existing sponsors.
-=======
+# **Note**: Prices and benefits subject to change with 30 days notice to existing sponsors.
+
 ## Overview
 
 Support the development and maintenance of SmartContractAudit through our sponsorship program. All tiers receive recognition and benefits.
@@ -691,6 +732,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 **$100 - $500 / month**
 
 ### Benefits
+
 - ✅ Logo on README
 - ✅ Mention in release notes
 - ✅ Community Discord badge
@@ -699,6 +741,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 - ✅ Early feature announcements
 
 ### Best For
+
 - Small teams
 - Individual developers
 - Early-stage startups
@@ -709,6 +752,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 **$500 - $2,000 / month**
 
 ### Benefits
+
 - ✅ All Community benefits
 - ✅ Logo on website
 - ✅ Quarterly impact reports
@@ -718,6 +762,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 - ✅ Featured in case studies
 
 ### Best For
+
 - Growing startups
 - Development teams
 - Service providers
@@ -728,6 +773,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 **$2,000 - $5,000 / month**
 
 ### Benefits
+
 - ✅ All Silver benefits
 - ✅ Premium logo placement
 - ✅ Dedicated account manager
@@ -739,6 +785,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 - ✅ Press release inclusion
 
 ### Best For
+
 - Established companies
 - Major users
 - Strategic partners
@@ -749,6 +796,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 **$5,000+ / month**
 
 ### Benefits
+
 - ✅ All Gold benefits
 - ✅ Top-tier logo placement
 - ✅ Executive sponsor relationship
@@ -761,6 +809,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 - ✅ Dedicated engineer time (negotiable)
 
 ### Best For
+
 - Enterprise organizations
 - Major blockchain protocols
 - Strategic ecosystem players
@@ -773,6 +822,7 @@ Support the development and maintenance of SmartContractAudit through our sponso
 **$5,000 - $50,000**
 
 Fund specific features or initiatives:
+
 - New security rules
 - Performance improvements
 - Documentation projects
@@ -784,6 +834,7 @@ Fund specific features or initiatives:
 **$1,000 - $10,000**
 
 Support events and activities:
+
 - Hackathons
 - Conferences
 - Workshops
@@ -795,6 +846,7 @@ Support events and activities:
 ### Infrastructure
 
 Provide services:
+
 - Cloud hosting
 - CI/CD services
 - Security tools
@@ -804,6 +856,7 @@ Provide services:
 ### Expertise
 
 Contribute resources:
+
 - Security audits
 - Legal review
 - Design services
@@ -815,16 +868,19 @@ Contribute resources:
 Available to all paid tiers:
 
 ### Premium Support
+
 - **+$500/month**: 8-hour response time, video support
 - **+$1,000/month**: 4-hour response time, dedicated engineer
 - **+$2,500/month**: 1-hour response time, on-call support
 
 ### Custom Development
+
 - **Hourly rate**: $150-$250/hour
 - **Project-based**: Custom quote
 - **Retainer**: Discounted bulk hours
 
 ### Training & Workshops
+
 - **Half-day workshop**: $2,500
 - **Full-day workshop**: $5,000
 - **Multi-day training**: Custom quote
@@ -832,18 +888,22 @@ Available to all paid tiers:
 ## Payment Options
 
 ### Monthly Subscription
+
 - GitHub Sponsors
 - OpenCollective
 - Direct billing
 - Cryptocurrency (BTC, ETH, USDC)
 
 ### Annual Prepayment
+
 - 10% discount for annual commitment
 - 15% discount for multi-year commitment
 - Custom terms for Platinum tier
 
 ### Open Collective
+
 All contributions via OpenCollective are:
+
 - Publicly transparent
 - Tax-deductible (where applicable)
 - Community-governed
@@ -851,12 +911,14 @@ All contributions via OpenCollective are:
 ## Sponsorship Agreement
 
 ### Terms
+
 - Month-to-month (no long-term commitment)
 - Cancel anytime (30-day notice)
 - Benefits active while sponsorship is active
 - Annual reviews and renewals
 
 ### Rights
+
 - Sponsors retain all IP
 - Logo usage rights granted
 - Co-marketing with approval
@@ -865,12 +927,14 @@ All contributions via OpenCollective are:
 ### Responsibilities
 
 **Sponsor**:
+
 - Timely payment
 - Logo/asset provision
 - Professional conduct
 - Communication
 
 **SmartContractAudit**:
+
 - Deliver promised benefits
 - Regular communication
 - Quality development
@@ -881,18 +945,21 @@ All contributions via OpenCollective are:
 While financial support doesn't grant control, sponsors have input:
 
 ### All Sponsors
+
 - Vote in community polls
 - Participate in RFC process
 - Attend sponsor calls
 - Provide feedback
 
 ### Gold+ Sponsors
+
 - Quarterly governance meetings
 - Feature prioritization input
 - Strategic roadmap discussion
 - Early preview of major changes
 
 ### Platinum Sponsors
+
 - Direct maintainer access
 - Custom feature requests
 - Architecture input
@@ -901,6 +968,7 @@ While financial support doesn't grant control, sponsors have input:
 ## Recognition
 
 ### Public Recognition
+
 - Logo on website
 - README badge
 - Release note mentions
@@ -908,12 +976,14 @@ While financial support doesn't grant control, sponsors have input:
 - Case studies (with approval)
 
 ### Private Recognition
+
 - Internal sponsor lists
 - Team recognition
 - Contribution tracking
 - Impact reporting
 
 ### Opt-Out
+
 - Sponsors can remain anonymous
 - Decline public recognition
 - Keep contributions private
@@ -922,12 +992,14 @@ While financial support doesn't grant control, sponsors have input:
 ## ROI for Sponsors
 
 ### Direct Benefits
+
 - **Reduced Security Risks**: Better tools, fewer incidents
 - **Cost Savings**: Open-source vs. proprietary
 - **Developer Productivity**: Better tooling
 - **Brand Association**: Security leader recognition
 
 ### Indirect Benefits
+
 - **Ecosystem Health**: Stronger security community
 - **Talent Attraction**: Association with innovation
 - **Market Positioning**: Thought leadership
@@ -960,15 +1032,17 @@ Ready to sponsor SmartContractAudit?
 4. **Activate**: Benefits activate upon first payment
 
 ### Quick Links
+
 - GitHub Sponsors: [Link]
 - OpenCollective: [Link]
 - Direct Inquiry: [partnerships@cuberai.example](mailto:partnerships@cuberai.example)
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
-**Current Sponsors**: 0 (new program)  
-**Accepting Applications**: Yes
->>>>>>> origin/pr10
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+> > > > > > >
+> > > > > > > **Current Sponsors**: 0 (new program)  
+> > > > > > > **Accepting Applications**: Yes
+> > > > > > > origin/pr10

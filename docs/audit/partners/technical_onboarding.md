@@ -1,9 +1,10 @@
-<<<<<<< HEAD
----
+## <<<<<<< HEAD
+
 title: Technical Onboarding
 <<<<<<< HEAD
 description: Get started with SmartContractAudit integration
 keywords: onboarding, integration, setup, technical documentation
+
 ---
 
 # Technical Onboarding Guide
@@ -63,13 +64,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Run SmartContractAudit
         run: |
           curl -sSL https://raw.githubusercontent.com/SolanaRemix/SmartContractAudit/main/scripts/audit.sh | bash
 ```
 
 **Features**:
+
 - Automated auditing on every PR
 - Results posted as PR comments
 - Artifacts uploaded for review
@@ -109,17 +111,17 @@ For enterprise partners with API access:
 const { SmartContractAudit } = require('@smartcontractaudit/sdk');
 
 const audit = new SmartContractAudit({
-  apiKey: process.env.SCAUDIT_API_KEY
+  apiKey: process.env.SCAUDIT_API_KEY,
 });
 
 const results = await audit.scan({
   repository: 'owner/repo',
-  branch: 'main'
+  branch: 'main',
 });
 ```
 
-**Note**: API access requires Silver tier or higher.
-=======
+# **Note**: API access requires Silver tier or higher.
+
 # Technical Onboarding
 
 ## Overview
@@ -211,10 +213,7 @@ sca scan ./contracts --format sarif > results.sarif
     "overflow": "error",
     "access-control": "warn"
   },
-  "exclude": [
-    "node_modules/**",
-    "test/**"
-  ],
+  "exclude": ["node_modules/**", "test/**"],
   "severity": "medium"
 }
 ```
@@ -287,6 +286,7 @@ curl -X POST https://api.smartcontractaudit.example/v1/scan \
 **Use Case**: Real-time development feedback
 
 **Supported IDEs:**
+
 - Visual Studio Code
 - IntelliJ IDEA
 - Sublime Text
@@ -377,6 +377,7 @@ workflows:
 **White-Label Deployment:**
 
 1. **Self-Hosted Instance**:
+
    ```bash
    docker-compose up -d
    ```
@@ -409,8 +410,8 @@ const response = await fetch(
   `https://api.smartcontractaudit.example/v1/contract/${address}/latest-scan`,
   {
     headers: {
-      'Authorization': `Bearer ${apiKey}`
-    }
+      Authorization: `Bearer ${apiKey}`,
+    },
   }
 );
 
@@ -422,11 +423,12 @@ const scanResults = await response.json();
 
 ```html
 <!-- Security score badge -->
-<img src="https://badges.smartcontractaudit.example/{address}/score.svg" alt="Security Score">
+<img src="https://badges.smartcontractaudit.example/{address}/score.svg" alt="Security Score" />
 ```
 
 ---
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10
 
 ## Configuration
 
@@ -435,7 +437,7 @@ const scanResults = await response.json();
 <<<<<<< HEAD
 Create a `.env` file:
 
-```bash
+````bash
 # Dry-run mode (recommended for initial setup)
 DRY_RUN=true
 
@@ -461,7 +463,7 @@ SCA_LOG_LEVEL=info
 SCA_DRY_RUN=false
 SCA_CACHE_ENABLED=true
 >>>>>>> origin/pr10
-```
+````
 
 ### Configuration File
 
@@ -472,16 +474,8 @@ Create `config/audit.json`:
 {
   "enabled": true,
   "dry_run": true,
-  "scan_patterns": [
-    "**/*.sol",
-    "**/*.rs",
-    "**/*.move"
-  ],
-  "exclude_patterns": [
-    "node_modules/**",
-    "test/**",
-    ".git/**"
-  ],
+  "scan_patterns": ["**/*.sol", "**/*.rs", "**/*.move"],
+  "exclude_patterns": ["node_modules/**", "test/**", ".git/**"],
   "severity_threshold": "medium",
   "auto_fix": false
 }
@@ -506,10 +500,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Audit Contracts
         run: ./scripts/audit.sh contracts/
-        
+
       - name: Check Results
         run: |
           if [ -f AUDIT-REPORT.md ]; then
@@ -527,7 +521,7 @@ jobs:
     steps:
       - name: Audit Solana Contracts
         run: ./scripts/audit.sh --chain solana programs/
-        
+
   audit-ethereum:
     steps:
       - name: Audit Ethereum Contracts
@@ -541,7 +535,7 @@ jobs:
 ```yaml
 on:
   schedule:
-    - cron: '0 0 * * *'  # Daily at midnight
+    - cron: '0 0 * * *' # Daily at midnight
 
 jobs:
   scheduled-audit:
@@ -629,9 +623,11 @@ git push origin test-audit
 
 # Check GitHub Actions for workflow run
 ```
+
 =======
 description: Get started with SmartContractAudit technical integration
 keywords: onboarding, integration, API, setup
+
 ---
 
 # Technical Onboarding
@@ -643,6 +639,7 @@ This guide walks you through the technical onboarding process for SmartContractA
 ## Prerequisites
 
 Before starting:
+
 - ✅ Partnership agreement signed
 - ✅ Technical contact identified
 - ✅ GitHub organization ready
@@ -654,6 +651,7 @@ Before starting:
 ### Step 1: Access Setup (Day 1)
 
 **API Credentials**
+
 ```bash
 # You'll receive:
 API_KEY=sca_live_xxxx
@@ -662,12 +660,14 @@ PARTNER_ID=partner_xxxx
 ```
 
 **GitHub Access**
+
 - Added to partner GitHub team
 - Access to private repositories
 - CI/CD integration examples
 - Technical documentation
 
 **Development Environment**
+
 - Staging API endpoint
 - Testing webhooks
 - Sample data
@@ -676,18 +676,21 @@ PARTNER_ID=partner_xxxx
 ### Step 2: Integration Planning (Week 1)
 
 **Architecture Review**
+
 - Review your architecture
 - Identify integration points
 - Plan API usage
 - Design data flow
 
 **Technical Kickoff**
+
 - Meet engineering teams
 - Review documentation
 - Discuss timeline
 - Set milestones
 
 **Environment Setup**
+
 ```bash
 # Install SDK
 npm install @smartcontractaudit/sdk
@@ -700,12 +703,13 @@ export SCA_ENV=staging
 ### Step 3: Development (Week 2-3)
 
 **Basic Integration**
+
 ```javascript
 const SCA = require('@smartcontractaudit/sdk');
 
 const client = new SCA({
   apiKey: process.env.SCA_API_KEY,
-  environment: 'staging'
+  environment: 'staging',
 });
 
 // Scan a repository
@@ -714,24 +718,25 @@ const result = await client.scan({
   branch: 'main',
   options: {
     deepScan: true,
-    includeTests: true
-  }
+    includeTests: true,
+  },
 });
 
 console.log('Scan complete:', result.summary);
 ```
 
 **Webhook Setup**
+
 ```javascript
 // Receive scan results
 app.post('/webhooks/sca', (req, res) => {
   const event = req.body;
-  
+
   // Verify signature
   if (!SCA.verifyWebhook(req.headers, req.body)) {
     return res.status(401).send('Invalid signature');
   }
-  
+
   // Handle event
   switch (event.type) {
     case 'scan.completed':
@@ -741,12 +746,13 @@ app.post('/webhooks/sca', (req, res) => {
       handleVulnerability(event.data);
       break;
   }
-  
+
   res.status(200).send('OK');
 });
 ```
 
 **Error Handling**
+
 ```javascript
 try {
   const result = await client.scan(config);
@@ -767,26 +773,26 @@ try {
 ### Step 4: Testing (Week 3-4)
 
 **Unit Tests**
+
 ```javascript
 describe('SmartContractAudit Integration', () => {
   it('should scan repository successfully', async () => {
     const result = await client.scan({
-      repository: 'test/sample'
+      repository: 'test/sample',
     });
-    
+
     expect(result.status).toBe('completed');
     expect(result.findings).toBeDefined();
   });
-  
+
   it('should handle scan errors', async () => {
-    await expect(
-      client.scan({ repository: 'invalid' })
-    ).rejects.toThrow('Repository not found');
+    await expect(client.scan({ repository: 'invalid' })).rejects.toThrow('Repository not found');
   });
 });
 ```
 
 **Integration Tests**
+
 - Test with sample repositories
 - Verify webhook delivery
 - Test error scenarios
@@ -794,6 +800,7 @@ describe('SmartContractAudit Integration', () => {
 - Security testing
 
 **Staging Validation**
+
 - Full end-to-end tests
 - Performance benchmarks
 - Security review
@@ -802,6 +809,7 @@ describe('SmartContractAudit Integration', () => {
 ### Step 5: Launch Preparation (Week 4)
 
 **Production Setup**
+
 ```bash
 # Production credentials
 API_KEY=sca_live_prod_xxxx
@@ -809,18 +817,21 @@ API_ENDPOINT=https://api.smartcontractaudit.io/v1
 ```
 
 **Monitoring Setup**
+
 - Configure alerts
 - Set up dashboards
 - Error tracking
 - Performance monitoring
 
 **Documentation**
+
 - Update user docs
 - Create integration guide
 - Prepare support materials
 - Train support team
 
 **Launch Checklist**
+
 - [ ] Production credentials configured
 - [ ] All tests passing
 - [ ] Monitoring active
@@ -832,18 +843,21 @@ API_ENDPOINT=https://api.smartcontractaudit.io/v1
 ### Step 6: Go Live (Week 5)
 
 **Deployment**
+
 - Deploy to production
 - Enable features gradually
 - Monitor closely
 - Gather feedback
 
 **Support Activation**
+
 - Support team on standby
 - Escalation path clear
 - Known issues documented
 - FAQ updated
 
 **Announcement**
+
 - Press release (if applicable)
 - Blog post
 - Social media
@@ -862,6 +876,7 @@ curl -H "Authorization: Bearer $API_KEY" \
 ### Scanning
 
 **Start Scan**
+
 ```bash
 POST /v1/scan
 {
@@ -875,11 +890,13 @@ POST /v1/scan
 ```
 
 **Get Results**
+
 ```bash
 GET /v1/scan/:scanId
 ```
 
 **List Scans**
+
 ```bash
 GET /v1/scans?repository=owner/repo&limit=10
 ```
@@ -887,6 +904,7 @@ GET /v1/scans?repository=owner/repo&limit=10
 ### Webhooks
 
 **Subscribe**
+
 ```bash
 POST /v1/webhooks
 {
@@ -896,6 +914,7 @@ POST /v1/webhooks
 ```
 
 **Event Types**
+
 - `scan.started`
 - `scan.completed`
 - `scan.failed`
@@ -905,23 +924,27 @@ POST /v1/webhooks
 ## SDKs & Libraries
 
 ### Official SDKs
+
 - **Node.js**: `npm install @smartcontractaudit/sdk`
 - **Python**: `pip install smartcontractaudit`
 - **Go**: `go get github.com/smartcontractaudit/go-sdk`
 - **Rust**: `cargo add smartcontractaudit`
 
 ### Community SDKs
+
 - Ruby, PHP, Java (community-maintained)
 - Check GitHub for latest
 
 ## Rate Limits
 
 ### Standard Limits
+
 - **Free tier**: 100 scans/month
 - **Partner tier**: 1,000 scans/month
 - **Enterprise**: Custom limits
 
 ### Rate Limit Headers
+
 ```
 X-RateLimit-Limit: 1000
 X-RateLimit-Remaining: 999
@@ -929,6 +952,7 @@ X-RateLimit-Reset: 1609459200
 ```
 
 ### Handling Rate Limits
+
 ```javascript
 if (response.status === 429) {
   const retryAfter = response.headers['retry-after'];
@@ -940,12 +964,14 @@ if (response.status === 429) {
 ## Best Practices
 
 ### Performance
+
 - Cache results when possible
 - Use webhooks instead of polling
 - Batch requests when available
 - Implement exponential backoff
 
 ### Security
+
 - Store API keys securely
 - Use environment variables
 - Verify webhook signatures
@@ -953,12 +979,13 @@ if (response.status === 429) {
 - Rotate keys regularly
 
 ### Reliability
+
 - Implement retry logic
 - Handle errors gracefully
 - Monitor API health
 - Set up alerting
 - Plan for downtime
->>>>>>> origin/pr9
+  > > > > > > > origin/pr9
 
 ## Troubleshooting
 
@@ -966,24 +993,28 @@ if (response.status === 429) {
 
 <<<<<<< HEAD
 **Issue**: Script permission denied
+
 ```bash
 # Solution: Make scripts executable
 chmod +x scripts/*.sh
 ```
 
 **Issue**: Missing dependencies
+
 ```bash
 # Solution: Install required tools
 npm install   # If using Node.js tools
 ```
 
 **Issue**: API rate limits
+
 ```bash
 # Solution: Add GitHub token
 export GITHUB_TOKEN=your_token
 ```
 
 **Issue**: False positives
+
 ```bash
 # Solution: Configure exclusions
 # Add to config/audit.json:
@@ -1025,10 +1056,10 @@ Create `config/custom-rules.json`:
 ```yaml
 - name: Run Slither
   run: slither .
-  
+
 - name: Run SmartContractAudit
   run: ./scripts/audit.sh
-  
+
 - name: Run Custom Checks
   run: npm run security-check
 ```
@@ -1114,9 +1145,8 @@ We value your feedback:
 - **Technical Issues**: GitHub Issues
 - **Feature Requests**: GitHub Discussions
 - **Partner Support**: support@cuberai.example
-- **General Feedback**: partners@cuberai.example
-=======
-Create `sca.config.json`:
+- # **General Feedback**: partners@cuberai.example
+  Create `sca.config.json`:
 
 ```json
 {
@@ -1189,6 +1219,7 @@ sca scan ./test-contracts --dry-run
 ### Escalation
 
 If not resolved in SLA time:
+
 1. Email partners-support@cyberai.network with "ESCALATION" in subject
 2. Include original ticket number
 3. CC: funding@cyberai.network
@@ -1302,7 +1333,8 @@ Before launching your integration:
 **API Access**: funding@cyberai.network  
 **Bug Reports**: GitHub Issues with `partner` tag  
 **Emergency Support**: partners-support@cyberai.network (subject: URGENT)
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10
 
 ---
 
@@ -1310,19 +1342,22 @@ Before launching your integration:
 <<<<<<< HEAD
 **Version**: 1.0
 
-Welcome aboard! We're excited to have you as a partner. 🎉
-=======
+# Welcome aboard! We're excited to have you as a partner. 🎉
+
 **"Invalid API key"**
+
 - Verify key is correct
 - Check key hasn't expired
 - Ensure using production key for production
 
 **"Rate limit exceeded"**
+
 - Check rate limit headers
 - Implement backoff strategy
 - Upgrade plan if needed
 
 **"Webhook not received"**
+
 - Verify endpoint is accessible
 - Check webhook signature
 - Review webhook logs
@@ -1333,13 +1368,14 @@ Welcome aboard! We're excited to have you as a partner. 🎉
 ```javascript
 const client = new SCA({
   apiKey: API_KEY,
-  debug: true  // Enable debug logging
+  debug: true, // Enable debug logging
 });
 ```
 
 ### Support
 
 For technical issues:
+
 - **Email**: tech-support@cuberai.example
 - **Slack**: #partner-support
 - **Response time**: See SLA
@@ -1356,6 +1392,7 @@ For technical issues:
 ## Next Steps
 
 After completing onboarding:
+
 1. Review [SLA and support](sla_and_support.md)
 2. Check [data privacy](data_privacy.md) policies
 3. Explore [use cases](use_cases.md)
@@ -1363,9 +1400,10 @@ After completing onboarding:
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
-**API Version**: v1  
-**Documentation**: [docs.smartcontractaudit.example](#)
->>>>>>> origin/pr10
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+> > > > > > >
+> > > > > > > **API Version**: v1  
+> > > > > > > **Documentation**: [docs.smartcontractaudit.example](#)
+> > > > > > > origin/pr10

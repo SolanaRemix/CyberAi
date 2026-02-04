@@ -90,10 +90,10 @@ This project follows these security practices:
 
 ## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| Latest  | :white_check_mark: |
-| < Latest| :x:                |
+| Version  | Supported          |
+| -------- | ------------------ |
+| Latest   | :white_check_mark: |
+| < Latest | :x:                |
 
 We recommend always using the latest version to ensure you have all security updates.
 
@@ -118,6 +118,7 @@ We support safe harbor for security researchers who:
 ## Additional Information
 
 For more information about our security practices:
+
 - Review our [GOVERNANCE.md](GOVERNANCE.md) for security roles and responsibilities
 - See [PRIVACY.md](PRIVACY.md) for data handling policies
 - Check [CONTRIBUTING.md](CONTRIBUTING.md) for secure development practices
