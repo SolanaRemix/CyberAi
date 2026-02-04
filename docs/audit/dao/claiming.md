@@ -753,8 +753,7 @@ If you encounter issues:
 
 3. **Contact Support**
    - Email: dao@cuberai.example
-   - GitHub Issue with details: - Your address - Error message - Transaction hash (if applicable) - Screenshots
-     =======
+   - # GitHub Issue with details: - Your address - Error message - Transaction hash (if applicable) - Screenshots
      ✅ **Check eligibility** - Review [eligibility.md](eligibility.md)  
      ✅ **Snapshot taken** - Wait for snapshot announcement  
      ✅ **Address registered** - Have your wallet address recorded  
