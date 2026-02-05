@@ -84,7 +84,7 @@ npm run verify-vercel-disconnect
 This script checks:
 - ✅ No `.vercel` directory exists
 - ✅ `vercel.json` has builds disabled (if present)
-- ✅ No Vercel environment variables in repository secrets
+- ✅ No Vercel environment variables in local `.env` files
 - ✅ No active Vercel deployments
 
 ### Manual Verification
