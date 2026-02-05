@@ -172,6 +172,7 @@ function generateMerkleData(inputFile, outputFile) {
   console.log(`Merkle Root: ${merkleRoot}`);
   console.log(`Total Tokens: ${output.tokenTotal}`);
   console.log('\n✨ Done! Merkle tree generated successfully.\n');
+  console.log(`\n✨ Done! Merkle tree generated successfully.\n`);
 
   // Instructions
   console.log('📋 Next Steps:');
