@@ -1,0 +1,266 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Security Policy - CyberAi Network">
+  <main>
+    <div class="doc-container">
+      <h1>Security Policy</h1>
+      <p class="last-updated">Last Updated: February 5, 2026</p>
+
+      <section>
+        <h2>Reporting Security Vulnerabilities</h2>
+        <p>
+          The security of CyberAi is a top priority. We appreciate the security research community's efforts to responsibly disclose vulnerabilities.
+        </p>
+        <h3>How to Report</h3>
+        <p>
+          If you discover a security vulnerability, please report it through GitHub's Security Advisory feature:
+        </p>
+        <ol>
+          <li>Go to the <a href="https://github.com/SolanaRemix/CyberAi/security/advisories" target="_blank">Security Advisories</a> page</li>
+          <li>Click "Report a vulnerability"</li>
+          <li>Provide detailed information about the vulnerability</li>
+        </ol>
+        <p><strong>Please do not</strong> report security vulnerabilities through public GitHub issues.</p>
+      </section>
+
+      <section>
+        <h2>What to Include</h2>
+        <p>When reporting a vulnerability, please include:</p>
+        <ul>
+          <li>Type of vulnerability</li>
+          <li>Affected components or versions</li>
+          <li>Step-by-step reproduction instructions</li>
+          <li>Potential impact assessment</li>
+          <li>Suggested fix (if available)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Response Timeline</h2>
+        <ul>
+          <li><strong>Initial Response</strong>: Within 48 hours</li>
+          <li><strong>Status Update</strong>: Within 7 days</li>
+          <li><strong>Fix Timeline</strong>: Based on severity
+            <ul>
+              <li>Critical: 1-3 days</li>
+              <li>High: 7-14 days</li>
+              <li>Medium: 30 days</li>
+              <li>Low: 90 days</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Security Measures</h2>
+        
+        <h3>Code Security</h3>
+        <ul>
+          <li>Automated security scanning with CodeQL</li>
+          <li>Dependency vulnerability monitoring</li>
+          <li>Code review requirements for all changes</li>
+          <li>Branch protection rules</li>
+        </ul>
+
+        <h3>CI/CD Security</h3>
+        <ul>
+          <li>Minimal GitHub Actions permissions</li>
+          <li>Secret scanning enabled</li>
+          <li>Signed commits encouraged</li>
+          <li>Automated security updates via Dependabot</li>
+        </ul>
+
+        <h3>Smart Contract Security</h3>
+        <ul>
+          <li>Comprehensive audit capabilities</li>
+          <li>Static and dynamic analysis</li>
+          <li>Gas optimization checks</li>
+          <li>Common vulnerability detection</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Supported Versions</h2>
+        <p>Security updates are provided for:</p>
+        <ul>
+          <li>Current major version (v1.x.x)</li>
+          <li>Previous major version for critical issues</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Security Best Practices</h2>
+        
+        <h3>For Users</h3>
+        <ul>
+          <li>Keep CyberAi updated to the latest version</li>
+          <li>Use strong authentication for GitHub</li>
+          <li>Enable 2FA on all accounts</li>
+          <li>Review permissions before granting access</li>
+          <li>Regularly audit workflow configurations</li>
+        </ul>
+
+        <h3>For Contributors</h3>
+        <ul>
+          <li>Never commit secrets or credentials</li>
+          <li>Use environment variables for sensitive data</li>
+          <li>Follow secure coding guidelines</li>
+          <li>Test security implications of changes</li>
+          <li>Keep dependencies updated</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Security Audit Tools</h2>
+        <p>CyberAi provides built-in security tools:</p>
+        <ul>
+          <li><strong>Contract Auditor</strong>: Scan smart contracts for vulnerabilities</li>
+          <li><strong>CodeQL Integration</strong>: Automated code analysis</li>
+          <li><strong>Dependency Scanner</strong>: Check for vulnerable dependencies</li>
+          <li><strong>Secret Detector</strong>: Identify exposed credentials</li>
+        </ul>
+        <p>
+          Learn more in our <a href="/audit">Security Audit documentation</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Vulnerability Disclosure</h2>
+        <p>
+          When a vulnerability is fixed:
+        </p>
+        <ul>
+          <li>Security advisory published on GitHub</li>
+          <li>CVE assigned for significant issues</li>
+          <li>Credit given to reporter (if desired)</li>
+          <li>Detailed fix information provided</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Security Hall of Fame</h2>
+        <p>
+          We acknowledge security researchers who responsibly disclose vulnerabilities. Contributors will be credited in our security advisories and release notes.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          For security-related questions:
+        </p>
+        <ul>
+          <li><a href="https://github.com/SolanaRemix/CyberAi/security" target="_blank">GitHub Security</a></li>
+          <li><a href="https://github.com/SolanaRemix/CyberAi/security/advisories" target="_blank">Report Vulnerability</a></li>
+          <li><a href="/docs/privacy">Privacy Policy</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/docs">Documentation</a></li>
+          <li><a href="/docs/contributing">Contributing Guidelines</a></li>
+          <li><a href="https://github.com/SolanaRemix/CyberAi" target="_blank">Source Code</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem 1rem;
+    max-width: 900px;
+  }
+
+  .doc-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+  }
+
+  .last-updated {
+    color: #888;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin: 2rem 0;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    color: var(--accent-dark);
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--gray-dark);
+  }
+
+  p {
+    line-height: 1.8;
+    color: #555;
+    margin: 1rem 0;
+  }
+
+  ul, ol {
+    line-height: 1.8;
+    color: #555;
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin: 0.5rem 0;
+  }
+
+  ul ul {
+    margin: 0.5rem 0;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  strong {
+    color: var(--gray-dark);
+  }
+
+  @media (max-width: 768px) {
+    .doc-container {
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+</style>

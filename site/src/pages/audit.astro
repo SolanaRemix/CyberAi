@@ -1,0 +1,397 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Security Audit - CyberAi Contract Scanner">
+  <main>
+    <div class="hero">
+      <h1 class="neo-text-glow">🔒 <span class="text-gradient">Security Audit</span></h1>
+      <p class="tagline">Comprehensive smart contract security analysis</p>
+    </div>
+
+    <div class="audit-dashboard">
+      <div class="neo-card scan-status">
+        <div class="status-header">
+          <h2>Audit Status</h2>
+          <div class="status-indicator">
+            <span class="neo-status-active"></span>
+            <span>Ready to Scan</span>
+          </div>
+        </div>
+        <div class="scan-stats">
+          <div class="stat-item">
+            <div class="stat-value neo-text-glow">156</div>
+            <div class="stat-label">Audits Completed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value neo-text-glow">0</div>
+            <div class="stat-label">Critical Issues</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value neo-text-glow">99.8%</div>
+            <div class="stat-label">Security Score</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="neo-card audit-features">
+        <h2>Audit Capabilities</h2>
+        <ul class="features-list">
+          <li>
+            <span class="check-icon">✅</span>
+            <span>Automated vulnerability detection</span>
+          </li>
+          <li>
+            <span class="check-icon">✅</span>
+            <span>Gas optimization analysis</span>
+          </li>
+          <li>
+            <span class="check-icon">✅</span>
+            <span>Code quality assessment</span>
+          </li>
+          <li>
+            <span class="check-icon">✅</span>
+            <span>Best practices validation</span>
+          </li>
+          <li>
+            <span class="check-icon">✅</span>
+            <span>Real-time security monitoring</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="audit-types">
+      <h2 class="section-title">Audit Types</h2>
+      
+      <div class="types-grid">
+        <div class="neo-card type-card neo-glow-primary">
+          <div class="type-icon">🔍</div>
+          <h3>Static Analysis</h3>
+          <p>Comprehensive code review without execution, detecting vulnerabilities, code smells, and security issues through pattern matching.</p>
+          <a href="/docs/quickstart" class="neo-button">Learn More</a>
+        </div>
+
+        <div class="neo-card type-card neo-glow-accent">
+          <div class="type-icon">⚙️</div>
+          <h3>Dynamic Testing</h3>
+          <p>Runtime analysis of contract behavior, testing edge cases, attack vectors, and real-world execution scenarios.</p>
+          <a href="/docs/quickstart" class="neo-button">Learn More</a>
+        </div>
+
+        <div class="neo-card type-card neo-glow-secondary">
+          <div class="type-icon">🎯</div>
+          <h3>Formal Verification</h3>
+          <p>Mathematical proof of contract correctness, ensuring that critical properties hold under all possible conditions.</p>
+          <a href="/docs/quickstart" class="neo-button">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vulnerability-check">
+      <h2 class="section-title">Common Vulnerabilities</h2>
+      
+      <div class="vulnerability-grid">
+        <div class="neo-glass vulnerability-item">
+          <span class="vuln-icon">⚠️</span>
+          <h4>Reentrancy Attacks</h4>
+          <p>Detect and prevent recursive call vulnerabilities</p>
+        </div>
+
+        <div class="neo-glass vulnerability-item">
+          <span class="vuln-icon">⚠️</span>
+          <h4>Integer Overflow</h4>
+          <p>Identify arithmetic operation vulnerabilities</p>
+        </div>
+
+        <div class="neo-glass vulnerability-item">
+          <span class="vuln-icon">⚠️</span>
+          <h4>Access Control</h4>
+          <p>Verify proper authorization mechanisms</p>
+        </div>
+
+        <div class="neo-glass vulnerability-item">
+          <span class="vuln-icon">⚠️</span>
+          <h4>Gas Optimization</h4>
+          <p>Find inefficient code patterns</p>
+        </div>
+
+        <div class="neo-glass vulnerability-item">
+          <span class="vuln-icon">⚠️</span>
+          <h4>Front-Running</h4>
+          <p>Detect transaction ordering dependencies</p>
+        </div>
+
+        <div class="neo-glass vulnerability-item">
+          <span class="vuln-icon">⚠️</span>
+          <h4>Oracle Manipulation</h4>
+          <p>Validate external data source security</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <div class="neo-card cta-card">
+        <h2>Start Your Security Audit</h2>
+        <p>Deploy comprehensive security scanning for your smart contracts</p>
+        <div class="cta-buttons">
+          <a href="/docs" class="neo-button neo-glow-primary">Documentation</a>
+          <a href="/operators" class="neo-button">Operator Console</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(45deg, var(--neo-primary), var(--neo-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: #666;
+    margin: 0;
+  }
+
+  .audit-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .scan-status,
+  .audit-features {
+    padding: 2rem;
+  }
+
+  .status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .status-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .scan-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-item {
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--neo-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .audit-features h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .features-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    color: #555;
+    font-size: 1.05rem;
+  }
+
+  .check-icon {
+    font-size: 1.2rem;
+  }
+
+  .audit-types {
+    margin: 4rem 0;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 2rem 0;
+    color: var(--neo-primary);
+  }
+
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .type-card {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .type-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .type-card h3 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .type-card p {
+    color: #666;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .vulnerability-check {
+    margin: 4rem 0;
+  }
+
+  .vulnerability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .vulnerability-item {
+    padding: 1.5rem;
+    text-align: center;
+    transition: all var(--transition-medium);
+  }
+
+  .vulnerability-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--neo-warning);
+  }
+
+  .vuln-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .vulnerability-item h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  .vulnerability-item p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .cta-section {
+    margin: 4rem 0 2rem;
+  }
+
+  .cta-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, var(--glass-bg), rgba(79, 70, 229, 0.05));
+  }
+
+  .cta-card h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .cta-card p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0 0 2rem 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .neo-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .audit-dashboard {
+      grid-template-columns: 1fr;
+    }
+
+    .scan-stats {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .types-grid,
+    .vulnerability-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .neo-button {
+      width: 100%;
+    }
+  }
+</style>

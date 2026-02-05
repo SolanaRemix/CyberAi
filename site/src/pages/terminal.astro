@@ -1,0 +1,299 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="CyberAi Terminal - Mobile Command Interface">
+  <main>
+    <div class="terminal-hero">
+      <h1 class="neo-text-glow">💻 <span class="text-gradient">CyberAi Terminal</span></h1>
+      <p class="tagline">Command-line interface for ecosystem operations</p>
+    </div>
+
+    <div class="terminal-container neo-glass-strong">
+      <div class="terminal-header">
+        <div class="terminal-buttons">
+          <span class="btn-close"></span>
+          <span class="btn-minimize"></span>
+          <span class="btn-maximize"></span>
+        </div>
+        <div class="terminal-title">cyberai@network:~$</div>
+      </div>
+      
+      <div class="terminal-body">
+        <div class="terminal-output">
+          <div class="output-line">
+            <span class="prompt">cyberai@network:~$</span>
+            <span class="command">cyberai --version</span>
+          </div>
+          <div class="output-line response">
+            CyberAi Network v1.1.0
+          </div>
+          <div class="output-line response">
+            AI-Powered Smart Contract Security & Orchestration Platform
+          </div>
+          <div class="output-line response">&nbsp;</div>
+          
+          <div class="output-line">
+            <span class="prompt">cyberai@network:~$</span>
+            <span class="command">cyberai status</span>
+          </div>
+          <div class="output-line response">
+            <span class="neo-status-active"></span> System Status: Online
+          </div>
+          <div class="output-line response">
+            <span class="neo-status-active"></span> Smart Contracts: 48 deployed
+          </div>
+          <div class="output-line response">
+            <span class="neo-status-active"></span> Active Agents: 12 running
+          </div>
+          <div class="output-line response">&nbsp;</div>
+          
+          <div class="output-line">
+            <span class="prompt">cyberai@network:~$</span>
+            <span class="command">cyberai help</span>
+          </div>
+          <div class="output-line response">
+            Available commands:
+          </div>
+          <div class="output-line response">
+            &nbsp;&nbsp;audit        - Run security audit on contracts
+          </div>
+          <div class="output-line response">
+            &nbsp;&nbsp;deploy       - Deploy smart contracts
+          </div>
+          <div class="output-line response">
+            &nbsp;&nbsp;dashboard    - Open real-time dashboard
+          </div>
+          <div class="output-line response">
+            &nbsp;&nbsp;smartbrain   - Access SmartBrain AI
+          </div>
+          <div class="output-line response">
+            &nbsp;&nbsp;status       - Check system status
+          </div>
+          <div class="output-line response">
+            &nbsp;&nbsp;help         - Show this help message
+          </div>
+          <div class="output-line response">&nbsp;</div>
+          
+          <div class="output-line">
+            <span class="prompt">cyberai@network:~$</span>
+            <span class="cursor">_</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="terminal-info">
+      <div class="info-grid">
+        <div class="neo-card info-card">
+          <h3>🚀 Quick Start</h3>
+          <p>Bootstrap your environment:</p>
+          <code>git clone https://github.com/SolanaRemix/CyberAi.git</code>
+          <code>cd CyberAi</code>
+          <code>./tools/bootstrap/bootstrap.sh</code>
+        </div>
+
+        <div class="neo-card info-card">
+          <h3>📚 Commands</h3>
+          <p>Access all available operations through the terminal interface for automated workflows and ecosystem management.</p>
+          <a href="/docs" class="neo-button">View Documentation</a>
+        </div>
+
+        <div class="neo-card info-card">
+          <h3>🎛️ Console Access</h3>
+          <p>For advanced operations and monitoring, use the operator console with full dashboard capabilities.</p>
+          <a href="/operators" class="neo-button">Open Console</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+  }
+
+  .terminal-hero {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(45deg, var(--neo-primary), var(--neo-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: #666;
+    margin: 0;
+  }
+
+  .terminal-container {
+    margin: 2rem auto;
+    max-width: 900px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .terminal-header {
+    background: linear-gradient(135deg, #333, #1a1a1a);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .terminal-buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .btn-close {
+    background: #ff5f56;
+  }
+
+  .btn-minimize {
+    background: #ffbd2e;
+  }
+
+  .btn-maximize {
+    background: #27c93f;
+  }
+
+  .terminal-title {
+    color: #999;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+  }
+
+  .terminal-body {
+    background: #1a1a1a;
+    padding: 1.5rem;
+    min-height: 400px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .terminal-output {
+    color: #e0e0e0;
+  }
+
+  .output-line {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .prompt {
+    color: var(--neo-success);
+    font-weight: 600;
+  }
+
+  .command {
+    color: var(--neo-primary);
+  }
+
+  .response {
+    color: #ccc;
+    padding-left: 0;
+  }
+
+  .cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+    color: var(--neo-primary);
+  }
+
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+
+  .terminal-info {
+    margin-top: 3rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+  }
+
+  .info-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .info-card p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+  }
+
+  .info-card code {
+    display: block;
+    background: #f5f5f5;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .neo-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    margin-top: 1rem;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .terminal-body {
+      padding: 1rem;
+      font-size: 0.85rem;
+      min-height: 350px;
+    }
+
+    .terminal-header {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .output-line {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
