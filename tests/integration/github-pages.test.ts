@@ -48,6 +48,7 @@ describe('GitHub Pages Configuration', () => {
     const vercelConfig = JSON.parse(readFileSync(vercelJsonPath, 'utf-8'));
     expect(vercelConfig.buildCommand).toBe(null);
     expect(vercelConfig.github?.enabled).toBe(false);
+    expect(vercelConfig.github?.silent).toBe(true);
   });
 
   it('should not have Vercel dependencies in package.json', () => {
