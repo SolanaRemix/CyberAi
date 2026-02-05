@@ -2,11 +2,11 @@
 
 Comprehensive security and code auditing.
 
-## Access
+## Status
 
-Visit: `https://audit.cyberai.network` (or `https://cyberai.network/audit`)
+🚧 **Under Development** - Audit tools infrastructure is currently being developed.
 
-## Features
+## Planned Features
 
 - Security vulnerability scanning
 - Smart contract auditing
@@ -16,7 +16,4 @@ Visit: `https://audit.cyberai.network` (or `https://cyberai.network/audit`)
 
 ## Development
 
-```bash
-npm install
-npm run dev
-```
+This directory is a placeholder for the future audit tools. Development infrastructure is not yet set up.

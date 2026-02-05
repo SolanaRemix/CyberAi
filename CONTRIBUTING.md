@@ -74,11 +74,39 @@ npm install
 # Run tests
 npm test
 
+# Run tests in watch mode
+npm run test:watch
+
+# Run unit tests only
+npm run test:unit
+
+# Run integration tests only
+npm run test:integration
+
 # Run linter
 npm run lint
 
+# Fix linting issues automatically
+npm run lint:fix
+
 # Build project
 npm run build
+
+# Format code with Prettier
+npm run format
+
+# Check code formatting
+npm run format:check
+```
+
+### Site Development
+
+To work on the main site (cyberai.network):
+
+```bash
+cd site
+npm install
+npm run dev
 ```
 
 ## Coding Standards

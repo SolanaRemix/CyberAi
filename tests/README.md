@@ -23,11 +23,11 @@ npm run test:unit
 # Run integration tests only
 npm run test:integration
 
-# Run tests with coverage
-npm run test:coverage
-
 # Run tests in watch mode
 npm run test:watch
+
+# Run tests with UI
+npm run test:ui
 ```
 
 ## Writing Tests

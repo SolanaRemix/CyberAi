@@ -2,11 +2,11 @@
 
 AI-powered code analysis and intelligence.
 
-## Access
+## Status
 
-Visit: `https://smartbrain.cyberai.network` (or `https://cyberai.network/smartbrain`)
+🚧 **Under Development** - SmartBrain AI infrastructure is currently being developed.
 
-## Features
+## Planned Features
 
 - AI-powered code analysis
 - Intelligent suggestions
@@ -16,7 +16,4 @@ Visit: `https://smartbrain.cyberai.network` (or `https://cyberai.network/smartbr
 
 ## Development
 
-```bash
-npm install
-npm run dev
-```
+This directory is a placeholder for the future SmartBrain AI component. Development infrastructure is not yet set up.

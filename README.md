@@ -54,13 +54,13 @@ CyberAi/
 │   └── src/
 │       ├── pages/     # Documentation and site pages
 │       └── layouts/   # Page layouts
-├── docs/              # Documentation portal (docs.cyberai.network)
-├── app/               # Main application (app.cyberai.network)
-├── dashboard/         # Dashboard interface (dashboard.cyberai.network)
-├── terminal/          # Terminal interface (terminal.cyberai.network)
-├── smartbrain/        # SmartBrain AI (smartbrain.cyberai.network)
-├── audit/             # Audit tools (audit.cyberai.network)
-├── api/               # API documentation (api.cyberai.network)
+├── docs/              # Documentation portal (🚧 Under Development)
+├── app/               # Main application (🚧 Under Development)
+├── dashboard/         # Dashboard interface (🚧 Under Development)
+├── terminal/          # Terminal interface (🚧 Under Development)
+├── smartbrain/        # SmartBrain AI (🚧 Under Development)
+├── audit/             # Audit tools (🚧 Under Development)
+├── api/               # API documentation (🚧 Under Development)
 ├── scripts/           # Build and automation scripts
 └── .github/
     ├── workflows/     # CI/CD workflows

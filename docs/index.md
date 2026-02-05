@@ -100,26 +100,31 @@ Learn about project governance:
 
 ## 🔗 API Reference
 
-The CyberAi platform exposes several APIs:
+The CyberAi platform is being designed to expose several APIs:
 
 - **Contract Validation API** - Validate contract schemas
 - **Agent Management API** - Register and manage agents
 - **Security Scanning API** - Trigger security scans
 - **Webhook Integration API** - Configure webhooks
 
-API documentation is available at [api.cyberai.network](https://api.cyberai.network).
+🚧 **Note:** API infrastructure is currently under development.
 
 ## 📦 Ecosystem
 
 CyberAi is part of a larger ecosystem:
 
-- **Main Platform** - [cyberai.network](https://cyberai.network)
-- **Documentation** - [docs.cyberai.network](https://docs.cyberai.network)
-- **Dashboard** - [dashboard.cyberai.network](https://dashboard.cyberai.network)
-- **Terminal** - [terminal.cyberai.network](https://terminal.cyberai.network)
-- **SmartBrain** - [smartbrain.cyberai.network](https://smartbrain.cyberai.network)
-- **Audit Tools** - [audit.cyberai.network](https://audit.cyberai.network)
-- **API** - [api.cyberai.network](https://api.cyberai.network)
+- **Main Platform** - [cyberai.network](https://cyberai.network) ✅ Live
+- **Documentation** - Available in the `/docs` directory
+- **Dashboard** - Available at [cyberai.network/dashboard](https://cyberai.network/dashboard) ✅ Live
+
+**🚧 Under Development:**
+The following components are planned but not yet available:
+
+- Terminal Interface (placeholder in `/terminal` directory)
+- SmartBrain AI (placeholder in `/smartbrain` directory)
+- Audit Tools (placeholder in `/audit` directory)
+- API Gateway (placeholder in `/api` directory)
+- Main App (placeholder in `/app` directory)
 
 ## 📞 Support
 
