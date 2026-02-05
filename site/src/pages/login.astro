@@ -1,0 +1,512 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Login - CyberAi Network">
+  <main>
+    <div class="login-container">
+      <div class="login-card neo-card neo-glow-primary">
+        <div class="logo-section">
+          <h1 class="neo-text-glow">🔒 CyberAi</h1>
+          <p>Sign in to your account</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+          <button class="tab-button active" data-tab="login">Login</button>
+          <button class="tab-button" data-tab="signup">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form active">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input 
+              type="email" 
+              id="login-email" 
+              name="email" 
+              placeholder="you@example.com" 
+              required 
+              class="neo-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input 
+              type="password" 
+              id="login-password" 
+              name="password" 
+              placeholder="••••••••" 
+              required 
+              class="neo-input"
+            />
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" name="remember" />
+              <span>Remember me</span>
+            </label>
+            <a href="/forgot-password" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="neo-button neo-glow-primary submit-button">
+            Sign In
+          </button>
+
+          <div class="divider">
+            <span>OR</span>
+          </div>
+
+          <div class="social-login">
+            <button type="button" class="social-button github-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              Continue with GitHub
+            </button>
+
+            <button type="button" class="social-button google-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              Continue with Google
+            </button>
+          </div>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signup-form" class="auth-form">
+          <div class="form-group">
+            <label for="signup-name">Full Name</label>
+            <input 
+              type="text" 
+              id="signup-name" 
+              name="name" 
+              placeholder="John Doe" 
+              required 
+              class="neo-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input 
+              type="email" 
+              id="signup-email" 
+              name="email" 
+              placeholder="you@example.com" 
+              required 
+              class="neo-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input 
+              type="password" 
+              id="signup-password" 
+              name="password" 
+              placeholder="••••••••" 
+              required 
+              class="neo-input"
+              minlength="8"
+            />
+            <small>Minimum 8 characters</small>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-confirm">Confirm Password</label>
+            <input 
+              type="password" 
+              id="signup-confirm" 
+              name="confirm" 
+              placeholder="••••••••" 
+              required 
+              class="neo-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="terms" required />
+              <span>I agree to the <a href="/docs/privacy">Terms of Service</a> and <a href="/docs/privacy">Privacy Policy</a></span>
+            </label>
+          </div>
+
+          <button type="submit" class="neo-button neo-glow-primary submit-button">
+            Create Account
+          </button>
+
+          <div class="divider">
+            <span>OR</span>
+          </div>
+
+          <div class="social-login">
+            <button type="button" class="social-button github-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              Sign up with GitHub
+            </button>
+
+            <button type="button" class="social-button google-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              Sign up with Google
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="features-banner">
+        <h3>Why Sign Up?</h3>
+        <ul>
+          <li>🔒 Enhanced security features</li>
+          <li>📊 Access to advanced analytics</li>
+          <li>🤖 Priority AI agent access</li>
+          <li>💾 Save your preferences</li>
+          <li>🚀 Early access to new features</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(6, 182, 212, 0.05));
+  }
+
+  .login-container {
+    max-width: 1000px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .login-card {
+    padding: 3rem;
+  }
+
+  .logo-section {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .logo-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--neo-primary);
+  }
+
+  .logo-section p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+
+  .tab-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--glass-border);
+  }
+
+  .tab-button {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #888;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .tab-button.active {
+    color: var(--neo-primary);
+    border-bottom-color: var(--neo-primary);
+  }
+
+  .tab-button:hover {
+    color: var(--neo-primary);
+  }
+
+  .auth-form {
+    display: none;
+  }
+
+  .auth-form.active {
+    display: block;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 600;
+  }
+
+  .neo-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--glass-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+    background: var(--glass-bg);
+  }
+
+  .neo-input:focus {
+    outline: none;
+    border-color: var(--neo-primary);
+    box-shadow: var(--glow-sm) var(--neo-primary);
+  }
+
+  .form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #888;
+    font-size: 0.85rem;
+  }
+
+  .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: #666;
+  }
+
+  .checkbox-label input[type="checkbox"] {
+    cursor: pointer;
+  }
+
+  .forgot-link {
+    color: var(--neo-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .forgot-link:hover {
+    text-decoration: underline;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--glass-border);
+  }
+
+  .divider span {
+    position: relative;
+    background: white;
+    padding: 0 1rem;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid var(--glass-border);
+    border-radius: 8px;
+    background: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .social-button:hover {
+    border-color: var(--neo-primary);
+    box-shadow: var(--glow-sm) var(--neo-primary);
+    transform: translateY(-2px);
+  }
+
+  .github-button {
+    color: #333;
+  }
+
+  .google-button {
+    color: #555;
+  }
+
+  .features-banner {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .features-banner h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--neo-primary);
+  }
+
+  .features-banner ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .features-banner li {
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    color: #555;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .features-banner li:last-child {
+    border-bottom: none;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .login-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .login-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .logo-section h1 {
+      font-size: 2rem;
+    }
+
+    .features-banner {
+      order: -1;
+    }
+  }
+</style>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const tab = button.getAttribute('data-tab');
+      
+      // Update active tab
+      document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      
+      // Update active form
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+      document.getElementById(`${tab}-form`).classList.add('active');
+    });
+  });
+
+  // Handle login form
+  document.getElementById('login-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const email = formData.get('email');
+    const password = formData.get('password');
+    
+    // TODO: Integrate with Firebase/Auth0
+    console.log('Login attempt:', { email });
+    alert('Authentication integration pending. This will connect to Firebase/Auth0 in production.');
+    
+    // For now, simulate successful login
+    // window.location.href = '/dashboard';
+  });
+
+  // Handle signup form
+  document.getElementById('signup-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const password = formData.get('password');
+    const confirm = formData.get('confirm');
+    
+    if (password !== confirm) {
+      alert('Passwords do not match!');
+      return;
+    }
+    
+    const email = formData.get('email');
+    const name = formData.get('name');
+    
+    // TODO: Integrate with Firebase/Auth0
+    console.log('Signup attempt:', { email, name });
+    alert('Authentication integration pending. This will connect to Firebase/Auth0 in production.');
+    
+    // For now, simulate successful signup
+    // window.location.href = '/dashboard';
+  });
+
+  // Handle social login buttons
+  document.querySelectorAll('.social-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const provider = button.classList.contains('github-button') ? 'GitHub' : 'Google';
+      
+      // TODO: Integrate with Firebase/Auth0
+      console.log(`${provider} authentication`);
+      alert(`${provider} authentication integration pending. This will use OAuth2 in production.`);
+    });
+  });
+
+  // Check for plan parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const plan = urlParams.get('plan');
+  if (plan) {
+    // Switch to signup tab if coming from pricing
+    document.querySelector('[data-tab="signup"]')?.click();
+  }
+</script>

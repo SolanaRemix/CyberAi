@@ -34,6 +34,8 @@ const { title } = Astro.props;
           <li><a href="/dashboard">Dashboard</a></li>
           <li><a href="/smartbrain">SmartBrain</a></li>
           <li><a href="/audit">Audit</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/login" class="login-link">Login</a></li>
           <li><a href="https://github.com/SolanaRemix/CyberAi" target="_blank">GitHub</a></li>
         </ul>
       </nav>
@@ -240,6 +242,20 @@ const { title } = Astro.props;
     border-left-color: var(--accent);
   }
 
+  nav .nav-menu a.login-link {
+    background: var(--neo-primary);
+    color: white;
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+    border-left: none;
+  }
+
+  nav .nav-menu a.login-link:hover {
+    background: var(--neo-accent);
+    color: white;
+    box-shadow: var(--glow-sm) var(--neo-primary);
+  }
+
   /* Tablet and Desktop Navigation */
   @media (min-width: 769px) {
     header {
@@ -277,6 +293,21 @@ const { title } = Astro.props;
       background: none;
       border-left-color: transparent;
       border-bottom-color: var(--accent);
+    }
+
+    nav .nav-menu a.login-link {
+      background: var(--neo-primary);
+      color: white;
+      border-radius: 6px;
+      padding: 0.5rem 1.5rem;
+      border-bottom: none;
+    }
+
+    nav .nav-menu a.login-link:hover {
+      background: var(--neo-accent);
+      color: white;
+      border-bottom-color: transparent;
+      box-shadow: var(--glow-sm) var(--neo-primary);
     }
   }
 

@@ -1,0 +1,34 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<Layout title="Operator Quickstart - CyberAi Documentation">
+  <main class="docs-page">
+    <div class="docs-container">
+      <h1>🚀 Operator Quickstart</h1>
+      <p>Get started as a CyberAi operator in minutes.</p>
+      
+      <h2>Step 1: Access the Console</h2>
+      <p>Navigate to the <a href="/operators">Operator Console</a></p>
+      
+      <h2>Step 2: Review System Status</h2>
+      <p>Check GitHub Actions, contracts, and agent status</p>
+      
+      <h2>Step 3: Monitor CI/CD</h2>
+      <p>View workflow runs and build status</p>
+      
+      <h2>Step 4: Access Runbooks</h2>
+      <p>Follow operational procedures in the <a href="/docs/runbook">Operations Runbook</a></p>
+      
+      <p><a href="/operators">← Back to Console</a> | <a href="/docs">Documentation Home</a></p>
+    </div>
+  </main>
+</Layout>
+<style>
+  .docs-page { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .docs-container { padding: 2rem; }
+  h1 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--neo-primary); }
+  h2 { font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--neo-accent); }
+  p { line-height: 1.8; color: #555; margin-bottom: 1rem; }
+  a { color: var(--neo-primary); text-decoration: none; font-weight: 600; }
+  a:hover { text-decoration: underline; }
+</style>
