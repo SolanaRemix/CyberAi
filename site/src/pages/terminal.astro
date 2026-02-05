@@ -7,6 +7,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="terminal-hero">
       <h1 class="neo-text-glow">💻 <span class="text-gradient">CyberAi Terminal</span></h1>
       <p class="tagline">Command-line interface for ecosystem operations</p>
+      <p class="notice" role="alert" aria-live="polite">🚧 CLI tool under development - Use npm scripts for now</p>
     </div>
 
     <div class="terminal-container neo-glass-strong">
@@ -22,61 +23,43 @@ import Layout from '../layouts/Layout.astro';
       <div class="terminal-body">
         <div class="terminal-output">
           <div class="output-line">
-            <span class="prompt">cyberai@network:~$</span>
-            <span class="command">cyberai --version</span>
+            <span class="prompt">user@cyberai:~$</span>
+            <span class="command">npm test</span>
           </div>
           <div class="output-line response">
-            CyberAi Network v1.1.0
+            Running test suite...
           </div>
           <div class="output-line response">
-            AI-Powered Smart Contract Security & Orchestration Platform
+            <span class="neo-status-active"></span> ✓ All tests passed (12/12)
           </div>
           <div class="output-line response">&nbsp;</div>
           
           <div class="output-line">
-            <span class="prompt">cyberai@network:~$</span>
-            <span class="command">cyberai status</span>
+            <span class="prompt">user@cyberai:~$</span>
+            <span class="command">npm run lint</span>
           </div>
           <div class="output-line response">
-            <span class="neo-status-active"></span> System Status: Online
+            <span class="neo-status-active"></span> Linting code...
           </div>
           <div class="output-line response">
-            <span class="neo-status-active"></span> Smart Contracts: 48 deployed
-          </div>
-          <div class="output-line response">
-            <span class="neo-status-active"></span> Active Agents: 12 running
+            <span class="neo-status-active"></span> ✓ No issues found
           </div>
           <div class="output-line response">&nbsp;</div>
           
           <div class="output-line">
-            <span class="prompt">cyberai@network:~$</span>
-            <span class="command">cyberai help</span>
+            <span class="prompt">user@cyberai:~$</span>
+            <span class="command">npm run build</span>
           </div>
           <div class="output-line response">
-            Available commands:
+            Building project...
           </div>
           <div class="output-line response">
-            &nbsp;&nbsp;audit        - Run security audit on contracts
-          </div>
-          <div class="output-line response">
-            &nbsp;&nbsp;deploy       - Deploy smart contracts
-          </div>
-          <div class="output-line response">
-            &nbsp;&nbsp;dashboard    - Open real-time dashboard
-          </div>
-          <div class="output-line response">
-            &nbsp;&nbsp;smartbrain   - Access SmartBrain AI
-          </div>
-          <div class="output-line response">
-            &nbsp;&nbsp;status       - Check system status
-          </div>
-          <div class="output-line response">
-            &nbsp;&nbsp;help         - Show this help message
+            <span class="neo-status-active"></span> ✓ Build completed successfully
           </div>
           <div class="output-line response">&nbsp;</div>
           
           <div class="output-line">
-            <span class="prompt">cyberai@network:~$</span>
+            <span class="prompt">user@cyberai:~$</span>
             <span class="cursor">_</span>
           </div>
         </div>
@@ -94,8 +77,13 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="neo-card info-card">
-          <h3>📚 Commands</h3>
-          <p>Access all available operations through the terminal interface for automated workflows and ecosystem management.</p>
+          <h3>📚 Available Scripts</h3>
+          <p>Use npm scripts for development and testing:</p>
+          <ul class="script-list">
+            <li><code>npm test</code> - Run all tests</li>
+            <li><code>npm run lint</code> - Lint codebase</li>
+            <li><code>npm run build</code> - Build project</li>
+          </ul>
           <a href="/docs" class="neo-button">View Documentation</a>
         </div>
 
@@ -139,6 +127,13 @@ import Layout from '../layouts/Layout.astro';
     font-size: clamp(1rem, 3vw, 1.3rem);
     color: #666;
     margin: 0;
+  }
+
+  .notice {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: var(--neo-warning, #f59e0b);
+    margin: 0.5rem 0 0 0;
+    font-weight: 500;
   }
 
   .terminal-container {
@@ -270,6 +265,26 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
     overflow-x: auto;
+  }
+
+  .script-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .script-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .script-list code {
+    display: inline;
+    background: #f5f5f5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
   }
 
   .neo-button {

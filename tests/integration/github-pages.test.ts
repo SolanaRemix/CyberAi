@@ -34,12 +34,21 @@ describe('GitHub Pages Configuration', () => {
     expect(config).toContain('https://cyberai.network');
   });
 
-  it('should not have Vercel configuration files', () => {
+  it('should have Vercel configuration that disables builds', () => {
     const vercelJsonPath = join(projectRoot, 'vercel.json');
     const vercelDirPath = join(projectRoot, '.vercel');
 
-    expect(existsSync(vercelJsonPath)).toBe(false);
+    // vercel.json should exist to disable Vercel builds
+    expect(existsSync(vercelJsonPath)).toBe(true);
+
+    // .vercel directory should not exist (no active deployments)
     expect(existsSync(vercelDirPath)).toBe(false);
+
+    // Verify vercel.json content disables builds
+    const vercelConfig = JSON.parse(readFileSync(vercelJsonPath, 'utf-8'));
+    expect(vercelConfig.buildCommand).toBe(null);
+    expect(vercelConfig.github?.enabled).toBe(false);
+    expect(vercelConfig.github?.silent).toBe(true);
   });
 
   it('should not have Vercel dependencies in package.json', () => {

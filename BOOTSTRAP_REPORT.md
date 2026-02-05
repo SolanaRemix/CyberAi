@@ -136,17 +136,19 @@ All existing workflows validated with correct YAML syntax:
 
 ### ✅ Subdomain Folder Structure
 
-All subdomain folders verified complete with both `index.html` and `README.md`:
+Subdomain placeholder directories created with README documentation:
 
-| Subdomain     | Domain                     | Files                 | Status      |
-| ------------- | -------------------------- | --------------------- | ----------- |
-| `docs/`       | docs.cyberai.network       | index.html, README.md | ✅ Complete |
-| `app/`        | app.cyberai.network        | index.html, README.md | ✅ Complete |
-| `dashboard/`  | dashboard.cyberai.network  | index.html, README.md | ✅ Complete |
-| `terminal/`   | terminal.cyberai.network   | index.html, README.md | ✅ Complete |
-| `smartbrain/` | smartbrain.cyberai.network | index.html, README.md | ✅ Complete |
-| `audit/`      | audit.cyberai.network      | index.html, README.md | ✅ Complete |
-| `api/`        | api.cyberai.network        | index.html, README.md | ✅ Complete |
+| Subdomain     | Intended Domain            | Files                 | Status                        |
+| ------------- | -------------------------- | --------------------- | ----------------------------- |
+| `docs/`       | (docs directory)           | index.html, README.md | 🚧 Under Development          |
+| `app/`        | (planned)                  | README.md             | 🚧 Placeholder - No dev setup |
+| `dashboard/`  | (available via /dashboard) | README.md             | 🚧 Placeholder - No dev setup |
+| `terminal/`   | (planned)                  | README.md             | 🚧 Placeholder - No dev setup |
+| `smartbrain/` | (planned)                  | README.md             | 🚧 Placeholder - No dev setup |
+| `audit/`      | (planned)                  | README.md             | 🚧 Placeholder - No dev setup |
+| `api/`        | (planned)                  | README.md             | 🚧 Placeholder - No dev setup |
+
+**Note:** These directories are placeholders for future development. Only the main site (`/site`) has full development infrastructure with package.json and build scripts.
 
 ---
 

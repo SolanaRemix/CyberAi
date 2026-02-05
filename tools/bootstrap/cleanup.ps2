@@ -1,5 +1,5 @@
 <#
-  CyberAi Hard‑Coded Bootstrap Script
+  CyberAi Nuclear Cleanup + Deterministic Reinstall
   Author: Jo’s Copilot
   Purpose:
     - Hard-coded for CyberAi repo
@@ -7,7 +7,7 @@
     - Removes poisoned metadata
     - Detects portable Node conflicts
     - Detects dangling symlinks
-    - Reinstalls deterministically (root + site)
+    - Reinstalls deterministically
     - Validates esbuild/sharp/vite/astro
     - Launches dev server
 #>
@@ -15,7 +15,7 @@
 $RepoRoot = "D:\tools\repos\SolanaRemix\CyberAi"
 $SiteDir  = "$RepoRoot\site"
 
-Write-Host "`n=== CyberAi Bootstrap ===" -ForegroundColor Cyan
+Write-Host "`n=== CyberAi Cleanup Script ===" -ForegroundColor Cyan
 
 function Info($m){ Write-Host "[INFO] $m" -ForegroundColor Gray }
 function Warn($m){ Write-Host "[WARN] $m" -ForegroundColor Yellow }
@@ -110,6 +110,7 @@ $rootInstall = pnpm install --dir $RepoRoot 2>&1
 
 if ($rootInstall -match "Ignored build scripts") {
     Warn "pnpm requires approve-builds — selecting all"
+    # Auto-select all build deps
     "a`n" | pnpm approve-builds --dir $RepoRoot | Out-Null
     pnpm install --dir $RepoRoot | Out-Null
 }

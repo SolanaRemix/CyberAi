@@ -2,11 +2,11 @@
 
 The main application interface for CyberAi.
 
-## Access
+## Status
 
-Visit: `https://app.cyberai.network` (or `https://cyberai.network/app`)
+🚧 **Under Development** - This application component is currently being developed.
 
-## Features
+## Planned Features
 
 - Autonomous code generation
 - Real-time collaboration
@@ -16,7 +16,4 @@ Visit: `https://app.cyberai.network` (or `https://cyberai.network/app`)
 
 ## Development
 
-```bash
-npm install
-npm run dev
-```
+This directory is a placeholder for the future CyberAi application. Development infrastructure is not yet set up.
