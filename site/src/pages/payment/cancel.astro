@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Payment Cancelled - CyberAi Network">
+  <main>
+    <div class="status-container">
+      <div class="status-card neo-card">
+        <div class="status-icon cancelled">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+        </div>
+        <h1>Payment Cancelled</h1>
+        <p class="status-message">
+          Your payment was cancelled. No charges have been made to your account.
+        </p>
+        
+        <div class="status-details">
+          <p>If you encountered any issues during checkout or have questions about our pricing, we're here to help.</p>
+        </div>
+
+        <div class="action-buttons">
+          <a href="/pricing" class="neo-button neo-glow-primary">
+            View Pricing Again
+          </a>
+          <a href="/" class="neo-button">
+            Go to Home
+          </a>
+        </div>
+
+        <div class="help-section">
+          <h3>Common Questions</h3>
+          <ul>
+            <li>
+              <strong>Need help choosing a plan?</strong><br>
+              Review our <a href="/pricing">pricing comparison</a> or contact sales.
+            </li>
+            <li>
+              <strong>Payment method issues?</strong><br>
+              We accept all major credit cards. Try a different card or payment method.
+            </li>
+            <li>
+              <strong>Want to try for free first?</strong><br>
+              Start with our <a href="/login?plan=free">Free Plan</a> - no credit card required.
+            </li>
+          </ul>
+        </div>
+
+        <div class="support-info">
+          <p>Questions? We're here to help!</p>
+          <p><strong>Sales:</strong> <a href="mailto:sales@cyberai.network">sales@cyberai.network</a></p>
+          <p><strong>Support:</strong> <a href="mailto:support@cyberai.network">support@cyberai.network</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, rgba(255, 190, 11, 0.05), rgba(79, 70, 229, 0.05));
+  }
+
+  .status-container {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .status-card {
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .status-icon {
+    margin: 0 auto 2rem;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .status-icon.cancelled {
+    background: linear-gradient(135deg, rgba(255, 190, 11, 0.2), rgba(255, 190, 11, 0.1));
+    color: var(--neo-warning);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--neo-warning);
+  }
+
+  .status-message {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .status-details {
+    background: var(--glass-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .status-details p {
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .neo-button {
+    padding: 1rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .help-section {
+    background: var(--glass-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .help-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--neo-primary);
+  }
+
+  .help-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .help-section li {
+    padding: 1rem 0;
+    color: #555;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .help-section li:last-child {
+    border-bottom: none;
+  }
+
+  .help-section strong {
+    color: #333;
+  }
+
+  .help-section a {
+    color: var(--neo-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .help-section a:hover {
+    text-decoration: underline;
+  }
+
+  .support-info {
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .support-info p {
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  .support-info a {
+    color: var(--neo-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .support-info a:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .status-card {
+      padding: 2rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .action-buttons {
+      flex-direction: column;
+    }
+
+    .neo-button {
+      width: 100%;
+    }
+  }
+</style>

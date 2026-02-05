@@ -1,0 +1,221 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Payment Successful - CyberAi Network">
+  <main>
+    <div class="status-container">
+      <div class="status-card neo-card neo-glow-primary">
+        <div class="status-icon success">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h1>Payment Successful!</h1>
+        <p class="status-message">
+          Thank you for subscribing to CyberAi. Your payment has been processed successfully.
+        </p>
+        
+        <div class="status-details">
+          <p>You will receive a confirmation email shortly with your invoice and subscription details.</p>
+          <p>Your account has been upgraded and you now have access to all premium features.</p>
+        </div>
+
+        <div class="action-buttons">
+          <a href="/dashboard" class="neo-button neo-glow-primary">
+            Go to Dashboard
+          </a>
+          <a href="/docs/quickstart" class="neo-button">
+            Get Started Guide
+          </a>
+        </div>
+
+        <div class="next-steps">
+          <h3>What's Next?</h3>
+          <ul>
+            <li>✅ Explore your <a href="/dashboard">Dashboard</a></li>
+            <li>✅ Configure <a href="/operators">Operator Console</a></li>
+            <li>✅ Set up <a href="/smartbrain">SmartBrain AI</a></li>
+            <li>✅ Review <a href="/docs">Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="support-info">
+          <p>Need help? Contact our support team:</p>
+          <p><a href="mailto:support@cyberai.network">support@cyberai.network</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, rgba(6, 255, 165, 0.05), rgba(79, 70, 229, 0.05));
+  }
+
+  .status-container {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .status-card {
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .status-icon {
+    margin: 0 auto 2rem;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    animation: successPulse 2s ease-in-out infinite;
+  }
+
+  .status-icon.success {
+    background: linear-gradient(135deg, rgba(6, 255, 165, 0.2), rgba(6, 255, 165, 0.1));
+    color: var(--neo-success);
+  }
+
+  @keyframes successPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px var(--neo-success), 0 0 40px var(--neo-success);
+    }
+    50% {
+      box-shadow: 0 0 30px var(--neo-success), 0 0 60px var(--neo-success);
+    }
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--neo-success);
+  }
+
+  .status-message {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .status-details {
+    background: var(--glass-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .status-details p {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .status-details p:last-child {
+    margin-bottom: 0;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .neo-button {
+    padding: 1rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .next-steps {
+    background: var(--glass-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .next-steps h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--neo-primary);
+  }
+
+  .next-steps ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .next-steps li {
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: #555;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .next-steps li:last-child {
+    border-bottom: none;
+  }
+
+  .next-steps a {
+    color: var(--neo-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .next-steps a:hover {
+    text-decoration: underline;
+  }
+
+  .support-info {
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .support-info p {
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  .support-info a {
+    color: var(--neo-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .support-info a:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .status-card {
+      padding: 2rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .action-buttons {
+      flex-direction: column;
+    }
+
+    .neo-button {
+      width: 100%;
+    }
+  }
+</style>
