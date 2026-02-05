@@ -72,7 +72,8 @@ echo ""
 # Check 4: Vercel-specific npm scripts
 echo -e "${BLUE}[4/6] Checking package.json for Vercel scripts...${NC}"
 if [ -f "package.json" ]; then
-    if grep -q "vercel" package.json; then
+    # Ignore the verify-vercel-disconnect helper script itself when checking for Vercel scripts
+    if grep "vercel" package.json | grep -vq "verify-vercel-disconnect"; then
         echo -e "${YELLOW}  ⚠️  Vercel-related scripts found in package.json${NC}"
         echo -e "      You may want to remove Vercel-specific scripts if no longer needed"
         WARNINGS=$((WARNINGS + 1))
