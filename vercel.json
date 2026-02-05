@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": null,
+  "devCommand": null,
+  "installCommand": null,
+  "outputDirectory": null,
+  "framework": null,
+  "github": {
+    "enabled": false,
+    "silent": true
+  }
+}
