@@ -138,10 +138,17 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <!-- Stripe Checkout Modal (Hidden by default) -->
-    <div id="checkout-modal" class="modal" style="display: none;">
+    <div 
+      id="checkout-modal" 
+      class="modal" 
+      style="display: none;"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="checkout-modal-title"
+    >
       <div class="modal-content neo-card">
         <span class="close" role="button" aria-label="Close" tabindex="0">&times;</span>
-        <h2>Complete Your Purchase</h2>
+        <h2 id="checkout-modal-title">Complete Your Purchase</h2>
         <p>Redirecting to secure payment...</p>
         <div class="neo-spinner"></div>
       </div>
@@ -447,6 +454,77 @@ import Layout from '../layouts/Layout.astro';
   // In production, replace with actual Stripe publishable key
   const STRIPE_PUBLISHABLE_KEY = 'YOUR_STRIPE_PUBLISHABLE_KEY_HERE';
   
+  // Focus trap variables
+  let lastFocusedElement = null;
+  
+  // Function to get all focusable elements in modal
+  function getFocusableElements(modal) {
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    return Array.from(modal.querySelectorAll(focusableSelectors)).filter(el => {
+      return !el.hasAttribute('disabled') && el.offsetParent !== null;
+    });
+  }
+  
+  // Function to trap focus within modal
+  function trapFocus(modal) {
+    const focusableElements = getFocusableElements(modal);
+    if (focusableElements.length === 0) return;
+    
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    
+    // Focus first element when modal opens
+    firstElement.focus();
+    
+    // Handle tab key to trap focus
+    modal.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab') return;
+      
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+  }
+  
+  // Function to show modal with focus trap
+  function showModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    
+    // Save currently focused element
+    lastFocusedElement = document.activeElement;
+    
+    // Show modal
+    modal.style.display = 'block';
+    
+    // Trap focus
+    trapFocus(modal);
+  }
+  
+  // Function to close modal and restore focus
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    
+    modal.style.display = 'none';
+    
+    // Restore focus to previously focused element
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
+  }
+  
   // Handle plan button clicks
   document.querySelectorAll('.plan-button').forEach(button => {
     button.addEventListener('click', async (e) => {
@@ -460,8 +538,8 @@ import Layout from '../layouts/Layout.astro';
         // Redirect to contact form
         window.location.href = 'mailto:sales@cyberai.network?subject=Enterprise%20Plan%20Inquiry';
       } else if (priceId) {
-        // Show modal
-        document.getElementById('checkout-modal').style.display = 'block';
+        // Show modal with focus trap
+        showModal('checkout-modal');
         
         // In production, integrate with Stripe Checkout
         // const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
@@ -475,7 +553,7 @@ import Layout from '../layouts/Layout.astro';
         // For now, simulate redirect
         setTimeout(() => {
           alert('Stripe integration pending. This will redirect to Stripe Checkout in production.');
-          document.getElementById('checkout-modal').style.display = 'none';
+          closeModal('checkout-modal');
         }, 2000);
       }
     });
@@ -488,14 +566,24 @@ import Layout from '../layouts/Layout.astro';
 
   // Close modal
   document.querySelector('.close')?.addEventListener('click', () => {
-    document.getElementById('checkout-modal').style.display = 'none';
+    closeModal('checkout-modal');
   });
 
   // Close modal on outside click
   window.addEventListener('click', (e) => {
     const modal = document.getElementById('checkout-modal');
     if (e.target === modal) {
-      modal.style.display = 'none';
+      closeModal('checkout-modal');
+    }
+  });
+  
+  // Close modal on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('checkout-modal');
+      if (modal && modal.style.display === 'block') {
+        closeModal('checkout-modal');
+      }
     }
   });
 </script>

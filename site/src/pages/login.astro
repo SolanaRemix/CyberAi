@@ -461,7 +461,7 @@ import Layout from '../layouts/Layout.astro';
     const password = formData.get('password');
     
     // TODO: Integrate with Firebase/Auth0
-    console.log('Login attempt:', { email });
+    // console.log('Login attempt:', { email }); // Disabled in production to avoid logging PII
     alert('Authentication integration pending. This will connect to Firebase/Auth0 in production.');
     
     // For now, simulate successful login
