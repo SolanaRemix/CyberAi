@@ -1,10 +1,10 @@
 # CyberAi Documentation
 
-This directory contains the documentation portal for the CyberAi ecosystem.
+This directory contains documentation source files for the CyberAi ecosystem.
 
 ## Access
 
-Visit: `https://docs.cyberai.network` (or `https://cyberai.network/docs`)
+Documentation is available through the main site at `https://cyberai.network`
 
 ## Contents
 
@@ -16,8 +16,12 @@ Visit: `https://docs.cyberai.network` (or `https://cyberai.network/docs`)
 
 ## Development
 
-To update documentation:
+Documentation is integrated into the main Astro site. To work on documentation:
 
-1. Edit files in this directory
-2. Run `npm run build` to generate static site
-3. Changes deploy automatically via GitHub Actions
+```bash
+cd site
+npm install
+npm run dev
+```
+
+Changes deploy automatically via GitHub Actions when merged to main.

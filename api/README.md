@@ -2,11 +2,11 @@
 
 RESTful API endpoints for CyberAi services.
 
-## Access
+## Status
 
-Visit: `https://api.cyberai.network` (or `https://cyberai.network/api`)
+🚧 **Under Development** - API infrastructure is currently being developed.
 
-## Features
+## Planned Features
 
 - RESTful API design
 - Authentication & authorization
@@ -16,7 +16,4 @@ Visit: `https://api.cyberai.network` (or `https://cyberai.network/api`)
 
 ## Development
 
-```bash
-npm install
-npm run dev
-```
+This directory is a placeholder for the future CyberAi API. Development infrastructure is not yet set up.

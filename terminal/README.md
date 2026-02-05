@@ -2,11 +2,11 @@
 
 Command-line interface for CyberAi operations.
 
-## Access
+## Status
 
-Visit: `https://terminal.cyberai.network` (or `https://cyberai.network/terminal`)
+🚧 **Under Development** - Terminal interface is currently being developed.
 
-## Features
+## Planned Features
 
 - Interactive command-line interface
 - Full CyberAi command set
@@ -16,7 +16,4 @@ Visit: `https://terminal.cyberai.network` (or `https://cyberai.network/terminal`
 
 ## Development
 
-```bash
-npm install
-npm run dev
-```
+This directory is a placeholder for the future terminal interface. Development infrastructure is not yet set up.

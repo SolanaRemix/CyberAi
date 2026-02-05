@@ -4,7 +4,7 @@ Monitoring and management dashboard for the CyberAi ecosystem.
 
 ## Access
 
-Visit: `https://dashboard.cyberai.network` (or `https://cyberai.network/dashboard`)
+Visit: `https://cyberai.network/dashboard`
 
 ## Features
 
@@ -16,7 +16,12 @@ Visit: `https://dashboard.cyberai.network` (or `https://cyberai.network/dashboar
 
 ## Development
 
+The dashboard is part of the main site. To develop:
+
 ```bash
+cd site
 npm install
 npm run dev
 ```
+
+Then visit `http://localhost:4321/dashboard`
