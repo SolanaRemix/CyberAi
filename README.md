@@ -184,6 +184,8 @@ CyberAi is deployed using **GitHub Pages** with automatic deployment on push to 
 
 ### Vercel Migration
 
+This project has been fully migrated from Vercel to GitHub Pages. A `vercel.json` configuration file is included to disable Vercel builds and prevent deployment conflicts.
+
 If you're experiencing issues migrating from Vercel, use our diagnostic tool:
 
 ```bash
@@ -197,6 +199,8 @@ This tool will:
 - Identify Vercel-specific dependencies
 - Verify GitHub Pages setup
 - Provide migration guidance
+
+**Note**: The `vercel.json` file explicitly disables Vercel deployments. If the Vercel GitHub App is still connected to your repository, it will see this configuration and skip builds.
 
 ## 📚 Documentation
 

@@ -2,7 +2,7 @@
 
 **Date**: February 5, 2026  
 **Version**: 1.1.0  
-**Status**: ✅ Complete
+**Status**: ✅ Complete (Updated with Vercel Integration Disabler)
 
 ---
 
@@ -10,22 +10,53 @@
 
 Successfully completed the migration from Vercel to GitHub Pages for the CyberAi platform. All Vercel configurations have been removed, GitHub Pages is properly configured, and a diagnostic scanner tool has been created to help users with the transition.
 
+**Update (Feb 5, 2026)**: Added `vercel.json` configuration file to explicitly disable Vercel builds and prevent deployment conflicts when the Vercel GitHub App remains connected to the repository.
+
+---
+
+## Latest Update: Vercel Integration Disabler
+
+**Date**: February 5, 2026
+
+### Problem Addressed
+
+Even after migrating to GitHub Pages, the Vercel GitHub App integration remained connected to the repository, causing Vercel to attempt builds and report deployment failures.
+
+### Solution Implemented
+
+Added two configuration files to explicitly disable Vercel builds:
+
+1. **`vercel.json`**: Configures Vercel to skip builds for this repository
+   - Sets all build commands to `null`
+   - Disables GitHub integration (`"enabled": false`)
+   - Enables silent mode to suppress notifications
+
+2. **`.vercelignore`**: Ensures no files are included in potential Vercel builds
+   - Ignores all files except `vercel.json` itself
+
+### Result
+
+Vercel will now recognize the configuration and skip build attempts, eliminating deployment error notifications while the GitHub App integration remains connected.
+
 ---
 
 ## What Was Done
 
-### 1. ✅ Vercel Configuration Removal
+### 1. ✅ Vercel Configuration Management
 
-**Status**: Complete - No Vercel configurations found
+**Status**: Complete - Vercel builds explicitly disabled
 
-- Verified no `vercel.json` configuration file exists
-- Verified no `.vercel` directory exists
+- Added `vercel.json` to explicitly disable Vercel builds (Feb 5, 2026 update)
+- Added `.vercelignore` to prevent file inclusion in Vercel builds
+- No `.vercel` directory exists
 - Confirmed Vercel dependencies are optional peers only (not directly installed)
 - These dependencies are part of Astro's ecosystem but don't require Vercel hosting
 
 **Actions Taken**:
 
-- Removed redundant `deploy-pages.yml` workflow
+- Added `vercel.json` with GitHub integration disabled
+- Added `.vercelignore` to ignore all files
+- Removed redundant `deploy-pages.yml` workflow (earlier migration)
 - Kept the proper `pages-deploy.yml` workflow for Astro site deployment
 
 ### 2. ✅ Vercel Issue Scanner Created

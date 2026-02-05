@@ -28,8 +28,14 @@ check_vercel_config() {
     echo -e "${BLUE}[1/5] Checking for Vercel configuration files...${NC}"
     
     if [ -f "vercel.json" ]; then
-        echo -e "${YELLOW}  ⚠️  Found vercel.json - This should be removed${NC}"
-        VERCEL_ISSUES=$((VERCEL_ISSUES + 1))
+        # Check if vercel.json is configured to disable builds
+        if grep -q '"buildCommand".*:.*null' vercel.json && \
+           grep -q '"enabled".*:.*false' vercel.json; then
+            echo -e "${GREEN}  ✅ Found vercel.json with builds disabled (intentional)${NC}"
+        else
+            echo -e "${YELLOW}  ⚠️  Found vercel.json with builds enabled - This should be removed or disabled${NC}"
+            VERCEL_ISSUES=$((VERCEL_ISSUES + 1))
+        fi
     else
         echo -e "${GREEN}  ✅ No vercel.json found${NC}"
     fi
@@ -165,7 +171,8 @@ provide_guidance() {
         echo ""
         echo "1. Remove Vercel Configuration Files:"
         echo "   rm -rf .vercel"
-        echo "   rm -f vercel.json"
+        echo "   # Keep vercel.json if it disables builds (buildCommand: null, github.enabled: false)"
+        echo "   # Remove vercel.json only if it enables builds"
         echo ""
         echo "2. Remove Vercel Dependencies:"
         echo "   Edit package.json and remove @vercel/* packages"
