@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
+
 /**
  * CuberAi Node Bot Template
  *
@@ -10,10 +14,6 @@
  * @requires - Node.js 16+
  * @safety - Defaults to DRY_RUN mode for non-destructive testing
  */
-
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
 
 // Configuration
 const CONFIG = {
@@ -152,4 +152,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = NodeBot;
+export default NodeBot;
