@@ -5,6 +5,7 @@ This guide provides step-by-step instructions to completely remove the Vercel Gi
 ## Why This Is Needed
 
 After migrating from Vercel to GitHub Pages, the Vercel GitHub App may still be connected to your repository. This causes:
+
 - Vercel bot comments on every PR/commit
 - Failed deployment notifications
 - Unnecessary Vercel build attempts (even with `vercel.json` disabling builds)
@@ -82,6 +83,7 @@ npm run verify-vercel-disconnect
 ```
 
 This script checks:
+
 - ✅ No `.vercel` directory exists
 - ✅ `vercel.json` has builds disabled (if present)
 - ✅ No Vercel environment variables in local `.env` files
@@ -108,6 +110,7 @@ This script checks:
 - **Existing preview URLs continue to work** but won't update
 
 To remove old deployments:
+
 1. Go to Vercel Dashboard → cyber-ai project
 2. Click on "Deployments" tab
 3. Delete deployments individually or delete the entire project
@@ -117,28 +120,33 @@ To remove old deployments:
 ### Vercel Bot Still Comments After Disconnection
 
 **Possible causes:**
+
 1. Changes haven't propagated yet (wait 5-10 minutes)
 2. Multiple Vercel installations (check all organizations/accounts)
 3. Webhooks still active (check repository Settings → Webhooks)
 
 **Solution:**
+
 - Check: `https://github.com/SolanaRemix/CyberAi/settings/hooks`
 - Remove any webhooks pointing to vercel.com
 
 ### Can't Find Vercel in GitHub Settings
 
 **Possible causes:**
+
 1. You don't have admin access to the repository
 2. Vercel was installed under a different GitHub account
 3. App is installed at organization level, not repository level
 
 **Solution:**
+
 - Contact repository owner/admin for help
 - Check organization settings: `https://github.com/organizations/SolanaRemix/settings/installations`
 
 ### "Permission Denied" When Trying to Disconnect
 
 **Solution:**
+
 - Only repository admins can disconnect GitHub Apps
 - Contact: @SolanaRemix (repository owner)
 
@@ -147,6 +155,7 @@ To remove old deployments:
 If you need Vercel for other projects but want to silence it for this repo:
 
 1. Keep `vercel.json` with:
+
    ```json
    {
      "buildCommand": null,
@@ -163,6 +172,7 @@ If you need Vercel for other projects but want to silence it for this repo:
 ## Support
 
 If you need help:
+
 1. Check Vercel documentation: https://vercel.com/docs
 2. Create an issue in this repository
 3. Contact repository maintainers

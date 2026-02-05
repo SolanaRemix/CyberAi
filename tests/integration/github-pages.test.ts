@@ -40,7 +40,7 @@ describe('GitHub Pages Configuration', () => {
 
     // vercel.json should exist to disable Vercel builds
     expect(existsSync(vercelJsonPath)).toBe(true);
-    
+
     // .vercel directory should not exist (no active deployments)
     expect(existsSync(vercelDirPath)).toBe(false);
 
