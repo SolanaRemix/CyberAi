@@ -1,4 +1,3 @@
-
 # DAO Overview
 
 ## Introduction

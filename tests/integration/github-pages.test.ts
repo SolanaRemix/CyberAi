@@ -12,7 +12,7 @@ describe('GitHub Pages Configuration', () => {
   it('should have a CNAME file for custom domain', () => {
     const cnamePath = join(projectRoot, 'site/public/CNAME');
     expect(existsSync(cnamePath)).toBe(true);
-    
+
     const domain = readFileSync(cnamePath, 'utf-8').trim();
     expect(domain).toBe('cyberai.network');
   });
@@ -20,7 +20,7 @@ describe('GitHub Pages Configuration', () => {
   it('should have GitHub Pages workflow configured', () => {
     const workflowPath = join(projectRoot, '.github/workflows/pages-deploy.yml');
     expect(existsSync(workflowPath)).toBe(true);
-    
+
     const workflow = readFileSync(workflowPath, 'utf-8');
     expect(workflow).toContain('github-pages');
     expect(workflow).toContain('deploy-pages');
@@ -29,7 +29,7 @@ describe('GitHub Pages Configuration', () => {
   it('should have Astro config with correct site URL', () => {
     const configPath = join(projectRoot, 'site/astro.config.mjs');
     expect(existsSync(configPath)).toBe(true);
-    
+
     const config = readFileSync(configPath, 'utf-8');
     expect(config).toContain('https://cyberai.network');
   });
@@ -37,7 +37,7 @@ describe('GitHub Pages Configuration', () => {
   it('should not have Vercel configuration files', () => {
     const vercelJsonPath = join(projectRoot, 'vercel.json');
     const vercelDirPath = join(projectRoot, '.vercel');
-    
+
     expect(existsSync(vercelJsonPath)).toBe(false);
     expect(existsSync(vercelDirPath)).toBe(false);
   });
@@ -45,12 +45,12 @@ describe('GitHub Pages Configuration', () => {
   it('should not have Vercel dependencies in package.json', () => {
     const packagePath = join(projectRoot, 'site/package.json');
     const packageJson = JSON.parse(readFileSync(packagePath, 'utf-8'));
-    
+
     const allDeps = {
       ...packageJson.dependencies,
       ...packageJson.devDependencies,
     };
-    
+
     const vercelDeps = Object.keys(allDeps).filter(dep => dep.startsWith('@vercel/'));
     expect(vercelDeps).toHaveLength(0);
   });
@@ -58,7 +58,7 @@ describe('GitHub Pages Configuration', () => {
   it('should have a working vercel-scanner tool', () => {
     const scannerPath = join(projectRoot, 'tools/vercel-scanner.sh');
     expect(existsSync(scannerPath)).toBe(true);
-    
+
     const scanner = readFileSync(scannerPath, 'utf-8');
     expect(scanner).toContain('Vercel Issue Scanner');
     expect(scanner).toContain('check_vercel_config');
@@ -70,21 +70,21 @@ describe('Build Configuration', () => {
   it('should have updated version to 1.1.0', () => {
     const packagePath = join(projectRoot, 'package.json');
     const packageJson = JSON.parse(readFileSync(packagePath, 'utf-8'));
-    
+
     expect(packageJson.version).toBe('1.1.0');
   });
 
   it('should have site package with updated version', () => {
     const sitePackagePath = join(projectRoot, 'site/package.json');
     const sitePackageJson = JSON.parse(readFileSync(sitePackagePath, 'utf-8'));
-    
+
     expect(sitePackageJson.version).toBe('1.1.0');
   });
 
   it('should have ESLint v9 configuration', () => {
     const eslintConfigPath = join(projectRoot, 'eslint.config.js');
     expect(existsSync(eslintConfigPath)).toBe(true);
-    
+
     const config = readFileSync(eslintConfigPath, 'utf-8');
     expect(config).toContain('export default');
   });

@@ -192,6 +192,7 @@ bash tools/vercel-scanner.sh
 ```
 
 This tool will:
+
 - Check for Vercel configuration files
 - Identify Vercel-specific dependencies
 - Verify GitHub Pages setup

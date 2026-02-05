@@ -9,4 +9,3 @@ keywords: sponsorship, support, open-source, funding
 ---
 
 # Sponsorship Tiers
-

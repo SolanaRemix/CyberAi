@@ -1,4 +1,3 @@
-
 # Merkle Airdrop Process
 
 ## Overview
@@ -372,3 +371,4 @@ contract MerkleDistributor {
         return claimed[account];
     }
 }
+```

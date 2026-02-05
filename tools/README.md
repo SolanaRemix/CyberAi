@@ -61,6 +61,7 @@ bash tools/vercel-scanner.sh
 ```
 
 **When to use:**
+
 - Migrating from Vercel to GitHub Pages
 - Experiencing deployment issues
 - Verifying clean migration

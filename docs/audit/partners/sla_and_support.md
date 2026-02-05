@@ -9,4 +9,3 @@ keywords: SLA, support, uptime, response time
 ---
 
 # SLA and Support
-

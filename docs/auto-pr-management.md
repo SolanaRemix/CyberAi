@@ -11,10 +11,12 @@ CyberAi includes comprehensive automation for pull request management, including
 Automatically detects and resolves merge conflicts in documentation and configuration files.
 
 **Triggers:**
+
 - Automatically on PR creation/update
 - Manual trigger via comment: `@copilot auto resolve conflicts`
 
 **How it works:**
+
 1. Detects merge conflicts in common file types (MD, JSON, YAML, HTML, TS, JS)
 2. Applies smart resolution strategies:
    - Keeps HEAD version for documentation conflicts
@@ -23,6 +25,7 @@ Automatically detects and resolves merge conflicts in documentation and configur
 3. Commits and pushes resolved changes automatically
 
 **Supported file types:**
+
 - Markdown (`.md`)
 - JSON (`.json`)
 - YAML (`.yml`, `.yaml`)
@@ -34,6 +37,7 @@ Automatically detects and resolves merge conflicts in documentation and configur
 Runs comprehensive automated tests on every PR.
 
 **Tests performed:**
+
 - ESLint code quality checks
 - TypeScript compilation
 - Unit tests (if configured)
@@ -48,11 +52,13 @@ Posted as a comment on the PR with status for each check.
 Automatically merges PRs when all requirements are met.
 
 **Requirements:**
+
 - All CI checks passing
 - At least one approval from a reviewer
 - No merge conflicts
 
 **Triggers:**
+
 - Automatically when PR is approved
 - Manual trigger via comment: `@copilot auto merge`
 
@@ -63,6 +69,7 @@ Automatically merges PRs when all requirements are met.
 Responds to commands in PR comments.
 
 **Supported commands:**
+
 - `@copilot auto resolve conflicts` - Trigger conflict resolution
 - `@copilot auto merge` - Check merge requirements and merge if ready
 - `@copilot auto test` - Run automated tests
@@ -187,6 +194,7 @@ Edit the `resolve_conflicts()` function in `tools/auto-resolve-conflicts.sh`.
 **Problem:** Conflicts not being resolved automatically
 
 **Solutions:**
+
 1. Check if file type is supported
 2. Verify the conflict is not too complex
 3. Run manual script: `./tools/auto-resolve-conflicts.sh`
@@ -197,6 +205,7 @@ Edit the `resolve_conflicts()` function in `tools/auto-resolve-conflicts.sh`.
 **Problem:** PR not merging despite approval
 
 **Solutions:**
+
 1. Ensure all CI checks are passing
 2. Verify at least one approval exists
 3. Check for merge conflicts
@@ -208,6 +217,7 @@ Edit the `resolve_conflicts()` function in `tools/auto-resolve-conflicts.sh`.
 **Problem:** Tests failing unexpectedly
 
 **Solutions:**
+
 1. Review test output in PR comments
 2. Run tests locally: `npm test`
 3. Check lint errors: `npm run lint`
@@ -219,6 +229,7 @@ Edit the `resolve_conflicts()` function in `tools/auto-resolve-conflicts.sh`.
 ### Permissions
 
 The automation requires these permissions:
+
 - `contents: write` - To commit resolved conflicts
 - `pull-requests: write` - To merge PRs and add comments
 - `checks: read` - To verify CI status
@@ -235,12 +246,14 @@ The automation requires these permissions:
 ### Recommended Settings
 
 **Branch Protection:**
+
 - Require status checks to pass
 - Require at least 1 approval
 - Require up-to-date branches
 - Include administrators
 
 **Repository Settings:**
+
 - Enable auto-merge
 - Allow squash merging
 - Automatically delete head branches
@@ -299,6 +312,7 @@ Connect to external services:
 ### GitHub Actions Dashboard
 
 View automation status:
+
 1. Go to repository → Actions
 2. Select "Auto PR Management" workflow
 3. Review recent runs and logs
@@ -320,6 +334,7 @@ View automation status:
 ## Support
 
 For issues or questions:
+
 - GitHub Issues: https://github.com/SolanaRemix/CyberAi/issues
 - Discussions: https://github.com/SolanaRemix/CyberAi/discussions
 - Documentation: https://cyberai.network/docs

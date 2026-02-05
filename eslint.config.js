@@ -23,15 +23,18 @@ export default [
       '@typescript-eslint': tsPlugin,
     },
     rules: {
-      'indent': ['error', 2],
+      indent: ['error', 2],
       'linebreak-style': ['error', 'unix'],
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': ['error', {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
@@ -44,6 +47,14 @@ export default [
     },
   },
   {
-    ignores: ['node_modules/', 'dist/', 'build/', '*.min.js', 'site/dist/', 'site/node_modules/', 'site/.astro/'],
+    ignores: [
+      'node_modules/',
+      'dist/',
+      'build/',
+      '*.min.js',
+      'site/dist/',
+      'site/node_modules/',
+      'site/.astro/',
+    ],
   },
 ];

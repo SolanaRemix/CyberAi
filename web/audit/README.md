@@ -1,4 +1,3 @@
-
 > > > > > > > origin/pr10
 
 # Web Control Panel
@@ -28,7 +27,6 @@ This directory contains a lightweight GitHub Pages scaffold for SmartContractAud
 ## Features
 
 ### Dashboard (index.html)
-
 
 - **Statistics Overview**: Total scans, issues found, fixes applied
 - **Recent Runs**: Display of recent scan executions (placeholder)
@@ -748,7 +746,7 @@ Update FUNDING.yml with real values when ready.
 
 ### Local Testing
 
-```bash
+````bash
 
 ## Customization
 
@@ -786,6 +784,7 @@ Or use privacy-friendly alternatives:
 ## Support
 
 For questions or issues:
+
 - Open an issue on GitHub
 - See main documentation at `/docs`
 - Contact: contact@example.com

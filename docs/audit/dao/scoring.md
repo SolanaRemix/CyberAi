@@ -150,7 +150,8 @@ Total Score = Σ (Base Points × LOC Multiplier × Impact Multiplier × Time Mul
 
 > > > > > > > origin/pr10
 
-````
+```
 
 ## Example Calculations
 
+```
