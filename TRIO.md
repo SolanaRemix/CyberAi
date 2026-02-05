@@ -112,16 +112,16 @@ See [SECURITY.md](SECURITY.md) and [PRIVACY.md](PRIVACY.md) for complete policie
 
 ## 📊 Summary Matrix
 
-| Aspect | Status | Key Documents |
-|--------|--------|---------------|
-| **Product** | Active Development | README.md, docs/ |
-| **Governance** | Established | GOVERNANCE.md, CONTRIBUTING.md |
-| **Security** | High Priority | SECURITY.md, PRIVACY.md |
-| **License** | Apache-2.0 | LICENSE |
-| **Community** | Open | CODE_OF_CONDUCT.md |
-| **Funding** | Open for Sponsors | FUNDING.yml, docs/partners/ |
-| **DAO** | In Planning | docs/dao/ |
-| **Release** | v2026.01.01 Target | RELEASE.md |
+| Aspect         | Status             | Key Documents                  |
+| -------------- | ------------------ | ------------------------------ |
+| **Product**    | Active Development | README.md, docs/               |
+| **Governance** | Established        | GOVERNANCE.md, CONTRIBUTING.md |
+| **Security**   | High Priority      | SECURITY.md, PRIVACY.md        |
+| **License**    | Apache-2.0         | LICENSE                        |
+| **Community**  | Open               | CODE_OF_CONDUCT.md             |
+| **Funding**    | Open for Sponsors  | FUNDING.yml, docs/partners/    |
+| **DAO**        | In Planning        | docs/dao/                      |
+| **Release**    | v2026.01.01 Target | RELEASE.md                     |
 
 ## 🤝 Community
 
@@ -191,4 +191,4 @@ For detailed information on any pillar, please refer to the linked documents.
 
 ---
 
-*Last Updated: 2026-01-01*
+_Last Updated: 2026-01-01_

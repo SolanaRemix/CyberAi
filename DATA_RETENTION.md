@@ -24,11 +24,13 @@ GitHub Actions artifacts include:
 ### Log Files
 
 **Standard Logs: 30 days**
+
 - Application logs
 - Debug logs
 - Workflow run logs
 
 **Security Logs: 180 days**
+
 - Authentication logs
 - Security scan results
 - Vulnerability reports
@@ -110,6 +112,7 @@ Data is stored in:
 ### What Can Be Deleted
 
 ✅ **Can Usually Be Deleted:**
+
 - Personally identifiable information in documentation
 - Your email from git history (replaced with GitHub noreply)
 - Specific comments or discussion posts
@@ -119,6 +122,7 @@ Data is stored in:
 ### What Cannot Be Deleted
 
 ❌ **Cannot Be Deleted:**
+
 - Git commit hashes and metadata (distributed across forks)
 - Code contributions (part of permanent history)
 - Public release artifacts

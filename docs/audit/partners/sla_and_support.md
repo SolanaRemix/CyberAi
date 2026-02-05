@@ -1,5 +1,5 @@
-<<<<<<< HEAD
----
+## <<<<<<< HEAD
+
 title: SLA and Support
 <<<<<<< HEAD
 description: Service level agreements and support for SmartContractAudit partners
@@ -7,26 +7,29 @@ keywords: SLA, support, response time, uptime, service level
 =======
 description: Service level agreements and support options for partners
 keywords: SLA, support, uptime, response time
->>>>>>> origin/pr9
+
+> > > > > > > origin/pr9
+
 ---
 
 # SLA and Support
 
 <<<<<<< HEAD
+
 ## Overview
 
 This document outlines service level agreements (SLAs) and support policies for SmartContractAudit partners.
 
 ## Support Tiers by Partnership Level
 
-| Tier | Response Time | Support Channels | Hours | Uptime SLA |
-|------|---------------|------------------|-------|------------|
-| **Community** | Best effort | GitHub Issues | Business hours | None |
-| **Supporter** | 5 business days | GitHub Issues, Email | Business hours | None |
-| **Bronze** | 48 hours | Email, GitHub | Business hours | None |
-| **Silver** | 24 hours | Email, Video | Business + extended | 99% |
-| **Gold** | 12 hours | Email, Video, Slack | 12×6 | 99.5% |
-| **Platinum** | 4 hours | All channels, dedicated | 24×7 | 99.9% |
+| Tier          | Response Time   | Support Channels        | Hours               | Uptime SLA |
+| ------------- | --------------- | ----------------------- | ------------------- | ---------- |
+| **Community** | Best effort     | GitHub Issues           | Business hours      | None       |
+| **Supporter** | 5 business days | GitHub Issues, Email    | Business hours      | None       |
+| **Bronze**    | 48 hours        | Email, GitHub           | Business hours      | None       |
+| **Silver**    | 24 hours        | Email, Video            | Business + extended | 99%        |
+| **Gold**      | 12 hours        | Email, Video, Slack     | 12×6                | 99.5%      |
+| **Platinum**  | 4 hours         | All channels, dedicated | 24×7                | 99.9%      |
 
 **Business Hours**: Monday-Friday, 9 AM - 5 PM UTC  
 **Extended Hours**: Monday-Friday, 6 AM - 10 PM UTC  
@@ -39,6 +42,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Purpose**: Bug reports, feature requests, general questions
 
 **How to Use**:
+
 1. Search existing issues first
 2. Use issue templates
 3. Provide reproduction steps
@@ -47,6 +51,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Response Time**: Varies by tier (see table above)
 
 **Best For**:
+
 - Bug reports
 - Feature requests
 - Public discussions
@@ -57,6 +62,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Email**: support@cuberai.example
 
 **Include in Request**:
+
 - Partnership tier
 - Organization name
 - Detailed description
@@ -67,6 +73,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Response Time**: Per tier SLA
 
 **Best For**:
+
 - Private issues
 - Account questions
 - Billing inquiries
@@ -79,11 +86,13 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Duration**: 30-60 minutes per session
 
 **Frequency**:
+
 - **Silver**: Monthly check-ins available
 - **Gold**: Bi-weekly check-ins
 - **Platinum**: Weekly + on-demand
 
 **Best For**:
+
 - Complex troubleshooting
 - Integration planning
 - Training sessions
@@ -94,6 +103,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Access**: Provided upon partnership activation
 
 **Features**:
+
 - Direct messaging with support team
 - File sharing
 - Screen sharing
@@ -102,6 +112,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Response Time**: Per tier SLA during support hours
 
 **Best For**:
+
 - Quick questions
 - Real-time collaboration
 - Ongoing projects
@@ -110,6 +121,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 ### Dedicated Support Engineer (Platinum)
 
 **Features**:
+
 - Named engineer assigned to your account
 - Proactive monitoring
 - Regular check-ins
@@ -119,6 +131,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Availability**: 24×7 for critical issues
 
 **Best For**:
+
 - Enterprise deployments
 - Mission-critical integrations
 - Custom development
@@ -141,12 +154,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Definition**: System down, major security vulnerability, blocking production deployment
 
 **Examples**:
+
 - Core functionality unavailable
 - Data loss or corruption
 - Security breach or vulnerability
 - Complete service outage
 
 **Response Times**:
+
 - **Silver**: 4 hours
 - **Gold**: 2 hours
 - **Platinum**: 1 hour
@@ -158,12 +173,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Definition**: Significant feature impairment, workaround available
 
 **Examples**:
+
 - Major feature not working
 - Performance degradation
 - Integration failures
 - Incorrect results
 
 **Response Times**:
+
 - **Silver**: 12 hours
 - **Gold**: 6 hours
 - **Platinum**: 2 hours
@@ -175,12 +192,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Definition**: Minor feature issues, cosmetic problems
 
 **Examples**:
+
 - UI/UX issues
 - Documentation errors
 - Minor bugs with workarounds
 - Feature enhancements
 
 **Response Times**:
+
 - **Silver**: 24 hours
 - **Gold**: 12 hours
 - **Platinum**: 4 hours
@@ -192,12 +211,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Definition**: Questions, minor issues, feature requests
 
 **Examples**:
+
 - General questions
 - Documentation requests
 - Nice-to-have features
 - Best practice advice
 
 **Response Times**:
+
 - **Bronze**: 48 hours
 - **Silver**: 24 hours
 - **Gold**: 12 hours
@@ -212,6 +233,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Measured**: Monthly uptime percentage for core services
 
 **Core Services**:
+
 - GitHub Actions workflows
 - API endpoints (if applicable)
 - Documentation site
@@ -246,15 +268,18 @@ This document outlines service level agreements (SLAs) and support policies for 
 ### Planned Maintenance
 
 **Notice Period**:
+
 - **Standard Maintenance**: 7 days advance notice
 - **Emergency Maintenance**: As soon as possible
 
 **Windows**:
+
 - **Preferred**: Weekends, outside business hours
 - **Duration**: Typically 1-4 hours
 - **Frequency**: Monthly or as needed
 
 **Notification Channels**:
+
 - Email to partners
 - Status page updates
 - Slack/Discord announcements (if applicable)
@@ -264,6 +289,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Monitoring**: 24/7 automated monitoring
 
 **Response Process**:
+
 1. **Detection**: Automated or reported
 2. **Triage**: Assess severity and impact
 3. **Communication**: Notify affected partners
@@ -271,6 +297,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 5. **Post-Mortem**: Document and prevent recurrence
 
 **Status Updates**:
+
 - **Status Page**: Real-time status
 - **Email**: For affected partners
 - **Social**: Major incidents only
@@ -286,18 +313,19 @@ This document outlines service level agreements (SLAs) and support policies for 
 ✅ Include reproduction steps  
 ✅ Sanitize sensitive data  
 ✅ Use appropriate severity level  
-✅ Follow up when asked  
+✅ Follow up when asked
 
 **Don't**:
 ❌ Open duplicate tickets  
 ❌ Mark everything as critical  
 ❌ Share private keys/secrets  
 ❌ Expect immediate responses for low priority  
-❌ Use multiple channels simultaneously  
+❌ Use multiple channels simultaneously
 
 ### Information to Include
 
 **For Bug Reports**:
+
 - Steps to reproduce
 - Expected behavior
 - Actual behavior
@@ -306,6 +334,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 - Screenshots/logs
 
 **For Integration Issues**:
+
 - Integration type
 - Configuration files (sanitized)
 - Error logs
@@ -313,6 +342,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 - Attempted solutions
 
 **For Performance Issues**:
+
 - Specific operation
 - Performance metrics
 - Comparison (before/after)
@@ -337,6 +367,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Level 4**: Executive contact (Platinum only)
 
 **Include**:
+
 - Original ticket number
 - Timeline of issue
 - Business impact
@@ -347,6 +378,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 ### Training (All Tiers, Fee-Based)
 
 **Team Training**: $2,000 per session
+
 - 2-hour interactive training
 - Up to 20 participants
 - Custom curriculum
@@ -354,6 +386,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 - Recording provided
 
 **Workshops**: $5,000 per day
+
 - Full-day intensive workshop
 - Hands-on exercises
 - Custom to your use case
@@ -362,12 +395,14 @@ This document outlines service level agreements (SLAs) and support policies for 
 ### Professional Services (Gold+)
 
 **Integration Assistance**: $200/hour
+
 - Custom integration help
 - Code review
 - Best practices guidance
 - Performance optimization
 
 **Custom Development**: Starting at $10,000
+
 - Custom features
 - Plugin development
 - Workflow customization
@@ -380,6 +415,7 @@ This document outlines service level agreements (SLAs) and support policies for 
 **Cost**: Travel + daily rate
 
 **Includes**:
+
 - In-person technical support
 - Training and workshops
 - Integration assistance
@@ -405,7 +441,7 @@ To receive full SLA benefits:
 ✅ **Follow Best Practices**: Per our documentation  
 ✅ **Provide Information**: Complete details for support requests  
 ✅ **Respond Timely**: To our questions and requests  
-✅ **Test Updates**: In non-production first  
+✅ **Test Updates**: In non-production first
 
 ## Monitoring and Reporting
 
@@ -414,6 +450,7 @@ To receive full SLA benefits:
 **URL**: [TO BE ANNOUNCED]
 
 **Shows**:
+
 - Current system status
 - Incident history
 - Scheduled maintenance
@@ -424,6 +461,7 @@ To receive full SLA benefits:
 ### Monthly Reports (Silver+)
 
 **Includes**:
+
 - Uptime statistics
 - Support ticket summary
 - Resolution times
@@ -435,6 +473,7 @@ To receive full SLA benefits:
 ### Quarterly Business Reviews (Gold+)
 
 **Agenda**:
+
 - Partnership performance
 - Usage analysis
 - Support review
@@ -454,16 +493,18 @@ We continuously improve our support:
 **Feedback**: Always welcome via partners@cuberai.example
 
 **We track**:
+
 - Response times
 - Resolution times
 - Customer satisfaction
-- First-contact resolution
-=======
+- # First-contact resolution
+
 ## Service Level Agreements
 
 ### Uptime Guarantee
 
 **API Availability**:
+
 - **Standard**: 99.5% uptime
 - **Premium**: 99.9% uptime
 - **Enterprise**: 99.95% uptime
@@ -471,6 +512,7 @@ We continuously improve our support:
 **Calculation**: Monthly uptime excluding scheduled maintenance
 
 **Credits**: If SLA not met:
+
 - 99.0-99.5%: 10% credit
 - 98.0-99.0%: 25% credit
 - <98.0%: 50% credit
@@ -478,11 +520,13 @@ We continuously improve our support:
 ### Performance
 
 **API Response Times** (p95):
+
 - Scan initiation: <500ms
 - Status check: <200ms
 - Results retrieval: <1s
 
 **Scan Completion**:
+
 - Small repos (<100 files): <5 minutes
 - Medium repos (100-1000 files): <15 minutes
 - Large repos (>1000 files): <60 minutes
@@ -492,16 +536,19 @@ We continuously improve our support:
 ### Community Support (Free)
 
 **Channels**:
+
 - GitHub Issues
 - Community Forum
 - Documentation
 
 **Response Time**:
+
 - Best effort
 - Community-driven
 - No SLA
 
 **Coverage**:
+
 - Monday-Friday
 - Business hours
 - Public issues only
@@ -509,6 +556,7 @@ We continuously improve our support:
 ### Standard Support (Included)
 
 **Channels**:
+
 - Email support
 - GitHub Issues (priority)
 - Monthly office hours
@@ -522,6 +570,7 @@ We continuously improve our support:
 | Low | 2 business days | Best effort |
 
 **Coverage**:
+
 - Monday-Friday
 - 9 AM - 5 PM EST
 - Email and tickets
@@ -529,6 +578,7 @@ We continuously improve our support:
 ### Premium Support (Add-on)
 
 **Channels**:
+
 - Priority email
 - Dedicated Slack channel
 - Phone support
@@ -543,6 +593,7 @@ We continuously improve our support:
 | Low | 1 business day | 10 business days |
 
 **Coverage**:
+
 - Monday-Friday
 - 6 AM - 8 PM EST
 - Email, phone, Slack
@@ -550,6 +601,7 @@ We continuously improve our support:
 ### Enterprise Support (Custom)
 
 **Channels**:
+
 - All Premium channels
 - Dedicated account manager
 - Direct engineer access
@@ -564,6 +616,7 @@ We continuously improve our support:
 | Low | 8 hours | 5 business days |
 
 **Coverage**:
+
 - 24/7/365 for Critical
 - Extended hours for others
 - All channels available
@@ -575,12 +628,14 @@ We continuously improve our support:
 **Definition**: Complete service outage or security vulnerability
 
 **Examples**:
+
 - API completely down
 - Data breach
 - Critical security flaw
 - All scans failing
 
 **Requirements**:
+
 - Business completely blocked
 - No workaround available
 - Immediate attention needed
@@ -590,12 +645,14 @@ We continuously improve our support:
 **Definition**: Major functionality impaired
 
 **Examples**:
+
 - API degraded performance
 - Scan failures for specific repos
 - Integration broken
 - Critical feature not working
 
 **Requirements**:
+
 - Core functionality affected
 - Limited or difficult workaround
 - Significant impact
@@ -605,12 +662,14 @@ We continuously improve our support:
 **Definition**: Moderate impact, workaround available
 
 **Examples**:
+
 - Non-critical feature issue
 - Performance degradation
 - Intermittent errors
 - Configuration issues
 
 **Requirements**:
+
 - Workaround available
 - Moderate impact
 - Not blocking
@@ -620,12 +679,14 @@ We continuously improve our support:
 **Definition**: Minor issue or question
 
 **Examples**:
+
 - Documentation unclear
 - Feature requests
 - General questions
 - Minor bugs
 
 **Requirements**:
+
 - Minimal impact
 - Easy workaround
 - Can wait for resolution
@@ -670,6 +731,7 @@ We continuously improve our support:
 **Window**: 2 AM - 4 AM EST
 
 **Emergency Maintenance**:
+
 - Announced 1 hour before (if possible)
 - Critical security patches
 - Immediate fixes only
@@ -679,12 +741,14 @@ We continuously improve our support:
 **Status Page**: status.smartcontractaudit.io
 
 **Subscriptions**:
+
 - Email notifications
 - SMS alerts (Premium+)
 - Webhook notifications
 - RSS feed
 
 **Metrics**:
+
 - API uptime
 - Response times
 - Scan queue depth
@@ -702,6 +766,7 @@ We continuously improve our support:
 ### Emergency Escalation
 
 For critical issues:
+
 - **Immediate**: Email emergency@cuberai.example
 - **Phone**: Emergency hotline (Enterprise tier)
 - **Automatic**: P0 tickets auto-escalate after 15 min
@@ -711,6 +776,7 @@ For critical issues:
 ### Reporting Issues
 
 **Good Issue Report**:
+
 ```
 Title: API returns 500 error on scan initiation
 
@@ -752,6 +818,7 @@ Workaround: None found
 ### Eligibility
 
 Credits issued when:
+
 - Uptime falls below guarantee
 - Response time exceeds SLA
 - Resolution target missed
@@ -777,7 +844,7 @@ Credit = (Guaranteed % - Actual %) × Monthly Fee
 - Knowledge Base: [Link]
 - API Documentation: [Link]
 - Community Forum: [Link]
->>>>>>> origin/pr9
+  > > > > > > > origin/pr9
 
 ## Contact
 
@@ -793,8 +860,8 @@ Credit = (Guaranteed % - Actual %) × Monthly Fee
 - [Sponsorship Tiers](sponsorship_tiers.md)
 - [Technical Onboarding](technical_onboarding.md)
 - [Partnership Agreement](partnerships.md)
-- [Data Privacy](data_privacy.md)
-=======
+- # [Data Privacy](data_privacy.md)
+
 # SLA and Support
 
 ## Service Level Agreements
@@ -812,6 +879,7 @@ This document outlines service level agreements (SLAs) and support commitments f
 **Target**: 99.9% uptime (monthly)
 
 **Exclusions**:
+
 - Scheduled maintenance (announced 7 days in advance)
 - Force majeure events
 - Third-party service failures
@@ -820,6 +888,7 @@ This document outlines service level agreements (SLAs) and support commitments f
 **Measurement**: Calculated monthly from our monitoring systems
 
 **Credits** (for SLA violations):
+
 - 99.5-99.9%: 10% monthly fee credit
 - 99.0-99.5%: 25% monthly fee credit
 - <99.0%: 50% monthly fee credit
@@ -837,36 +906,40 @@ This document outlines service level agreements (SLAs) and support commitments f
 
 ### Support Ticket Response
 
-| Severity | Bronze | Silver | Gold | Platinum | Custom |
-|----------|---------|---------|-------|----------|---------|
-| **Critical** | 2 days | 1 day | 4 hours | 1 hour | Custom |
-| **High** | 5 days | 3 days | 1 day | 4 hours | Custom |
-| **Medium** | 7 days | 5 days | 2 days | 1 day | Custom |
-| **Low** | 10 days | 7 days | 5 days | 2 days | Custom |
+| Severity     | Bronze  | Silver | Gold    | Platinum | Custom |
+| ------------ | ------- | ------ | ------- | -------- | ------ |
+| **Critical** | 2 days  | 1 day  | 4 hours | 1 hour   | Custom |
+| **High**     | 5 days  | 3 days | 1 day   | 4 hours  | Custom |
+| **Medium**   | 7 days  | 5 days | 2 days  | 1 day    | Custom |
+| **Low**      | 10 days | 7 days | 5 days  | 2 days   | Custom |
 
 **Business Hours**: Monday-Friday, 9 AM - 5 PM UTC (excluding holidays)
 
 ### Severity Definitions
 
 **Critical**:
+
 - Service completely unavailable
 - Data loss or corruption
 - Security breach
 - Major functionality broken for all users
 
 **High**:
+
 - Major feature not working
 - Significant performance degradation
 - Security vulnerability (non-exploited)
 - Affecting multiple users
 
 **Medium**:
+
 - Feature partially working
 - Moderate performance issues
 - Affecting individual users
 - Workaround available
 
 **Low**:
+
 - Minor bugs
 - Feature requests
 - Documentation issues
@@ -876,14 +949,15 @@ This document outlines service level agreements (SLAs) and support commitments f
 
 **Targets** (not guarantees):
 
-| Severity | Target Resolution |
-|----------|-------------------|
-| **Critical** | 24 hours |
-| **High** | 5 business days |
-| **Medium** | 10 business days |
-| **Low** | Best effort |
+| Severity     | Target Resolution |
+| ------------ | ----------------- |
+| **Critical** | 24 hours          |
+| **High**     | 5 business days   |
+| **Medium**   | 10 business days  |
+| **Low**      | Best effort       |
 
 **Notes**:
+
 - Complex issues may take longer
 - Escalation available if targets missed
 - Regular updates provided
@@ -893,21 +967,25 @@ This document outlines service level agreements (SLAs) and support commitments f
 ### By Partner Tier
 
 **Bronze Sponsors**:
+
 - GitHub Issues (public)
 - GitHub Discussions
 - Email (partners-support@cyberai.network)
 
 **Silver Sponsors**:
+
 - All Bronze channels
 - Priority email support
 - Community Slack/Discord
 
 **Gold Sponsors**:
+
 - All Silver channels
 - Dedicated support channel
 - Video call support (scheduled)
 
 **Platinum Sponsors**:
+
 - All Gold channels
 - Dedicated Slack channel with core team
 - On-call support (business hours)
@@ -916,15 +994,18 @@ This document outlines service level agreements (SLAs) and support commitments f
 ### Contact Methods
 
 **Email**: partners-support@cyberai.network
+
 - Include partner name, tier, and severity
 - Attach logs, error messages, reproduction steps
 
 **GitHub Issues**: [github.com/CyberAi/CyberAi/issues](https://github.com/CyberAi/CyberAi/issues)
+
 - Use template
 - Tag: `partner-support`
 - Link to partnership
 
 **Slack/Discord**: (Invited after partnership begins)
+
 - Direct message or channel post
 - @mention support team for urgent issues
 
@@ -935,6 +1016,7 @@ This document outlines service level agreements (SLAs) and support commitments f
 ### Included Support
 
 ✅ **Covered**:
+
 - Bug fixes and issue resolution
 - API and integration questions
 - Configuration assistance
@@ -944,6 +1026,7 @@ This document outlines service level agreements (SLAs) and support commitments f
 - Documentation clarification
 
 ❌ **Not Covered** (available as custom services):
+
 - Custom feature development
 - On-site training (except Platinum annual)
 - Code review of your implementations
@@ -972,6 +1055,7 @@ If issue not resolved within SLA:
 - Report generation: <10 seconds
 
 **Throughput**:
+
 - Minimum 100 requests/minute per partner
 - Higher limits available (contact us)
 
@@ -979,15 +1063,16 @@ If issue not resolved within SLA:
 
 **Default Limits**:
 
-| Tier | Requests/Hour | Concurrent Scans |
-|------|---------------|------------------|
-| Bronze | 100 | 2 |
-| Silver | 500 | 5 |
-| Gold | 2,000 | 10 |
-| Platinum | 10,000 | 25 |
-| Custom | Custom | Custom |
+| Tier     | Requests/Hour | Concurrent Scans |
+| -------- | ------------- | ---------------- |
+| Bronze   | 100           | 2                |
+| Silver   | 500           | 5                |
+| Gold     | 2,000         | 10               |
+| Platinum | 10,000        | 25               |
+| Custom   | Custom        | Custom           |
 
 **Exceeding Limits**:
+
 - HTTP 429 (Too Many Requests)
 - Retry-After header provided
 - Contact us to increase limits
@@ -997,12 +1082,14 @@ If issue not resolved within SLA:
 ### Backup and Recovery
 
 **Backups**:
+
 - Daily automated backups
 - 30-day retention
 - Encrypted storage
 - Geographically distributed
 
 **Recovery**:
+
 - RPO (Recovery Point Objective): 24 hours
 - RTO (Recovery Time Objective): 4 hours
 
@@ -1019,14 +1106,15 @@ See [DATA_RETENTION.md](/DATA_RETENTION.md) for details.
 
 ### Vulnerability Response
 
-| Severity | Response | Patch Target |
-|----------|----------|--------------|
-| **Critical** | 4 hours | 7 days |
-| **High** | 1 day | 14 days |
-| **Medium** | 3 days | 30 days |
-| **Low** | 5 days | 60 days |
+| Severity     | Response | Patch Target |
+| ------------ | -------- | ------------ |
+| **Critical** | 4 hours  | 7 days       |
+| **High**     | 1 day    | 14 days      |
+| **Medium**   | 3 days   | 30 days      |
+| **Low**      | 5 days   | 60 days      |
 
 **Notification**:
+
 - Partners notified within response time
 - Security advisory published after patch
 - Coordinated disclosure process
@@ -1048,6 +1136,7 @@ See [DATA_RETENTION.md](/DATA_RETENTION.md) for details.
 **Time**: Tuesday 2-4 AM UTC (lowest traffic)
 
 **Communication**:
+
 1. Email to all partners (7 days before)
 2. Status page update (7 days before)
 3. Reminder (24 hours before)
@@ -1067,6 +1156,7 @@ See [DATA_RETENTION.md](/DATA_RETENTION.md) for details.
 **URL**: [status.smartcontractaudit.example](#)
 
 **Shows**:
+
 - Current system status
 - Planned maintenance
 - Incident history
@@ -1078,6 +1168,7 @@ See [DATA_RETENTION.md](/DATA_RETENTION.md) for details.
 ### Partner Dashboard
 
 Gold and Platinum partners get access to:
+
 - Real-time API metrics
 - Usage statistics
 - Error rates
@@ -1089,6 +1180,7 @@ Gold and Platinum partners get access to:
 ### Quarterly Business Reviews
 
 **Gold and Platinum Partners**:
+
 - Scheduled quarterly call
 - Review metrics and SLA performance
 - Discuss feature requests
@@ -1098,6 +1190,7 @@ Gold and Platinum partners get access to:
 ### Support Satisfaction
 
 We measure:
+
 - Response time compliance
 - Resolution time
 - Partner satisfaction (surveys)
@@ -1130,12 +1223,14 @@ We measure:
 ### SLA Upon Termination
 
 **30-Day Wind-Down**:
+
 - Support continues for 30 days
 - Data export assistance provided
 - Migration support available
 - Final invoicing and credits
 
 **Immediate Termination** (for cause):
+
 - Support ends immediately
 - Data export provided (if compliant with terms)
 - No refunds
@@ -1163,7 +1258,8 @@ SLAs don't apply during:
 **Billing**: funding@cyberai.network
 
 **Phone**: (Available for Platinum partners upon request)
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10
 
 ---
 
@@ -1172,18 +1268,19 @@ SLAs don't apply during:
 **Version**: 1.0  
 **Next Review**: 2026-04-01
 
-We're committed to your success! 🚀
-=======
+# We're committed to your success! 🚀
+
 **Account Issues**: accounts@cuberai.example  
 **Emergency**: emergency@cuberai.example  
 **Sales**: partnerships@cuberai.example
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
-**SLA Version**: 1.0  
-**Review Cycle**: Quarterly  
-**Next Review**: 2026-04-01
->>>>>>> origin/pr10
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+> > > > > > >
+> > > > > > > **SLA Version**: 1.0  
+> > > > > > > **Review Cycle**: Quarterly  
+> > > > > > > **Next Review**: 2026-04-01
+> > > > > > > origin/pr10

@@ -7,7 +7,8 @@
 This guide explains how to claim your SmartContractAudit DAO governance tokens after you've been included in an airdrop allocation.
 =======
 This guide explains how to claim your CyberAi DAO token allocation after a snapshot has been taken and the merkle tree has been generated.
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10
 
 ## Prerequisites
 
@@ -15,16 +16,19 @@ Before you can claim:
 
 <<<<<<< HEAD
 ✅ **Verify Eligibility**
+
 - Check you're included in the allocation
 - Confirm your address and amount
 - Review your merkle proof
 
 ✅ **Prepare Wallet**
+
 - Have a compatible Web3 wallet (MetaMask, WalletConnect, etc.)
 - Ensure wallet is on the correct network
 - Have sufficient native tokens for gas (if on-chain claiming)
 
 ✅ **Understand Vesting**
+
 - 25% unlocked immediately
 - 75% vests linearly over 12 months
 - No cliff period
@@ -38,6 +42,7 @@ Before you can claim:
 #### Step 1: Visit Claim Interface
 
 Navigate to the official claiming portal:
+
 ```
 [CLAIM_URL_TO_BE_ANNOUNCED]
 ```
@@ -54,6 +59,7 @@ Navigate to the official claiming portal:
 #### Step 3: Verify Allocation
 
 The interface will show:
+
 - Your address
 - Allocated amount
 - Claimed status
@@ -109,6 +115,7 @@ The interface will show:
 #### Using MetaMask
 
 1. **Install MetaMask**
+
    ```
    https://metamask.io
    ```
@@ -130,6 +137,7 @@ The interface will show:
    - Verify connected address
 
 5. **View Claim Details**
+
    ```
    Address: 0x1234...
    Allocation: 1,000 SCAUDIT
@@ -170,6 +178,7 @@ The interface will show:
 #### Simple Sign & Claim
 
 1. **Visit Portal**
+
    ```
    [OFF_CHAIN_CLAIM_URL]
    ```
@@ -206,23 +215,25 @@ The interface will show:
 
 **Total Allocation**: 1,000 tokens
 
-| Time | Available | Vested | Total Claimed |
-|------|-----------|--------|---------------|
-| Day 0 (Claim) | 250 | 0 | 250 |
-| Month 1 | 0 | 62.5 | 312.5 |
-| Month 3 | 0 | 187.5 | 437.5 |
-| Month 6 | 0 | 375 | 625 |
-| Month 12 | 0 | 750 | 1,000 |
+| Time          | Available | Vested | Total Claimed |
+| ------------- | --------- | ------ | ------------- |
+| Day 0 (Claim) | 250       | 0      | 250           |
+| Month 1       | 0         | 62.5   | 312.5         |
+| Month 3       | 0         | 187.5  | 437.5         |
+| Month 6       | 0         | 375    | 625           |
+| Month 12      | 0         | 750    | 1,000         |
 
 ### Claiming Vested Tokens
 
 **On-Chain**:
+
 - Return to claim interface
 - Click "Claim Vested"
 - Sign transaction
 - Gas fee applies
 
 **Off-Chain**:
+
 - Vested tokens automatically included in wallet balance
 - No action needed
 
@@ -251,6 +262,7 @@ The interface will show:
 ### Other Wallets
 
 Most wallets auto-detect tokens. If not:
+
 - Find "Add Token" or "Custom Token"
 - Enter contract address
 - Confirm addition
@@ -262,6 +274,7 @@ Most wallets auto-detect tokens. If not:
 **Cause**: Tokens already claimed for this address
 
 **Solution**:
+
 - Check wallet balance
 - Verify token is added to wallet
 - Review transaction history
@@ -272,6 +285,7 @@ Most wallets auto-detect tokens. If not:
 **Cause**: Merkle proof doesn't match
 
 **Solutions**:
+
 - Refresh page and try again
 - Clear browser cache
 - Verify you're using correct address
@@ -283,6 +297,7 @@ Most wallets auto-detect tokens. If not:
 **Cause**: Not enough native tokens for transaction
 
 **Solutions**:
+
 - Add ETH (or native token) to wallet
 - Gas estimate: ~$10-50 depending on network
 - Wait for lower gas prices
@@ -293,6 +308,7 @@ Most wallets auto-detect tokens. If not:
 **Cause**: Wallet on wrong network
 
 **Solutions**:
+
 - Check required network
 - Switch network in wallet
 - Verify network ID matches
@@ -320,6 +336,7 @@ Most wallets auto-detect tokens. If not:
 ### Can't Sign Message/Transaction
 
 **Solutions**:
+
 - Ensure wallet unlocked
 - Check wallet has sufficient funds
 - Try different wallet/browser
@@ -331,23 +348,27 @@ Most wallets auto-detect tokens. If not:
 Before claiming, verify:
 
 ✅ **Official Site**
+
 - [ ] URL matches official announcement
 - [ ] HTTPS enabled
 - [ ] Certificate valid
 - [ ] No typos in domain
 
 ✅ **Contract Verification**
+
 - [ ] Contract address matches announcement
 - [ ] Contract verified on block explorer
 - [ ] Correct token details
 
 ✅ **Transaction Safety**
+
 - [ ] Review all transaction details
 - [ ] Verify recipient address (should be you)
 - [ ] Reasonable gas fees
 - [ ] No suspicious token approvals
 
 ✅ **Wallet Security**
+
 - [ ] Using trusted wallet
 - [ ] Private keys secure
 - [ ] No wallet compromises
@@ -402,24 +423,26 @@ Before claiming, verify:
 ### Getting Help
 
 **Before Contacting Support**:
+
 1. Read this guide thoroughly
 2. Check FAQ section below
 3. Search GitHub Discussions
 4. Review transaction on block explorer
 
 **Contact Channels**:
+
 - **GitHub Discussions**: Community help
 - **GitHub Issues**: Technical problems
 - **Email**: governance@cuberai.example
 
 **Include in Support Request**:
+
 - Your wallet address (public)
 - Error messages (screenshots)
 - Transaction hashes (if any)
 - Steps you've tried
-- Never include private keys
-=======
-This guide explains how to claim your DAO tokens through our off-chain and on-chain claiming processes.
+- # Never include private keys
+  This guide explains how to claim your DAO tokens through our off-chain and on-chain claiming processes.
 
 ## Off-Chain Claim Process
 
@@ -432,6 +455,7 @@ For smaller allocations or testnet distributions, we use an off-chain claim proc
    - Or check: `dao/allocations.json` in repository
 
 2. **Find Your Address**
+
    ```bash
    grep "0xYourAddress" dao/allocations.json
    ```
@@ -443,6 +467,7 @@ For smaller allocations or testnet distributions, we use an off-chain claim proc
 ### Step 2: Connect Wallet
 
 **Supported Wallets**:
+
 - MetaMask
 - WalletConnect
 - Coinbase Wallet
@@ -450,6 +475,7 @@ For smaller allocations or testnet distributions, we use an off-chain claim proc
 - Trezor
 
 **Steps**:
+
 1. Click "Connect Wallet"
 2. Select your wallet provider
 3. Approve connection
@@ -462,6 +488,7 @@ For smaller allocations or testnet distributions, we use an off-chain claim proc
    - Message includes: address, amount, timestamp
 
 2. **Sign Message**
+
    ```javascript
    const message = `I claim ${amount} tokens to address ${address} at ${timestamp}`;
    const signature = await wallet.signMessage(message);
@@ -474,11 +501,13 @@ For smaller allocations or testnet distributions, we use an off-chain claim proc
 ### Step 4: Receive Tokens
 
 **Off-Chain Distribution**:
+
 - Tokens sent within 24-48 hours
 - Check wallet balance
 - Transaction sent from multisig
 
 **Email Notification**:
+
 - Confirmation sent to registered email (if provided)
 - Transaction hash included
 - Block explorer link
@@ -490,12 +519,14 @@ For larger distributions, we use Merkle airdrop for gas efficiency.
 ### Step 1: Get Your Proof
 
 1. **Download Proof File**
+
    ```bash
    # From GitHub
    curl -O https://raw.githubusercontent.com/SolanaRemix/SmartContractAudit/main/dao/merkle-proofs.json
    ```
 
 2. **Find Your Proof**
+
    ```javascript
    const proofs = require('./merkle-proofs.json');
    const myProof = proofs['0xYourAddress'];
@@ -522,6 +553,7 @@ const CONTRACT_ADDRESS = '0x...'; // Check official announcement
 ```
 
 **Red Flags**:
+
 - ❌ Contract not verified
 - ❌ Different address than announced
 - ❌ Unusual permissions or functions
@@ -560,8 +592,8 @@ const { ethers } = require('ethers');
 
 // Contract ABI
 const ABI = [
-  "function claim(uint256 amount, bytes32[] proof) external",
-  "function isClaimed(address account) external view returns (bool)"
+  'function claim(uint256 amount, bytes32[] proof) external',
+  'function isClaimed(address account) external view returns (bool)',
 ];
 
 // Setup
@@ -623,6 +655,7 @@ print('Claimed successfully!')
 ### Step 4: Verify Receipt
 
 1. **Check Wallet Balance**
+
    ```javascript
    const balance = await tokenContract.balanceOf(address);
    console.log('Balance:', ethers.utils.formatUnits(balance, 18));
@@ -647,6 +680,7 @@ print('Claimed successfully!')
 **Cause**: Address has already claimed tokens
 
 **Solution**:
+
 - Check if you already claimed
 - Verify you're using correct address
 - Each address can only claim once
@@ -662,6 +696,7 @@ console.log('Claimed:', isClaimed);
 **Cause**: Proof doesn't match Merkle root
 
 **Solution**:
+
 - Download latest proof file
 - Verify you're using correct address
 - Confirm amount matches allocation
@@ -679,6 +714,7 @@ console.log('Valid proof:', isValid);
 **Cause**: Gas limit too low
 
 **Solution**:
+
 - Increase gas limit to 150,000
 - Check current gas prices
 - Wait for lower gas times
@@ -694,6 +730,7 @@ console.log('Estimated gas:', gasEstimate.toString());
 **Cause**: Multiple possible causes
 
 **Solution**:
+
 1. Check if already claimed
 2. Verify contract has tokens
 3. Confirm proof is valid
@@ -716,23 +753,19 @@ If you encounter issues:
 
 3. **Contact Support**
    - Email: dao@cuberai.example
-   - GitHub Issue with details:
-     - Your address
-     - Error message
-     - Transaction hash (if applicable)
-     - Screenshots
-=======
-✅ **Check eligibility** - Review [eligibility.md](eligibility.md)  
-✅ **Snapshot taken** - Wait for snapshot announcement  
-✅ **Address registered** - Have your wallet address recorded  
-✅ **Allocation confirmed** - Check your allocation amount  
-✅ **Claiming open** - Wait for claiming period to begin
+   - # GitHub Issue with details: - Your address - Error message - Transaction hash (if applicable) - Screenshots
+     ✅ **Check eligibility** - Review [eligibility.md](eligibility.md)  
+     ✅ **Snapshot taken** - Wait for snapshot announcement  
+     ✅ **Address registered** - Have your wallet address recorded  
+     ✅ **Allocation confirmed** - Check your allocation amount  
+     ✅ **Claiming open** - Wait for claiming period to begin
 
 ## Claiming Timeline
 
 ### Phase 1: Registration (Days 1-30)
 
 **Register your address:**
+
 - Provide wallet address
 - Verify ownership
 - Link to GitHub account
@@ -740,6 +773,7 @@ If you encounter issues:
 ### Phase 2: Verification (Days 31-45)
 
 **We verify:**
+
 - Address format is valid
 - No duplicate registrations
 - Ownership proof is correct
@@ -748,6 +782,7 @@ If you encounter issues:
 ### Phase 3: Claiming (Day 45+)
 
 **Claim your tokens:**
+
 - Connect wallet
 - Generate merkle proof
 - Submit claim transaction
@@ -780,17 +815,20 @@ If you encounter issues:
 ### Step 2: Prepare Your Wallet
 
 **Supported Wallets:**
+
 - MetaMask (browser extension)
 - WalletConnect (mobile wallets)
 - Ledger/Trezor (hardware wallets)
 - Other Web3 wallets
 
 **Requirements:**
+
 - Native token for gas (ETH, SOL, etc.)
 - Wallet updated to latest version
 - Network added (mainnet or specific chain)
 
 **Estimated Gas Costs:**
+
 - Ethereum: 50,000-100,000 gas (~$5-50 depending on gas price)
 - Solana: ~0.00001 SOL (~$0.001)
 - Other chains: varies
@@ -805,6 +843,7 @@ If you encounter issues:
 4. Verify connected address matches registration
 
 **Security Checks:**
+
 - URL is correct (check for phishing)
 - HTTPS connection (lock icon)
 - Contract address verified (compare with official)
@@ -827,15 +866,12 @@ node dao/merkle/generate_merkle.js \
 ```
 
 Output:
+
 ```json
 {
   "address": "0x1234...5678",
   "amount": "1000",
-  "proof": [
-    "0xabcd...",
-    "0xef01...",
-    "0x2345..."
-  ]
+  "proof": ["0xabcd...", "0xef01...", "0x2345..."]
 }
 ```
 
@@ -850,6 +886,7 @@ Before submitting, verify:
 - ✅ **Contract**: Official contract address
 
 **Warning Signs:**
+
 - ❌ Different amount than expected
 - ❌ Unusual contract address
 - ❌ Excessive gas fee request
@@ -864,11 +901,13 @@ Before submitting, verify:
 5. Wait for confirmation
 
 **Transaction Process:**
+
 1. Submitted → Pending
 2. Included in block → Confirming
 3. Finalized → Complete
 
 **Time to complete:**
+
 - Ethereum: 30 seconds - 5 minutes
 - Solana: 1-5 seconds
 - Polygon: 5-30 seconds
@@ -882,6 +921,7 @@ Before submitting, verify:
 3. Verify amount matches allocation
 
 **If tokens not showing:**
+
 - Wait for sufficient confirmations
 - Manually add token contract
 - Check block explorer for transaction
@@ -894,12 +934,14 @@ Before submitting, verify:
 #### "Address not found"
 
 **Causes:**
+
 - Address not registered
 - Typo in address
 - Not eligible for airdrop
 - Registration after deadline
 
 **Solutions:**
+
 - Verify address is correct (checksum)
 - Check eligibility criteria
 - Appeal if you believe you're eligible
@@ -908,12 +950,14 @@ Before submitting, verify:
 #### "Invalid proof"
 
 **Causes:**
+
 - Wrong merkle tree version
 - Address changed after registration
 - Technical error in proof generation
 - Contract updated after registration
 
 **Solutions:**
+
 - Regenerate proof from latest tree
 - Verify address matches registration
 - Contact support with error details
@@ -922,11 +966,13 @@ Before submitting, verify:
 #### "Already claimed"
 
 **Causes:**
+
 - Tokens already claimed by this address
 - Double claim attempt
 - Someone else claimed (address compromise)
 
 **Solutions:**
+
 - Check wallet for tokens (may have claimed previously)
 - Verify transaction history
 - If stolen, report immediately to security@cyberai.network
@@ -935,11 +981,13 @@ Before submitting, verify:
 #### "Insufficient gas"
 
 **Causes:**
+
 - Not enough native token for gas
 - Gas price too low
 - Complex transaction requiring more gas
 
 **Solutions:**
+
 - Add more native token to wallet
 - Increase gas limit slightly
 - Wait for lower gas prices
@@ -948,12 +996,14 @@ Before submitting, verify:
 #### "Transaction reverted"
 
 **Causes:**
+
 - Contract error
 - Proof invalid
 - Claim period ended
 - Already claimed
 
 **Solutions:**
+
 - Check error message details
 - Verify all claim requirements
 - Contact support with transaction hash
@@ -962,27 +1012,31 @@ Before submitting, verify:
 ### Getting Help
 
 **Self-Service:**
+
 1. Check FAQ section below
 2. Review transaction on block explorer
 3. Verify all requirements met
 4. Try again with different wallet/network
 
 **Community Support:**
+
 1. Search GitHub Issues for similar problems
 2. Ask in GitHub Discussions (tag: `dao-claiming`)
 3. Check announcement for updates
 
 **Direct Support:**
+
 - **Technical Issues**: Open GitHub Issue (tag: `dao-claiming-issue`)
 - **Security Concerns**: security@cyberai.network
 - **Lost Access**: Follow account recovery process
->>>>>>> origin/pr10
+  > > > > > > > origin/pr10
 
 ## Security Best Practices
 
 ### Before Claiming
 
 <<<<<<< HEAD
+
 - ✅ Verify contract address (official sources only)
 - ✅ Check contract is verified on block explorer
 - ✅ Review contract code (or trust audit)
@@ -1008,6 +1062,7 @@ Before submitting, verify:
 ### Phishing Protection
 
 **Red Flags**:
+
 - ❌ Unexpected DMs about claiming
 - ❌ Requests for private keys
 - ❌ Urgent "claim now or lose tokens"
@@ -1015,6 +1070,7 @@ Before submitting, verify:
 - ❌ Requests for seed phrases
 
 **Safe Practices**:
+
 - ✅ Only use official links
 - ✅ Verify URLs carefully
 - ✅ Check SSL certificates
@@ -1035,11 +1091,12 @@ Before submitting, verify:
 ### Emergency Distribution
 
 For urgent fixes or security issues:
+
 - Expedited timeline
 - 48-hour notice minimum
 - Extended claiming period
 - Multiple reminders
->>>>>>> origin/pr9
+  > > > > > > > origin/pr9
 
 ## FAQ
 
@@ -1094,8 +1151,8 @@ A: Review [eligibility.md](eligibility.md) and participate in future snapshots.
 
 **Last Updated**: 2026-01-01
 
-**Support**: governance@cuberai.example
-=======
+# **Support**: governance@cuberai.example
+
 A: Check announcement for specific dates. Typically 7 days after announcement.
 
 **Q: How long do I have to claim?**
@@ -1129,15 +1186,18 @@ A: Contact team immediately. Will be refilled from treasury.
 ---
 
 Last updated: 2026-01-01
->>>>>>> origin/pr9
-=======
-✅ **Verify everything:**
+
+> > > > > > > # origin/pr9
+> > > > > > >
+> > > > > > > ✅ **Verify everything:**
+
 - Official website URL
 - Contract address
 - Allocation amount
 - Transaction details
 
 ✅ **Protect your wallet:**
+
 - Use hardware wallet for large amounts
 - Never share seed phrase
 - Verify all transactions
@@ -1146,6 +1206,7 @@ Last updated: 2026-01-01
 ### During Claiming
 
 ✅ **Be cautious:**
+
 - Review all transaction details
 - Don't rush under time pressure
 - Check gas fees are reasonable
@@ -1154,6 +1215,7 @@ Last updated: 2026-01-01
 ### After Claiming
 
 ✅ **Secure your tokens:**
+
 - Move to secure wallet
 - Enable additional security (2FA, etc.)
 - Keep seed phrase safe
@@ -1162,6 +1224,7 @@ Last updated: 2026-01-01
 ### Avoiding Scams
 
 ❌ **Never:**
+
 - Share seed phrase or private keys
 - Click suspicious links in DMs
 - Send tokens to "verify" eligibility
@@ -1169,6 +1232,7 @@ Last updated: 2026-01-01
 - Connect wallet to unknown sites
 
 ⚠️ **Red Flags:**
+
 - Unsolicited DMs about claiming
 - Requests for payment to claim
 - "Limited time" pressure tactics
@@ -1219,18 +1283,21 @@ A: Only for extraordinary circumstances; request via GitHub
 ## Additional Resources
 
 ### Documentation
+
 - [eligibility.md](eligibility.md) - Eligibility criteria
 - [scoring.md](scoring.md) - How allocations are calculated
 - [merkle.md](merkle.md) - Technical details of merkle trees
 - [snapshot.md](snapshot.md) - Snapshot process
 
 ### Tools
+
 - Claiming interface (link in announcement)
 - Block explorer for transaction verification
 - Gas price trackers
 - Wallet software
 
 ### Support
+
 - GitHub Discussions: General questions
 - GitHub Issues: Technical problems
 - security@cyberai.network: Security concerns
@@ -1253,4 +1320,5 @@ Before claiming, verify:
 **Last Updated**: 2026-01-01  
 **Claiming Status**: Not yet open (snapshot planning phase)  
 **Support**: GitHub Discussions (tag: `dao-claiming`)
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10

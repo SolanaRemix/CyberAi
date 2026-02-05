@@ -4,6 +4,7 @@
       "name": "cyberai-repo-agent",
       "description": "CyberAi repository control-plane agent for automated governance and fleet management",
       "version": "1.0.0",
+<<<<<<< HEAD
       "allowlist": [
         "telemetry.astro.build",
         "astro.build",
@@ -27,6 +28,13 @@
           "contents",
           "pull-requests"
         ]
+=======
+      "allowlist": ["telemetry.astro.build", "astro.build", "registry.npmjs.org", "nodejs.org"],
+      "capabilities": ["code-review", "auto-fix", "security-scan", "dependency-management"],
+      "permissions": {
+        "read": ["contents", "metadata", "pull-requests", "issues"],
+        "write": ["contents", "pull-requests"]
+>>>>>>> main
       }
     }
   ],

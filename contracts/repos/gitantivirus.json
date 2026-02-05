@@ -36,24 +36,12 @@
         }
       }
     ],
-    "workflows": [
-      "security-scan",
-      "compliance-check",
-      "vulnerability-report"
-    ]
+    "workflows": ["security-scan", "compliance-check", "vulnerability-report"]
   },
   "requirements": {
     "runtime": "github-actions",
-    "dependencies": [
-      "codeql",
-      "semgrep",
-      "trivy"
-    ],
-    "permissions": [
-      "read:code",
-      "read:security-events",
-      "write:issues"
-    ]
+    "dependencies": ["codeql", "semgrep", "trivy"],
+    "permissions": ["read:code", "read:security-events", "write:issues"]
   },
   "compliance": {
     "security": {

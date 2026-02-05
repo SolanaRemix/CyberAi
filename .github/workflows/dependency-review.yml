@@ -12,11 +12,19 @@ jobs:
   dependency-review:
     name: Review Dependencies
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       
+=======
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+>>>>>>> main
       - name: Dependency Review
         uses: actions/dependency-review-action@v4
         with:

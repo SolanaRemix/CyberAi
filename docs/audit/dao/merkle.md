@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+
 # Merkle Airdrop Process
 
 ## Overview
@@ -9,6 +10,7 @@ This document explains the merkle tree airdrop mechanism used for efficient and 
 ## What is a Merkle Airdrop?
 
 A merkle airdrop uses a merkle tree data structure to:
+
 - **Reduce Gas Costs**: Only root hash stored on-chain
 - **Prove Inclusion**: Users prove eligibility with merkle proof
 - **Scale Efficiently**: Support thousands of recipients
@@ -47,6 +49,7 @@ A merkle airdrop uses a merkle tree data structure to:
 ### Phase 2: Merkle Tree Generation
 
 1. **Format Data**: Create allocation list
+
    ```json
    {
      "address": "0x1234...",
@@ -56,8 +59,9 @@ A merkle airdrop uses a merkle tree data structure to:
    ```
 
 2. **Generate Leaves**: Hash each allocation
+
    ```javascript
-   leaf = keccak256(abi.encodePacked(address, amount))
+   leaf = keccak256(abi.encodePacked(address, amount));
    ```
 
 3. **Build Tree**: Combine hashes pairwise up to root
@@ -87,12 +91,14 @@ We provide a merkle tree generator script:
 **Location**: `dao/merkle/generate_merkle.js`
 
 **Usage**:
+
 ```bash
 cd dao/merkle
 node generate_merkle.js ../airdrop-sample.json output.json
 ```
 
 **Input Format** (`airdrop-sample.json`):
+
 ```json
 [
   {
@@ -109,6 +115,7 @@ node generate_merkle.js ../airdrop-sample.json output.json
 ```
 
 **Output Format** (`output.json`):
+
 ```json
 {
   "merkleRoot": "0xabc123...",
@@ -127,6 +134,7 @@ node generate_merkle.js ../airdrop-sample.json output.json
 For custom implementations:
 
 **Step 1: Prepare leaves**
+
 ```javascript
 const leaves = allocations.map((alloc, index) => {
   return ethers.utils.solidityKeccak256(
@@ -137,6 +145,7 @@ const leaves = allocations.map((alloc, index) => {
 ```
 
 **Step 2: Build tree**
+
 ```javascript
 import { MerkleTree } from 'merkletreejs';
 import keccak256 from 'keccak256';
@@ -146,6 +155,7 @@ const root = tree.getRoot();
 ```
 
 **Step 3: Generate proofs**
+
 ```javascript
 const proof = tree.getHexProof(leaves[index]);
 ```
@@ -154,7 +164,7 @@ const proof = tree.getHexProof(leaves[index]);
 
 ### Example Solidity Contract
 
-```solidity
+````solidity
 =======
 # Merkle Airdrop Flow
 
@@ -188,7 +198,7 @@ Instead of sending tokens to thousands of addresses (expensive), we:
    ```bash
    # Run scoring algorithm
    node scripts/calculate-contributions.js --start-date 2025-01-01 --end-date 2025-12-31
-   ```
+````
 
 2. **Score Calculation**
    - Apply scoring formula (see [scoring.md](scoring.md))
@@ -204,6 +214,7 @@ Instead of sending tokens to thousands of addresses (expensive), we:
 ### Phase 2: Merkle Tree Generation
 
 1. **Prepare Allocation Data**
+
    ```json
    {
      "0x1234...": "1000000000000000000",
@@ -213,6 +224,7 @@ Instead of sending tokens to thousands of addresses (expensive), we:
    ```
 
 2. **Generate Merkle Tree**
+
    ```bash
    node dao/merkle/generate_merkle.js \
      --input dao/allocations.json \
@@ -227,11 +239,12 @@ Instead of sending tokens to thousands of addresses (expensive), we:
 ### Phase 3: On-Chain Deployment
 
 1. **Deploy Merkle Distributor Contract**
+
    ```solidity
    contract MerkleDistributor {
      bytes32 public merkleRoot;
      mapping(address => bool) public claimed;
-     
+
      function claim(uint256 amount, bytes32[] memory proof) external;
    }
    ```
@@ -274,26 +287,22 @@ const keccak256 = require('keccak256');
 function generateMerkleTree(allocations) {
   // Create leaf nodes
   const leaves = Object.entries(allocations).map(([address, amount]) => {
-    return keccak256(
-      ethers.utils.solidityPack(['address', 'uint256'], [address, amount])
-    );
+    return keccak256(ethers.utils.solidityPack(['address', 'uint256'], [address, amount]));
   });
-  
+
   // Build tree
   const tree = new MerkleTree(leaves, keccak256, { sortPairs: true });
-  
+
   // Get root
   const root = tree.getHexRoot();
-  
+
   // Generate proofs
   const proofs = {};
   Object.entries(allocations).forEach(([address, amount]) => {
-    const leaf = keccak256(
-      ethers.utils.solidityPack(['address', 'uint256'], [address, amount])
-    );
+    const leaf = keccak256(ethers.utils.solidityPack(['address', 'uint256'], [address, amount]));
     proofs[address] = tree.getHexProof(leaf);
   });
-  
+
   return { root, proofs, tree };
 }
 ```
@@ -302,10 +311,8 @@ function generateMerkleTree(allocations) {
 
 ```javascript
 function verifyProof(address, amount, proof, root) {
-  const leaf = keccak256(
-    ethers.utils.solidityPack(['address', 'uint256'], [address, amount])
-  );
-  
+  const leaf = keccak256(ethers.utils.solidityPack(['address', 'uint256'], [address, amount]));
+
   return MerkleTree.verify(proof, leaf, root, keccak256);
 }
 ```
@@ -329,9 +336,9 @@ contract MerkleDistributor {
     event Claimed(address indexed account, uint256 amount);
 
 =======
-    
+
     event Claimed(address indexed account, uint256 amount);
-    
+
 >>>>>>> origin/pr9
     constructor(IERC20 _token, bytes32 _merkleRoot) {
         token = _token;
@@ -357,19 +364,19 @@ contract MerkleDistributor {
 
     function isClaimed(address account) public view returns (bool) {
 =======
-    
+
     function claim(uint256 amount, bytes32[] calldata proof) external {
         require(!claimed[msg.sender], "Already claimed");
-        
+
         bytes32 leaf = keccak256(abi.encodePacked(msg.sender, amount));
         require(MerkleProof.verify(proof, merkleRoot, leaf), "Invalid proof");
-        
+
         claimed[msg.sender] = true;
         require(token.transfer(msg.sender, amount), "Transfer failed");
-        
+
         emit Claimed(msg.sender, amount);
     }
-    
+
     function isClaimed(address account) external view returns (bool) {
 >>>>>>> origin/pr9
         return claimed[account];
@@ -378,6 +385,7 @@ contract MerkleDistributor {
 ```
 
 <<<<<<< HEAD
+
 ## Off-Chain Alternative
 
 For projects preferring off-chain distribution:
@@ -417,6 +425,7 @@ For projects preferring off-chain distribution:
 ### Common Pitfalls
 
 ❌ **Don't**:
+
 - Regenerate tree with same data (hashes may differ)
 - Modify allocation list after tree generation
 - Lose original tree data
@@ -424,6 +433,7 @@ For projects preferring off-chain distribution:
 - Use weak hashing algorithms
 
 ✅ **Do**:
+
 - Keep original allocation data
 - Version control tree data
 - Test claim process thoroughly
@@ -447,11 +457,8 @@ const keccak256 = require('keccak256');
 const { ethers } = require('ethers');
 
 function verifyProof(address, amount, proof, root) {
-  const leaf = ethers.utils.solidityKeccak256(
-    ['address', 'uint256'],
-    [address, amount]
-  );
-  
+  const leaf = ethers.utils.solidityKeccak256(['address', 'uint256'], [address, amount]);
+
   const tree = new MerkleTree([], keccak256, { sortPairs: true });
   return tree.verify(proof, leaf, root);
 }
@@ -472,6 +479,7 @@ console.log('Valid proof:', isValid);
 ### JavaScript/Node.js
 
 - **merkletreejs**: Full-featured merkle tree library
+
   ```bash
   npm install merkletreejs
   ```
@@ -554,6 +562,7 @@ A: Raise during community review period. After tree deployment, corrections requ
 ## Contact
 
 Questions about merkle airdrops?
+
 - **GitHub Discussions**: Technical questions
 - **GitHub Issues**: Bug reports
 - **Email**: governance@cuberai.example
@@ -562,8 +571,8 @@ Questions about merkle airdrops?
 
 **Version**: 1.0
 
-**Last Updated**: 2026-01-01
-=======
+# **Last Updated**: 2026-01-01
+
 ## Claiming Instructions
 
 ### For Recipients
@@ -578,6 +587,7 @@ Questions about merkle airdrops?
    - Or fetch from API endpoint
 
 3. **Submit Claim**
+
    ```javascript
    // Using ethers.js
    const contract = new ethers.Contract(DISTRIBUTOR_ADDRESS, ABI, signer);
@@ -591,6 +601,7 @@ Questions about merkle airdrops?
 ### Web Interface
 
 We provide a simple web interface:
+
 - Connect wallet (MetaMask, WalletConnect)
 - Auto-detect eligibility
 - One-click claiming
@@ -612,8 +623,8 @@ We provide a simple web interface:
 - **Verify Amount**: Confirm allocation before claiming
 - **Gas Estimation**: Estimate gas before transaction
 - **Phishing Protection**: Only use official interfaces
-- **Proof Privacy**: Proofs are public, not sensitive
-=======
+- # **Proof Privacy**: Proofs are public, not sensitive
+
 # Merkle Tree Distribution
 
 ## Overview
@@ -701,6 +712,7 @@ node dao/merkle/generate_merkle.js \
 ```
 
 **Output includes:**
+
 - Merkle root hash
 - Proof for each address
 - Metadata (total tokens, recipient count)
@@ -754,10 +766,10 @@ Each leaf is a hash of:
 ```javascript
 keccak256(
   abi.encodePacked(
-    address,    // Recipient address
-    amount      // Token amount
+    address, // Recipient address
+    amount // Token amount
   )
-)
+);
 ```
 
 ### Branch Nodes
@@ -765,12 +777,7 @@ keccak256(
 Each branch combines two child hashes:
 
 ```javascript
-keccak256(
-  abi.encodePacked(
-    leftHash,
-    rightHash
-  )
-)
+keccak256(abi.encodePacked(leftHash, rightHash));
 ```
 
 ### Root Node
@@ -785,15 +792,12 @@ A Merkle proof is an array of hashes:
 {
   "address": "0x1234...5678",
   "amount": "1000",
-  "proof": [
-    "0xabcd...",
-    "0xef01...",
-    "0x2345..."
-  ]
+  "proof": ["0xabcd...", "0xef01...", "0x2345..."]
 }
 ```
 
 **Verification steps:**
+
 1. Hash (address + amount) = leaf hash
 2. Combine with proof[0], hash
 3. Combine with proof[1], hash
@@ -805,6 +809,7 @@ A Merkle proof is an array of hashes:
 ### Tree Generation
 
 ✅ **Do's:**
+
 - Generate offline in secure environment
 - Verify tree before publishing root
 - Use well-tested libraries (e.g., OpenZeppelin)
@@ -812,6 +817,7 @@ A Merkle proof is an array of hashes:
 - Test with sample data first
 
 ❌ **Don'ts:**
+
 - Don't generate on compromised machine
 - Don't use untrusted allocation data
 - Don't lose the tree file (claims impossible)
@@ -821,6 +827,7 @@ A Merkle proof is an array of hashes:
 ### Smart Contract
 
 ✅ **Do's:**
+
 - Use established patterns (e.g., MerkleDistributor)
 - Audit contract before deployment
 - Implement claim tracking (prevent double claims)
@@ -828,6 +835,7 @@ A Merkle proof is an array of hashes:
 - Use multisig for admin functions
 
 ❌ **Don'ts:**
+
 - Don't deploy without audit
 - Don't allow root updates after claims start
 - Don't forget claim deadline mechanism
@@ -836,6 +844,7 @@ A Merkle proof is an array of hashes:
 ### Operational
 
 ✅ **Do's:**
+
 - Keep multiple backups of tree file
 - Test claiming process thoroughly
 - Provide clear instructions for users
@@ -843,6 +852,7 @@ A Merkle proof is an array of hashes:
 - Have support channels ready
 
 ❌ **Don'ts:**
+
 - Don't lose tree file (unrecoverable)
 - Don't change allocations after publishing
 - Don't forget to fund claiming contract
@@ -884,6 +894,7 @@ Before mainnet deployment:
 ### Generation Tool
 
 Our tool (`/dao/merkle/generate_merkle.js`):
+
 - Node.js based
 - Uses standard libraries
 - Includes verification
@@ -893,13 +904,15 @@ Our tool (`/dao/merkle/generate_merkle.js`):
 ### Recommended Libraries
 
 **JavaScript/TypeScript:**
+
 - `merkletreejs`: Merkle tree implementation
 - `ethers.js` or `web3.js`: Ethereum interaction
 - `@openzeppelin/merkle-tree`: OpenZeppelin's library
 
 **Solidity:**
+
 - `@openzeppelin/contracts/utils/cryptography/MerkleProof.sol`
->>>>>>> origin/pr10
+  > > > > > > > origin/pr10
 
 ## Troubleshooting
 
@@ -907,16 +920,19 @@ Our tool (`/dao/merkle/generate_merkle.js`):
 
 <<<<<<< HEAD
 **"Invalid proof"**
+
 - Ensure using correct proof for your address
 - Verify Merkle root matches on-chain
 - Check allocation amount is exact
 
 **"Already claimed"**
+
 - Each address can only claim once
 - Check if you claimed previously
 - Verify you're using correct wallet
 
 **"Transfer failed"**
+
 - Contract may be out of tokens
 - Check contract balance
 - Contact team
@@ -931,16 +947,19 @@ Our tool (`/dao/merkle/generate_merkle.js`):
 ## Tools & Scripts
 
 ### Generate Merkle Tree
+
 ```bash
 node dao/merkle/generate_merkle.js --input allocations.json
 ```
 
 ### Verify Proof
+
 ```bash
 node dao/merkle/verify_proof.js --address 0x123... --amount 1000 --proof proof.json
 ```
 
 ### Batch Check Claims
+
 ```bash
 node dao/merkle/check_claims.js --addresses addresses.txt
 ```
@@ -948,6 +967,7 @@ node dao/merkle/check_claims.js --addresses addresses.txt
 ## Timeline
 
 Typical airdrop timeline:
+
 1. **Week 1**: Contribution snapshot & scoring
 2. **Week 2**: Community review & disputes
 3. **Week 3**: Merkle tree generation & contract deployment
@@ -958,10 +978,12 @@ Typical airdrop timeline:
 ## Unclaimed Tokens
 
 After 90 days:
+
 - Reminder sent to unclaimed addresses
 - Extended deadline announced
 
 After 180 days:
+
 - Unclaimed tokens returned to treasury
 - Used for future distributions or burned (per DAO vote)
 
@@ -975,21 +997,25 @@ After 180 days:
 ---
 
 Last updated: 2026-01-01
->>>>>>> origin/pr9
-=======
-**Proof verification fails:**
+
+> > > > > > > # origin/pr9
+> > > > > > >
+> > > > > > > **Proof verification fails:**
+
 - Check address checksum (case-sensitive)
 - Verify amount matches exactly
 - Ensure using correct root hash
 - Check proof array order
 
 **Tree generation fails:**
+
 - Validate input JSON format
 - Check for duplicate addresses
 - Verify all amounts are numbers
 - Ensure sufficient memory
 
 **Claims not working:**
+
 - Confirm contract is funded
 - Check claim hasn't been made already
 - Verify wallet connected correctly
@@ -1030,6 +1056,7 @@ function verifyProof(leaf, proof, root) {
 ## Changelog
 
 ### Version 1.0 (2026-01-01)
+
 - Initial merkle tree documentation
 - Generation tool provided
 - Sample data included
@@ -1039,4 +1066,5 @@ function verifyProof(leaf, proof, root) {
 **Last Updated**: 2026-01-01  
 **Status**: Documentation complete, tool provided  
 **Next Steps**: Test with sample data before production use
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10

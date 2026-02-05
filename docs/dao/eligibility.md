@@ -15,6 +15,7 @@ To be eligible for DAO participation, contributors must meet at least one of the
 **Requirement**: At least one merged pull request
 
 Includes:
+
 - Feature implementations
 - Bug fixes
 - Performance improvements
@@ -23,6 +24,7 @@ Includes:
 - CI/CD improvements
 
 **Minimum Threshold**:
+
 - At least 1 merged PR by snapshot date
 - PR must add meaningful value (no spam PRs)
 - PR must follow contribution guidelines
@@ -32,6 +34,7 @@ Includes:
 **Requirement**: Significant documentation improvements
 
 Includes:
+
 - New documentation pages
 - Major doc updates or fixes
 - Tutorial creation
@@ -40,6 +43,7 @@ Includes:
 - Diagram and visual aids
 
 **Minimum Threshold**:
+
 - At least 1 merged documentation PR
 - Minimum 100 lines of quality documentation
 - Clear improvement to user/developer experience
@@ -49,6 +53,7 @@ Includes:
 **Requirement**: Reported valid security vulnerability
 
 Includes:
+
 - Security vulnerabilities
 - Logic bugs with security implications
 - Cryptographic weaknesses
@@ -56,6 +61,7 @@ Includes:
 - Supply chain vulnerabilities
 
 **Minimum Threshold**:
+
 - At least 1 accepted security report
 - Followed responsible disclosure process
 - Vulnerability confirmed by security team
@@ -68,12 +74,14 @@ Includes:
 **Requirement**: High-quality issue reports
 
 Includes:
+
 - Bug reports with reproduction steps
 - Feature requests with clear use cases
 - Issues that lead to improvements
 - Well-researched problem descriptions
 
 **Minimum Threshold**:
+
 - At least 3 quality issues created
 - Issues must be accepted (not closed as invalid/duplicate)
 - Clear value to project
@@ -84,6 +92,7 @@ Includes:
 **Requirement**: Meaningful code review participation
 
 Includes:
+
 - PR reviews with constructive feedback
 - Bug identification in PRs
 - Architecture and design feedback
@@ -91,6 +100,7 @@ Includes:
 - Testing recommendations
 
 **Minimum Threshold**:
+
 - At least 5 meaningful PR reviews
 - Reviews must add value (not just "+1" or "LGTM")
 - Demonstrate understanding of codebase
@@ -101,6 +111,7 @@ Includes:
 **Requirement**: Active community assistance
 
 Includes:
+
 - Answering questions in Discussions
 - Helping users troubleshoot issues
 - Creating educational content
@@ -108,6 +119,7 @@ Includes:
 - Organizing community events
 
 **Minimum Threshold**:
+
 - Sustained activity over at least 30 days
 - Helpful and respectful interactions
 - At least 10 meaningful community interactions
@@ -171,6 +183,7 @@ Appeals must be submitted within 7 days of final list publication.
 **Frequency**: Quarterly (every 3 months)
 
 **Typical Schedule**:
+
 - Q1: March 31
 - Q2: June 30
 - Q3: September 30
@@ -181,6 +194,7 @@ Appeals must be submitted within 7 days of final list publication.
 ### Eligibility Window
 
 Contributions must be:
+
 - Made before the snapshot date/time
 - Merged/accepted before the snapshot
 - Verified and validated
@@ -197,6 +211,7 @@ Contributions must be:
 ### Maintainers
 
 Core maintainers receive:
+
 - Base allocation for contributions
 - Maintenance bonus (additional allocation)
 - Long-term commitment bonus
@@ -206,6 +221,7 @@ Core maintainers receive:
 ### Security Researchers
 
 Significant security findings may receive:
+
 - Bonus allocation based on severity
 - Critical: 3x multiplier
 - High: 2x multiplier
@@ -216,6 +232,7 @@ Significant security findings may receive:
 ### First-Time Contributors
 
 First merged contribution receives:
+
 - Welcome bonus (1.2x multiplier)
 - Encourages new contributors
 - One-time bonus only
@@ -223,6 +240,7 @@ First merged contribution receives:
 ### Sustained Contributors
 
 Contributors active for multiple quarters:
+
 - Loyalty bonus (1.1x per consecutive quarter, max 1.5x)
 - Encourages long-term engagement
 
@@ -231,6 +249,7 @@ Contributors active for multiple quarters:
 ### Scenario 1: New Code Contributor
 
 **Profile**:
+
 - 2 merged PRs (feature + bugfix)
 - 1 code review
 - Joined this quarter
@@ -242,6 +261,7 @@ Contributors active for multiple quarters:
 ### Scenario 2: Documentation Expert
 
 **Profile**:
+
 - 5 documentation PRs
 - Created 2 tutorials
 - 300+ lines of documentation
@@ -253,6 +273,7 @@ Contributors active for multiple quarters:
 ### Scenario 3: Security Researcher
 
 **Profile**:
+
 - Reported 1 High severity vulnerability
 - Followed responsible disclosure
 - Vulnerability confirmed and fixed
@@ -264,6 +285,7 @@ Contributors active for multiple quarters:
 ### Scenario 4: Community Helper
 
 **Profile**:
+
 - Answered 20+ questions
 - Active for 45 days
 - Positive community feedback
@@ -275,6 +297,7 @@ Contributors active for multiple quarters:
 ### Scenario 5: Issue-Only User
 
 **Profile**:
+
 - Created 10 issues
 - 2 were duplicates
 - 8 were valid and accepted
@@ -286,6 +309,7 @@ Contributors active for multiple quarters:
 ### Scenario 6: Spam Contributor
 
 **Profile**:
+
 - Submitted 20 PRs with trivial changes
 - Most were typo fixes or whitespace
 - No meaningful value added

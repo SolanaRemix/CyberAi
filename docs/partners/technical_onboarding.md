@@ -61,13 +61,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Run SmartContractAudit
         run: |
           curl -sSL https://raw.githubusercontent.com/SolanaRemix/SmartContractAudit/main/scripts/audit.sh | bash
 ```
 
 **Features**:
+
 - Automated auditing on every PR
 - Results posted as PR comments
 - Artifacts uploaded for review
@@ -107,12 +108,12 @@ For enterprise partners with API access:
 const { SmartContractAudit } = require('@smartcontractaudit/sdk');
 
 const audit = new SmartContractAudit({
-  apiKey: process.env.SCAUDIT_API_KEY
+  apiKey: process.env.SCAUDIT_API_KEY,
 });
 
 const results = await audit.scan({
   repository: 'owner/repo',
-  branch: 'main'
+  branch: 'main',
 });
 ```
 
@@ -149,16 +150,8 @@ Create `config/audit.json`:
 {
   "enabled": true,
   "dry_run": true,
-  "scan_patterns": [
-    "**/*.sol",
-    "**/*.rs",
-    "**/*.move"
-  ],
-  "exclude_patterns": [
-    "node_modules/**",
-    "test/**",
-    ".git/**"
-  ],
+  "scan_patterns": ["**/*.sol", "**/*.rs", "**/*.move"],
+  "exclude_patterns": ["node_modules/**", "test/**", ".git/**"],
   "severity_threshold": "medium",
   "auto_fix": false
 }
@@ -183,10 +176,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Audit Contracts
         run: ./scripts/audit.sh contracts/
-        
+
       - name: Check Results
         run: |
           if [ -f AUDIT-REPORT.md ]; then
@@ -204,7 +197,7 @@ jobs:
     steps:
       - name: Audit Solana Contracts
         run: ./scripts/audit.sh --chain solana programs/
-        
+
   audit-ethereum:
     steps:
       - name: Audit Ethereum Contracts
@@ -218,7 +211,7 @@ jobs:
 ```yaml
 on:
   schedule:
-    - cron: '0 0 * * *'  # Daily at midnight
+    - cron: '0 0 * * *' # Daily at midnight
 
 jobs:
   scheduled-audit:
@@ -312,24 +305,28 @@ git push origin test-audit
 ### Common Issues
 
 **Issue**: Script permission denied
+
 ```bash
 # Solution: Make scripts executable
 chmod +x scripts/*.sh
 ```
 
 **Issue**: Missing dependencies
+
 ```bash
 # Solution: Install required tools
 npm install   # If using Node.js tools
 ```
 
 **Issue**: API rate limits
+
 ```bash
 # Solution: Add GitHub token
 export GITHUB_TOKEN=your_token
 ```
 
 **Issue**: False positives
+
 ```bash
 # Solution: Configure exclusions
 # Add to config/audit.json:
@@ -371,10 +368,10 @@ Create `config/custom-rules.json`:
 ```yaml
 - name: Run Slither
   run: slither .
-  
+
 - name: Run SmartContractAudit
   run: ./scripts/audit.sh
-  
+
 - name: Run Custom Checks
   run: npm run security-check
 ```

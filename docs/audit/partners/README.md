@@ -1,9 +1,10 @@
-<<<<<<< HEAD
----
+## <<<<<<< HEAD
+
 <<<<<<< HEAD
 title: Partner Program Overview
 description: Join the SmartContractAudit partner ecosystem
 keywords: partnership, sponsors, blockchain, smart contracts, collaboration
+
 ---
 
 # Partner Program
@@ -39,6 +40,7 @@ Welcome to the SmartContractAudit Partner Program! We collaborate with organizat
 ### 1. Technology Partners
 
 Integrate SmartContractAudit into your platform:
+
 - API access and integration support
 - White-label options (enterprise tier)
 - Custom feature development
@@ -49,6 +51,7 @@ Integrate SmartContractAudit into your platform:
 ### 2. Ecosystem Partners
 
 Collaborate on blockchain ecosystem growth:
+
 - Cross-promotion opportunities
 - Shared community initiatives
 - Co-hosted events and workshops
@@ -59,6 +62,7 @@ Collaborate on blockchain ecosystem growth:
 ### 3. Sponsorship Partners
 
 Support the project financially:
+
 - Logo placement and recognition
 - Access to partnership benefits
 - Tax-deductible contributions (where applicable)
@@ -71,6 +75,7 @@ See [sponsorship_tiers.md](sponsorship_tiers.md) for detailed tiers.
 ### 4. Research Partners
 
 Advance smart contract security research:
+
 - Collaborate on vulnerability research
 - Joint academic papers and publications
 - Access to early findings
@@ -81,6 +86,7 @@ Advance smart contract security research:
 ### 5. Integration Partners
 
 Build on or extend SmartContractAudit:
+
 - Commercial integrations
 - Plugin development
 - Custom tooling
@@ -93,18 +99,21 @@ Build on or extend SmartContractAudit:
 ### All Partners Receive
 
 ✅ **Recognition**
+
 - Listed in partner directory
 - Logo on website (where applicable)
 - Mentions in release notes
 - Social media acknowledgment
 
 ✅ **Access**
+
 - Priority issue triage
 - Direct maintainer contact
 - Partner-only updates
 - Early feature previews
 
 ✅ **Support**
+
 - Technical onboarding
 - Integration assistance
 - Best practices guidance
@@ -113,6 +122,7 @@ Build on or extend SmartContractAudit:
 ### Tier-Specific Benefits
 
 Higher sponsorship tiers receive additional benefits:
+
 - Enhanced visibility
 - Priority support SLAs
 - Custom feature development
@@ -142,6 +152,7 @@ Reach out to discuss partnership opportunities:
 **Website**: [Contact form - TBD]
 
 Include in your inquiry:
+
 - Organization name and website
 - Partnership type of interest
 - Use case and goals
@@ -150,6 +161,7 @@ Include in your inquiry:
 ### 4. Partnership Agreement
 
 Once aligned, we'll:
+
 - Discuss terms and benefits
 - Draft partnership agreement
 - Complete onboarding process
@@ -160,6 +172,7 @@ Once aligned, we'll:
 See [use_cases.md](use_cases.md) for detailed examples of how partners leverage SmartContractAudit.
 
 **Common Scenarios**:
+
 - DeFi protocol using automated auditing in CI/CD
 - Blockchain platform integrating security checks
 - Security firm complementing manual audits
@@ -168,11 +181,11 @@ See [use_cases.md](use_cases.md) for detailed examples of how partners leverage 
 
 ## Success Stories
 
-*Partner success stories will be featured here as partnerships develop.*
+_Partner success stories will be featured here as partnerships develop._
 
 ### Testimonials
 
-*"SmartContractAudit has become an essential part of our security workflow."*  
+_"SmartContractAudit has become an essential part of our security workflow."_  
 — [Partner Name], [Company]
 
 ## Partner Resources
@@ -248,8 +261,8 @@ We value all partners while maintaining project independence and community-first
 **Technical Support**: See [contact.md](contact.md)  
 **General Questions**: GitHub Discussions
 
-We look forward to collaborating with you! 🤝
-=======
+# We look forward to collaborating with you! 🤝
+
 # Partners
 
 Welcome to the CyberAi Partner Program! This directory contains information for current and prospective partners.
@@ -279,24 +292,28 @@ Our partner program is designed for:
 ## Benefits of Partnership
 
 ### Technical Integration
+
 - Priority API access
 - Custom integration support
 - Dedicated technical contact
 - Early access to new features
 
 ### Brand Recognition
+
 - Logo on our website and README
 - Case study opportunities
 - Co-marketing initiatives
 - Speaking opportunities
 
 ### Community Access
+
 - Direct line to maintainers
 - Input on feature roadmap (non-binding)
 - Access to community channels
 - Networking opportunities
 
 ### Commercial Support
+
 - Professional support tiers
 - SLA guarantees
 - Custom deployment options
@@ -362,7 +379,7 @@ Ready to partner? Get in touch:
 - **Technical**: Open a GitHub issue
 - **Security**: security@cyberai.network
 - **Press**: See [press_kit.md](press_kit.md)
->>>>>>> origin/pr10
+  > > > > > > > origin/pr10
 
 ---
 
@@ -370,11 +387,12 @@ Ready to partner? Get in touch:
 <<<<<<< HEAD
 **Document Version**: 1.0
 
-For the latest partnership information, visit our [GitHub repository](https://github.com/SolanaRemix/SmartContractAudit).
-=======
+# For the latest partnership information, visit our [GitHub repository](https://github.com/SolanaRemix/SmartContractAudit).
+
 title: Partners Program
 description: Partnership opportunities with SmartContractAudit
 keywords: partnerships, enterprise, collaboration, blockchain security
+
 ---
 
 # Partners Program
@@ -388,6 +406,7 @@ Thank you for your interest in partnering with SmartContractAudit! We work with 
 ### Technology Partners
 
 Integrate SmartContractAudit into your platform:
+
 - Security scanning for your users
 - White-label solutions
 - API integration
@@ -395,6 +414,7 @@ Integrate SmartContractAudit into your platform:
 - Joint development
 
 **Benefits**:
+
 - Enhance your platform's security
 - Differentiate your offering
 - Access to our technology
@@ -404,6 +424,7 @@ Integrate SmartContractAudit into your platform:
 ### Blockchain Projects
 
 Security partnerships for blockchain projects:
+
 - Smart contract auditing
 - Continuous security monitoring
 - Vulnerability assessment
@@ -411,6 +432,7 @@ Security partnerships for blockchain projects:
 - Incident response
 
 **Benefits**:
+
 - Professional security audits
 - Continuous monitoring
 - Expert consultation
@@ -420,6 +442,7 @@ Security partnerships for blockchain projects:
 ### Enterprise Partners
 
 Enterprise-grade security solutions:
+
 - Dedicated support
 - Custom integrations
 - Private deployments
@@ -427,6 +450,7 @@ Enterprise-grade security solutions:
 - SLA guarantees
 
 **Benefits**:
+
 - Enterprise features
 - Priority support
 - Custom pricing
@@ -436,6 +460,7 @@ Enterprise-grade security solutions:
 ### Infrastructure Partners
 
 Collaborate on infrastructure:
+
 - Node providers
 - Storage providers
 - Hosting partners
@@ -443,6 +468,7 @@ Collaborate on infrastructure:
 - CI/CD integration
 
 **Benefits**:
+
 - Technical collaboration
 - Joint optimization
 - Shared resources
@@ -489,13 +515,14 @@ See [sponsorship_tiers.md](sponsorship_tiers.md) for detailed tier information.
 ## Success Stories
 
 We're building partnerships with:
+
 - Blockchain protocols
 - DeFi platforms
 - NFT marketplaces
 - Development tools
 - Security platforms
 
-*Contact us to become a featured partner.*
+_Contact us to become a featured partner._
 
 ## Contact
 
@@ -507,9 +534,10 @@ Ready to explore partnership opportunities?
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
-**Program Status**: Active  
-**Open to New Partners**: Yes
->>>>>>> origin/pr10
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+> > > > > > >
+> > > > > > > **Program Status**: Active  
+> > > > > > > **Open to New Partners**: Yes
+> > > > > > > origin/pr10

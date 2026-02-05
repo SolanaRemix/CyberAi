@@ -37,6 +37,7 @@ site/
 The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
 
 The deployment workflow:
+
 1. Builds the site with `npm run build`
 2. Uploads the `dist` folder to GitHub Pages
 3. Makes the site available at https://cyberai.network
@@ -58,6 +59,7 @@ import Layout from '../layouts/Layout.astro';
 ```
 
 Pages are automatically routed based on file paths:
+
 - `src/pages/index.astro` → `/`
 - `src/pages/docs/index.astro` → `/docs`
 - `src/pages/docs/quickstart.astro` → `/docs/quickstart`
@@ -67,6 +69,7 @@ Pages are automatically routed based on file paths:
 Documentation pages are in `src/pages/docs/`. They use Astro for templating and styling.
 
 To add new documentation:
+
 1. Create a new `.astro` file in `src/pages/docs/`
 2. Import the Layout component
 3. Add your content
@@ -75,6 +78,7 @@ To add new documentation:
 ## Custom Domain
 
 The site is configured to use the custom domain `cyberai.network` via:
+
 - CNAME file in the repository root
 - DNS records pointing to GitHub Pages
 - Astro config setting `site: 'https://cyberai.network'`

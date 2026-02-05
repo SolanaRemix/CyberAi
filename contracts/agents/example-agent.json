@@ -29,20 +29,12 @@
         }
       }
     ],
-    "workflows": [
-      "security-audit",
-      "vulnerability-scan"
-    ]
+    "workflows": ["security-audit", "vulnerability-scan"]
   },
   "requirements": {
     "runtime": "node:20",
-    "dependencies": [
-      "openai>=6.0.0"
-    ],
-    "permissions": [
-      "read:code",
-      "write:issues"
-    ]
+    "dependencies": ["openai>=6.0.0"],
+    "permissions": ["read:code", "write:issues"]
   },
   "compliance": {
     "security": {

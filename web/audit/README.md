@@ -1,7 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10
+
 # Web Control Panel
 
 ## Overview
@@ -12,8 +14,8 @@ This directory contains a lightweight GitHub Pages scaffold for the SmartContrac
 ## Files
 
 - **index.html**: Main dashboard displaying scan results, artifacts, and project information
-- **billing.html**: Sponsorship tiers and payment integration placeholder
-=======
+- # **billing.html**: Sponsorship tiers and payment integration placeholder
+
 # Web Dashboard
 
 ## Overview
@@ -24,12 +26,13 @@ This directory contains a lightweight GitHub Pages scaffold for SmartContractAud
 
 - **index.html**: Main dashboard with scan results, artifacts, and quick links
 - **billing.html**: Payment integration page with multiple payment options
->>>>>>> origin/pr9
+  > > > > > > > origin/pr9
 - **README.md**: This file
 
 ## Features
 
 ### Dashboard (index.html)
+
 <<<<<<< HEAD
 
 - **Statistics Overview**: Total scans, issues found, fixes applied
@@ -95,15 +98,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'web'
-      
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -118,12 +121,12 @@ To display real scan data, integrate with GitHub API or backend:
 ```javascript
 // In index.html, add:
 async function loadScanData() {
-    const response = await fetch('https://api.github.com/repos/OWNER/REPO/actions/runs');
-    const data = await response.json();
-    
-    // Update dashboard with real data
-    document.querySelector('.total-scans').textContent = data.total_count;
-    // ... etc
+  const response = await fetch('https://api.github.com/repos/OWNER/REPO/actions/runs');
+  const data = await response.json();
+
+  // Update dashboard with real data
+  document.querySelector('.total-scans').textContent = data.total_count;
+  // ... etc
 }
 
 document.addEventListener('DOMContentLoaded', loadScanData);
@@ -162,30 +165,32 @@ Update workflow to post results:
 ```javascript
 // Backend API endpoint
 app.post('/api/create-checkout-session', async (req, res) => {
-    const { tier, price } = req.body;
-    
-    const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items: [{
-            price_data: {
-                currency: 'usd',
-                product_data: {
-                    name: `${tier} Sponsorship`,
-                    description: `Monthly ${tier} tier sponsorship`,
-                },
-                unit_amount: price * 100,
-                recurring: {
-                    interval: 'month',
-                },
-            },
-            quantity: 1,
-        }],
-        mode: 'subscription',
-        success_url: 'https://yourdomain.com/success',
-        cancel_url: 'https://yourdomain.com/billing',
-    });
-    
-    res.json({ sessionId: session.id });
+  const { tier, price } = req.body;
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: `${tier} Sponsorship`,
+            description: `Monthly ${tier} tier sponsorship`,
+          },
+          unit_amount: price * 100,
+          recurring: {
+            interval: 'month',
+          },
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'subscription',
+    success_url: 'https://yourdomain.com/success',
+    cancel_url: 'https://yourdomain.com/billing',
+  });
+
+  res.json({ sessionId: session.id });
 });
 ```
 
@@ -196,20 +201,20 @@ app.post('/api/create-checkout-session', async (req, res) => {
 const stripe = Stripe('pk_test_YOUR_KEY');
 
 async function checkout(tier, price) {
-    const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tier, price })
-    });
-    
-    const session = await response.json();
-    const result = await stripe.redirectToCheckout({
-        sessionId: session.sessionId
-    });
-    
-    if (result.error) {
-        alert(result.error.message);
-    }
+  const response = await fetch('/api/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ tier, price }),
+  });
+
+  const session = await response.json();
+  const result = await stripe.redirectToCheckout({
+    sessionId: session.sessionId,
+  });
+
+  if (result.error) {
+    alert(result.error.message);
+  }
 }
 ```
 
@@ -218,26 +223,22 @@ async function checkout(tier, price) {
 ```javascript
 // Backend webhook endpoint
 app.post('/api/stripe-webhook', async (req, res) => {
-    const sig = req.headers['stripe-signature'];
-    
-    let event;
-    try {
-        event = stripe.webhooks.constructEvent(
-            req.body,
-            sig,
-            process.env.STRIPE_WEBHOOK_SECRET
-        );
-    } catch (err) {
-        return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-    
-    if (event.type === 'checkout.session.completed') {
-        const session = event.data.object;
-        // Provision access, send confirmation email, etc.
-        await provisionAccess(session);
-    }
-    
-    res.json({ received: true });
+  const sig = req.headers['stripe-signature'];
+
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+  } catch (err) {
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
+    // Provision access, send confirmation email, etc.
+    await provisionAccess(session);
+  }
+
+  res.json({ received: true });
 });
 ```
 
@@ -246,6 +247,7 @@ app.post('/api/stripe-webhook', async (req, res) => {
 To accept Cash App payments:
 
 1. **Set your Cash App handle** in `billing.html`:
+
    ```html
    <p class="text-sm font-mono bg-gray-100 p-2 rounded">$YourCashAppHandle</p>
    ```
@@ -276,11 +278,11 @@ For crypto payments:
 4. **Example verification**:
    ```javascript
    async function verifyEthPayment(txHash, expectedAmount) {
-       const response = await fetch(
-           `https://api.etherscan.io/api?module=proxy&action=eth_getTransactionByHash&txhash=${txHash}`
-       );
-       const data = await response.json();
-       // Verify amount and recipient
+     const response = await fetch(
+       `https://api.etherscan.io/api?module=proxy&action=eth_getTransactionByHash&txhash=${txHash}`
+     );
+     const data = await response.json();
+     // Verify amount and recipient
    }
    ```
 
@@ -292,7 +294,7 @@ Update colors in both HTML files:
 
 ```css
 .gradient-bg {
-    background: linear-gradient(135deg, #YOUR_COLOR1 0%, #YOUR_COLOR2 100%);
+  background: linear-gradient(135deg, #YOUR_COLOR1 0%, #YOUR_COLOR2 100%);
 }
 ```
 
@@ -301,7 +303,7 @@ Update colors in both HTML files:
 Replace the emoji (🔒) with your logo:
 
 ```html
-<img src="logo.svg" alt="SmartContractAudit" class="h-8">
+<img src="logo.svg" alt="SmartContractAudit" class="h-8" />
 ```
 
 ### Custom Sections
@@ -310,8 +312,8 @@ Add new sections following the existing pattern:
 
 ```html
 <div class="bg-white rounded-lg shadow p-6">
-    <h3 class="font-bold text-lg mb-3">Your Section</h3>
-    <!-- Your content -->
+  <h3 class="font-bold text-lg mb-3">Your Section</h3>
+  <!-- Your content -->
 </div>
 ```
 
@@ -335,7 +337,7 @@ The billing page integrates with the repository's `FUNDING.yml`:
 # .github/FUNDING.yml
 github: [YOUR_GITHUB_HANDLE]
 open_collective: YOUR_PROJECT
-custom: ["https://yourdomain.com/web/billing.html"]
+custom: ['https://yourdomain.com/web/billing.html']
 ```
 
 This makes the "Sponsor" button on GitHub link to your billing page.
@@ -345,6 +347,7 @@ This makes the "Sponsor" button on GitHub link to your billing page.
 ### Local Testing
 
 1. **Simple HTTP Server**:
+
    ```bash
    cd web
    python -m http.server 8000
@@ -352,6 +355,7 @@ This makes the "Sponsor" button on GitHub link to your billing page.
    ```
 
 2. **Node.js Server**:
+
    ```bash
    npx serve .
    ```
@@ -381,10 +385,12 @@ Add analytics to track usage:
 <!-- Add to <head> -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
 </script>
 ```
 
@@ -412,8 +418,8 @@ For questions about the web control panel:
 
 **Last Updated**: 2026-01-01
 
-**Status**: Scaffold ready, payment integration pending
-=======
+# **Status**: Scaffold ready, payment integration pending
+
 - Scan statistics overview
 - Recent scan runs table
 - Artifact downloads
@@ -422,6 +428,7 @@ For questions about the web control panel:
 - Responsive design (Tailwind CSS)
 
 ### Billing (billing.html)
+
 - Stripe Checkout integration (test mode)
 - Cash App P2P payments
 - GitHub Sponsors link
@@ -434,6 +441,7 @@ For questions about the web control panel:
 ### GitHub Pages
 
 1. **Enable GitHub Pages**
+
    ```
    Settings → Pages → Source: Deploy from branch
    Branch: main → /web directory
@@ -466,10 +474,11 @@ For questions about the web control panel:
    - **NEVER commit secret keys!**
 
 3. **Update billing.html**
+
    ```javascript
    // Replace this line:
    const STRIPE_PUBLISHABLE_KEY = 'pk_test_REPLACE_WITH_YOUR_TEST_KEY';
-   
+
    // With your actual test key:
    const STRIPE_PUBLISHABLE_KEY = 'pk_test_your_actual_key';
    ```
@@ -482,16 +491,19 @@ For questions about the web control panel:
 5. **Backend Required**
    - Stripe Checkout requires server-side session creation
    - Example backend (Node.js):
+
    ```javascript
    const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-   
+
    app.post('/create-checkout-session', async (req, res) => {
      const session = await stripe.checkout.sessions.create({
        payment_method_types: ['card'],
-       line_items: [{
-         price: 'price_xxx', // Your price ID
-         quantity: 1,
-       }],
+       line_items: [
+         {
+           price: 'price_xxx', // Your price ID
+           quantity: 1,
+         },
+       ],
        mode: 'payment',
        success_url: 'https://yoursite.com/success',
        cancel_url: 'https://yoursite.com/cancel',
@@ -508,6 +520,7 @@ For questions about the web control panel:
    - Set up Cash Tag
 
 2. **Update billing.html**
+
    ```html
    <!-- Replace with your Cash Tag -->
    <code>$SmartContractAudit</code>
@@ -515,7 +528,7 @@ For questions about the web control panel:
 
 3. **Update Links**
    ```html
-   <a href="https://cash.app/$YourCashTag">
+   <a href="https://cash.app/$YourCashTag"></a>
    ```
 
 ### GitHub Sponsors
@@ -573,6 +586,7 @@ See [FUNDING.yml](../FUNDING.yml) for GitHub Sponsors configuration.
 ### Colors
 
 The dashboard uses Tailwind CSS. Key colors:
+
 - Primary Blue: `blue-600`
 - Success Green: `green-600`
 - Warning Yellow: `yellow-600`
@@ -590,9 +604,8 @@ The dashboard uses Tailwind CSS. Key colors:
 1. Update statistics (currently placeholder)
 2. Add real scan data
 3. Link to actual artifacts
-4. Update documentation links
-=======
-This directory contains a simple web-based dashboard for CyberAi, designed to be published via GitHub Pages.
+4. # Update documentation links
+   This directory contains a simple web-based dashboard for CyberAi, designed to be published via GitHub Pages.
 
 ## Contents
 
@@ -619,6 +632,7 @@ This directory contains a simple web-based dashboard for CyberAi, designed to be
 ### Custom Domain (Optional)
 
 1. Add `CNAME` file in web/ directory:
+
    ```
    smartcontractaudit.example.com
    ```
@@ -665,7 +679,7 @@ This directory contains a simple web-based dashboard for CyberAi, designed to be
 ✅ Placeholder UI  
 ✅ Links to documentation  
 ✅ Instructions for payments (no keys)  
-✅ Static HTML/CSS/JS only  
+✅ Static HTML/CSS/JS only
 
 ### What's NOT Included (Secure)
 
@@ -676,6 +690,7 @@ This directory contains a simple web-based dashboard for CyberAi, designed to be
 ❌ **No backend code**
 
 **Payment Processing**: All actual payment processing happens through:
+
 - GitHub Sponsors (Stripe backend)
 - Direct external services (Cash App, crypto wallets)
 - Manual invoicing
@@ -711,13 +726,13 @@ To connect to real scan data:
 ```javascript
 // Add to index.html script section
 async function loadRecentScans() {
-    try {
-        const response = await fetch('/data/recent-scans.json');
-        const scans = await response.json();
-        displayScans(scans);
-    } catch (error) {
-        console.log('Using placeholder data');
-    }
+  try {
+    const response = await fetch('/data/recent-scans.json');
+    const scans = await response.json();
+    displayScans(scans);
+  } catch (error) {
+    console.log('Using placeholder data');
+  }
 }
 ```
 
@@ -726,12 +741,13 @@ async function loadRecentScans() {
 The web interface links to sponsorship options defined in `/FUNDING.yml`:
 
 ```yaml
-github: [username]  # Links to GitHub Sponsors
-custom: ['mailto:funding@cyberai.network']  # Billing inquiries
+github: [username] # Links to GitHub Sponsors
+custom: ['mailto:funding@cyberai.network'] # Billing inquiries
 ```
 
 Update FUNDING.yml with real values when ready.
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10
 
 ## Development
 
@@ -769,7 +785,7 @@ async function loadScans() {
   try {
     const response = await fetch('/api/scans');
     const scans = await response.json();
-    
+
     // Update dashboard
     displayScans(scans);
   } catch (error) {
@@ -789,7 +805,9 @@ Add Google Analytics or similar:
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() {
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'GA_MEASUREMENT_ID');
 </script>
@@ -816,25 +834,32 @@ Add Sentry or similar:
 ## Support
 
 For questions about the web dashboard:
+
 - GitHub Issues
 - Email: support@cuberai.example
 
 ---
 
-*Last updated: 2026-01-01*
->>>>>>> origin/pr9
-=======
+_Last updated: 2026-01-01_
+
+> > > > > > > # origin/pr9
+
 # Option 1: Python HTTP server
+
 cd web
 python -m http.server 8000
+
 # Visit http://localhost:8000
 
 # Option 2: Node.js http-server
+
 npx http-server web -p 8000
 
 # Option 3: VS Code Live Server extension
+
 # Right-click index.html -> "Open with Live Server"
-```
+
+````
 
 ### Making Changes
 
@@ -898,9 +923,10 @@ Add analytics to track visitors:
 ```html
 <!-- Google Analytics (example) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-```
+````
 
 Or use privacy-friendly alternatives:
+
 - Plausible Analytics
 - Simple Analytics
 - GoatCounter
@@ -941,4 +967,5 @@ Improvements to the web interface are welcome!
 **Status**: Placeholder/Template  
 **Production Ready**: No (placeholders need real data)  
 **Security Reviewed**: Yes (no secrets included)
->>>>>>> origin/pr10
+
+> > > > > > > origin/pr10

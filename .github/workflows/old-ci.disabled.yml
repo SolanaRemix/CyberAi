@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    
+
     steps:
       - name: Pre-firewall environment setup
         run: |
@@ -18,24 +18,35 @@ jobs:
           npm config set audit false
           npm config set fund false
           npm config set update-notifier false
+<<<<<<< HEAD:.github/workflows/old-ci.disabled.yml
       
+=======
+
+>>>>>>> main:.github/workflows/ci.yml
       - name: Checkout repository
         uses: actions/checkout@v6
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
+<<<<<<< HEAD:.github/workflows/old-ci.disabled.yml
       
       - name: Install dependencies
         run: npm ci
       
+=======
+
+      - name: Install dependencies
+        run: npm ci
+
+>>>>>>> main:.github/workflows/ci.yml
       - name: Run Bootstrap
         run: |
           chmod +x tools/bootstrap/bootstrap.sh
           ./tools/bootstrap/bootstrap.sh
-      
+
       - name: Run Audit
         run: |
           chmod +x tools/audit/audit.sh

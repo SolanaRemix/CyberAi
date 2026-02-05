@@ -11,14 +11,14 @@ This document provides a detailed comparison between **@SmartBrain**, **SunkBot*
 
 ### 🎯 Quick Reference Guide
 
-| Symbol | Meaning |
-|--------|---------|
-| ✅ | Fully Supported |
-| 🟡 | Partially Supported / Limited |
-| ❌ | Not Supported |
-| 🔒 | Security-Focused Feature |
-| ⚡ | Performance-Optimized |
-| 💎 | Crypto-Specific Feature |
+| Symbol | Meaning                       |
+| ------ | ----------------------------- |
+| ✅     | Fully Supported               |
+| 🟡     | Partially Supported / Limited |
+| ❌     | Not Supported                 |
+| 🔒     | Security-Focused Feature      |
+| ⚡     | Performance-Optimized         |
+| 💎     | Crypto-Specific Feature       |
 
 ---
 
@@ -26,77 +26,77 @@ This document provides a detailed comparison between **@SmartBrain**, **SunkBot*
 
 ### Core Automation Capabilities (@SmartBrain)
 
-| Feature | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users |
-|---------|-------------|---------|------------|------------------------|
-| **Smart Contract Auditing** 💎🔒 | ✅ | ❌ | ❌ | @SmartBrain provides automated Solidity/Rust security analysis |
-| **Blockchain Dependency Management** 💎 | ✅ | 🟡 | 🟡 | @SmartBrain understands Web3 libraries (ethers.js, web3.js, anchor) |
-| **Gas Optimization Analysis** 💎⚡ | ✅ | ❌ | ❌ | @SmartBrain suggests gas-efficient code patterns |
-| **Reentrancy Detection** 💎🔒 | ✅ | ❌ | ❌ | Critical for DeFi protocol security |
-| **Oracle Integration Testing** 💎 | ✅ | ❌ | ❌ | Validates Chainlink, Pyth, and other oracle integrations |
-| **Cross-Chain Compatibility** 💎 | ✅ | ❌ | ❌ | Supports Ethereum, Solana, Polygon, BSC, Avalanche |
+| Feature                                 | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users                                              |
+| --------------------------------------- | ----------- | ------- | ---------- | ------------------------------------------------------------------- |
+| **Smart Contract Auditing** 💎🔒        | ✅          | ❌      | ❌         | @SmartBrain provides automated Solidity/Rust security analysis      |
+| **Blockchain Dependency Management** 💎 | ✅          | 🟡      | 🟡         | @SmartBrain understands Web3 libraries (ethers.js, web3.js, anchor) |
+| **Gas Optimization Analysis** 💎⚡      | ✅          | ❌      | ❌         | @SmartBrain suggests gas-efficient code patterns                    |
+| **Reentrancy Detection** 💎🔒           | ✅          | ❌      | ❌         | Critical for DeFi protocol security                                 |
+| **Oracle Integration Testing** 💎       | ✅          | ❌      | ❌         | Validates Chainlink, Pyth, and other oracle integrations            |
+| **Cross-Chain Compatibility** 💎        | ✅          | ❌      | ❌         | Supports Ethereum, Solana, Polygon, BSC, Avalanche                  |
 
 ### Dependency Management (@SmartBrain)
 
-| Feature | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users |
-|---------|-------------|---------|------------|------------------------|
-| **NPM Package Updates** | ✅ | ✅ | ✅ | All tools support JavaScript/Node.js |
-| **Rust Crate Updates** 💎 | ✅ | ❌ | ✅ | Essential for Solana/Substrate development |
-| **Python Package Updates** | ✅ | ✅ | ✅ | For Python-based blockchain tools |
-| **Go Module Updates** | ✅ | 🟡 | ✅ | Cosmos SDK and Go-Ethereum development |
-| **Solidity Compiler Updates** 💎 | ✅ | ❌ | ❌ | @SmartBrain tracks Solidity version compatibility |
-| **Web3 Library Compatibility** 💎 | ✅ | 🟡 | 🟡 | Ensures wallet and provider library compatibility |
-| **Vulnerability Scanning** 🔒 | ✅ | ✅ | ✅ | @SmartBrain includes crypto-specific CVEs |
-| **License Compliance** | ✅ | ✅ | ✅ | Important for open-source protocols |
+| Feature                           | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users                            |
+| --------------------------------- | ----------- | ------- | ---------- | ------------------------------------------------- |
+| **NPM Package Updates**           | ✅          | ✅      | ✅         | All tools support JavaScript/Node.js              |
+| **Rust Crate Updates** 💎         | ✅          | ❌      | ✅         | Essential for Solana/Substrate development        |
+| **Python Package Updates**        | ✅          | ✅      | ✅         | For Python-based blockchain tools                 |
+| **Go Module Updates**             | ✅          | 🟡      | ✅         | Cosmos SDK and Go-Ethereum development            |
+| **Solidity Compiler Updates** 💎  | ✅          | ❌      | ❌         | @SmartBrain tracks Solidity version compatibility |
+| **Web3 Library Compatibility** 💎 | ✅          | 🟡      | 🟡         | Ensures wallet and provider library compatibility |
+| **Vulnerability Scanning** 🔒     | ✅          | ✅      | ✅         | @SmartBrain includes crypto-specific CVEs         |
+| **License Compliance**            | ✅          | ✅      | ✅         | Important for open-source protocols               |
 
 ### Security Features (@SmartBrain)
 
-| Feature | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users |
-|---------|-------------|---------|------------|------------------------|
-| **Private Key Leak Detection** 💎🔒 | ✅ | ❌ | ❌ | Scans for exposed wallets and secrets |
-| **Smart Contract Exploit Patterns** 💎🔒 | ✅ | ❌ | ❌ | Detects common DeFi vulnerabilities |
-| **Timestamp Manipulation Check** 💎🔒 | ✅ | ❌ | ❌ | Critical for time-locked contracts |
-| **Integer Overflow/Underflow** 💎🔒 | ✅ | ❌ | ❌ | Essential for token contracts |
-| **Access Control Analysis** 🔒 | ✅ | 🟡 | ❌ | Validates onlyOwner and role-based permissions |
-| **Flash Loan Attack Detection** 💎🔒 | ✅ | ❌ | ❌ | Identifies vulnerable DeFi logic |
-| **Frontrunning Vulnerability** 💎🔒 | ✅ | ❌ | ❌ | MEV protection analysis |
-| **Security Advisory Tracking** 🔒 | ✅ | ✅ | ✅ | GitHub Security Advisories |
+| Feature                                  | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users                         |
+| ---------------------------------------- | ----------- | ------- | ---------- | ---------------------------------------------- |
+| **Private Key Leak Detection** 💎🔒      | ✅          | ❌      | ❌         | Scans for exposed wallets and secrets          |
+| **Smart Contract Exploit Patterns** 💎🔒 | ✅          | ❌      | ❌         | Detects common DeFi vulnerabilities            |
+| **Timestamp Manipulation Check** 💎🔒    | ✅          | ❌      | ❌         | Critical for time-locked contracts             |
+| **Integer Overflow/Underflow** 💎🔒      | ✅          | ❌      | ❌         | Essential for token contracts                  |
+| **Access Control Analysis** 🔒           | ✅          | 🟡      | ❌         | Validates onlyOwner and role-based permissions |
+| **Flash Loan Attack Detection** 💎🔒     | ✅          | ❌      | ❌         | Identifies vulnerable DeFi logic               |
+| **Frontrunning Vulnerability** 💎🔒      | ✅          | ❌      | ❌         | MEV protection analysis                        |
+| **Security Advisory Tracking** 🔒        | ✅          | ✅      | ✅         | GitHub Security Advisories                     |
 
 ### Deployment & CI/CD (@SmartBrain)
 
-| Feature | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users |
-|---------|-------------|---------|------------|------------------------|
-| **Automated Contract Deployment** 💎⚡ | ✅ | ❌ | ❌ | Deploy to testnet/mainnet with verification |
-| **Multi-Chain Deployment** 💎 | ✅ | ❌ | ❌ | One-click deploy to multiple networks |
-| **Contract Verification** 💎 | ✅ | ❌ | ❌ | Automatic Etherscan/Polygonscan verification |
-| **Testnet Simulation** 💎 | ✅ | ❌ | ❌ | Fork mainnet for testing |
-| **Gas Estimation** 💎⚡ | ✅ | ❌ | ❌ | Pre-deployment cost analysis |
-| **Automated Testing** | ✅ | ✅ | 🟡 | @SmartBrain includes Hardhat/Foundry integration |
-| **PR Auto-merge** | ✅ | ✅ | ✅ | Configurable auto-merge for safe updates |
-| **Rollback Support** | ✅ | 🟡 | ❌ | Critical for production incidents |
+| Feature                                | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users                           |
+| -------------------------------------- | ----------- | ------- | ---------- | ------------------------------------------------ |
+| **Automated Contract Deployment** 💎⚡ | ✅          | ❌      | ❌         | Deploy to testnet/mainnet with verification      |
+| **Multi-Chain Deployment** 💎          | ✅          | ❌      | ❌         | One-click deploy to multiple networks            |
+| **Contract Verification** 💎           | ✅          | ❌      | ❌         | Automatic Etherscan/Polygonscan verification     |
+| **Testnet Simulation** 💎              | ✅          | ❌      | ❌         | Fork mainnet for testing                         |
+| **Gas Estimation** 💎⚡                | ✅          | ❌      | ❌         | Pre-deployment cost analysis                     |
+| **Automated Testing**                  | ✅          | ✅      | 🟡         | @SmartBrain includes Hardhat/Foundry integration |
+| **PR Auto-merge**                      | ✅          | ✅      | ✅         | Configurable auto-merge for safe updates         |
+| **Rollback Support**                   | ✅          | 🟡      | ❌         | Critical for production incidents                |
 
 ### Integration & Ecosystem (@SmartBrain)
 
-| Feature | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users |
-|---------|-------------|---------|------------|------------------------|
-| **GitHub Actions Integration** | ✅ | ✅ | ✅ | All tools work with GitHub CI/CD |
-| **Hardhat Integration** 💎 | ✅ | ❌ | ❌ | Full Hardhat task support |
-| **Foundry Integration** 💎 | ✅ | ❌ | ❌ | Forge/Cast/Anvil workflow |
-| **Truffle Support** 💎 | ✅ | ❌ | ❌ | Legacy project support |
-| **Anchor Framework** 💎 | ✅ | ❌ | ❌ | Solana program development |
-| **IPFS Deployment** 💎 | ✅ | ❌ | ❌ | Decentralized hosting |
-| **Wallet Integration** 💎 | ✅ | ❌ | ❌ | MetaMask, Phantom, WalletConnect |
-| **Discord/Telegram Notifications** 💎 | ✅ | 🟡 | ❌ | Community-focused alerts |
+| Feature                               | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users           |
+| ------------------------------------- | ----------- | ------- | ---------- | -------------------------------- |
+| **GitHub Actions Integration**        | ✅          | ✅      | ✅         | All tools work with GitHub CI/CD |
+| **Hardhat Integration** 💎            | ✅          | ❌      | ❌         | Full Hardhat task support        |
+| **Foundry Integration** 💎            | ✅          | ❌      | ❌         | Forge/Cast/Anvil workflow        |
+| **Truffle Support** 💎                | ✅          | ❌      | ❌         | Legacy project support           |
+| **Anchor Framework** 💎               | ✅          | ❌      | ❌         | Solana program development       |
+| **IPFS Deployment** 💎                | ✅          | ❌      | ❌         | Decentralized hosting            |
+| **Wallet Integration** 💎             | ✅          | ❌      | ❌         | MetaMask, Phantom, WalletConnect |
+| **Discord/Telegram Notifications** 💎 | ✅          | 🟡      | ❌         | Community-focused alerts         |
 
 ### Cost & Pricing (@SmartBrain)
 
-| Feature | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users |
-|---------|-------------|---------|------------|------------------------|
-| **Free Tier** | ✅ (Basic) | ✅ | ✅ | All offer free options |
-| **Open Source Projects** | ✅ Free | ✅ Free | ✅ Free | Community support |
-| **Private Repositories** | 💰 Paid | 💰 Paid | 💰 Paid | Requires subscription |
-| **Enterprise Support** | ✅ | ✅ | ✅ | Custom pricing available |
-| **Marketplace Integration** | ✅ GitHub | 🟡 Limited | ✅ GitHub | @SmartBrain includes Stripe payments |
-| **Crypto Payment Options** 💎 | ✅ Planned | ❌ | ❌ | Future: pay with USDC/ETH |
+| Feature                       | @SmartBrain | SunkBot    | Dependabot | Notes for Crypto Users               |
+| ----------------------------- | ----------- | ---------- | ---------- | ------------------------------------ |
+| **Free Tier**                 | ✅ (Basic)  | ✅         | ✅         | All offer free options               |
+| **Open Source Projects**      | ✅ Free     | ✅ Free    | ✅ Free    | Community support                    |
+| **Private Repositories**      | 💰 Paid     | 💰 Paid    | 💰 Paid    | Requires subscription                |
+| **Enterprise Support**        | ✅          | ✅         | ✅         | Custom pricing available             |
+| **Marketplace Integration**   | ✅ GitHub   | 🟡 Limited | ✅ GitHub  | @SmartBrain includes Stripe payments |
+| **Crypto Payment Options** 💎 | ✅ Planned  | ❌         | ❌         | Future: pay with USDC/ETH            |
 
 ---
 
@@ -105,6 +105,7 @@ This document provides a detailed comparison between **@SmartBrain**, **SunkBot*
 ### 1. Smart Contract Security (@SmartBrain)
 
 #### @SmartBrain 💎🔒
+
 - **Automated security audits** for Solidity, Rust, and Vyper contracts
 - **Real-time vulnerability detection** during development
 - **Integration with security tools**: Slither, Mythril, Securify
@@ -115,11 +116,13 @@ This document provides a detailed comparison between **@SmartBrain**, **SunkBot*
 **Example Use Case**: A DeFi protocol developing a lending platform receives automated alerts when @SmartBrain detects a potential reentrancy vulnerability in the withdrawal function, along with suggested fixes.
 
 #### SunkBot ⚠️
+
 - Limited smart contract awareness
 - No specialized blockchain security features
 - General code quality analysis only
 
 #### Dependabot ⚠️
+
 - Focuses on dependency vulnerabilities
 - No smart contract-specific security analysis
 - Limited to known CVEs in package managers
@@ -140,6 +143,7 @@ Gas optimization is critical for Ethereum and EVM-compatible chains. @SmartBrain
 - **Network-specific analysis**: Different chains have different gas models
 
 **Example Optimizations**:
+
 ```solidity
 // @SmartBrain Suggestion: Save ~2,000 gas per transaction
 // Before
@@ -154,6 +158,7 @@ address public owner;  // Packed into single slot
 ```
 
 #### SunkBot & Dependabot
+
 - ❌ No gas optimization features
 - Not applicable to blockchain development
 
@@ -165,23 +170,25 @@ address public owner;  // Packed into single slot
 
 #### @SmartBrain 💎
 
-| Blockchain | Support Level | Features |
-|------------|---------------|----------|
-| **Ethereum** | ✅ Full | Mainnet, Sepolia, Goerli |
-| **Polygon** | ✅ Full | PoS, zkEVM |
-| **Solana** | ✅ Full | Mainnet-beta, Devnet, Testnet |
-| **Binance Smart Chain** | ✅ Full | Mainnet, Testnet |
-| **Avalanche** | ✅ Full | C-Chain, Fuji |
-| **Arbitrum** | ✅ Full | One, Nova |
-| **Optimism** | ✅ Full | Mainnet, Goerli |
-| **Base** | ✅ Full | Mainnet, Goerli |
-| **Cosmos** | 🟡 Beta | SDK chains |
+| Blockchain              | Support Level | Features                      |
+| ----------------------- | ------------- | ----------------------------- |
+| **Ethereum**            | ✅ Full       | Mainnet, Sepolia, Goerli      |
+| **Polygon**             | ✅ Full       | PoS, zkEVM                    |
+| **Solana**              | ✅ Full       | Mainnet-beta, Devnet, Testnet |
+| **Binance Smart Chain** | ✅ Full       | Mainnet, Testnet              |
+| **Avalanche**           | ✅ Full       | C-Chain, Fuji                 |
+| **Arbitrum**            | ✅ Full       | One, Nova                     |
+| **Optimism**            | ✅ Full       | Mainnet, Goerli               |
+| **Base**                | ✅ Full       | Mainnet, Goerli               |
+| **Cosmos**              | 🟡 Beta       | SDK chains                    |
 
 #### SunkBot
+
 - 🟡 Basic GitHub automation only
 - No blockchain-specific features
 
 #### Dependabot
+
 - ❌ No multi-chain awareness
 - Language-level only
 
@@ -215,6 +222,7 @@ address public owner;  // Packed into single slot
 ```
 
 **Supported Frameworks**:
+
 - ✅ Hardhat
 - ✅ Foundry
 - ✅ Truffle
@@ -223,6 +231,7 @@ address public owner;  // Packed into single slot
 - ✅ DappTools
 
 #### SunkBot & Dependabot
+
 - Generic CI/CD integration
 - No framework-specific features
 - Manual setup required for blockchain tools
@@ -237,21 +246,23 @@ address public owner;  // Packed into single slot
 
 @SmartBrain understands the Web3 ecosystem:
 
-| Library Category | @SmartBrain Handling | Standard Bot Handling |
-|------------------|----------------------|----------------------|
-| **Wallet Libraries** | Compatibility tested | Version bump only |
-| **Web3 Providers** | RPC endpoint validation | No validation |
-| **Token Standards** | ERC/SPL compliance check | No awareness |
-| **Cryptography** | Security-critical delays | Standard update |
-| **Oracles** | Integration tests | No testing |
+| Library Category     | @SmartBrain Handling     | Standard Bot Handling |
+| -------------------- | ------------------------ | --------------------- |
+| **Wallet Libraries** | Compatibility tested     | Version bump only     |
+| **Web3 Providers**   | RPC endpoint validation  | No validation         |
+| **Token Standards**  | ERC/SPL compliance check | No awareness          |
+| **Cryptography**     | Security-critical delays | Standard update       |
+| **Oracles**          | Integration tests        | No testing            |
 
 **Example**: When ethers.js updates from v5 to v6:
+
 - **@SmartBrain**: Detects breaking changes, updates code patterns, runs integration tests
 - **Dependabot**: Creates PR to bump version (may break build)
 
 #### Critical Dependencies Handling (@SmartBrain)
 
 For security-critical libraries (OpenZeppelin, Solana Program Library):
+
 1. **Security review period**: 7-day hold for community review
 2. **Audit status check**: Verifies external audits exist
 3. **Exploit database scan**: Checks for known issues
@@ -267,15 +278,16 @@ For security-critical libraries (OpenZeppelin, Solana Program Library):
 
 Crypto projects need to engage their communities:
 
-| Platform | @SmartBrain | SunkBot | Dependabot |
-|----------|-------------|---------|------------|
-| **Discord** | ✅ Rich embeds | 🟡 Webhooks | ❌ |
-| **Telegram** | ✅ Bot integration | ❌ | ❌ |
-| **Twitter** | ✅ Auto-tweets | ❌ | ❌ |
-| **Email** | ✅ | ✅ | ✅ |
-| **Slack** | ✅ | ✅ | ✅ |
+| Platform     | @SmartBrain        | SunkBot     | Dependabot |
+| ------------ | ------------------ | ----------- | ---------- |
+| **Discord**  | ✅ Rich embeds     | 🟡 Webhooks | ❌         |
+| **Telegram** | ✅ Bot integration | ❌          | ❌         |
+| **Twitter**  | ✅ Auto-tweets     | ❌          | ❌         |
+| **Email**    | ✅                 | ✅          | ✅         |
+| **Slack**    | ✅                 | ✅          | ✅         |
 
 **Example Discord Notification** (@SmartBrain):
+
 ```
 🛡️ @SmartBrain Security Alert
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -300,14 +312,14 @@ Issue: Potential reentrancy in withdraw()
 
 **Team**: Building a new lending protocol on Ethereum
 
-| Task | @SmartBrain | SunkBot | Dependabot |
-|------|-------------|---------|------------|
-| Audit core contracts | ✅ Automated | ❌ Manual | ❌ Manual |
-| Optimize gas usage | ✅ Suggestions | ❌ | ❌ |
-| Deploy to testnet | ✅ One-click | ⚙️ Custom script | ⚙️ Custom script |
-| Verify on Etherscan | ✅ Automatic | ⚙️ Manual | ⚙️ Manual |
-| Update dependencies | ✅ Context-aware | 🟡 Basic | ✅ Good |
-| Security monitoring | ✅ 24/7 | 🟡 Limited | 🟡 Limited |
+| Task                 | @SmartBrain      | SunkBot          | Dependabot       |
+| -------------------- | ---------------- | ---------------- | ---------------- |
+| Audit core contracts | ✅ Automated     | ❌ Manual        | ❌ Manual        |
+| Optimize gas usage   | ✅ Suggestions   | ❌               | ❌               |
+| Deploy to testnet    | ✅ One-click     | ⚙️ Custom script | ⚙️ Custom script |
+| Verify on Etherscan  | ✅ Automatic     | ⚙️ Manual        | ⚙️ Manual        |
+| Update dependencies  | ✅ Context-aware | 🟡 Basic         | ✅ Good          |
+| Security monitoring  | ✅ 24/7          | 🟡 Limited       | 🟡 Limited       |
 
 **Result**: @SmartBrain saves 40+ hours of manual work per week
 
@@ -317,13 +329,13 @@ Issue: Potential reentrancy in withdraw()
 
 **Team**: Launching cross-chain NFT marketplace
 
-| Requirement | @SmartBrain | SunkBot | Dependabot |
-|-------------|-------------|---------|------------|
-| ERC-721/1155 compliance | ✅ Validated | ❌ | ❌ |
-| Multi-chain deployment | ✅ Eth + Polygon | ⚙️ Manual | ⚙️ Manual |
-| Royalty standard (ERC-2981) | ✅ Checked | ❌ | ❌ |
-| IPFS integration | ✅ Built-in | ❌ | ❌ |
-| Metadata validation | ✅ Automatic | ❌ | ❌ |
+| Requirement                 | @SmartBrain      | SunkBot   | Dependabot |
+| --------------------------- | ---------------- | --------- | ---------- |
+| ERC-721/1155 compliance     | ✅ Validated     | ❌        | ❌         |
+| Multi-chain deployment      | ✅ Eth + Polygon | ⚙️ Manual | ⚙️ Manual  |
+| Royalty standard (ERC-2981) | ✅ Checked       | ❌        | ❌         |
+| IPFS integration            | ✅ Built-in      | ❌        | ❌         |
+| Metadata validation         | ✅ Automatic     | ❌        | ❌         |
 
 **Result**: @SmartBrain ensures standard compliance across chains
 
@@ -333,13 +345,13 @@ Issue: Potential reentrancy in withdraw()
 
 **Team**: Building Solana DeFi protocol
 
-| Feature | @SmartBrain | SunkBot | Dependabot |
-|---------|-------------|---------|------------|
-| Anchor framework support | ✅ Native | ❌ | ❌ |
-| Rust crate updates | ✅ | ❌ | ✅ |
-| Solana program audits | ✅ | ❌ | ❌ |
-| Devnet deployment | ✅ Automatic | ⚙️ Manual | ⚙️ Manual |
-| BPF optimization | ✅ | ❌ | ❌ |
+| Feature                  | @SmartBrain  | SunkBot   | Dependabot |
+| ------------------------ | ------------ | --------- | ---------- |
+| Anchor framework support | ✅ Native    | ❌        | ❌         |
+| Rust crate updates       | ✅           | ❌        | ✅         |
+| Solana program audits    | ✅           | ❌        | ❌         |
+| Devnet deployment        | ✅ Automatic | ⚙️ Manual | ⚙️ Manual  |
+| BPF optimization         | ✅           | ❌        | ❌         |
 
 **Result**: @SmartBrain provides end-to-end Solana dev support
 
@@ -348,6 +360,7 @@ Issue: Potential reentrancy in withdraw()
 ## 📊 Decision Matrix
 
 ### Choose @SmartBrain if you:
+
 - ✅ Develop smart contracts (Solidity, Rust, Vyper)
 - ✅ Need automated security audits
 - ✅ Want gas optimization suggestions
@@ -357,12 +370,14 @@ Issue: Potential reentrancy in withdraw()
 - ✅ Value community integration (Discord/Telegram)
 
 ### Choose SunkBot if you:
+
 - 🟡 Need basic GitHub automation
 - 🟡 Don't work with smart contracts
 - 🟡 Have simple dependency needs
 - 🟡 Want general-purpose tooling
 
 ### Choose Dependabot if you:
+
 - 🟡 Only need dependency updates
 - 🟡 Work with standard languages (no blockchain)
 - 🟡 Want minimal setup
@@ -424,12 +439,12 @@ jobs:
 
 ### ROI Calculation
 
-| Metric | Traditional Flow | With @SmartBrain | Savings |
-|--------|------------------|------------------|---------|
-| Security Audit | $15,000 + 2 weeks | Continuous + Free | $15,000 |
-| Gas Optimization | 40 hours manual | Automatic | $4,000 |
-| Deployment Time | 4 hours/chain | 15 min/chain | 15+ hours |
-| Bug Detection | Post-deployment | Pre-commit | Priceless 🔒 |
+| Metric           | Traditional Flow  | With @SmartBrain  | Savings      |
+| ---------------- | ----------------- | ----------------- | ------------ |
+| Security Audit   | $15,000 + 2 weeks | Continuous + Free | $15,000      |
+| Gas Optimization | 40 hours manual   | Automatic         | $4,000       |
+| Deployment Time  | 4 hours/chain     | 15 min/chain      | 15+ hours    |
+| Bug Detection    | Post-deployment   | Pre-commit        | Priceless 🔒 |
 
 ---
 
@@ -446,21 +461,21 @@ jobs:
 
 For **crypto and blockchain developers**, **@SmartBrain** is the clear choice:
 
-| Criteria | Winner |
-|----------|--------|
-| Smart Contract Security | 🏆 @SmartBrain |
-| Gas Optimization | 🏆 @SmartBrain |
-| Multi-Chain Support | 🏆 @SmartBrain |
-| Blockchain Frameworks | 🏆 @SmartBrain |
-| Dependency Management | 🏆 @SmartBrain (tied with Dependabot) |
-| General Automation | 🤝 All good options |
-| Cost Efficiency | 🏆 @SmartBrain (ROI) |
-| Community Features | 🏆 @SmartBrain |
+| Criteria                | Winner                                |
+| ----------------------- | ------------------------------------- |
+| Smart Contract Security | 🏆 @SmartBrain                        |
+| Gas Optimization        | 🏆 @SmartBrain                        |
+| Multi-Chain Support     | 🏆 @SmartBrain                        |
+| Blockchain Frameworks   | 🏆 @SmartBrain                        |
+| Dependency Management   | 🏆 @SmartBrain (tied with Dependabot) |
+| General Automation      | 🤝 All good options                   |
+| Cost Efficiency         | 🏆 @SmartBrain (ROI)                  |
+| Community Features      | 🏆 @SmartBrain                        |
 
 **Recommendation**: Use **@SmartBrain** as your primary automation tool for Web3 development. Consider pairing with Dependabot for non-crypto dependencies if needed.
 
 ---
 
-*Document maintained by @SmartBrain Team*  
-*Last updated: 2025*  
-*For crypto developers, by crypto developers* 💎🔒⚡
+_Document maintained by @SmartBrain Team_  
+_Last updated: 2025_  
+_For crypto developers, by crypto developers_ 💎🔒⚡

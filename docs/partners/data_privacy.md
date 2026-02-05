@@ -15,12 +15,14 @@ This document explains how we handle partner data and our privacy practices. We 
 ### From All Partners
 
 **Public Information**:
+
 - Organization name and website
 - Public contact information
 - Logo and branding assets
 - Public GitHub activity
 
 **Partnership Data**:
+
 - Partnership tier and agreement
 - Communication history
 - Support requests and tickets
@@ -29,6 +31,7 @@ This document explains how we handle partner data and our privacy practices. We 
 ### From Paying Sponsors
 
 **Billing Information**:
+
 - Organization legal name
 - Billing address
 - Payment method details (tokenized)
@@ -38,6 +41,7 @@ This document explains how we handle partner data and our privacy practices. We 
 ### From Technical Integrations
 
 **Usage Data**:
+
 - API call logs (anonymized)
 - Integration health metrics
 - Error logs (sanitized)
@@ -46,6 +50,7 @@ This document explains how we handle partner data and our privacy practices. We 
 ### What We DON'T Collect
 
 ❌ We never collect:
+
 - Private keys or seed phrases
 - Passwords or credentials
 - Source code (unless explicitly shared)
@@ -57,24 +62,28 @@ This document explains how we handle partner data and our privacy practices. We 
 ### Primary Uses
 
 **Partnership Management**:
+
 - Deliver agreed-upon benefits
 - Provide technical support
 - Process payments
 - Track partnership status
 
 **Communication**:
+
 - Respond to inquiries
 - Share updates and announcements
 - Coordinate co-marketing activities
 - Schedule check-in calls
 
 **Service Improvement**:
+
 - Analyze usage patterns
 - Improve integrations
 - Enhance features
 - Optimize performance
 
 **Legal and Compliance**:
+
 - Meet contractual obligations
 - Comply with applicable laws
 - Resolve disputes
@@ -83,6 +92,7 @@ This document explains how we handle partner data and our privacy practices. We 
 ### We Do NOT
 
 ❌ **Never**:
+
 - Sell partner data to third parties
 - Share data without permission
 - Use data for unrelated marketing
@@ -93,6 +103,7 @@ This document explains how we handle partner data and our privacy practices. We 
 ### Security Practices
 
 **Technical Controls**:
+
 - Encryption at rest and in transit (TLS 1.3)
 - Access controls and authentication
 - Regular security audits
@@ -100,6 +111,7 @@ This document explains how we handle partner data and our privacy practices. We 
 - Secure backup procedures
 
 **Operational Controls**:
+
 - Need-to-know access principle
 - Background checks for team members
 - Confidentiality agreements
@@ -107,6 +119,7 @@ This document explains how we handle partner data and our privacy practices. We 
 - Incident response procedures
 
 **Physical Controls**:
+
 - Secure data center facilities
 - Environmental controls
 - Access logging and monitoring
@@ -115,18 +128,21 @@ This document explains how we handle partner data and our privacy practices. We 
 ### Data Handling
 
 **Storage**:
+
 - Encrypted databases
 - Secure cloud infrastructure
 - Geographic redundancy
 - Regular backups
 
 **Transmission**:
+
 - TLS encryption for all communications
 - Secure APIs with authentication
 - VPN for sensitive integrations
 - Sanitization of logs
 
 **Access**:
+
 - Multi-factor authentication
 - Role-based access control
 - Audit logging
@@ -137,16 +153,19 @@ This document explains how we handle partner data and our privacy practices. We 
 ### Services We Use
 
 **Infrastructure**:
+
 - **GitHub**: Code hosting and CI/CD
 - **Cloud Providers**: Compute and storage
 - **CDN**: Content delivery
 
 **Business Operations**:
+
 - **Stripe**: Payment processing
 - **Email Service**: Communication
 - **Analytics**: Anonymized usage data
 
 **Each service**:
+
 - Has been vetted for security
 - Complies with applicable regulations
 - Has a data processing agreement
@@ -157,16 +176,19 @@ This document explains how we handle partner data and our privacy practices. We 
 We share limited data with third parties only:
 
 **Payment Processors**:
+
 - Billing information (securely transmitted)
 - Transaction details
 - Tax information (if required)
 
 **Cloud Providers**:
+
 - Encrypted data storage
 - Compute resources
 - Backup services
 
 **Analytics**:
+
 - Anonymized usage statistics
 - No personally identifiable information
 - Aggregate data only
@@ -187,6 +209,7 @@ We share limited data with third parties only:
 **Email**: privacy@cuberai.example  
 **Subject**: "Data Request - [Your Organization]"  
 **Include**:
+
 - Organization name
 - Specific request
 - Verification information
@@ -199,24 +222,30 @@ We share limited data with third parties only:
 ### Retention Periods
 
 **Active Partnerships**:
+
 - Retained for duration of partnership
 - Plus 12 months after termination
 
 **Billing Records**:
+
 - 7 years (tax and legal requirements)
 
 **Support Tickets**:
+
 - 3 years after resolution
 
 **Usage Logs**:
+
 - 90 days (anonymized aggregates kept longer)
 
 **Marketing Communications**:
+
 - Until unsubscribe or objection
 
 ### Deletion Process
 
 **Upon Request**:
+
 1. Verify identity and authority
 2. Assess legal obligations to retain
 3. Delete data where possible
@@ -230,6 +259,7 @@ We share limited data with third parties only:
 ### Confidential Information
 
 We treat as confidential:
+
 - Partnership terms and pricing
 - Technical integration details
 - Private communications
@@ -239,6 +269,7 @@ We treat as confidential:
 ### Non-Disclosure
 
 **Standard NDA Terms**:
+
 - Information marked confidential
 - Information reasonably confidential
 - Exceptions: public domain, required by law
@@ -251,12 +282,14 @@ We treat as confidential:
 ### Regulations
 
 **GDPR** (EU General Data Protection Regulation):
+
 - Lawful basis for processing
 - Data minimization
 - User rights respected
 - Data protection by design
 
 **CCPA** (California Consumer Privacy Act):
+
 - Transparency about data collection
 - Right to opt-out
 - Right to deletion
@@ -267,11 +300,13 @@ We treat as confidential:
 ### International Transfers
 
 **Data Location**:
+
 - Primary: [Region TBD]
 - Backups: Multiple regions
 - EU partners: EU data residency available (Gold+)
 
 **Transfer Mechanisms**:
+
 - Standard Contractual Clauses
 - Adequacy decisions
 - Explicit consent when required
@@ -283,11 +318,13 @@ We treat as confidential:
 In the event of a data breach:
 
 **Timeline**:
+
 - Internal discovery: Immediate investigation
 - Partner notification: Within 72 hours
 - Regulatory notification: As required by law
 
 **Information Provided**:
+
 - Nature of breach
 - Data affected
 - Likely consequences
@@ -301,6 +338,7 @@ In the event of a data breach:
 ### Partner Communications
 
 **We May Send**:
+
 - Partnership updates
 - Product announcements
 - Security alerts
@@ -308,6 +346,7 @@ In the event of a data breach:
 - Co-marketing opportunities
 
 **You Control**:
+
 - Communication preferences
 - Frequency settings
 - Opt-out anytime
@@ -316,11 +355,13 @@ In the event of a data breach:
 ### Public Recognition
 
 **By Default**:
+
 - Logo on sponsors page
 - Mention in announcements
 - Listed in tier
 
 **Opt-Out Available**:
+
 - Request confidential partnership
 - No public recognition
 - Internal acknowledgment only
@@ -336,6 +377,7 @@ In the event of a data breach:
 ### Platinum Partners
 
 **Enhanced Privacy**:
+
 - Dedicated data residency options
 - Custom retention schedules
 - Private communication channels
@@ -344,6 +386,7 @@ In the event of a data breach:
 ### Enterprise Deployments
 
 **On-Premise/Private Cloud**:
+
 - You control data storage
 - We provide software only
 - Minimal data transfer
@@ -356,6 +399,7 @@ This service is not directed at children under 13. Partners represent they compl
 ## Cookie Policy
 
 **Website Cookies**:
+
 - Essential: Required for functionality
 - Analytics: Anonymized usage data
 - Preferences: Save your settings
@@ -365,6 +409,7 @@ This service is not directed at children under 13. Partners represent they compl
 ## Updates to This Policy
 
 **Changes**:
+
 - Material changes: 30 days advance notice
 - Minor updates: Announced in changelog
 - Continued partnership: Acceptance of updates
@@ -400,6 +445,7 @@ This service is not directed at children under 13. Partners represent they compl
 **Current**: Working toward standard certifications
 
 **Planned**:
+
 - SOC 2 Type II
 - ISO 27001
 - Privacy Shield (if reinstated)

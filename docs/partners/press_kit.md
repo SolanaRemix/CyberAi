@@ -21,6 +21,7 @@ This press kit provides brand assets, key information, and media resources for S
 **Mission**: Automated smart contract auditing and security for the blockchain ecosystem
 
 **Key Features**:
+
 - Automated security auditing
 - Multi-chain support (Solana, Ethereum, and more)
 - GitHub Actions integration
@@ -56,12 +57,14 @@ By making professional-grade security tooling accessible to all developers, Smar
 **Primary Logo**: [TO BE PROVIDED]
 
 **Logo Variations**:
+
 - Full color (preferred)
 - White/light backgrounds
 - Dark/black backgrounds
 - Monochrome
 
 **File Formats Available**:
+
 - SVG (vector, preferred)
 - PNG (1000px, 2000px, 4000px)
 - EPS (print)
@@ -75,14 +78,14 @@ By making professional-grade security tooling accessible to all developers, Smar
 ✅ Maintain aspect ratio  
 ✅ Provide clear space around logo  
 ✅ Use on contrasting backgrounds  
-✅ Scale proportionally  
+✅ Scale proportionally
 
 **Don't**:
 ❌ Modify colors or design  
 ❌ Stretch or distort  
 ❌ Add effects or shadows  
 ❌ Use low-resolution versions  
-❌ Combine with other logos  
+❌ Combine with other logos
 
 ### Clear Space
 
@@ -97,33 +100,40 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 
 ### Primary Palette
 
-**Primary Blue**: `#0066CC`  
-- RGB: 0, 102, 204  
-- CMYK: 100, 50, 0, 20  
+**Primary Blue**: `#0066CC`
+
+- RGB: 0, 102, 204
+- CMYK: 100, 50, 0, 20
 - Usage: Primary brand color, CTAs, links
 
-**Dark Gray**: `#2C3E50`  
-- RGB: 44, 62, 80  
-- CMYK: 45, 23, 0, 69  
+**Dark Gray**: `#2C3E50`
+
+- RGB: 44, 62, 80
+- CMYK: 45, 23, 0, 69
 - Usage: Text, headers
 
-**Light Gray**: `#ECF0F1`  
-- RGB: 236, 240, 241  
-- CMYK: 2, 0, 0, 5  
+**Light Gray**: `#ECF0F1`
+
+- RGB: 236, 240, 241
+- CMYK: 2, 0, 0, 5
 - Usage: Backgrounds, secondary elements
 
 ### Secondary Palette
 
-**Success Green**: `#27AE60`  
+**Success Green**: `#27AE60`
+
 - Usage: Success states, positive actions
 
-**Warning Orange**: `#F39C12`  
+**Warning Orange**: `#F39C12`
+
 - Usage: Warnings, cautions
 
-**Error Red**: `#E74C3C`  
+**Error Red**: `#E74C3C`
+
 - Usage: Errors, critical issues
 
-**Info Blue**: `#3498DB`  
+**Info Blue**: `#3498DB`
+
 - Usage: Information, tips
 
 ## Typography
@@ -141,6 +151,7 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 [TO BE PROVIDED]
 
 **Available Screenshots**:
+
 1. GitHub Actions workflow in action
 2. Audit report example
 3. Security dashboard (if applicable)
@@ -170,12 +181,14 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 ## Target Audience
 
 ### Primary
+
 - Smart contract developers
 - Blockchain development teams
 - DeFi protocol teams
 - Security engineers
 
 ### Secondary
+
 - Blockchain platforms
 - Security audit firms
 - Educational institutions
@@ -203,17 +216,18 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 - **Security Issues Detected**: [Cumulative]
 - **Partnerships**: [Current count]
 
-*Note: Current statistics available in repository*
+_Note: Current statistics available in repository_
 
 ## Awards and Recognition
 
-*To be updated as received*
+_To be updated as received_
 
 ## Recent News
 
-*To be updated with announcements*
+_To be updated with announcements_
 
 **Press Releases**:
+
 - Product launch announcement
 - Partnership announcements
 - Major feature releases
@@ -224,11 +238,13 @@ Minimum clear space: Height of the "S" in SmartContractAudit
 ### Naming
 
 **Correct**:
+
 - SmartContractAudit
 - SmartContractAudit platform
 - The SmartContractAudit project
 
 **Incorrect**:
+
 - ~~Smart Contract Audit~~ (as one word)
 - ~~SCA~~ (abbreviation not official)
 - ~~Smart Audit~~
@@ -262,6 +278,7 @@ Partners may display "Powered by SmartContractAudit" badge:
 ## Co-Marketing Opportunities
 
 **For Partners**:
+
 - Joint blog posts
 - Case studies
 - Webinars
@@ -284,6 +301,7 @@ For press releases or announcements:
 **One-Pager**: [LINK TO BE PROVIDED]
 
 Includes:
+
 - Key facts
 - Features overview
 - Partnership information
@@ -294,6 +312,7 @@ Includes:
 [TO BE PROVIDED]
 
 **Available**:
+
 - Product demo videos
 - Tutorial screencast
 - Developer testimonials
@@ -306,6 +325,7 @@ Includes:
 **For Partners**: Presentation templates available
 
 **Includes**:
+
 - PowerPoint/Google Slides templates
 - Brand-compliant designs
 - Editable slides
@@ -348,6 +368,7 @@ This press kit is updated quarterly.
 **Full Press Kit ZIP**: [TO BE PROVIDED]
 
 Includes:
+
 - All logo variations
 - Brand guidelines PDF
 - Screenshots

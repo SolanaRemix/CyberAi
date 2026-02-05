@@ -23,21 +23,12 @@
         "description": "List all registered agents"
       }
     ],
-    "workflows": [
-      "contract-validation",
-      "pages-deployment",
-      "ci"
-    ]
+    "workflows": ["contract-validation", "pages-deployment", "ci"]
   },
   "requirements": {
     "runtime": "github-pages",
-    "dependencies": [
-      "node>=18.0.0"
-    ],
-    "permissions": [
-      "pages:write",
-      "contents:read"
-    ]
+    "dependencies": ["node>=18.0.0"],
+    "permissions": ["pages:write", "contents:read"]
   },
   "compliance": {
     "security": {
