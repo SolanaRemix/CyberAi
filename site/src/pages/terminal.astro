@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="terminal-hero">
       <h1 class="neo-text-glow">💻 <span class="text-gradient">CyberAi Terminal</span></h1>
       <p class="tagline">Command-line interface for ecosystem operations</p>
-      <p class="notice">🚧 CLI tool under development - Use npm scripts for now</p>
+      <p class="notice" role="alert" aria-live="polite">🚧 CLI tool under development - Use npm scripts for now</p>
     </div>
 
     <div class="terminal-container neo-glass-strong">
@@ -79,9 +79,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="neo-card info-card">
           <h3>📚 Available Scripts</h3>
           <p>Use npm scripts for development and testing:</p>
-          <code>npm test</code>
-          <code>npm run lint</code>
-          <code>npm run build</code>
+          <ul class="script-list">
+            <li><code>npm test</code> - Run all tests</li>
+            <li><code>npm run lint</code> - Lint codebase</li>
+            <li><code>npm run build</code> - Build project</li>
+          </ul>
           <a href="/docs" class="neo-button">View Documentation</a>
         </div>
 
@@ -263,6 +265,26 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
     overflow-x: auto;
+  }
+
+  .script-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .script-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .script-list code {
+    display: inline;
+    background: #f5f5f5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
   }
 
   .neo-button {
