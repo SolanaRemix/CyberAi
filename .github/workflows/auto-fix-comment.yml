@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Acknowledge comment
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             await github.rest.reactions.createForIssueComment({
@@ -52,7 +52,7 @@ jobs:
 
       - name: Add reaction on completion
         if: always()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const reaction = '${{ job.status }}' === 'success' ? 'rocket' : 'confused';
