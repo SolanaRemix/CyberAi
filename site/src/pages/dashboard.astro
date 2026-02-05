@@ -1,0 +1,276 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="CyberAi Dashboard - Real-time System Monitor">
+  <main>
+    <div class="dashboard-hero">
+      <h1 class="neo-text-glow">📊 <span class="text-gradient">CyberAi Dashboard</span></h1>
+      <p class="tagline">Real-time monitoring and control center for your AI ecosystem</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="neo-card status-card">
+        <div class="card-header">
+          <h2>System Status</h2>
+          <span class="neo-status-active"></span>
+        </div>
+        <div class="status-items">
+          <div class="status-item">
+            <span class="neo-status-active"></span>
+            <span>GitHub Actions: Online</span>
+          </div>
+          <div class="status-item">
+            <span class="neo-status-active"></span>
+            <span>Contracts: Deployed</span>
+          </div>
+          <div class="status-item">
+            <span class="neo-status-active"></span>
+            <span>SmartBrain: Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="neo-card metric-card">
+        <h3>Active Agents</h3>
+        <div class="metric-value neo-text-glow">12</div>
+        <p class="metric-label">Running across ecosystem</p>
+      </div>
+
+      <div class="neo-card metric-card">
+        <h3>Smart Contracts</h3>
+        <div class="metric-value neo-text-glow">48</div>
+        <p class="metric-label">Deployed and verified</p>
+      </div>
+
+      <div class="neo-card metric-card">
+        <h3>Security Audits</h3>
+        <div class="metric-value neo-text-glow">156</div>
+        <p class="metric-label">Completed this month</p>
+      </div>
+
+      <div class="neo-card activity-card">
+        <h2>Recent Activity</h2>
+        <ul class="activity-list">
+          <li>
+            <span class="activity-icon">✅</span>
+            <span>Contract deployed to mainnet</span>
+            <span class="activity-time">2 min ago</span>
+          </li>
+          <li>
+            <span class="activity-icon">🔍</span>
+            <span>Security audit completed</span>
+            <span class="activity-time">5 min ago</span>
+          </li>
+          <li>
+            <span class="activity-icon">🚀</span>
+            <span>New agent initialized</span>
+            <span class="activity-time">12 min ago</span>
+          </li>
+          <li>
+            <span class="activity-icon">📊</span>
+            <span>Performance metrics updated</span>
+            <span class="activity-time">18 min ago</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="neo-card quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="actions-grid">
+          <a href="/operators" class="neo-button neo-glow-primary">Operator Console</a>
+          <a href="/docs/contracts" class="neo-button">View Contracts</a>
+          <a href="/smartbrain" class="neo-button">SmartBrain AI</a>
+          <a href="/audit" class="neo-button">Run Audit</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem 1rem;
+    max-width: 1400px;
+  }
+
+  .dashboard-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(45deg, var(--neo-primary), var(--neo-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: #666;
+    margin: 0;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .neo-card {
+    padding: 1.5rem;
+  }
+
+  .status-card {
+    grid-column: span 1;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .status-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .metric-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .metric-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 600;
+  }
+
+  .metric-value {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--neo-primary);
+    margin: 0.5rem 0;
+  }
+
+  .metric-label {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+  }
+
+  .activity-card {
+    grid-column: span 2;
+  }
+
+  .activity-card h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.3rem;
+  }
+
+  .activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .activity-list li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background var(--transition-fast);
+  }
+
+  .activity-list li:hover {
+    background: var(--glass-bg);
+  }
+
+  .activity-icon {
+    font-size: 1.2rem;
+  }
+
+  .activity-time {
+    font-size: 0.85rem;
+    color: #999;
+  }
+
+  .quick-actions {
+    grid-column: span 1;
+  }
+
+  .quick-actions h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.3rem;
+  }
+
+  .actions-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .neo-button {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .status-card,
+    .activity-card,
+    .quick-actions {
+      grid-column: span 1;
+    }
+
+    .dashboard-hero {
+      padding: 2rem 1rem 1.5rem;
+    }
+  }
+
+  /* Tablet responsiveness */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .activity-card {
+      grid-column: span 2;
+    }
+  }
+</style>

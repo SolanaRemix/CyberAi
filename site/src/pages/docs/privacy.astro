@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Privacy Policy - CyberAi Network">
+  <main>
+    <div class="doc-container">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last Updated: February 5, 2026</p>
+
+      <section>
+        <h2>Overview</h2>
+        <p>
+          CyberAi Network is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you interact with our platform.
+        </p>
+      </section>
+
+      <section>
+        <h2>Information We Collect</h2>
+        <h3>GitHub Integration</h3>
+        <p>
+          When you use CyberAi through GitHub Actions or our AI agents, we may access:
+        </p>
+        <ul>
+          <li>Repository metadata (names, descriptions, URLs)</li>
+          <li>Code content for analysis and security scanning</li>
+          <li>Workflow run information</li>
+          <li>Issue and pull request data</li>
+        </ul>
+
+        <h3>Usage Analytics</h3>
+        <p>
+          We collect anonymous usage statistics to improve our services:
+        </p>
+        <ul>
+          <li>Feature usage patterns</li>
+          <li>Performance metrics</li>
+          <li>Error logs (anonymized)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>How We Use Your Information</h2>
+        <p>We use the collected information to:</p>
+        <ul>
+          <li>Provide and improve CyberAi services</li>
+          <li>Perform security audits and vulnerability scans</li>
+          <li>Generate code suggestions and automated fixes</li>
+          <li>Analyze system performance and reliability</li>
+          <li>Communicate important updates and security alerts</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Data Storage and Security</h2>
+        <p>
+          We implement industry-standard security measures to protect your data:
+        </p>
+        <ul>
+          <li>Encrypted data transmission (TLS 1.3)</li>
+          <li>Limited data retention periods</li>
+          <li>Access controls and authentication</li>
+          <li>Regular security audits</li>
+        </ul>
+        <p>
+          Code analyzed by CyberAi is processed in memory and not permanently stored unless explicitly configured by you.
+        </p>
+      </section>
+
+      <section>
+        <h2>Third-Party Services</h2>
+        <p>CyberAi integrates with:</p>
+        <ul>
+          <li><strong>GitHub</strong>: Repository hosting and CI/CD</li>
+          <li><strong>OpenAI</strong>: AI-powered code analysis (when configured)</li>
+        </ul>
+        <p>
+          Please review the privacy policies of these services as they have their own data handling practices.
+        </p>
+      </section>
+
+      <section>
+        <h2>Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li>Access your data</li>
+          <li>Request data deletion</li>
+          <li>Opt-out of analytics</li>
+          <li>Export your configuration</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Open Source</h2>
+        <p>
+          CyberAi is open source software. You can review our code, data handling practices, and contribute improvements on <a href="https://github.com/SolanaRemix/CyberAi" target="_blank">GitHub</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Changes to This Policy</h2>
+        <p>
+          We may update this Privacy Policy periodically. Significant changes will be communicated through our GitHub repository and documentation.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact Us</h2>
+        <p>
+          For privacy-related questions or concerns, please:
+        </p>
+        <ul>
+          <li>Open an issue on our <a href="https://github.com/SolanaRemix/CyberAi/issues">GitHub repository</a></li>
+          <li>Review our <a href="/docs/security">Security Policy</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem 1rem;
+    max-width: 900px;
+  }
+
+  .doc-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+  }
+
+  .last-updated {
+    color: #888;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin: 2rem 0;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    color: var(--accent-dark);
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--gray-dark);
+  }
+
+  p {
+    line-height: 1.8;
+    color: #555;
+    margin: 1rem 0;
+  }
+
+  ul {
+    line-height: 1.8;
+    color: #555;
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin: 0.5rem 0;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  strong {
+    color: var(--gray-dark);
+  }
+
+  @media (max-width: 768px) {
+    .doc-container {
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+</style>

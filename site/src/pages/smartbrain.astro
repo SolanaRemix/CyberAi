@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="SmartBrain AI - Intelligent Code Analysis">
+  <main>
+    <div class="hero">
+      <h1 class="neo-text-glow">🧠 <span class="text-gradient">SmartBrain AI</span></h1>
+      <p class="tagline">Advanced AI-powered code analysis and automation</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="neo-card feature-card neo-glow-primary">
+        <div class="feature-icon">🔍</div>
+        <h3>Code Analysis</h3>
+        <p>Deep learning-powered code analysis to detect patterns, vulnerabilities, and optimization opportunities in your smart contracts.</p>
+      </div>
+
+      <div class="neo-card feature-card neo-glow-accent">
+        <div class="feature-icon">🤖</div>
+        <h3>Automated Workflows</h3>
+        <p>Intelligent automation of repetitive tasks, from code generation to deployment pipelines, powered by advanced AI models.</p>
+      </div>
+
+      <div class="neo-card feature-card neo-glow-secondary">
+        <div class="feature-icon">🛡️</div>
+        <h3>Security Intelligence</h3>
+        <p>Real-time threat detection and vulnerability assessment using machine learning trained on millions of code samples.</p>
+      </div>
+    </div>
+
+    <div class="capabilities">
+      <h2 class="section-title">AI Capabilities</h2>
+      
+      <div class="capability-list">
+        <div class="neo-glass capability-item">
+          <div class="capability-header">
+            <span class="capability-icon">⚡</span>
+            <h3>Smart Contract Generation</h3>
+          </div>
+          <p>Generate secure, optimized smart contracts from natural language descriptions. SmartBrain understands Solidity, Rust, and other blockchain languages.</p>
+        </div>
+
+        <div class="neo-glass capability-item">
+          <div class="capability-header">
+            <span class="capability-icon">📊</span>
+            <h3>Predictive Analytics</h3>
+          </div>
+          <p>Predict potential issues, gas optimization opportunities, and security vulnerabilities before deployment using AI-powered pattern recognition.</p>
+        </div>
+
+        <div class="neo-glass capability-item">
+          <div class="capability-header">
+            <span class="capability-icon">🔄</span>
+            <h3>Automated Refactoring</h3>
+          </div>
+          <p>Intelligently refactor code for better performance, readability, and maintainability while preserving functionality and security.</p>
+        </div>
+
+        <div class="neo-glass capability-item">
+          <div class="capability-header">
+            <span class="capability-icon">🎯</span>
+            <h3>Conflict Resolution</h3>
+          </div>
+          <p>Automatically resolve merge conflicts in complex codebases using context-aware AI that understands code semantics and project structure.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <div class="neo-card cta-card">
+        <h2>Get Started with SmartBrain</h2>
+        <p>Deploy SmartBrain AI in your development workflow today</p>
+        <div class="cta-buttons">
+          <a href="/docs/quickstart" class="neo-button neo-glow-primary">Quick Start Guide</a>
+          <a href="/operators" class="neo-button">Operator Console</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(45deg, var(--neo-primary), var(--neo-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: #666;
+    margin: 0;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .feature-card {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .feature-card p {
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .capabilities {
+    margin: 4rem 0;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 2rem 0;
+    color: var(--neo-primary);
+  }
+
+  .capability-list {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .capability-item {
+    padding: 1.5rem;
+    transition: all var(--transition-medium);
+  }
+
+  .capability-item:hover {
+    transform: translateX(10px);
+    border-color: var(--neo-primary);
+  }
+
+  .capability-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .capability-icon {
+    font-size: 2rem;
+  }
+
+  .capability-item h3 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .capability-item p {
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .cta-section {
+    margin: 4rem 0 2rem;
+  }
+
+  .cta-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, var(--glass-bg), rgba(79, 70, 229, 0.05));
+  }
+
+  .cta-card h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .cta-card p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0 0 2rem 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .neo-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.5rem;
+    }
+
+    .cta-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .neo-button {
+      width: 100%;
+    }
+  }
+</style>

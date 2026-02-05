@@ -11,7 +11,7 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="CyberAi Network - AI-Powered Smart Contract Security & Orchestration Platform" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/neo-glow-fx.css" />
     <meta name="generator" content={Astro.generator} />
@@ -23,23 +23,83 @@ const { title } = Astro.props;
         <div class="logo">
           <a href="/">🔒 CyberAi</a>
         </div>
-        <ul>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu">
           <li><a href="/docs">Docs</a></li>
-          <li><a href="/docs/contracts">Contracts</a></li>
-          <li><a href="/docs/agents">Agents</a></li>
+          <li><a href="/operators">Console</a></li>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/smartbrain">SmartBrain</a></li>
+          <li><a href="/audit">Audit</a></li>
           <li><a href="https://github.com/SolanaRemix/CyberAi" target="_blank">GitHub</a></li>
         </ul>
       </nav>
     </header>
     <slot />
     <footer>
-      <p>© {new Date().getFullYear()} CyberAi Network. Open source under Apache 2.0 License.</p>
-      <p>
-        <a href="/docs/privacy">Privacy</a> |
-        <a href="/docs/security">Security</a> |
-        <a href="/docs/contributing">Contributing</a>
-      </p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CyberAi Network</h3>
+          <p>AI-Powered Smart Contract Security</p>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/operators">Console</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="/smartbrain">SmartBrain AI</a></li>
+            <li><a href="/audit">Security Audit</a></li>
+            <li><a href="/terminal">Terminal</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/docs/privacy">Privacy</a></li>
+            <li><a href="/docs/security">Security</a></li>
+            <li><a href="/docs/contributing">Contributing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© {new Date().getFullYear()} CyberAi Network. Open source under Apache 2.0 License.</p>
+      </div>
     </footer>
+    <script>
+      // Mobile menu toggle
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.querySelector('.nav-menu');
+      
+      toggle?.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        menu?.classList.toggle('active');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!toggle?.contains(e.target as Node) && !menu?.contains(e.target as Node)) {
+          toggle?.classList.remove('active');
+          menu?.classList.remove('active');
+        }
+      });
+
+      // Close menu when clicking a link
+      menu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          toggle?.classList.remove('active');
+          menu?.classList.remove('active');
+        });
+      });
+    </script>
   </body>
 </html>
 
@@ -63,6 +123,7 @@ const { title } = Astro.props;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: #ffffff;
     color: var(--black);
+    scroll-behavior: smooth;
   }
 
   body {
@@ -71,65 +132,248 @@ const { title } = Astro.props;
     flex-direction: column;
   }
 
+  /* Header - Mobile First */
   header {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--gray-light);
-    padding: 1rem 2rem;
+    padding: 1rem;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   nav {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
 
   .logo a {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 800;
     text-decoration: none;
     color: var(--accent);
-  }
-
-  nav ul {
     display: flex;
-    gap: 2rem;
-    list-style: none;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  nav a {
+  /* Mobile Menu Toggle */
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101;
+  }
+
+  .mobile-menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Mobile Navigation */
+  nav .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    position: fixed;
+    top: 65px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem 0;
+    box-shadow: -2px 0 16px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    border-left: 2px solid var(--neo-primary);
+  }
+
+  nav .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  nav .nav-menu li {
+    padding: 0;
+  }
+
+  nav .nav-menu a {
+    display: block;
+    padding: 1rem 1.5rem;
     text-decoration: none;
     color: var(--gray-dark);
     font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
   }
 
-  nav a:hover {
+  nav .nav-menu a:hover {
     color: var(--accent);
+    background: rgba(79, 70, 229, 0.05);
+    border-left-color: var(--accent);
   }
 
+  /* Tablet and Desktop Navigation */
+  @media (min-width: 769px) {
+    header {
+      padding: 1rem 2rem;
+    }
+
+    .logo a {
+      font-size: 1.5rem;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+    }
+
+    nav .nav-menu {
+      position: static;
+      flex-direction: row;
+      gap: 2rem;
+      width: auto;
+      max-width: none;
+      padding: 0;
+      background: none;
+      box-shadow: none;
+      transform: none;
+      border: none;
+    }
+
+    nav .nav-menu a {
+      padding: 0.5rem 0;
+      border-left: none;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav .nav-menu a:hover {
+      background: none;
+      border-left-color: transparent;
+      border-bottom-color: var(--accent);
+    }
+  }
+
+  /* Footer - Mobile First */
   footer {
     margin-top: auto;
-    background: var(--black);
+    background: linear-gradient(135deg, var(--black) 0%, #0f172a 100%);
     color: var(--gray-light);
-    text-align: center;
-    padding: 2rem;
+    padding: 2rem 1rem 1rem;
+  }
+
+  .footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--neo-primary);
+  }
+
+  .footer-section h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: white;
+  }
+
+  .footer-section p {
+    color: var(--gray-light);
+    line-height: 1.6;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-section ul li {
+    margin: 0.5rem 0;
   }
 
   footer a {
     color: var(--gray-light);
     text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   footer a:hover {
-    color: white;
+    color: var(--neo-primary);
   }
 
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    color: var(--gray-light);
+    font-size: 0.9rem;
+  }
+
+  /* Tablet Footer Layout */
+  @media (min-width: 640px) {
+    .footer-content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Desktop Footer Layout */
+  @media (min-width: 1024px) {
+    footer {
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .footer-content {
+      grid-template-columns: 2fr repeat(3, 1fr);
+    }
+  }
+
+  /* Typography */
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
       Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+
+  /* Smooth scrolling */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 </style>
