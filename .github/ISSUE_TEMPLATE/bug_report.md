@@ -11,9 +11,13 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 ## Scale
+<<<<<<< HEAD
+How large is the scope of this bug?
+=======
 
 How large is the scope of this bug?
 
+>>>>>>> main
 - [ ] Small - Single file or component
 - [ ] Medium - Multiple files or features
 - [ ] Large - System-wide or architectural
@@ -46,7 +50,10 @@ If applicable, add screenshots to help explain your problem.
 - CyberAi Version: [e.g. 1.0.0]
 
 ## Full Context / Prompt
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
 Provide complete context for the repo-brain and fleet-brain to understand this issue:
 
 ```
@@ -54,16 +61,24 @@ Provide complete context for the repo-brain and fleet-brain to understand this i
 ```
 
 ## Auto-Fix Request
+<<<<<<< HEAD
+Would you like the control-plane to attempt an automated fix?
+=======
 
 Would you like the control-plane to attempt an automated fix?
 
+>>>>>>> main
 - [ ] Yes - Auto-fix this issue
 - [ ] No - Manual review required
 
 ## Redeploy After Pass
+<<<<<<< HEAD
+Should this trigger a redeploy once all checks pass?
+=======
 
 Should this trigger a redeploy once all checks pass?
 
+>>>>>>> main
 - [ ] Yes - Redeploy automatically
 - [ ] No - Manual deployment
 

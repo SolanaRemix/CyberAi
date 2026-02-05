@@ -11,9 +11,13 @@ assignees: ''
 A clear and concise description of the feature you'd like to see.
 
 ## Scale
+<<<<<<< HEAD
+How large is the scope of this feature?
+=======
 
 How large is the scope of this feature?
 
+>>>>>>> main
 - [ ] Small - Single file or component enhancement
 - [ ] Medium - Multiple files or new feature
 - [ ] Large - System-wide or architectural change
@@ -37,7 +41,10 @@ A clear and concise description of any alternative solutions or features you've 
 Describe specific use cases where this feature would be beneficial.
 
 ## Full Context / Prompt
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
 Provide complete context for the repo-brain and fleet-brain to understand this feature:
 
 ```
@@ -45,16 +52,24 @@ Provide complete context for the repo-brain and fleet-brain to understand this f
 ```
 
 ## Auto-Fix Request
+<<<<<<< HEAD
+Should the control-plane attempt to implement this feature automatically?
+=======
 
 Should the control-plane attempt to implement this feature automatically?
 
+>>>>>>> main
 - [ ] Yes - Attempt automated implementation
 - [ ] No - Requires human design and review
 
 ## Redeploy After Pass
+<<<<<<< HEAD
+Should this trigger a redeploy once all checks pass?
+=======
 
 Should this trigger a redeploy once all checks pass?
 
+>>>>>>> main
 - [ ] Yes - Redeploy automatically after implementation
 - [ ] No - Manual deployment required
 
