@@ -76,7 +76,12 @@ check_deployment_config() {
     
     if [ -f "site/public/CNAME" ] || [ -f "CNAME" ]; then
         CNAME_DOMAIN=$(cat site/public/CNAME 2>/dev/null || cat CNAME 2>/dev/null)
-        echo -e "${GREEN}  ✅ CNAME configured for: ${CNAME_DOMAIN}${NC}"
+        if [ -n "$CNAME_DOMAIN" ]; then
+            echo -e "${GREEN}  ✅ CNAME configured for: ${CNAME_DOMAIN}${NC}"
+        else
+            echo -e "${YELLOW}  ⚠️  CNAME file exists but is empty${NC}"
+            VERCEL_ISSUES=$((VERCEL_ISSUES + 1))
+        fi
     else
         echo -e "${YELLOW}  ⚠️  No CNAME file found${NC}"
         VERCEL_ISSUES=$((VERCEL_ISSUES + 1))
@@ -98,8 +103,23 @@ check_vercel_code_patterns() {
     )
     
     FOUND_PATTERNS=0
+    SEARCH_DIRS=()
+    
+    # Only search directories that exist
+    for dir in src site/src scripts; do
+        if [ -d "$dir" ]; then
+            SEARCH_DIRS+=("$dir")
+        fi
+    done
+    
+    if [ ${#SEARCH_DIRS[@]} -eq 0 ]; then
+        echo -e "${GREEN}  ✅ No source directories to scan${NC}"
+        echo ""
+        return
+    fi
+    
     for pattern in "${VERCEL_PATTERNS[@]}"; do
-        if grep -r "$pattern" src/ site/src/ scripts/ 2>/dev/null | grep -v "node_modules" | grep -v ".git" > /dev/null; then
+        if grep -r "$pattern" "${SEARCH_DIRS[@]}" 2>/dev/null | grep -v "node_modules" | grep -v ".git" > /dev/null; then
             echo -e "${YELLOW}  ⚠️  Found '$pattern' in code${NC}"
             FOUND_PATTERNS=$((FOUND_PATTERNS + 1))
         fi
