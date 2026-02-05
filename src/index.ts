@@ -35,6 +35,3 @@ export function initialize(config: CyberAiConfig = {}): void {
   };
   console.log('Configuration:', defaultConfig);
 }
-
-
-

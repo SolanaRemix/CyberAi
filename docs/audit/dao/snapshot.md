@@ -1,4 +1,3 @@
-
 # Snapshot Space Setup & Strategies
 
 ## Overview
@@ -35,7 +34,7 @@ Snapshot is a gasless, off-chain voting platform used by SmartContractAudit DAO 
 
 > > > > > > > origin/pr9
 
-```json
+````json
 {
   "voting": {
     "delay": 0,
@@ -228,6 +227,7 @@ gh api /repos/OWNER/REPO/pulls/PR_NUMBER/reviews
       "name": "delegation",
       "network": "1",
       "params": {
+
 "symbol": "SCA",
 "strategies": []
 }
@@ -240,7 +240,8 @@ gh api /repos/OWNER/REPO/pulls/PR_NUMBER/reviews
 }
 }
 }
-```
+
+````
 
 ## Voting Strategies
 
@@ -262,7 +263,7 @@ Counts tokens held in wallet at proposal snapshot time.
     "decimals": 18
   }
 }
-```
+````
 
 **Voting Power**: 1 token = 1 vote
 
@@ -369,4 +370,4 @@ Brief description of the proposal
 Why this proposal is needed
 
 ## Specification
-
+```

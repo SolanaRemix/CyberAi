@@ -164,6 +164,40 @@ npm run preview
 
 See [Contract Documentation](https://cyberai.network/docs/contracts) for details.
 
+## 🚀 Deployment
+
+CyberAi is deployed using **GitHub Pages** with automatic deployment on push to the main branch.
+
+### Hosting
+
+- **Platform**: GitHub Pages
+- **Domain**: [cyberai.network](https://cyberai.network)
+- **Build System**: Astro static site generator
+- **Deployment**: Automated via GitHub Actions
+
+### Deployment Process
+
+1. Push changes to the main branch
+2. GitHub Actions automatically builds the site
+3. Site is deployed to GitHub Pages
+4. Changes are live at cyberai.network
+
+### Vercel Migration
+
+If you're experiencing issues migrating from Vercel, use our diagnostic tool:
+
+```bash
+# Run the Vercel issue scanner
+bash tools/vercel-scanner.sh
+```
+
+This tool will:
+
+- Check for Vercel configuration files
+- Identify Vercel-specific dependencies
+- Verify GitHub Pages setup
+- Provide migration guidance
+
 ## 📚 Documentation
 
 - [Quickstart Guide](https://cyberai.network/docs/quickstart)

@@ -1,6 +1,7 @@
 ## <<<<<<< HEAD
 
 title: Technical Onboarding
+
 ```bash
 # Required
 SCA_API_KEY=your-api-key
@@ -10,7 +11,7 @@ SCA_API_URL=https://api.smartcontractaudit.example
 SCA_LOG_LEVEL=info
 SCA_DRY_RUN=false
 SCA_CACHE_ENABLED=true
-````
+```
 
 ### Configuration File
 
@@ -379,4 +380,3 @@ if (response.status === 429) {
 ## Troubleshooting
 
 ### Common Issues
-

@@ -19,7 +19,7 @@ jobs:
     name: Auto-Resolve Merge Conflicts
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@copilot auto resolve conflicts'))
-    
+
     steps:
       - name: Checkout PR branch
         uses: actions/checkout@v4
@@ -27,22 +27,22 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
+
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-      
+
       - name: Check for merge conflicts
         id: check-conflicts
         run: |
           git fetch origin ${{ github.base_ref }}
-          
+
           # Check if there are conflicts
           if git merge-base --is-ancestor origin/${{ github.base_ref }} HEAD; then
             echo "No conflicts - PR is up to date"
@@ -59,7 +59,7 @@ jobs:
               git merge --abort || true
             fi
           fi
-      
+
       - name: Auto-resolve common conflicts
         if: steps.check-conflicts.outputs.has_conflicts == 'true'
         run: |
@@ -69,7 +69,7 @@ jobs:
             npm install
             tsx scripts/SmartBrainConflictResolver.ts || echo "Conflict resolver failed, trying manual resolution"
           fi
-          
+
           # Manual conflict resolution for common patterns
           find . -type f -name "*.md" -o -name "*.json" -o -name "*.yml" | while read file; do
             if grep -q "<<<<<<< HEAD" "$file"; then
@@ -79,10 +79,10 @@ jobs:
               sed -i '/>>>>>>>/d' "$file"
             fi
           done
-          
+
           # Stage resolved files
           git add -A
-          
+
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No conflicts to resolve"
@@ -90,53 +90,53 @@ jobs:
             git commit -m "chore: auto-resolve merge conflicts [skip ci]"
             git push origin ${{ github.event.pull_request.head.ref }}
           fi
-  
+
   auto-test:
     name: Auto-Test PR Changes
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run linting
         run: |
           npm run lint || true
           echo "lint_status=$?" >> $GITHUB_OUTPUT
         id: lint
-      
+
       - name: Run type checking
         run: |
           npm run build || true
           echo "build_status=$?" >> $GITHUB_OUTPUT
         id: build
-      
+
       - name: Run tests
         run: |
           npm test || echo "No tests configured"
           echo "test_status=$?" >> $GITHUB_OUTPUT
         id: test
-      
+
       - name: Run config sync validation
         run: |
           chmod +x tools/config-sync.sh
           ./tools/config-sync.sh || true
-      
+
       - name: Run environment health check
         run: |
           chmod +x tools/env-heal.sh
           ./tools/env-heal.sh || true
-      
+
       - name: Comment test results
         uses: actions/github-script@v7
         with:
@@ -144,9 +144,9 @@ jobs:
             const lintStatus = '${{ steps.lint.outputs.lint_status }}';
             const buildStatus = '${{ steps.build.outputs.build_status }}';
             const testStatus = '${{ steps.test.outputs.test_status }}';
-            
+
             const body = `## 🤖 Auto-Test Results
-            
+
             | Check | Status |
             |-------|--------|
             | Linting | ${lintStatus === '0' ? '✅ Passed' : '⚠️ Issues found'} |
@@ -154,16 +154,16 @@ jobs:
             | Tests | ${testStatus === '0' ? '✅ Passed' : 'ℹ️ No tests'} |
             | Config Sync | ✅ Validated |
             | Environment | ✅ Healthy |
-            
+
             _Automated checks completed at ${new Date().toISOString()}_`;
-            
+
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: body
             });
-  
+
   auto-merge:
     name: Auto-Merge PR
     runs-on: ubuntu-latest
@@ -172,11 +172,11 @@ jobs:
       github.event_name == 'pull_request_review' && 
       github.event.review.state == 'approved' ||
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@copilot auto merge'))
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Check CI status
         id: check-ci
         uses: actions/github-script@v7
@@ -187,14 +187,14 @@ jobs:
               repo: context.repo.repo,
               ref: context.payload.pull_request.head.sha
             });
-            
+
             const allPassed = checks.check_runs.every(check => 
               check.conclusion === 'success' || check.conclusion === 'neutral'
             );
-            
+
             core.setOutput('all_passed', allPassed);
             return allPassed;
-      
+
       - name: Check required reviews
         id: check-reviews
         uses: actions/github-script@v7
@@ -205,14 +205,14 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             });
-            
+
             const approvedReviews = reviews.filter(review => 
               review.state === 'APPROVED'
             ).length;
-            
+
             core.setOutput('approved', approvedReviews > 0);
             return approvedReviews > 0;
-      
+
       - name: Auto-merge PR
         if: steps.check-ci.outputs.all_passed == 'true' && steps.check-reviews.outputs.approved == 'true'
         uses: actions/github-script@v7
@@ -226,14 +226,14 @@ jobs:
               commit_title: `${context.payload.pull_request.title} (#${context.payload.pull_request.number})`,
               commit_message: 'Auto-merged by GitHub Actions'
             });
-            
+
             await github.rest.issues.createComment({
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: '🎉 PR auto-merged successfully! All checks passed and approvals received.'
             });
-      
+
       - name: Comment merge status
         if: steps.check-ci.outputs.all_passed != 'true' || steps.check-reviews.outputs.approved != 'true'
         uses: actions/github-script@v7
@@ -241,12 +241,12 @@ jobs:
           script: |
             const ciPassed = '${{ steps.check-ci.outputs.all_passed }}' === 'true';
             const approved = '${{ steps.check-reviews.outputs.approved }}' === 'true';
-            
+
             let message = '⏸️ Auto-merge blocked:\n\n';
             if (!ciPassed) message += '- ❌ CI checks are not passing\n';
             if (!approved) message += '- ❌ PR needs approval from a reviewer\n';
             message += '\nOnce requirements are met, the PR will auto-merge.';
-            
+
             await github.rest.issues.createComment({
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
@@ -258,11 +258,11 @@ jobs:
     name: Auto-Respond to Comments
     runs-on: ubuntu-latest
     if: github.event_name == 'issue_comment' && github.event.issue.pull_request
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Process comment commands
         uses: actions/github-script@v7
         with:
@@ -274,7 +274,7 @@ jobs:
               'auto test': 'Running automated tests...',
               'status': 'Checking PR status...'
             };
-            
+
             for (const [cmd, response] of Object.entries(commands)) {
               if (comment.includes(cmd)) {
                 await github.rest.issues.createComment({

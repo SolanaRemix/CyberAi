@@ -1,6 +1,5 @@
 ## <<<<<<< HEAD
 
-
 # Contact Information
 
 ## General Contact
@@ -262,4 +261,3 @@ Currently, we operate globally from a central team. Regional contacts may be add
 ## Social Media
 
 ### Official Channels
-

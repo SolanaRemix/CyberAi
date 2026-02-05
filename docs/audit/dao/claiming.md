@@ -1031,7 +1031,6 @@ Before submitting, verify:
 
 ### Before Claiming
 
-
 - ✅ Verify contract address (official sources only)
 - ✅ Check contract is verified on block explorer
 - ✅ Review contract code (or trust audit)
