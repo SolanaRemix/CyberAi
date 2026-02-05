@@ -1,15 +1,17 @@
 {
   "name": "cyberai",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "**CyberAi (formerly CuberAi)** - AI-Powered Smart Contract Security & Orchestration Platform",
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts",
     "build": "tsc",
-    "test": "echo \"Tests will be implemented with vitest\"",
-    "test:unit": "echo \"Unit tests will be implemented\"",
-    "test:integration": "echo \"Integration tests will be implemented\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
     "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\"",
@@ -22,9 +24,11 @@
     "@types/node": "^25.1.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "@vitest/ui": "^4.0.18",
     "eslint": "^9.39.2",
     "prettier": "^3.0.0",
     "tsx": "^4.21.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.18"
   }
 }

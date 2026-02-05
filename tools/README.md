@@ -6,6 +6,7 @@ This directory contains operational tools for the CyberAi ecosystem.
 
 - `bootstrap/` - Bootstrap scripts for setting up the environment
 - `audit/` - Audit scripts for validating the repository
+- `vercel-scanner.sh` - Diagnostic tool for Vercel migration issues
 
 ## Tools
 
@@ -43,6 +44,27 @@ Usage:
 # Force mode (makes changes)
 DRY_RUN=false ./tools/audit/audit.sh
 ```
+
+### Vercel Scanner (`vercel-scanner.sh`)
+
+Diagnoses Vercel-related issues and helps with migration to GitHub Pages:
+
+- Checks for Vercel configuration files
+- Identifies Vercel-specific dependencies
+- Validates GitHub Pages deployment setup
+- Provides migration recommendations
+
+Usage:
+
+```bash
+bash tools/vercel-scanner.sh
+```
+
+**When to use:**
+- Migrating from Vercel to GitHub Pages
+- Experiencing deployment issues
+- Verifying clean migration
+- Troubleshooting hosting problems
 
 ## CI Integration
 
