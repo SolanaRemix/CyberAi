@@ -2,10 +2,7 @@
 
 ## Overview
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 This guide explains how to claim your SmartContractAudit DAO governance tokens after you've been included in an airdrop allocation.
-=======
 This guide explains how to claim your CyberAi DAO token allocation after a snapshot has been taken and the merkle tree has been generated.
 
 > > > > > > > origin/pr10
@@ -14,7 +11,6 @@ This guide explains how to claim your CyberAi DAO token allocation after a snaps
 
 Before you can claim:
 
-<<<<<<< HEAD
 ✅ **Verify Eligibility**
 
 - Check you're included in the allocation
@@ -1035,7 +1031,6 @@ Before submitting, verify:
 
 ### Before Claiming
 
-<<<<<<< HEAD
 
 - ✅ Verify contract address (official sources only)
 - ✅ Check contract is verified on block explorer
@@ -1101,7 +1096,6 @@ For urgent fixes or security issues:
 ## FAQ
 
 **Q: When can I claim?**
-<<<<<<< HEAD
 A: After airdrop announcement and claim period opens.
 
 **Q: Is there a deadline?**

@@ -27,5 +27,15 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "warn"
   },
+  "ignorePatterns": ["node_modules/", "dist/", "build/", "*.min.js"],
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-require-imports": "off"
+      }
+    }
+  ]
   "ignorePatterns": ["node_modules/", "dist/", "build/", "*.min.js"]
 }
