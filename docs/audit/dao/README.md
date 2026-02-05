@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 
 # DAO Overview
 
 ## Introduction
 
-<<<<<<< HEAD
 The SmartContractAudit DAO (Decentralized Autonomous Organization) enables community governance and rewards contributors through a transparent, merit-based system.
 
 ## What is the DAO?

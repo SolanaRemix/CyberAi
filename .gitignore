@@ -75,3 +75,5 @@ Thumbs.db
 !commitlint.config.js
 !dao/**/*.js
 
+*.backup
+*.resolved

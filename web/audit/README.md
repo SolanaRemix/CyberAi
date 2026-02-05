@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
 > > > > > > > origin/pr10
 
@@ -8,7 +5,6 @@
 
 ## Overview
 
-<<<<<<< HEAD
 This directory contains a lightweight GitHub Pages scaffold for the SmartContractAudit control panel and billing interface.
 
 ## Files
@@ -33,7 +29,6 @@ This directory contains a lightweight GitHub Pages scaffold for SmartContractAud
 
 ### Dashboard (index.html)
 
-<<<<<<< HEAD
 
 - **Statistics Overview**: Total scans, issues found, fixes applied
 - **Recent Runs**: Display of recent scan executions (placeholder)
@@ -754,171 +749,28 @@ Update FUNDING.yml with real values when ready.
 ### Local Testing
 
 ```bash
-<<<<<<< HEAD
-# Simple HTTP server
-python -m http.server 8000
-# or
-npx serve web/
 
-# Visit http://localhost:8000
-```
+## Customization
 
-### With Backend
+### Update API Keys
 
-If integrating with backend:
+For live payment processing, update placeholders in `billing.html`:
 
-```bash
-# Start your backend
-npm start
+1. **Stripe**: Replace `YOUR_STRIPE_PUBLISHABLE_KEY` with your actual key
+2. **Cash App**: Update `$YourCashAppTag` with your Cash App username
+3. **Cryptocurrency**: Replace wallet addresses with real ones
 
-# Open web files
-# Update API endpoints in HTML
-```
+### Modify Styling
 
-## Dynamic Data
+Both HTML files use inline CSS for simplicity. Adjust colors, fonts, and layout as needed.
 
-To make dashboard dynamic, connect to your API:
+### Add Features
 
-```javascript
-// Example: Fetch scan data
-async function loadScans() {
-  try {
-    const response = await fetch('/api/scans');
-    const scans = await response.json();
+- **Authentication**: Integrate OAuth or API key validation
+- **Dynamic Data**: Connect to backend API for real-time scan results
+- **Analytics**: Add Google Analytics or Plausible tracking
 
-    // Update dashboard
-    displayScans(scans);
-  } catch (error) {
-    console.error('Failed to load scans:', error);
-  }
-}
-```
-
-## Monitoring
-
-### Analytics
-
-Add Google Analytics or similar:
-
-```html
-<!-- Add before </head> -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
-</script>
-```
-
-### Error Tracking
-
-Add Sentry or similar:
-
-```html
-<script src="https://browser.sentry-cdn.com/7.x.x/bundle.min.js"></script>
-<script>
-  Sentry.init({ dsn: 'your-dsn' });
-</script>
-```
-
-## Resources
-
-- [GitHub Pages Documentation](https://docs.github.com/pages)
-- [Stripe Documentation](https://stripe.com/docs)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Cash App](https://cash.app)
-
-## Support
-
-For questions about the web dashboard:
-
-- GitHub Issues
-- Email: support@cuberai.example
-
----
-
-_Last updated: 2026-01-01_
-
-> > > > > > > # origin/pr9
-
-# Option 1: Python HTTP server
-
-cd web
-python -m http.server 8000
-
-# Visit http://localhost:8000
-
-# Option 2: Node.js http-server
-
-npx http-server web -p 8000
-
-# Option 3: VS Code Live Server extension
-
-# Right-click index.html -> "Open with Live Server"
-
-````
-
-### Making Changes
-
-1. Edit HTML files in `/web/` directory
-2. Test locally
-3. Commit and push to GitHub
-4. GitHub Pages automatically rebuilds (1-2 minutes)
-
-## Deployment
-
-### GitHub Pages Deployment
-
-**Automatic**:
-- Push to main branch
-- GitHub Pages rebuilds automatically
-- Changes live in 1-2 minutes
-
-**Manual Trigger**:
-- Go to Actions tab
-- Find "pages build and deployment" workflow
-- Click "Re-run all jobs" if needed
-
-### Monitoring
-
-Check deployment status:
-- Actions tab: Shows build status
-- Settings → Pages: Shows last deployment
-- Site URL: Test live version
-
-## Limitations
-
-### GitHub Pages Limitations
-
-- Static sites only (no backend)
-- No server-side processing
-- No database
-- No environment variables
-- 1GB size limit
-- 100GB bandwidth/month (soft limit)
-
-### Workarounds
-
-- **Backend**: Use external API service
-- **Database**: Use external service (Firebase, Supabase)
-- **Auth**: Use GitHub OAuth or external auth
-- **Processing**: GitHub Actions for builds
-
-## Maintenance
-
-### Regular Updates
-
-- Update statistics periodically
-- Add new features to dashboard
-- Keep dependencies updated (Tailwind, Font Awesome)
-- Test on multiple devices/browsers
-
-### Analytics (Optional)
-
-Add analytics to track visitors:
+## Security Considerations
 
 ```html
 <!-- Google Analytics (example) -->
@@ -933,17 +785,10 @@ Or use privacy-friendly alternatives:
 
 ## Support
 
-### Issues
-
-- Web interface bugs: Open GitHub issue with `web` label
-- GitHub Pages problems: Check GitHub Status
-- Design suggestions: Open discussion
-
-### Resources
-
-- [GitHub Pages Docs](https://docs.github.com/pages)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
-- [Font Awesome Icons](https://fontawesome.com/icons)
+For questions or issues:
+- Open an issue on GitHub
+- See main documentation at `/docs`
+- Contact: contact@example.com
 
 ## License
 
