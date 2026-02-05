@@ -5,8 +5,88 @@ import Layout from '../../layouts/Layout.astro';
   <main class="docs-page">
     <div class="docs-container">
       <h1>🔒 Security Policy</h1>
-      <p>Overview of CyberAi's security posture and compliance approach.</p>
-      <p>For detailed security policies and reporting procedures, see our <a href="/docs/security">security &amp; compliance documentation</a>.</p>
+      
+      <section class="doc-section">
+        <h2>Overview</h2>
+        <p>
+          This page provides a quick reference to CyberAi's security posture and policy framework. 
+          For comprehensive security guidelines, vulnerability reporting, and detailed security practices, 
+          please refer to our main <a href="/docs/security">Security Documentation</a>.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>Security Highlights</h2>
+        <div class="policy-card">
+          <h3>🛡️ Vulnerability Reporting</h3>
+          <p>
+            Report security vulnerabilities through our <a href="https://github.com/SolanaRemix/CyberAi/security/advisories" target="_blank">GitHub Security Advisories</a>.
+            We aim to respond within 24 hours and provide resolution timelines based on severity.
+          </p>
+        </div>
+
+        <div class="policy-card">
+          <h3>🔍 Automated Security Scanning</h3>
+          <p>
+            Every pull request undergoes automated security analysis:
+          </p>
+          <ul>
+            <li>CodeQL static analysis for vulnerability detection</li>
+            <li>Dependency scanning via Dependabot</li>
+            <li>GitAntivirus malware detection</li>
+            <li>License compliance checks</li>
+          </ul>
+        </div>
+
+        <div class="policy-card">
+          <h3>🔐 Authentication & Authorization</h3>
+          <p>
+            CyberAi supports industry-standard authentication:
+          </p>
+          <ul>
+            <li>OAuth2 integration ready (GitHub, Google)</li>
+            <li>Firebase/Auth0 compatible authentication flows</li>
+            <li>Secure session management patterns</li>
+            <li>Multi-factor authentication support (when integrated)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Security Best Practices</h2>
+        <ul>
+          <li>All communications encrypted with TLS 1.3</li>
+          <li>Regular security audits and code reviews</li>
+          <li>Principle of least privilege for all access controls</li>
+          <li>Secrets never stored in source code</li>
+          <li>Regular dependency updates and security patches</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>Compliance & Standards</h2>
+        <p>
+          CyberAi adheres to security standards and compliance requirements. 
+          See our <a href="/docs/compliance">Compliance Documentation</a> for details on:
+        </p>
+        <ul>
+          <li>SOC 2 certification progress</li>
+          <li>GDPR data protection compliance</li>
+          <li>ISO 27001 security management</li>
+          <li>Open source security practices</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>Additional Resources</h2>
+        <ul>
+          <li><a href="/docs/security">Full Security Documentation</a> - Comprehensive security guidelines</li>
+          <li><a href="/docs/privacy">Privacy Policy</a> - Data handling and privacy practices</li>
+          <li><a href="/docs/audit-logs">Audit Logs</a> - Security event logging</li>
+          <li><a href="/docs/compliance">Compliance</a> - Compliance frameworks and certifications</li>
+        </ul>
+      </section>
+
       <p><a href="/docs">← Back to Documentation</a></p>
     </div>
   </main>
@@ -15,7 +95,38 @@ import Layout from '../../layouts/Layout.astro';
   .docs-page { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
   .docs-container { padding: 2rem; }
   h1 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--neo-primary); }
+  h2 { font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--neo-accent); }
+  h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--accent); }
   p { line-height: 1.8; color: #555; margin-bottom: 1rem; }
+  ul { margin-left: 2rem; line-height: 1.8; color: #555; }
+  ul li { margin-bottom: 0.5rem; }
   a { color: var(--neo-primary); text-decoration: none; font-weight: 600; }
   a:hover { text-decoration: underline; }
+  
+  .doc-section {
+    margin: 2.5rem 0;
+  }
+  
+  .policy-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid var(--neo-warning);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transition: all var(--transition-medium);
+  }
+  
+  .policy-card:hover {
+    transform: translateX(5px);
+    border-left-color: var(--neo-primary);
+    box-shadow: var(--glow-sm) var(--neo-primary);
+  }
+  
+  @media (max-width: 768px) {
+    .docs-container { padding: 1rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    .policy-card { padding: 1rem; }
+  }
 </style>

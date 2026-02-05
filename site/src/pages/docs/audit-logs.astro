@@ -5,8 +5,138 @@ import Layout from '../../layouts/Layout.astro';
   <main class="docs-page">
     <div class="docs-container">
       <h1>🔒 Audit Logs</h1>
-      <p>Security and compliance documentation for CyberAi.</p>
-      <p>For security reports, see <a href="/docs/security">Security Policy</a>.</p>
+      
+      <section class="doc-section">
+        <h2>Overview</h2>
+        <p>
+          CyberAi maintains comprehensive audit logs to track system activities, security events, 
+          and user actions. This page describes our audit logging capabilities and how to access them.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>What We Log</h2>
+        
+        <div class="log-card">
+          <h3>📝 Code Changes</h3>
+          <ul>
+            <li>All commits tracked via Git version control</li>
+            <li>Pull request reviews and approvals</li>
+            <li>Branch creation and deletion events</li>
+            <li>Tag and release activities</li>
+          </ul>
+        </div>
+
+        <div class="log-card">
+          <h3>🔐 Security Events</h3>
+          <ul>
+            <li>Authentication attempts (success and failure)</li>
+            <li>Authorization decisions and access denials</li>
+            <li>Security scan results (CodeQL, GitAntivirus)</li>
+            <li>Vulnerability detections and resolutions</li>
+          </ul>
+        </div>
+
+        <div class="log-card">
+          <h3>⚙️ System Operations</h3>
+          <ul>
+            <li>GitHub Actions workflow executions</li>
+            <li>Deployment events and status</li>
+            <li>Configuration changes</li>
+            <li>API requests and responses</li>
+          </ul>
+        </div>
+
+        <div class="log-card">
+          <h3>👤 User Activities</h3>
+          <ul>
+            <li>Login and logout events (when authentication enabled)</li>
+            <li>Profile updates and password changes</li>
+            <li>Subscription and payment transactions</li>
+            <li>Permission and role modifications</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Accessing Audit Logs</h2>
+        
+        <h3>GitHub Actions Logs</h3>
+        <p>
+          View workflow execution logs in the 
+          <a href="https://github.com/SolanaRemix/CyberAi/actions" target="_blank">GitHub Actions tab</a>. 
+          Logs include build outputs, test results, and deployment activities.
+        </p>
+
+        <h3>Git History</h3>
+        <p>
+          All code changes are permanently tracked in Git history:
+        </p>
+        <pre><code>git log --all --oneline --graph
+git log --author="username" --since="2026-01-01"</code></pre>
+
+        <h3>Security Advisories</h3>
+        <p>
+          Security-related events are tracked in 
+          <a href="https://github.com/SolanaRemix/CyberAi/security" target="_blank">GitHub Security</a> tab, 
+          including vulnerability reports and resolutions.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>Log Retention</h2>
+        <p>
+          CyberAi maintains audit logs with the following retention policies:
+        </p>
+        <ul>
+          <li><strong>Git History:</strong> Permanent (stored in repository)</li>
+          <li><strong>GitHub Actions Logs:</strong> 90 days (GitHub default)</li>
+          <li><strong>Security Events:</strong> Permanent (via GitHub Security)</li>
+          <li><strong>User Activity Logs:</strong> Configurable (when implemented)</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>Log Format</h2>
+        <p>
+          Audit logs follow structured formats for easy parsing and analysis:
+        </p>
+        <ul>
+          <li><strong>Timestamp:</strong> ISO 8601 format (UTC)</li>
+          <li><strong>Event Type:</strong> Category and action</li>
+          <li><strong>Actor:</strong> User or system performing action</li>
+          <li><strong>Resource:</strong> Entity being acted upon</li>
+          <li><strong>Result:</strong> Success or failure status</li>
+          <li><strong>Metadata:</strong> Additional contextual information</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>Compliance & Security</h2>
+        <p>
+          Audit logs support compliance requirements:
+        </p>
+        <ul>
+          <li>Non-repudiation of actions</li>
+          <li>Forensic analysis capabilities</li>
+          <li>Incident response support</li>
+          <li>Regulatory compliance (SOC 2, GDPR, etc.)</li>
+        </ul>
+        <p>
+          See our <a href="/docs/compliance">Compliance Documentation</a> for framework details.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>Related Documentation</h2>
+        <ul>
+          <li><a href="/docs/security">Security Policy</a> - Security practices and reporting</li>
+          <li><a href="/docs/security-policy">Security Policy Summary</a> - Quick reference guide</li>
+          <li><a href="/docs/compliance">Compliance</a> - Compliance frameworks</li>
+          <li><a href="/docs/privacy">Privacy Policy</a> - Data handling practices</li>
+        </ul>
+      </section>
+
       <p><a href="/docs">← Back to Documentation</a></p>
     </div>
   </main>
@@ -15,7 +145,39 @@ import Layout from '../../layouts/Layout.astro';
   .docs-page { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
   .docs-container { padding: 2rem; }
   h1 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--neo-primary); }
+  h2 { font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--neo-accent); }
+  h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--accent); }
   p { line-height: 1.8; color: #555; margin-bottom: 1rem; }
+  ul { margin-left: 2rem; line-height: 1.8; color: #555; }
+  ul li { margin-bottom: 0.5rem; }
   a { color: var(--neo-primary); text-decoration: none; font-weight: 600; }
   a:hover { text-decoration: underline; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+  code { font-family: 'Courier New', monospace; font-size: 0.95rem; }
+  
+  .doc-section {
+    margin: 2.5rem 0;
+  }
+  
+  .log-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transition: all var(--transition-medium);
+  }
+  
+  .log-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--neo-primary);
+    box-shadow: var(--glow-sm) var(--neo-primary);
+  }
+  
+  @media (max-width: 768px) {
+    .docs-container { padding: 1rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    .log-card { padding: 1rem; }
+  }
 </style>
