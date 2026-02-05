@@ -14,7 +14,6 @@
     "declarationMap": true,
     "sourceMap": true
   },
-<<<<<<< HEAD
   "include": [
     "src/**/*",
     "contracts/**/*.ts",
@@ -28,8 +27,4 @@
     "scripts/**/*",
     "tests/**/*"
   ]
-=======
-  "include": ["src/**/*", "contracts/**/*.ts", "prompts/**/*.ts", "tools/**/*.ts"],
-  "exclude": ["node_modules", "dist", "build", "scripts/**/*", "tests/**/*"]
->>>>>>> main
 }
