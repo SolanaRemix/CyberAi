@@ -140,12 +140,27 @@ import Layout from '../layouts/Layout.astro';
     <!-- Stripe Checkout Modal (Hidden by default) -->
     <div id="checkout-modal" class="modal" style="display: none;">
       <div class="modal-content neo-card">
-        <span class="close">&times;</span>
+        <span class="close" role="button" aria-label="Close" tabindex="0">&times;</span>
         <h2>Complete Your Purchase</h2>
         <p>Redirecting to secure payment...</p>
         <div class="neo-spinner"></div>
       </div>
     </div>
+
+    <script>
+      (function () {
+        var closeButton = document.querySelector('#checkout-modal .close');
+        if (!closeButton) return;
+
+        closeButton.addEventListener('keydown', function (event) {
+          var key = event.key || event.code;
+          if (key === 'Enter' || key === ' ' || key === 'Spacebar') {
+            event.preventDefault();
+            closeButton.click();
+          }
+        });
+      })();
+    </script>
   </main>
 </Layout>
 
