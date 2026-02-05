@@ -15,7 +15,8 @@
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
     "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\"",
-    "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\""
+    "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\"",
+    "verify-vercel-disconnect": "bash scripts/verify-vercel-disconnect.sh"
   },
   "dependencies": {
     "openai": "^6.17.0"
