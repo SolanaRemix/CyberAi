@@ -484,7 +484,7 @@ import Layout from '../layouts/Layout.astro';
     const name = formData.get('name');
     
     // TODO: Integrate with Firebase/Auth0
-    console.log('Signup attempt:', { email, name });
+    // console.log('Signup attempt:', { email, name }); // Debug only: avoid logging PII in production
     alert('Authentication integration pending. This will connect to Firebase/Auth0 in production.');
     
     // For now, simulate successful signup
