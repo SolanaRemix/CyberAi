@@ -1,0 +1,224 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Troubleshooting Guide - CyberAi Documentation">
+  <main class="docs-page">
+    <div class="docs-container">
+      <h1>🔧 Troubleshooting Guide</h1>
+      
+      <section class="doc-section">
+        <h2>Common Issues</h2>
+        
+        <div class="issue-card">
+          <h3>Site Build Failures</h3>
+          <p><strong>Symptom:</strong> npm run build fails with errors</p>
+          <p><strong>Solution:</strong></p>
+          <pre><code>cd site
+npm ci
+npm run build</code></pre>
+          <p>If issues persist, clear caches:</p>
+          <pre><code>rm -rf site/node_modules site/package-lock.json
+cd site && npm install</code></pre>
+        </div>
+
+        <div class="issue-card">
+          <h3>GitHub Pages Not Updating</h3>
+          <p><strong>Symptom:</strong> Changes pushed but site not updating</p>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Check GitHub Actions workflow status</li>
+            <li>Verify build completed successfully</li>
+            <li>Wait 5-10 minutes for CDN cache to clear</li>
+            <li>Clear browser cache or use incognito mode</li>
+          </ul>
+        </div>
+
+        <div class="issue-card">
+          <h3>Broken Links</h3>
+          <p><strong>Symptom:</strong> 404 errors when navigating</p>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Ensure all internal links start with /</li>
+            <li>Check that referenced pages exist in src/pages</li>
+            <li>Rebuild the site after adding new pages</li>
+            <li>Verify GitHub Pages is configured for the correct branch</li>
+          </ul>
+        </div>
+
+        <div class="issue-card">
+          <h3>Neo Glow FX Not Working</h3>
+          <p><strong>Symptom:</strong> Glow effects not displaying</p>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Verify neo-glow-fx.css is in site/public/</li>
+            <li>Check browser console for CSS loading errors</li>
+            <li>Ensure classes are applied correctly (neo-card, neo-button, etc.)</li>
+            <li>Clear browser cache</li>
+          </ul>
+        </div>
+
+        <div class="issue-card">
+          <h3>Mobile Menu Not Working</h3>
+          <p><strong>Symptom:</strong> Hamburger menu doesn't open on mobile</p>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Check JavaScript console for errors</li>
+            <li>Verify mobile-menu-toggle class exists in Layout.astro</li>
+            <li>Test on different mobile devices/browsers</li>
+            <li>Ensure viewport meta tag is present</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Development Issues</h2>
+        
+        <div class="issue-card">
+          <h3>TypeScript Compilation Errors</h3>
+          <p><strong>Solution:</strong></p>
+          <pre><code>npm run build
+npm test</code></pre>
+          <p>Check tsconfig.json for proper configuration.</p>
+        </div>
+
+        <div class="issue-card">
+          <h3>Linting Failures</h3>
+          <p><strong>Solution:</strong></p>
+          <pre><code>npm run lint:fix
+npm run format</code></pre>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Getting Help</h2>
+        <p>If you're still experiencing issues:</p>
+        <ul>
+          <li>Check <a href="https://github.com/SolanaRemix/CyberAi/issues" target="_blank">GitHub Issues</a> for known problems</li>
+          <li>Review the <a href="/docs/runbook">Operations Runbook</a></li>
+          <li>Ask in <a href="https://github.com/SolanaRemix/CyberAi/discussions" target="_blank">GitHub Discussions</a></li>
+          <li>Open a new issue with detailed information</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>Related Documentation</h2>
+        <ul>
+          <li><a href="/docs/quickstart">Quickstart Guide</a></li>
+          <li><a href="/docs/architecture">Architecture Overview</a></li>
+          <li><a href="/docs/runbook">Operations Runbook</a></li>
+          <li><a href="/docs/contributing">Contributing Guide</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .docs-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .docs-container {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--neo-primary);
+  }
+
+  .doc-section {
+    margin: 2.5rem 0;
+  }
+
+  .doc-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--neo-accent);
+  }
+
+  .doc-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+
+  .doc-section p {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .doc-section ul {
+    margin-left: 2rem;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  .doc-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .issue-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid var(--neo-warning);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transition: all var(--transition-medium);
+  }
+
+  .issue-card:hover {
+    transform: translateX(5px);
+    border-left-color: var(--neo-primary);
+    box-shadow: var(--glow-sm) var(--neo-primary);
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+  }
+
+  a {
+    color: var(--neo-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .docs-container {
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .doc-section h2 {
+      font-size: 1.5rem;
+    }
+
+    .issue-card {
+      padding: 1rem;
+    }
+  }
+</style>

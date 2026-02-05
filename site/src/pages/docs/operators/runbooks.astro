@@ -1,0 +1,38 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<Layout title="Operator Runbooks - CyberAi Documentation">
+  <main class="docs-page">
+    <div class="docs-container">
+      <h1>📚 Operator Runbooks</h1>
+      <p>Operational procedures and troubleshooting guides for CyberAi operators.</p>
+      
+      <h2>Common Procedures</h2>
+      <ul>
+        <li><a href="/docs/runbook">System Monitoring</a></li>
+        <li><a href="/docs/troubleshooting">Troubleshooting Guide</a></li>
+        <li><a href="/docs/deployment">Deployment Procedures</a></li>
+        <li><a href="/docs/security">Security Incident Response</a></li>
+      </ul>
+      
+      <h2>Quick References</h2>
+      <ul>
+        <li>Check CI status: <a href="https://github.com/SolanaRemix/CyberAi/actions" target="_blank">GitHub Actions</a></li>
+        <li>View contracts: <a href="/docs/contracts">Contract Registry</a></li>
+        <li>System health: <a href="/dashboard">Dashboard</a></li>
+      </ul>
+      
+      <p><a href="/operators">← Back to Console</a> | <a href="/docs">Documentation Home</a></p>
+    </div>
+  </main>
+</Layout>
+<style>
+  .docs-page { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .docs-container { padding: 2rem; }
+  h1 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--neo-primary); }
+  h2 { font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--neo-accent); }
+  p, li { line-height: 1.8; color: #555; margin-bottom: 1rem; }
+  ul { margin-left: 2rem; }
+  a { color: var(--neo-primary); text-decoration: none; font-weight: 600; }
+  a:hover { text-decoration: underline; }
+</style>

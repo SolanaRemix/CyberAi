@@ -1,0 +1,589 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Pricing - CyberAi Network">
+  <main>
+    <div class="pricing-hero">
+      <h1 class="neo-text-glow">💳 <span class="text-gradient">Pricing Plans</span></h1>
+      <p class="tagline">Choose the perfect plan for your needs</p>
+      <p class="description">All plans include access to core features. Upgrade for advanced capabilities and priority support.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Free Tier -->
+      <div class="neo-card pricing-card">
+        <div class="plan-header">
+          <h3>Free</h3>
+          <div class="price">
+            <span class="amount">$0</span>
+            <span class="period">/month</span>
+          </div>
+        </div>
+        <ul class="features-list">
+          <li>✅ Access to basic agents</li>
+          <li>✅ Community support</li>
+          <li>✅ Up to 100 API calls/month</li>
+          <li>✅ Public GitHub integration</li>
+          <li>✅ Basic security scans</li>
+          <li>❌ Priority support</li>
+          <li>❌ Advanced analytics</li>
+          <li>❌ Custom integrations</li>
+        </ul>
+        <button class="neo-button plan-button" data-plan="free">
+          Get Started Free
+        </button>
+      </div>
+
+      <!-- Pro Tier -->
+      <div class="neo-card pricing-card featured neo-glow-primary">
+        <div class="badge">Most Popular</div>
+        <div class="plan-header">
+          <h3>Pro</h3>
+          <div class="price">
+            <span class="amount">$29</span>
+            <span class="period">/month</span>
+          </div>
+        </div>
+        <ul class="features-list">
+          <li>✅ All Free features</li>
+          <li>✅ Priority support (24h response)</li>
+          <li>✅ Up to 10,000 API calls/month</li>
+          <li>✅ Private repository access</li>
+          <li>✅ Advanced security scans</li>
+          <li>✅ Real-time analytics dashboard</li>
+          <li>✅ Custom workflows</li>
+          <li>✅ Team collaboration (up to 5 members)</li>
+        </ul>
+        <button class="neo-button plan-button" data-plan="pro" data-price-id="price_pro_monthly">
+          Start Pro Trial
+        </button>
+      </div>
+
+      <!-- Enterprise Tier -->
+      <div class="neo-card pricing-card">
+        <div class="plan-header">
+          <h3>Enterprise</h3>
+          <div class="price">
+            <span class="amount">$299</span>
+            <span class="period">/month</span>
+          </div>
+        </div>
+        <ul class="features-list">
+          <li>✅ All Pro features</li>
+          <li>✅ Priority support (1h response)</li>
+          <li>✅ Unlimited API calls</li>
+          <li>✅ Dedicated account manager</li>
+          <li>✅ Custom agent development</li>
+          <li>✅ On-premise deployment option</li>
+          <li>✅ SLA guarantee (99.9% uptime)</li>
+          <li>✅ Unlimited team members</li>
+          <li>✅ Advanced security & compliance</li>
+        </ul>
+        <button class="neo-button plan-button" data-plan="enterprise">
+          Contact Sales
+        </button>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-grid">
+        <div class="faq-item neo-glass">
+          <h3>Can I change my plan later?</h3>
+          <p>Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate the cost.</p>
+        </div>
+
+        <div class="faq-item neo-glass">
+          <h3>What payment methods do you accept?</h3>
+          <p>We accept all major credit cards, debit cards, and enterprise purchase orders for annual contracts.</p>
+        </div>
+
+        <div class="faq-item neo-glass">
+          <h3>Is there a free trial?</h3>
+          <p>Yes! Pro and Enterprise plans come with a 14-day free trial. No credit card required to start.</p>
+        </div>
+
+        <div class="faq-item neo-glass">
+          <h3>Do you offer annual discounts?</h3>
+          <p>Yes! Save 20% when you choose annual billing. Contact us for custom enterprise pricing.</p>
+        </div>
+
+        <div class="faq-item neo-glass">
+          <h3>What happens if I exceed my API limit?</h3>
+          <p>We'll notify you when you reach 80% of your limit. You can upgrade anytime or purchase additional API credits.</p>
+        </div>
+
+        <div class="faq-item neo-glass">
+          <h3>Can I cancel anytime?</h3>
+          <p>Absolutely! There are no long-term contracts. Cancel anytime from your account settings.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <div class="neo-card cta-card">
+        <h2>Ready to get started?</h2>
+        <p>Join thousands of developers securing their smart contracts with CyberAi</p>
+        <div class="cta-buttons">
+          <button class="neo-button neo-glow-primary" id="start-free-btn">
+            Start Free
+          </button>
+          <a href="/docs/quickstart" class="neo-button">
+            View Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stripe Checkout Modal (Hidden by default) -->
+    <div 
+      id="checkout-modal" 
+      class="modal" 
+      style="display: none;"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="checkout-modal-title"
+    >
+      <div class="modal-content neo-card">
+        <span class="close" role="button" aria-label="Close" tabindex="0">&times;</span>
+        <h2 id="checkout-modal-title">Complete Your Purchase</h2>
+        <p>Redirecting to secure payment...</p>
+        <div class="neo-spinner"></div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var closeButton = document.querySelector('#checkout-modal .close');
+        if (!closeButton) return;
+
+        closeButton.addEventListener('keydown', function (event) {
+          var key = event.key || event.code;
+          if (key === 'Enter' || key === ' ' || key === 'Spacebar') {
+            event.preventDefault();
+            closeButton.click();
+          }
+        });
+      })();
+    </script>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem 1rem;
+    max-width: 1400px;
+  }
+
+  .pricing-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(45deg, var(--neo-primary), var(--neo-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: #666;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .description {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: #888;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .pricing-card {
+    padding: 2rem;
+    position: relative;
+    transition: all var(--transition-medium);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--neo-primary);
+    transform: scale(1.05);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .pricing-card.featured:hover {
+    transform: translateY(-8px) scale(1.05);
+  }
+
+  .badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--neo-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: var(--glow-md) var(--neo-primary);
+  }
+
+  .plan-header {
+    text-align: center;
+    border-bottom: 2px solid var(--glass-border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .plan-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--neo-primary);
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .amount {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--neo-primary);
+  }
+
+  .period {
+    font-size: 1.1rem;
+    color: #888;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+
+  .features-list li {
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: #555;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .features-list li:last-child {
+    border-bottom: none;
+  }
+
+  .plan-button {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .faq-section {
+    margin: 4rem 0;
+    text-align: center;
+  }
+
+  .faq-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--neo-primary);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .faq-item {
+    padding: 2rem;
+    text-align: left;
+    transition: all var(--transition-medium);
+  }
+
+  .faq-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--neo-primary);
+  }
+
+  .faq-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--neo-accent);
+  }
+
+  .faq-item p {
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .cta-section {
+    margin: 4rem 0 2rem;
+  }
+
+  .cta-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, var(--glass-bg), rgba(79, 70, 229, 0.05));
+  }
+
+  .cta-card h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .cta-card p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0 0 2rem 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .neo-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Modal Styles */
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-content {
+    position: relative;
+    margin: 10% auto;
+    padding: 3rem;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  .close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: var(--neo-primary);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .pricing-card.featured {
+      transform: scale(1);
+    }
+
+    .pricing-card:hover,
+    .pricing-card.featured:hover {
+      transform: translateY(-4px);
+    }
+
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .neo-button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Stripe integration placeholder
+  // In production, replace with actual Stripe publishable key
+  const STRIPE_PUBLISHABLE_KEY = 'YOUR_STRIPE_PUBLISHABLE_KEY_HERE';
+  
+  // Focus trap variables
+  let lastFocusedElement = null;
+  
+  // Function to get all focusable elements in modal
+  function getFocusableElements(modal) {
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    return Array.from(modal.querySelectorAll(focusableSelectors)).filter(el => {
+      return !el.hasAttribute('disabled') && el.offsetParent !== null;
+    });
+  }
+  
+  // Function to trap focus within modal
+  function trapFocus(modal) {
+    const focusableElements = getFocusableElements(modal);
+    if (focusableElements.length === 0) return;
+    
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    
+    // Focus first element when modal opens
+    firstElement.focus();
+    
+    // Handle tab key to trap focus
+    modal.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab') return;
+      
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+  }
+  
+  // Function to show modal with focus trap
+  function showModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    
+    // Save currently focused element
+    lastFocusedElement = document.activeElement;
+    
+    // Show modal
+    modal.style.display = 'block';
+    
+    // Trap focus
+    trapFocus(modal);
+  }
+  
+  // Function to close modal and restore focus
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    
+    modal.style.display = 'none';
+    
+    // Restore focus to previously focused element
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
+  }
+  
+  // Handle plan button clicks
+  document.querySelectorAll('.plan-button').forEach(button => {
+    button.addEventListener('click', async (e) => {
+      const plan = e.target.getAttribute('data-plan');
+      const priceId = e.target.getAttribute('data-price-id');
+      
+      if (plan === 'free') {
+        // Redirect to signup
+        window.location.href = '/login?plan=free';
+      } else if (plan === 'enterprise') {
+        // Redirect to contact form
+        window.location.href = 'mailto:sales@cyberai.network?subject=Enterprise%20Plan%20Inquiry';
+      } else if (priceId) {
+        // Show modal with focus trap
+        showModal('checkout-modal');
+        
+        // In production, integrate with Stripe Checkout
+        // const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+        // const { error } = await stripe.redirectToCheckout({
+        //   lineItems: [{ price: priceId, quantity: 1 }],
+        //   mode: 'subscription',
+        //   successUrl: window.location.origin + '/payment/success',
+        //   cancelUrl: window.location.origin + '/payment/cancel',
+        // });
+        
+        // For now, simulate redirect
+        setTimeout(() => {
+          alert('Stripe integration pending. This will redirect to Stripe Checkout in production.');
+          closeModal('checkout-modal');
+        }, 2000);
+      }
+    });
+  });
+
+  // Handle start free button
+  document.getElementById('start-free-btn')?.addEventListener('click', () => {
+    window.location.href = '/login?plan=free';
+  });
+
+  // Close modal
+  document.querySelector('.close')?.addEventListener('click', () => {
+    closeModal('checkout-modal');
+  });
+
+  // Close modal on outside click
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('checkout-modal');
+    if (e.target === modal) {
+      closeModal('checkout-modal');
+    }
+  });
+  
+  // Close modal on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('checkout-modal');
+      if (modal && modal.style.display === 'block') {
+        closeModal('checkout-modal');
+      }
+    }
+  });
+</script>

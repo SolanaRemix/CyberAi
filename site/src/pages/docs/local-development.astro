@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Local Development - CyberAi Documentation">
+  <main class="docs-page">
+    <div class="docs-container">
+      <h1>💻 Local Development</h1>
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Node.js 20+</li>
+        <li>npm or yarn</li>
+        <li>Git</li>
+      </ul>
+      <h2>Setup</h2>
+      <pre><code>git clone https://github.com/SolanaRemix/CyberAi.git
+cd CyberAi
+npm install
+cd site && npm install</code></pre>
+      <h2>Run Development Server</h2>
+      <pre><code>cd site
+npm run dev</code></pre>
+      <p><a href="/docs">← Back to Documentation</a></p>
+    </div>
+  </main>
+</Layout>
+<style>
+  .docs-page { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .docs-container { padding: 2rem; }
+  h1 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--neo-primary); }
+  h2 { font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--neo-accent); }
+  p, li { line-height: 1.8; color: #555; margin-bottom: 1rem; }
+  ul { margin-left: 2rem; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+  a { color: var(--neo-primary); text-decoration: none; font-weight: 600; }
+  a:hover { text-decoration: underline; }
+</style>

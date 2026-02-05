@@ -1,0 +1,199 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Agents - CyberAi Documentation">
+  <main class="docs-page">
+    <div class="docs-container">
+      <h1>🤖 AI Agents</h1>
+      
+      <section class="doc-section">
+        <h2>Overview</h2>
+        <p>
+          CyberAi agents are AI-powered automation services that perform specialized tasks within the ecosystem. 
+          Each agent is defined by a machine-readable contract that specifies its capabilities, requirements, and metadata.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>Available Agents</h2>
+        
+        <div class="agent-card">
+          <h3>Copilot Core</h3>
+          <p>Primary AI assistant for code generation, analysis, and workflow automation.</p>
+          <ul>
+            <li>Code generation and refactoring</li>
+            <li>Security analysis</li>
+            <li>Automated testing</li>
+            <li>Documentation generation</li>
+          </ul>
+        </div>
+
+        <div class="agent-card">
+          <h3>Terminal Mobile</h3>
+          <p>Mobile-optimized terminal interface for on-the-go operations.</p>
+          <ul>
+            <li>Remote command execution</li>
+            <li>Mobile-responsive UI</li>
+            <li>Real-time updates</li>
+            <li>Secure authentication</li>
+          </ul>
+        </div>
+
+        <div class="agent-card">
+          <h3>SmartBrain</h3>
+          <p>Advanced AI for intelligent code analysis and decision making.</p>
+          <ul>
+            <li>Pattern recognition</li>
+            <li>Predictive analytics</li>
+            <li>Automated refactoring</li>
+            <li>Conflict resolution</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Agent Contracts</h2>
+        <p>All agents must have a valid contract that defines:</p>
+        <ul>
+          <li><strong>Capabilities</strong>: What the agent can do</li>
+          <li><strong>Requirements</strong>: Dependencies and prerequisites</li>
+          <li><strong>Metadata</strong>: Version, author, license information</li>
+          <li><strong>Endpoints</strong>: API endpoints and interfaces</li>
+        </ul>
+        <p>View agent contracts in the <a href="https://github.com/SolanaRemix/CyberAi/tree/main/contracts/agents" target="_blank">contracts/agents</a> directory.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>Deploying an Agent</h2>
+        <pre><code># Clone the repository
+git clone https://github.com/SolanaRemix/CyberAi.git
+cd CyberAi
+
+# Install dependencies
+npm install
+
+# Deploy an agent
+npm run agent:deploy -- --agent copilot-core</code></pre>
+      </section>
+
+      <section class="doc-section">
+        <h2>Next Steps</h2>
+        <ul>
+          <li><a href="/docs/contracts">Learn about contract specifications</a></li>
+          <li><a href="/docs/quickstart">Follow the quickstart guide</a></li>
+          <li><a href="/ecosystem">Explore the ecosystem map</a></li>
+          <li><a href="/operators">Access the operator console</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .docs-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .docs-container {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--neo-primary);
+  }
+
+  .doc-section {
+    margin: 2.5rem 0;
+  }
+
+  .doc-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--neo-accent);
+  }
+
+  .doc-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+
+  .doc-section p {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .doc-section ul {
+    margin-left: 2rem;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  .doc-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .agent-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transition: all var(--transition-medium);
+  }
+
+  .agent-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--neo-primary);
+    box-shadow: var(--glow-md) var(--neo-primary);
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+  }
+
+  a {
+    color: var(--neo-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .docs-container {
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .doc-section h2 {
+      font-size: 1.5rem;
+    }
+
+    .agent-card {
+      padding: 1rem;
+    }
+  }
+</style>
