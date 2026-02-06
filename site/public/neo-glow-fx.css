@@ -17,17 +17,17 @@
   --neo-success: #06ffa5;
   --neo-warning: #ffbe0b;
   --neo-danger: #ff006e;
-  
+
   /* Glow intensities */
   --glow-sm: 0 0 5px;
   --glow-md: 0 0 10px;
   --glow-lg: 0 0 20px;
   --glow-xl: 0 0 30px;
-  
+
   /* Background colors with transparency */
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
-  
+
   /* Animation timings */
   --transition-fast: 0.2s;
   --transition-medium: 0.3s;
@@ -44,42 +44,48 @@
 
 /* Glow effect utility classes */
 .neo-glow-primary {
-  box-shadow: var(--glow-md) var(--neo-primary),
-              var(--glow-lg) var(--neo-primary),
-              inset var(--glow-sm) var(--neo-primary);
+  box-shadow:
+    var(--glow-md) var(--neo-primary),
+    var(--glow-lg) var(--neo-primary),
+    inset var(--glow-sm) var(--neo-primary);
   transition: box-shadow var(--transition-medium) ease;
 }
 
 .neo-glow-primary:hover {
-  box-shadow: var(--glow-lg) var(--neo-primary),
-              var(--glow-xl) var(--neo-primary),
-              inset var(--glow-md) var(--neo-primary);
+  box-shadow:
+    var(--glow-lg) var(--neo-primary),
+    var(--glow-xl) var(--neo-primary),
+    inset var(--glow-md) var(--neo-primary);
 }
 
 .neo-glow-secondary {
-  box-shadow: var(--glow-md) var(--neo-secondary),
-              var(--glow-lg) var(--neo-secondary),
-              inset var(--glow-sm) var(--neo-secondary);
+  box-shadow:
+    var(--glow-md) var(--neo-secondary),
+    var(--glow-lg) var(--neo-secondary),
+    inset var(--glow-sm) var(--neo-secondary);
   transition: box-shadow var(--transition-medium) ease;
 }
 
 .neo-glow-secondary:hover {
-  box-shadow: var(--glow-lg) var(--neo-secondary),
-              var(--glow-xl) var(--neo-secondary),
-              inset var(--glow-md) var(--neo-secondary);
+  box-shadow:
+    var(--glow-lg) var(--neo-secondary),
+    var(--glow-xl) var(--neo-secondary),
+    inset var(--glow-md) var(--neo-secondary);
 }
 
 .neo-glow-accent {
-  box-shadow: var(--glow-md) var(--neo-accent),
-              var(--glow-lg) var(--neo-accent),
-              inset var(--glow-sm) var(--neo-accent);
+  box-shadow:
+    var(--glow-md) var(--neo-accent),
+    var(--glow-lg) var(--neo-accent),
+    inset var(--glow-sm) var(--neo-accent);
   transition: box-shadow var(--transition-medium) ease;
 }
 
 .neo-glow-accent:hover {
-  box-shadow: var(--glow-lg) var(--neo-accent),
-              var(--glow-xl) var(--neo-accent),
-              inset var(--glow-md) var(--neo-accent);
+  box-shadow:
+    var(--glow-lg) var(--neo-accent),
+    var(--glow-xl) var(--neo-accent),
+    inset var(--glow-md) var(--neo-accent);
 }
 
 /* Glassmorphism effects */
@@ -130,8 +136,9 @@
 .neo-button:hover {
   background: var(--neo-primary);
   color: #000;
-  box-shadow: var(--glow-lg) var(--neo-primary),
-              var(--glow-xl) var(--neo-primary);
+  box-shadow:
+    var(--glow-lg) var(--neo-primary),
+    var(--glow-xl) var(--neo-primary);
   transform: translateY(-2px);
 }
 
@@ -156,8 +163,9 @@
   border-radius: 16px;
   opacity: 0;
   transition: opacity var(--transition-medium) ease;
-  box-shadow: var(--glow-lg) var(--neo-primary),
-              inset var(--glow-sm) var(--neo-primary);
+  box-shadow:
+    var(--glow-lg) var(--neo-primary),
+    inset var(--glow-sm) var(--neo-primary);
   pointer-events: none;
 }
 
@@ -172,19 +180,22 @@
 
 /* Text glow effects */
 .neo-text-glow {
-  text-shadow: var(--glow-sm) var(--neo-primary),
-               var(--glow-md) var(--neo-primary);
+  text-shadow:
+    var(--glow-sm) var(--neo-primary),
+    var(--glow-md) var(--neo-primary);
   transition: text-shadow var(--transition-medium) ease;
 }
 
 .neo-text-glow:hover {
-  text-shadow: var(--glow-md) var(--neo-primary),
-               var(--glow-lg) var(--neo-primary);
+  text-shadow:
+    var(--glow-md) var(--neo-primary),
+    var(--glow-lg) var(--neo-primary);
 }
 
 /* Pulse animation for important elements */
 @keyframes neo-pulse {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: var(--glow-md) var(--neo-primary);
   }
   50% {
@@ -222,8 +233,9 @@
   height: 12px;
   border-radius: 50%;
   background: var(--neo-success);
-  box-shadow: var(--glow-md) var(--neo-success),
-              var(--glow-lg) var(--neo-success);
+  box-shadow:
+    var(--glow-md) var(--neo-success),
+    var(--glow-lg) var(--neo-success);
   animation: neo-pulse 2s ease-in-out infinite;
 }
 
@@ -233,8 +245,9 @@
   height: 12px;
   border-radius: 50%;
   background: var(--neo-warning);
-  box-shadow: var(--glow-md) var(--neo-warning),
-              var(--glow-lg) var(--neo-warning);
+  box-shadow:
+    var(--glow-md) var(--neo-warning),
+    var(--glow-lg) var(--neo-warning);
 }
 
 .neo-status-danger {
@@ -243,8 +256,9 @@
   height: 12px;
   border-radius: 50%;
   background: var(--neo-danger);
-  box-shadow: var(--glow-md) var(--neo-danger),
-              var(--glow-lg) var(--neo-danger);
+  box-shadow:
+    var(--glow-md) var(--neo-danger),
+    var(--glow-lg) var(--neo-danger);
   animation: neo-pulse 1s ease-in-out infinite;
 }
 

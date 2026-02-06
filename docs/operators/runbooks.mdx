@@ -5,6 +5,7 @@ Operational procedures for maintaining and operating CyberAi.
 ## Runbook: CI Failing
 
 ### Symptoms
+
 - GitHub Actions showing red X
 - PR blocked from merging
 - Deployment failed
@@ -17,6 +18,7 @@ Operational procedures for maintaining and operating CyberAi.
    - Note the failing step
 
 2. **Reproduce locally**
+
    ```bash
    ./tools/bootstrap/bootstrap.sh
    ./tools/audit/audit.sh
@@ -30,6 +32,7 @@ Operational procedures for maintaining and operating CyberAi.
 ### Resolution
 
 #### Contract Validation Failure
+
 ```bash
 # Validate locally
 ajv validate -s contracts/contract.schema.json -d "contracts/**/*.json" --strict=false
@@ -44,6 +47,7 @@ ajv validate -s contracts/contract.schema.json -d "contracts/**/*.json" --strict
 ```
 
 #### Site Build Failure
+
 ```bash
 cd site
 npm run build
@@ -59,6 +63,7 @@ npm run build
 ```
 
 #### Workflow Configuration Issue
+
 ```bash
 # Validate workflow syntax
 cat .github/workflows/ci.yml
@@ -70,6 +75,7 @@ cat .github/workflows/ci.yml
 ```
 
 ### Prevention
+
 - Run `./tools/audit/audit.sh` before pushing
 - Validate contracts locally
 - Test site builds before committing
@@ -79,6 +85,7 @@ cat .github/workflows/ci.yml
 ## Runbook: Contracts Changed
 
 ### Symptoms
+
 - New contract added
 - Existing contract modified
 - Contract validation failing
@@ -86,11 +93,13 @@ cat .github/workflows/ci.yml
 ### Actions
 
 1. **Review changes**
+
    ```bash
    git diff contracts/
    ```
 
 2. **Validate new/modified contracts**
+
    ```bash
    ajv validate -s contracts/contract.schema.json -d "contracts/agents/new-contract.json" --strict=false
    ```
@@ -106,6 +115,7 @@ cat .github/workflows/ci.yml
    - Update integration tests
 
 ### Validation Checklist
+
 - [ ] JSON syntax valid
 - [ ] Schema compliance
 - [ ] Required fields present
@@ -119,6 +129,7 @@ cat .github/workflows/ci.yml
 ## Runbook: Custom Domain Broken (cyberai.network)
 
 ### Symptoms
+
 - cyberai.network not resolving
 - SSL certificate errors
 - Pages showing 404
@@ -126,12 +137,14 @@ cat .github/workflows/ci.yml
 ### Diagnosis
 
 1. **Check DNS records**
+
    ```bash
    dig cyberai.network
    nslookup cyberai.network
    ```
 
 2. **Verify CNAME file**
+
    ```bash
    cat CNAME
    # Should contain: cyberai.network
@@ -150,12 +163,14 @@ cat .github/workflows/ci.yml
 ### Resolution
 
 #### DNS Not Resolving
+
 - Update DNS records at domain registrar
 - Point to GitHub Pages:
   - A records: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
   - CNAME record: SolanaRemix.github.io
 
 #### CNAME File Missing
+
 ```bash
 echo "cyberai.network" > CNAME
 git add CNAME
@@ -164,11 +179,13 @@ git push
 ```
 
 #### GitHub Pages Configuration
+
 - Go to Settings → Pages
 - Set custom domain to: cyberai.network
 - Save and wait for DNS check (can take up to 24 hours)
 
 ### Prevention
+
 - Don't delete CNAME file
 - Monitor DNS propagation after changes
 - Keep GitHub Pages settings documented
@@ -178,6 +195,7 @@ git push
 ## Runbook: Site Build Failure
 
 ### Symptoms
+
 - `npm run build` fails in /site
 - GitHub Pages deployment failing
 - Site showing old content
@@ -185,6 +203,7 @@ git push
 ### Diagnosis
 
 1. **Check build locally**
+
    ```bash
    cd site
    npm run build
@@ -205,11 +224,13 @@ git push
 ### Resolution
 
 #### Syntax Errors
+
 - Fix errors in .astro, .ts, or .js files
 - Check line numbers in error messages
 - Validate JSX/TSX syntax
 
 #### Missing Dependencies
+
 ```bash
 cd site
 npm install
@@ -218,11 +239,13 @@ npm ci
 ```
 
 #### Configuration Issues
+
 - Check `site/astro.config.mjs`
 - Verify `site/package.json` scripts
 - Ensure all plugins properly configured
 
 #### Build Cache Issues
+
 ```bash
 cd site
 rm -rf dist .astro node_modules
@@ -231,6 +254,7 @@ npm run build
 ```
 
 ### Prevention
+
 - Test builds locally before pushing
 - Keep dependencies up to date
 - Use `npm ci` for reproducible installs
@@ -241,6 +265,7 @@ npm run build
 ## Runbook: Contract Registry Issues
 
 ### Symptoms
+
 - Agents can't discover contracts
 - SmartBrain runners not finding agents
 - Contract validation passing but consumers failing
@@ -248,18 +273,21 @@ npm run build
 ### Diagnosis
 
 1. **Verify contract structure**
+
    ```bash
    tree contracts/
    # Should show agents/ and repos/ subdirectories
    ```
 
 2. **Check contract accessibility**
+
    ```bash
    # Test GitHub API access
    curl https://api.github.com/repos/SolanaRemix/CyberAi/contents/contracts/agents
    ```
 
 3. **Validate contracts**
+
    ```bash
    ./tools/audit/audit.sh
    ```
@@ -272,6 +300,7 @@ npm run build
 ### Resolution
 
 #### Missing Contracts
+
 ```bash
 # Ensure contracts committed
 git add contracts/
@@ -280,6 +309,7 @@ git push
 ```
 
 #### Invalid Contract Format
+
 ```bash
 # Validate and fix
 ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --strict=false
@@ -287,11 +317,13 @@ ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --st
 ```
 
 #### Consumer Configuration
+
 - Update consumer contract paths
 - Verify consumer has correct repository URL
 - Check consumer permissions
 
 ### Prevention
+
 - Validate contracts before committing
 - Test with actual consumers
 - Document contract structure
@@ -302,6 +334,7 @@ ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --st
 ## Runbook: Security Alert
 
 ### Symptoms
+
 - Dependabot alert
 - CodeQL finding
 - npm audit vulnerability
@@ -321,6 +354,7 @@ ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --st
    - Available fix
 
 3. **Update dependencies**
+
    ```bash
    npm update <package>
    # or for security-specific updates
@@ -328,6 +362,7 @@ ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --st
    ```
 
 4. **Test after updates**
+
    ```bash
    npm test
    npm run build
@@ -340,6 +375,7 @@ ajv validate -s contracts/contract.schema.json -d "contracts/agents/*.json" --st
    - Update CHANGELOG if needed
 
 ### Prevention
+
 - Enable Dependabot
 - Run `npm audit` regularly
 - Keep dependencies updated

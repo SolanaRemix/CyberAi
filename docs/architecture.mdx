@@ -79,6 +79,7 @@ This repository (`SolanaRemix/CyberAi`) functions as:
 Machine-readable JSON contracts defining capabilities and requirements.
 
 **Structure:**
+
 ```
 contracts/
 ├── contract.schema.json       # JSON Schema for validation
@@ -91,6 +92,7 @@ contracts/
 ```
 
 **Schema Elements:**
+
 - `version`: Semantic version
 - `type`: agent | repository | runner
 - `metadata`: Name, description, owner, tags
@@ -99,6 +101,7 @@ contracts/
 - `compliance`: Security audit status
 
 **Validation:**
+
 - Automated via `contracts-validate.yml` workflow
 - Local validation: `ajv validate -s contracts/contract.schema.json -d "contracts/**/*.json" --strict=false`
 - Fails PR if contracts invalid
@@ -108,6 +111,7 @@ contracts/
 Operator-grade prompts that agents execute directly from the repository.
 
 **Structure:**
+
 ```
 prompts/
 ├── agents/                    # Agent-specific prompts
@@ -121,6 +125,7 @@ prompts/
 ```
 
 **Prompt Format:**
+
 - Markdown documents with clear sections
 - Input parameters defined
 - Expected outputs documented
@@ -128,6 +133,7 @@ prompts/
 - References to specific directories and files
 
 **Usage:**
+
 - Agents load prompts via GitHub API or local clone
 - Prompts reference contracts and tools
 - Version controlled for consistency
@@ -137,6 +143,7 @@ prompts/
 POSIX shell scripts for bootstrapping and auditing.
 
 **Bootstrap (`/tools/bootstrap/bootstrap.sh`):**
+
 1. Verify Node.js 18+
 2. Install dependencies
 3. Validate contracts
@@ -144,6 +151,7 @@ POSIX shell scripts for bootstrapping and auditing.
 5. Report status
 
 **Audit (`/tools/audit/audit.sh`):**
+
 1. Validate contracts against schema
 2. Check workflow integrity
 3. Verify repository structure
@@ -151,6 +159,7 @@ POSIX shell scripts for bootstrapping and auditing.
 5. Validate site build
 
 **Configuration:**
+
 - `bootstrap.config.example.json` for custom settings
 - Environment variables for overrides
 - POSIX compatible (no Bash-specific features)
@@ -160,6 +169,7 @@ POSIX shell scripts for bootstrapping and auditing.
 Static site built with Astro, deployed to GitHub Pages.
 
 **Structure:**
+
 ```
 site/
 ├── astro.config.mjs          # Astro configuration
@@ -174,12 +184,14 @@ site/
 ```
 
 **Routes:**
+
 - `/` - Landing page
 - `/operators` - Operator console (runbooks, bootstrap, repos)
 - `/ecosystem` - Visual map of CyberAi repos
 - `/docs/*` - Documentation pages
 
 **Build & Deploy:**
+
 - Build: `npm run build` in `/site`
 - Output: `/site/dist`
 - Deploy: GitHub Pages via `pages-deploy.yml`
@@ -190,6 +202,7 @@ site/
 Operator and ecosystem documentation.
 
 **Structure:**
+
 ```
 docs/
 ├── index.mdx                 # What is CyberAi
@@ -200,6 +213,7 @@ docs/
 ```
 
 **Content:**
+
 - Real-world usage patterns
 - Step-by-step guides
 - Troubleshooting procedures
@@ -210,16 +224,19 @@ docs/
 Automated CI/CD via GitHub Actions.
 
 **ci.yml:**
+
 - Trigger: Push, PR
 - Jobs: Run bootstrap, run audit
 - Permissions: `contents: read`
 
 **pages-deploy.yml:**
+
 - Trigger: Push to main
 - Jobs: Build site, deploy to Pages
 - Permissions: `contents: read`, `pages: write`, `id-token: write`
 
 **contracts-validate.yml:**
+
 - Trigger: Changes to `/contracts`
 - Jobs: Validate against schema, check for secrets
 - Permissions: `contents: read`
@@ -288,21 +305,25 @@ Available at cyberai.network
 ## Integration Points
 
 ### SmartBrain Runners
+
 - Consume contracts from `/contracts/repos/smartbrain.json`
 - Discover agents from `/contracts/agents/`
 - Execute agents per contract definitions
 
 ### GitAntivirus
+
 - Scans CyberAi repository per `/contracts/repos/gitantivirus.json`
 - Validates contracts for security
 - Audits workflows for vulnerabilities
 
 ### Copilot Agents
+
 - Load prompts from `/prompts/agents/copilot-core/`
 - Execute bootstrap and repair procedures
 - Reference contracts for validation
 
 ### Terminal Mobile
+
 - Execute bootstrap on iOS/Terminal
 - Report status per `/prompts/agents/terminal-mobile/local-bootstrap.md`
 - Lightweight contract validation
@@ -310,21 +331,25 @@ Available at cyberai.network
 ## Security Model
 
 **Validation:**
+
 - All contracts schema-validated
 - Sensitive data scanning
 - Workflow permission restrictions
 
 **Permissions:**
+
 - Minimal GitHub Actions permissions
 - Explicit permission declarations
 - No elevated privileges
 
 **Audit:**
+
 - Automated audit script
 - CodeQL scanning
 - Dependency vulnerability checks
 
 **Access Control:**
+
 - Repository-level access controls
 - Protected branches
 - Required reviews for contracts
@@ -332,16 +357,19 @@ Available at cyberai.network
 ## Scalability
 
 **Horizontal:**
+
 - Static site via CDN (GitHub Pages)
 - Decentralized agent execution
 - Contract registry as source of truth
 
 **Vertical:**
+
 - Contracts cached by consumers
 - Prompts loaded on-demand
 - Tools run locally
 
 **No Central Dependencies:**
+
 - No external APIs required
 - GitHub as only dependency
 - Self-contained bootstrap

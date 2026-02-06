@@ -25,6 +25,7 @@ The bootstrap script will verify your environment, install dependencies, validat
 ```
 
 Expected output:
+
 ```
 [bootstrap.sh] Starting CyberAi bootstrap process...
 [bootstrap.sh] ✓ Node.js v20.11.0 detected
@@ -49,21 +50,27 @@ All checks should pass with no critical issues.
 ## Step 4: Explore the Repository
 
 ### Contracts
+
 View registered agents and repositories:
+
 ```bash
 ls -la contracts/agents/
 ls -la contracts/repos/
 ```
 
 ### Prompts
+
 Review operator and agent prompts:
+
 ```bash
 cat prompts/operators/security-audit.md
 cat prompts/agents/copilot-core/bootstrap.md
 ```
 
 ### Site
+
 Start the development server:
+
 ```bash
 cd site
 npm run dev
@@ -76,6 +83,7 @@ Visit http://localhost:4321 to see the CyberAi site.
 ### Add a New Contract
 
 1. Create a contract file:
+
 ```bash
 cp contracts/agents/example-agent.json contracts/agents/my-agent.json
 ```
@@ -83,11 +91,13 @@ cp contracts/agents/example-agent.json contracts/agents/my-agent.json
 2. Edit the contract with your agent details
 
 3. Validate the contract:
+
 ```bash
 ajv validate -s contracts/contract.schema.json -d "contracts/agents/my-agent.json" --strict=false
 ```
 
 4. Commit and push:
+
 ```bash
 git add contracts/agents/my-agent.json
 git commit -m "Add my-agent contract"
@@ -97,23 +107,27 @@ git push
 ## Common Tasks
 
 ### Update Dependencies
+
 ```bash
 npm install
 cd site && npm install
 ```
 
 ### Build Site for Production
+
 ```bash
 cd site
 npm run build
 ```
 
 ### Validate All Contracts
+
 ```bash
 ./tools/audit/audit.sh
 ```
 
 ### Run CI Checks Locally
+
 ```bash
 ./tools/bootstrap/bootstrap.sh
 ./tools/audit/audit.sh
@@ -122,17 +136,20 @@ npm run build
 ## Troubleshooting
 
 ### Bootstrap Fails
+
 - Check Node.js version: `node --version` (must be 18+)
 - Check npm version: `npm --version`
 - Clear npm cache: `npm cache clean --force`
 - Remove node_modules and reinstall: `rm -rf node_modules package-lock.json && npm install`
 
 ### Contract Validation Fails
+
 - Check JSON syntax with `cat contracts/path/to/contract.json | jq`
 - Validate against schema manually
 - Review error messages carefully
 
 ### Site Build Fails
+
 - Check for syntax errors in .astro files
 - Verify all dependencies installed
 - Clear build cache: `rm -rf site/dist site/.astro`

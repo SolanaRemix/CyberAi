@@ -11,17 +11,20 @@ CyberAi is a **GitHub-native control plane** that serves as the central coordina
 This repository (`SolanaRemix/CyberAi`) functions as:
 
 ### 1. Source of Truth for cyberai.network
+
 - **GitHub Pages Site**: Deployed from the `main` branch via automated workflows
 - **Documentation**: Comprehensive guides, architecture docs, and operational runbooks
 - **Custom Domain**: cyberai.network with DNS configuration
 
 ### 2. Operator Control Plane
+
 - **Contract Registry**: Machine-readable contracts for all ecosystem participants
 - **Prompt Library**: Operator-grade instructions for agents
 - **Automation Tools**: Bootstrap and audit scripts for ecosystem management
 - **CI/CD Workflows**: Automated validation and deployment
 
 ### 3. Contract + Prompt Registry
+
 - **Agents**: AI agents for code generation, security audits, and automation
 - **Repositories**: Ecosystem repositories like SmartBrain (runners) and GitAntivirus (security)
 - **Runners**: Execution environments for agents
@@ -30,6 +33,7 @@ This repository (`SolanaRemix/CyberAi`) functions as:
 ## No Abstract SaaS
 
 CyberAi is a **GitHub-first, repository-native control plane**:
+
 - No external infrastructure required
 - All state in version control
 - GitHub Actions for automation
@@ -39,28 +43,36 @@ CyberAi is a **GitHub-first, repository-native control plane**:
 ## Ecosystem Repositories
 
 ### SmartBrain
+
 **Runner Infrastructure**
+
 - Discovers contracts from CyberAi
 - Executes agents based on contract definitions
 - Provides runtime environment
 - [View Repository](https://github.com/SolanaRemix/SmartBrain) | [View Contract](https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/smartbrain.json)
 
 ### GitAntivirus
+
 **Security Scanning & Auditing**
+
 - Automated security vulnerability detection
 - Repository scanning and auditing
 - Contract validation for security
 - [View Repository](https://github.com/SolanaRemix/GitAntivirus) | [View Contract](https://github.com/SolanaRemix/CyberAi/blob/main/contracts/repos/gitantivirus.json)
 
 ### Copilot Core Agent
+
 **Code Generation & Analysis**
+
 - Bootstrap fresh repository clones
 - Repair failing CI and missing files
 - Analyze code for issues
 - [View Contract](https://github.com/SolanaRemix/CyberAi/blob/main/contracts/agents/copilot-core.json) | [View Prompts](https://github.com/SolanaRemix/CyberAi/tree/main/prompts/agents/copilot-core)
 
 ### Terminal Mobile Agent
+
 **iOS/Terminal Operations**
+
 - Local bootstrap on mobile devices
 - Repository synchronization
 - Script execution in mobile environments
@@ -69,7 +81,9 @@ CyberAi is a **GitHub-first, repository-native control plane**:
 ## Key Features
 
 ### Contract Registry
+
 Machine-readable JSON contracts define:
+
 - Capabilities and actions
 - Requirements and dependencies
 - Metadata and ownership
@@ -78,7 +92,9 @@ Machine-readable JSON contracts define:
 All contracts validated against JSON Schema on every commit.
 
 ### Prompt Library
+
 Operator-grade prompts provide:
+
 - Clear input/output specifications
 - Step-by-step procedures
 - Non-goals and constraints
@@ -87,12 +103,16 @@ Operator-grade prompts provide:
 Agents consume prompts directly from the repository.
 
 ### Automation Tools
+
 Shell scripts for operators:
+
 - **Bootstrap**: Verify environment, install dependencies, validate contracts, build site
 - **Audit**: Validate contracts, check workflows, scan for security issues
 
 ### Static Site
+
 Astro-based site deployed to GitHub Pages:
+
 - Documentation and guides
 - Operator console
 - Ecosystem visualization
@@ -101,6 +121,7 @@ Astro-based site deployed to GitHub Pages:
 ## Getting Started
 
 ### For Operators
+
 See [Operator Quickstart](./operators/quickstart.mdx) for step-by-step setup instructions.
 
 ```bash
@@ -116,9 +137,11 @@ cd CyberAi
 ```
 
 ### For Developers
+
 See [Architecture Documentation](./architecture.mdx) to understand system design.
 
 ### For Contributors
+
 See [Contributing Guide](../CONTRIBUTING.md) for contribution guidelines.
 
 ## Documentation
@@ -131,6 +154,7 @@ See [Contributing Guide](../CONTRIBUTING.md) for contribution guidelines.
 ## Workflows
 
 ### PR Flow
+
 ```
 Developer → Push to branch
     ↓
@@ -145,6 +169,7 @@ Contract Validation
 ```
 
 ### Deployment Flow
+
 ```
 Push to main
     ↓
@@ -158,6 +183,7 @@ Available at cyberai.network
 ```
 
 ### Contract Discovery Flow
+
 ```
 SmartBrain Runner
     ↓
