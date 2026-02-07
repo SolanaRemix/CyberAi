@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://nodejs.org/)
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://cyberai.network)
+![CI](https://github.com/SolanaRemix/CyberAi/actions/workflows/ci-deploy.yml/badge.svg)
 
 **AI-Powered Smart Contract Security & Orchestration Platform**
 
