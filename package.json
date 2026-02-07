@@ -21,7 +21,7 @@
     "prettier:write": "prettier --write ."
   },
   "dependencies": {
-    "openai": "^6.17.0"
+    "openai": "^6.18.0"
   },
   "devDependencies": {
     "@types/node": "^25.1.0",
