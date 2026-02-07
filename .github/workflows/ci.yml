@@ -1,8 +1,19 @@
 name: CI
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request:
+
+# Prevent overlapping runs on the same branch
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
+  checks: write
+  pull-requests: write
+  actions: read
 
 jobs:
   build:
@@ -11,32 +22,128 @@ jobs:
     permissions:
       contents: read
 
+    env:
+      NODE_ENV: production
+      FORCE_COLOR: 1
+
     steps:
-      - name: Pre-firewall environment setup
+      # ---------------------------------------------------------
+      # 0. Pre‑firewall environment hygiene
+      # ---------------------------------------------------------
+      - name: 🛡️ Pre-firewall environment setup
         run: |
-          # Disable npm telemetry and audit before firewall is enabled
           npm config set audit false
           npm config set fund false
           npm config set update-notifier false
 
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      # ---------------------------------------------------------
+      # 1. Checkout
+      # ---------------------------------------------------------
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          fetch-depth: 1
 
-      - name: Install dependencies
+      # ---------------------------------------------------------
+      # 2. Node setup
+      # ---------------------------------------------------------
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # ---------------------------------------------------------
+      # 3. Install dependencies
+      # ---------------------------------------------------------
+      - name: 📦 Install dependencies
         run: npm ci
 
-      - name: Run Bootstrap
+      # ---------------------------------------------------------
+      # 4. Repo Health (optional hook)
+      # ---------------------------------------------------------
+      - name: 🩺 Repo Health Scan
+        run: |
+          if [ -f ./tools/repo-health/scan.sh ]; then
+            chmod +x ./tools/repo-health/scan.sh
+            ./tools/repo-health/scan.sh
+          else
+            echo "No repo-health tool found. Skipping."
+          fi
+
+      # ---------------------------------------------------------
+      # 5. Bootstrap (environment validation + build prep)
+      # ---------------------------------------------------------
+      - name: 🚀 Run Bootstrap
         run: |
           chmod +x tools/bootstrap/bootstrap.sh
           ./tools/bootstrap/bootstrap.sh
 
-      - name: Run Audit
+      # ---------------------------------------------------------
+      # 6. Audit (contract + workflow validation)
+      # ---------------------------------------------------------
+      - name: 🔍 Run Audit
         run: |
           chmod +x tools/audit/audit.sh
           ./tools/audit/audit.sh
+
+      # ---------------------------------------------------------
+      # 7. Lint
+      # ---------------------------------------------------------
+      - name: 🧹 Lint
+        run: npm run lint
+
+      # ---------------------------------------------------------
+      # 8. Typecheck
+      # ---------------------------------------------------------
+      - name: 🧠 Typecheck
+        run: npm run typecheck
+
+      # ---------------------------------------------------------
+      # 9. Tests
+      # ---------------------------------------------------------
+      - name: 🧪 Run tests
+        run: npm test
+
+      # ---------------------------------------------------------
+      # 10. Build
+      # ---------------------------------------------------------
+      - name: 🏗️ Build
+        run: npm run build
+
+      # ---------------------------------------------------------
+      # 11. Upload build artifacts (operator observability)
+      # ---------------------------------------------------------
+      - name: 📦 Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: |
+            dist
+            site/dist
+          if-no-files-found: ignore
+
+      # ---------------------------------------------------------
+      # 12. Slack Notification
+      # ---------------------------------------------------------
+      - name: 🔔 Notify Slack
+        if: always()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "⚙️ *CyberAi Operator CI* on `${{ github.ref_name }}`:\n*Status:* ${{ job.status }}\n*Commit:* <${{ github.event.head_commit.url }}|${{ github.event.head_commit.message }}>\n*Author:* ${{ github.event.head_commit.author.name }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      # ---------------------------------------------------------
+      # 13. Discord Notification
+      # ---------------------------------------------------------
+      - name: 🔔 Notify Discord
+        if: always()
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d "{\"content\":\"⚙️ *CyberAi Operator CI* on \`${{ github.ref_name }}\` — *${{ job.status }}*\"}" \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
