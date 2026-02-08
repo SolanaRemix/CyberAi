@@ -166,11 +166,20 @@ optimize_build() {
 generate_build_info() {
     log_info "Generating build information..."
     
+    # Note: This requires GNU date for -u flag. On macOS, install coreutils: brew install coreutils
+    # Or use 'gdate' instead of 'date' on macOS
+    local build_time
+    if command -v gdate >/dev/null 2>&1; then
+        build_time=$(gdate -u +"%Y-%m-%dT%H:%M:%SZ")
+    else
+        build_time=$(date -u +"%Y-%m-%dT%H:%M:%SZ" 2>/dev/null || date +"%Y-%m-%dT%H:%M:%S%z")
+    fi
+    
     cat > dist/build-info.json <<EOF
 {
   "version": "$(node -p "require('./package.json').version")",
   "buildMode": "$BUILD_MODE",
-  "buildTime": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+  "buildTime": "$build_time",
   "nodeVersion": "$(node --version)",
   "platform": "$(uname -s)",
   "arch": "$(uname -m)",

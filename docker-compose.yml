@@ -4,6 +4,10 @@
 
 version: '3.9'
 
+# Use environment variable for version
+x-common-labels: &common-labels
+  com.cyberai.version: ${CYBERAI_VERSION:-1.1.0}
+
 services:
   # Main CyberAi application
   app:
@@ -33,8 +37,8 @@ services:
       retries: 3
       start_period: 40s
     labels:
-      - "com.cyberai.service=app"
-      - "com.cyberai.version=1.1.0"
+      <<: *common-labels
+      com.cyberai.service: app
 
   # Development service
   dev:
@@ -59,12 +63,12 @@ services:
       - cyberai-network
     command: npm run dev
     labels:
-      - "com.cyberai.service=dev"
-      - "com.cyberai.version=1.1.0"
+      <<: *common-labels
+      com.cyberai.service: dev
     profiles:
       - dev
 
-  # Site service (Astro)
+  # Site service (Astro) - uses default nginx on port 80
   site:
     build:
       context: ./site
@@ -73,14 +77,14 @@ services:
     container_name: cyberai-site
     restart: unless-stopped
     ports:
-      - "4321:4321"
+      - "4321:80"  # Map host 4321 to container 80 (nginx default)
     environment:
       - NODE_ENV=production
     networks:
       - cyberai-network
     labels:
-      - "com.cyberai.service=site"
-      - "com.cyberai.version=1.1.0"
+      <<: *common-labels
+      com.cyberai.service: site
     profiles:
       - site
 
@@ -102,7 +106,8 @@ services:
       timeout: 5s
       retries: 5
     labels:
-      - "com.cyberai.service=redis"
+      <<: *common-labels
+      com.cyberai.service: redis
     profiles:
       - cache
 
@@ -124,7 +129,8 @@ services:
     networks:
       - cyberai-network
     labels:
-      - "com.cyberai.service=nginx"
+      <<: *common-labels
+      com.cyberai.service: nginx
     profiles:
       - proxy
 

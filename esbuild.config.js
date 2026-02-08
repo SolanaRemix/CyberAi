@@ -124,7 +124,12 @@ async function build() {
 }
 
 // Run build if this is the main module
-if (import.meta.url === `file://${process.argv[1]}`) {
+const currentFilePath = fileURLToPath(import.meta.url);
+const mainScriptPath = process.argv[1];
+const isMainModule = currentFilePath === mainScriptPath || 
+                     currentFilePath === fileURLToPath(`file://${mainScriptPath}`);
+
+if (isMainModule) {
   build();
 }
 
