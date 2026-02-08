@@ -14,6 +14,7 @@
     "test:integration": "vitest run tests/integration",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\"",
     "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\"",
     "verify-vercel-disconnect": "bash scripts/verify-vercel-disconnect.sh",
