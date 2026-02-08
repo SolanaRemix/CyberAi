@@ -139,7 +139,7 @@ The workflow expects these npm scripts to be defined:
 
 ### Customization
 
-To customize the comment format, edit the `script` section in the `comment-test-results` job at `.github/workflows/ci.yml:276`.
+To customize the comment format, edit the `script` section in the `comment-test-results` job (look for the "📊 Generate and Post Comment" step) in `.github/workflows/ci.yml`.
 
 ## Troubleshooting
 
