@@ -51,7 +51,9 @@ jobs:
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # ---------------------------------------------------------
       # 2. Node setup
@@ -121,7 +123,7 @@ jobs:
       # 7.5. Auto-fix lint issues
       # ---------------------------------------------------------
       - name: 🔧 Auto-fix lint issues
-        if: steps.lint.outcome == 'failure'
+        if: steps.lint.outcome == 'failure' && github.event_name == 'pull_request'
         run: |
           echo "Attempting to auto-fix lint issues..."
           npm run lint:fix 2>&1 | tee logs/lint-fix.log || true
@@ -132,7 +134,7 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add -A
             git commit -m "chore: auto-fix lint issues [skip ci]"
-            git push
+            git push origin ${{ github.event.pull_request.head.ref }}
             echo "✅ Lint fixes committed and pushed"
           else
             echo "⚠️ No auto-fixes available"
@@ -195,7 +197,20 @@ jobs:
           retention-days: 7
 
       # ---------------------------------------------------------
-      # 10.6. Check for failures
+      # 11. Upload build artifacts (operator observability)
+      # ---------------------------------------------------------
+      - name: 📦 Upload build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: |
+            dist
+            site/dist
+          if-no-files-found: ignore
+
+      # ---------------------------------------------------------
+      # 11.5. Check for failures
       # ---------------------------------------------------------
       - name: ❌ Check for failures
         if: |
@@ -210,18 +225,6 @@ jobs:
           echo "  Tests: ${{ steps.test.outcome }}"
           echo "  Build: ${{ steps.build.outcome }}"
           exit 1
-
-      # ---------------------------------------------------------
-      # 11. Upload build artifacts (operator observability)
-      # ---------------------------------------------------------
-      - name: 📦 Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: |
-            dist
-            site/dist
-          if-no-files-found: ignore
 
       # ---------------------------------------------------------
       # 12. Slack Notification
@@ -273,11 +276,10 @@ jobs:
         continue-on-error: true
 
       - name: 📊 Generate and Post Comment
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
-            
             
             // Helper function to read log file with truncation
             function readLog(logPath, maxLines = 500) {
@@ -413,20 +415,33 @@ jobs:
             }
 
             comment += `---\n`;
-            comment += `> �� **Powered by CyberAI Neo CI Bot**\n`;
+            comment += `> 🤖 **Powered by CyberAI Neo CI Bot**\n`;
             comment += `> [View Full Run](${context.payload.repository.html_url}/actions/runs/${context.runId})`;
 
-            // Post or update comment
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
-            });
-
-            const botComment = comments.find(comment => 
-              comment.user.type === 'Bot' && 
-              comment.body.includes('🚀 CyberAI Pipeline Report')
-            );
+            // Post or update comment with pagination support
+            let botComment = null;
+            let page = 1;
+            const perPage = 100;
+            
+            while (!botComment) {
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                per_page: perPage,
+                page: page
+              });
+              
+              if (comments.length === 0) break;
+              
+              botComment = comments.find(comment => 
+                comment.user.type === 'Bot' && 
+                comment.body.includes('🚀 CyberAI Pipeline Report')
+              );
+              
+              if (!botComment && comments.length < perPage) break;
+              page++;
+            }
 
             if (botComment) {
               await github.rest.issues.updateComment({
@@ -444,12 +459,24 @@ jobs:
               });
             }
 
-            // Add reaction to PR based on status
+            // Add reaction to PR based on status (check if already reacted)
             if (allPassed) {
-              await github.rest.reactions.createForIssue({
+              const { data: reactions } = await github.rest.reactions.listForIssue({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.payload.pull_request.number,
-                content: 'rocket'
               });
+              
+              const botRocketReaction = reactions.find(reaction => 
+                reaction.user.type === 'Bot' && reaction.content === 'rocket'
+              );
+              
+              if (!botRocketReaction) {
+                await github.rest.reactions.createForIssue({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.payload.pull_request.number,
+                  content: 'rocket'
+                });
+              }
             }
