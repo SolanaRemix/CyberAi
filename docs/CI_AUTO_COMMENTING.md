@@ -98,7 +98,6 @@ The workflow requires these permissions:
 - `contents: write` - For auto-committing lint fixes
 - `pull-requests: write` - For posting comments
 - `actions: read` - For accessing workflow runs
-- `checks: write` - For check status updates
 
 ## Compatibility
 
