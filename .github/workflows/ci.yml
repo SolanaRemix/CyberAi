@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
   checks: write
   pull-requests: write
   actions: read
@@ -20,7 +20,17 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+    
+    outputs:
+      lint-result: ${{ steps.lint.outcome }}
+      typecheck-result: ${{ steps.typecheck.outcome }}
+      test-result: ${{ steps.test.outcome }}
+      build-result: ${{ steps.build.outcome }}
+      lint-duration: ${{ steps.lint.outputs.duration }}
+      typecheck-duration: ${{ steps.typecheck.outputs.duration }}
+      test-duration: ${{ steps.test.outputs.duration }}
+      build-duration: ${{ steps.build.outputs.duration }}
 
     env:
       NODE_ENV: production
@@ -60,6 +70,12 @@ jobs:
         run: npm ci
 
       # ---------------------------------------------------------
+      # 3.5. Create logs directory
+      # ---------------------------------------------------------
+      - name: 📁 Create logs directory
+        run: mkdir -p logs
+
+      # ---------------------------------------------------------
       # 4. Repo Health (optional hook)
       # ---------------------------------------------------------
       - name: 🩺 Repo Health Scan
@@ -91,25 +107,110 @@ jobs:
       # 7. Lint
       # ---------------------------------------------------------
       - name: 🧹 Lint
-        run: npm run lint
+        id: lint
+        run: |
+          START_TIME=$(date +%s)
+          npm run lint 2>&1 | tee logs/lint.log
+          EXIT_CODE=${PIPESTATUS[0]}
+          END_TIME=$(date +%s)
+          DURATION=$((END_TIME - START_TIME))
+          echo "duration=${DURATION}s" >> $GITHUB_OUTPUT
+          exit $EXIT_CODE
+        continue-on-error: true
+
+      # ---------------------------------------------------------
+      # 7.5. Auto-fix lint issues
+      # ---------------------------------------------------------
+      - name: 🔧 Auto-fix lint issues
+        if: steps.lint.outcome == 'failure'
+        run: |
+          echo "Attempting to auto-fix lint issues..."
+          npm run lint:fix 2>&1 | tee logs/lint-fix.log || true
+          
+          if ! git diff --quiet; then
+            echo "Auto-fixes applied. Committing changes..."
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "chore: auto-fix lint issues [skip ci]"
+            git push
+            echo "✅ Lint fixes committed and pushed"
+          else
+            echo "⚠️ No auto-fixes available"
+          fi
 
       # ---------------------------------------------------------
       # 8. Typecheck
       # ---------------------------------------------------------
       - name: 🧠 Typecheck
-        run: npm run typecheck
+        id: typecheck
+        run: |
+          START_TIME=$(date +%s)
+          npm run typecheck 2>&1 | tee logs/typecheck.log
+          EXIT_CODE=${PIPESTATUS[0]}
+          END_TIME=$(date +%s)
+          DURATION=$((END_TIME - START_TIME))
+          echo "duration=${DURATION}s" >> $GITHUB_OUTPUT
+          exit $EXIT_CODE
+        continue-on-error: true
 
       # ---------------------------------------------------------
       # 9. Tests
       # ---------------------------------------------------------
       - name: 🧪 Run tests
-        run: npm test
+        id: test
+        run: |
+          START_TIME=$(date +%s)
+          npm test 2>&1 | tee logs/test.log
+          EXIT_CODE=${PIPESTATUS[0]}
+          END_TIME=$(date +%s)
+          DURATION=$((END_TIME - START_TIME))
+          echo "duration=${DURATION}s" >> $GITHUB_OUTPUT
+          exit $EXIT_CODE
+        continue-on-error: true
 
       # ---------------------------------------------------------
       # 10. Build
       # ---------------------------------------------------------
       - name: 🏗️ Build
-        run: npm run build
+        id: build
+        run: |
+          START_TIME=$(date +%s)
+          npm run build 2>&1 | tee logs/build.log
+          EXIT_CODE=${PIPESTATUS[0]}
+          END_TIME=$(date +%s)
+          DURATION=$((END_TIME - START_TIME))
+          echo "duration=${DURATION}s" >> $GITHUB_OUTPUT
+          exit $EXIT_CODE
+        continue-on-error: true
+
+      # ---------------------------------------------------------
+      # 10.5. Upload test logs
+      # ---------------------------------------------------------
+      - name: 📦 Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs
+          path: logs/
+          retention-days: 7
+
+      # ---------------------------------------------------------
+      # 10.6. Check for failures
+      # ---------------------------------------------------------
+      - name: ❌ Check for failures
+        if: |
+          steps.lint.outcome == 'failure' ||
+          steps.typecheck.outcome == 'failure' ||
+          steps.test.outcome == 'failure' ||
+          steps.build.outcome == 'failure'
+        run: |
+          echo "One or more steps failed:"
+          echo "  Lint: ${{ steps.lint.outcome }}"
+          echo "  Typecheck: ${{ steps.typecheck.outcome }}"
+          echo "  Tests: ${{ steps.test.outcome }}"
+          echo "  Build: ${{ steps.build.outcome }}"
+          exit 1
 
       # ---------------------------------------------------------
       # 11. Upload build artifacts (operator observability)
@@ -147,3 +248,207 @@ jobs:
                -X POST \
                -d "{\"content\":\"⚙️ *CyberAi Operator CI* on \`${{ github.ref_name }}\` — *${{ job.status }}*\"}" \
                ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+  # ---------------------------------------------------------
+  # Professional Comment System
+  # ---------------------------------------------------------
+  comment-test-results:
+    name: 📊 Post Test Results Comment
+    runs-on: ubuntu-latest
+    needs: build
+    if: always() && github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: write
+      actions: read
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📥 Download test logs
+        uses: actions/download-artifact@v4
+        with:
+          name: test-logs
+          path: logs/
+        continue-on-error: true
+
+      - name: 📊 Generate and Post Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Helper function to read log file with truncation
+            function readLog(logPath, maxLines = 500) {
+              try {
+                const content = fs.readFileSync(logPath, 'utf8');
+                const lines = content.split('\n');
+                if (lines.length > maxLines) {
+                  const truncated = lines.slice(0, maxLines).join('\n');
+                  return truncated + `\n\n... (truncated ${lines.length - maxLines} lines, view full logs in artifacts)`;
+                }
+                return content;
+              } catch (error) {
+                return `Log file not found or could not be read: ${error.message}`;
+              }
+            }
+
+            // Helper function to format duration
+            function formatDuration(duration) {
+              if (!duration) return '-';
+              return duration;
+            }
+
+            // Get results from build job
+            const lintResult = '${{ needs.build.outputs.lint-result }}';
+            const typecheckResult = '${{ needs.build.outputs.typecheck-result }}';
+            const testResult = '${{ needs.build.outputs.test-result }}';
+            const buildResult = '${{ needs.build.outputs.build-result }}';
+            
+            const lintDuration = formatDuration('${{ needs.build.outputs.lint-duration }}');
+            const typecheckDuration = formatDuration('${{ needs.build.outputs.typecheck-duration }}');
+            const testDuration = formatDuration('${{ needs.build.outputs.test-duration }}');
+            const buildDuration = formatDuration('${{ needs.build.outputs.build-duration }}');
+
+            // Determine overall status
+            const allPassed = lintResult === 'success' && 
+                            typecheckResult === 'success' && 
+                            testResult === 'success' && 
+                            buildResult === 'success';
+            
+            const overallStatus = allPassed ? '✅ PASSED' : '❌ FAILED';
+
+            // Helper to get status emoji
+            function getStatusEmoji(result) {
+              if (result === 'success') return '✅';
+              if (result === 'failure') return '❌';
+              if (result === 'skipped') return '⏭️';
+              return '⚠️';
+            }
+
+            // Helper to get status text
+            function getStatusText(result) {
+              if (result === 'success') return 'Passed';
+              if (result === 'failure') return 'Failed';
+              if (result === 'skipped') return 'Skipped';
+              return 'Unknown';
+            }
+
+            // Build the comment
+            let comment = `## 🚀 CyberAI Pipeline Report\n\n`;
+            comment += `### 📊 Executive Summary\n`;
+            comment += `- **Status:** ${overallStatus}\n`;
+            comment += `- **Commit:** [\`${context.sha.substring(0, 7)}\`](${context.payload.pull_request.head.repo.html_url}/commit/${context.sha}) by @${context.payload.pull_request.user.login}\n`;
+            comment += `- **Branch:** \`${context.payload.pull_request.head.ref}\`\n`;
+            comment += `- **PR:** #${context.payload.pull_request.number}\n\n`;
+
+            comment += `### 🧪 Test Results\n\n`;
+            comment += `| Stage | Status | Duration | Details |\n`;
+            comment += `|-------|--------|----------|---------|\n`;
+            comment += `| Lint | ${getStatusEmoji(lintResult)} | ${lintDuration} | ${getStatusText(lintResult)} |\n`;
+            comment += `| Typecheck | ${getStatusEmoji(typecheckResult)} | ${typecheckDuration} | ${getStatusText(typecheckResult)} |\n`;
+            comment += `| Tests | ${getStatusEmoji(testResult)} | ${testDuration} | ${getStatusText(testResult)} |\n`;
+            comment += `| Build | ${getStatusEmoji(buildResult)} | ${buildDuration} | ${getStatusText(buildResult)} |\n\n`;
+
+            // Add failed test details
+            const failedSteps = [];
+            if (lintResult === 'failure') failedSteps.push({ name: 'Lint', log: 'logs/lint.log' });
+            if (typecheckResult === 'failure') failedSteps.push({ name: 'Typecheck', log: 'logs/typecheck.log' });
+            if (testResult === 'failure') failedSteps.push({ name: 'Tests', log: 'logs/test.log' });
+            if (buildResult === 'failure') failedSteps.push({ name: 'Build', log: 'logs/build.log' });
+
+            if (failedSteps.length > 0) {
+              comment += `<details>\n<summary>❌ Failed Step Details (${failedSteps.length})</summary>\n\n`;
+              
+              for (const step of failedSteps) {
+                comment += `#### ${step.name}\n\n`;
+                comment += `\`\`\`\n`;
+                comment += readLog(step.log, 100);
+                comment += `\n\`\`\`\n\n`;
+              }
+              
+              comment += `</details>\n\n`;
+            }
+
+            // Add full logs in collapsible sections
+            comment += `<details>\n<summary>📋 Full Logs</summary>\n\n`;
+            
+            const allLogs = [
+              { name: 'Lint', file: 'logs/lint.log' },
+              { name: 'Typecheck', file: 'logs/typecheck.log' },
+              { name: 'Tests', file: 'logs/test.log' },
+              { name: 'Build', file: 'logs/build.log' }
+            ];
+
+            for (const log of allLogs) {
+              comment += `<details>\n<summary>${log.name} Output</summary>\n\n`;
+              comment += `\`\`\`\n`;
+              comment += readLog(log.file, 200);
+              comment += `\n\`\`\`\n\n`;
+              comment += `</details>\n\n`;
+            }
+            
+            comment += `</details>\n\n`;
+
+            // Auto-repair status
+            comment += `### 🔧 Auto-Repair Status\n`;
+            if (lintResult === 'failure') {
+              comment += `- ✅ Ran lint auto-fix (check latest commits)\n`;
+            }
+            if (typecheckResult === 'failure') {
+              comment += `- ⚠️ Type errors require manual review\n`;
+            }
+            if (!allPassed) {
+              comment += `\n### 🎯 Next Steps\n`;
+              comment += `- [ ] Review failed steps above\n`;
+              comment += `- [ ] Check error logs\n`;
+              comment += `- [ ] Run tests locally to reproduce\n`;
+              comment += `- [ ] Fix issues and push changes\n\n`;
+            } else {
+              comment += `\n### ✨ All Checks Passed!\n`;
+              comment += `Great work! Your changes are ready for review.\n\n`;
+            }
+
+            comment += `---\n`;
+            comment += `> �� **Powered by CyberAI Neo CI Bot**\n`;
+            comment += `> [View Full Run](${context.payload.repository.html_url}/actions/runs/${context.runId})`;
+
+            // Post or update comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+            });
+
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('🚀 CyberAI Pipeline Report')
+            );
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: comment
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: comment
+              });
+            }
+
+            // Add reaction to PR based on status
+            if (allPassed) {
+              await github.rest.reactions.createForIssue({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                content: 'rocket'
+              });
+            }
