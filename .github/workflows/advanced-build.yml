@@ -166,7 +166,7 @@ jobs:
     
     steps:
       - name: 📥 Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.1.3
         with:
           name: optimized-production-build
           path: ./artifacts
@@ -208,7 +208,7 @@ jobs:
         run: npm ci
 
       - name: 📥 Download build
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.1.3
         with:
           name: optimized-production-build
           path: ./dist
