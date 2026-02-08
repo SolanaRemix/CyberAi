@@ -336,10 +336,12 @@ jobs:
             }
 
             // Build the comment
+            const headSha = context.payload.pull_request?.head?.sha || context.sha;
+            const headAuthor = context.payload.pull_request?.head?.user?.login || context.payload.pull_request.user.login;
             let comment = `## 🚀 CyberAI Pipeline Report\n\n`;
             comment += `### 📊 Executive Summary\n`;
             comment += `- **Status:** ${overallStatus}\n`;
-            comment += `- **Commit:** [\`${context.sha.substring(0, 7)}\`](${context.payload.pull_request.head.repo.html_url}/commit/${context.sha}) by @${context.payload.pull_request.user.login}\n`;
+            comment += `- **Commit:** [\`${headSha.substring(0, 7)}\`](${context.payload.pull_request.head.repo.html_url}/commit/${headSha}) by @${headAuthor}\n`;
             comment += `- **Branch:** \`${context.payload.pull_request.head.ref}\`\n`;
             comment += `- **PR:** #${context.payload.pull_request.number}\n\n`;
 
