@@ -277,7 +277,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const path = require('path');
+            
             
             // Helper function to read log file with truncation
             function readLog(logPath, maxLines = 500) {
