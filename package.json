@@ -7,6 +7,11 @@
   "scripts": {
     "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts",
     "build": "tsc",
+    "build:advanced": "bash scripts/advanced-build.sh production",
+    "build:dev": "bash scripts/advanced-build.sh development",
+    "build:watch": "tsc --watch",
+    "build:esbuild": "node esbuild.config.js",
+    "build:esbuild:watch": "node esbuild.config.js --watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
@@ -19,7 +24,13 @@
     "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\"",
     "verify-vercel-disconnect": "bash scripts/verify-vercel-disconnect.sh",
     "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write ."
+    "prettier:write": "prettier --write .",
+    "docker:build": "docker build -t cyberai:latest .",
+    "docker:run": "docker run -p 3000:3000 cyberai:latest",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "clean": "rm -rf dist build .cache node_modules/.cache",
+    "clean:all": "npm run clean && rm -rf node_modules"
   },
   "dependencies": {
     "openai": "^6.18.0"

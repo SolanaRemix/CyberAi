@@ -1,0 +1,120 @@
+# CyberAi Docker Build Exclusions
+# =======================================================
+# Optimize Docker build context and image size
+
+# Git
+.git
+.gitignore
+.gitattributes
+.github
+
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist
+build
+out
+.next
+.nuxt
+.output
+*.log
+
+# Development
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Testing
+coverage
+.nyc_output
+*.lcov
+tests
+**/*.test.ts
+**/*.spec.ts
+
+# Temporary files
+tmp
+temp
+*.tmp
+*.backup
+*.resolved
+
+# Documentation
+docs
+*.md
+!README.md
+
+# CI/CD
+.github
+.circleci
+.travis.yml
+.gitlab-ci.yml
+azure-pipelines.yml
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv
+env
+ENV
+.venv
+
+# Rust
+target
+Cargo.lock
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache
+.cache
+.npm
+.eslintcache
+.stylelintcache
+
+# Site build
+site/dist
+site/.astro
+site/node_modules
+
+# Misc
+LICENSE
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md

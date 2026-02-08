@@ -1,0 +1,71 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    ".env",
+    "tsconfig.json",
+    "package.json"
+  ],
+  "globalEnv": [
+    "NODE_ENV",
+    "CI",
+    "VERCEL",
+    "VERCEL_ENV"
+  ],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**", ".next/**", ".astro/**"],
+      "env": ["NODE_ENV"]
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": ["coverage/**", "logs/test.log"],
+      "cache": false
+    },
+    "test:unit": {
+      "dependsOn": [],
+      "outputs": ["logs/test-unit.log"],
+      "cache": false
+    },
+    "test:integration": {
+      "dependsOn": ["build"],
+      "outputs": ["logs/test-integration.log"],
+      "cache": false
+    },
+    "lint": {
+      "dependsOn": [],
+      "outputs": ["logs/lint.log"]
+    },
+    "lint:fix": {
+      "dependsOn": [],
+      "outputs": [],
+      "cache": false
+    },
+    "typecheck": {
+      "dependsOn": [],
+      "outputs": ["logs/typecheck.log"]
+    },
+    "format": {
+      "dependsOn": [],
+      "outputs": [],
+      "cache": false
+    },
+    "format:check": {
+      "dependsOn": [],
+      "outputs": []
+    },
+    "dev": {
+      "dependsOn": [],
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "dependsOn": [],
+      "outputs": [],
+      "cache": false
+    }
+  },
+  "remoteCache": {
+    "enabled": true
+  }
+}

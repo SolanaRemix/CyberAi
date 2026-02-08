@@ -1,0 +1,233 @@
+name: Advanced Build Matrix
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      build_mode:
+        description: 'Build mode'
+        required: false
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - development
+
+concurrency:
+  group: advanced-build-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  # Multi-platform build matrix
+  build-matrix:
+    name: Build (${{ matrix.os }}, Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [18, 20, 21]
+        include:
+          - os: ubuntu-latest
+            cache-path: ~/.npm
+          - os: macos-latest
+            cache-path: ~/.npm
+          - os: windows-latest
+            cache-path: ~\AppData\npm-cache
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🔍 Type check
+        run: npm run typecheck
+
+      - name: 🧹 Lint
+        run: npm run lint
+
+      - name: 🔨 Build
+        run: npm run build
+
+      - name: 🧪 Test
+        run: npm test
+
+      - name: 📊 Upload build artifacts
+        if: matrix.os == 'ubuntu-latest' && matrix.node == '20'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts-${{ matrix.os }}-node${{ matrix.node }}
+          path: |
+            dist/
+            logs/
+          retention-days: 7
+
+  # Advanced optimized build
+  optimized-build:
+    name: Optimized Production Build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🚀 Run advanced build
+        run: |
+          chmod +x scripts/advanced-build.sh
+          ./scripts/advanced-build.sh production
+        env:
+          NODE_ENV: production
+          VERBOSE: true
+
+      - name: 📊 Build size analysis
+        run: |
+          echo "## Build Size Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Distribution Size" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          du -sh dist/ >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Detailed Breakdown" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          find dist -type f -exec du -h {} + | sort -rh | head -20 >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: 📦 Upload optimized build
+        uses: actions/upload-artifact@v4
+        with:
+          name: optimized-production-build
+          path: |
+            dist/
+            dist/build-info.json
+          retention-days: 30
+
+  # Docker build test
+  docker-build:
+    name: Docker Build Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐳 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🔨 Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: cyberai:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          target: production
+
+      - name: 🧪 Test Docker image
+        run: |
+          docker run --rm cyberai:test node --version
+
+  # Build verification
+  verify-build:
+    name: Verify Build Outputs
+    needs: [build-matrix, optimized-build]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: optimized-production-build
+          path: ./artifacts
+
+      - name: 🔍 Verify build outputs
+        run: |
+          echo "Verifying build outputs..."
+          ls -lah ./artifacts/
+          
+          if [ ! -f "./artifacts/build-info.json" ]; then
+            echo "❌ Build info file missing"
+            exit 1
+          fi
+          
+          echo "✅ Build verification passed"
+          
+          echo "## Build Info" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+          cat ./artifacts/build-info.json >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+  # Performance benchmarks
+  benchmark:
+    name: Performance Benchmarks
+    needs: optimized-build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 📥 Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: optimized-production-build
+          path: ./dist
+
+      - name: ⚡ Run benchmarks
+        run: |
+          echo "## Performance Benchmarks" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Build time from build-info
+          if [ -f "dist/build-info.json" ]; then
+            echo "### Build Information" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+            cat dist/build-info.json >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          # File sizes
+          echo "### Output Sizes" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          find dist -type f -name "*.js" -exec ls -lh {} \; >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
