@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     outputs:
       lint-result: ${{ steps.lint.outcome }}
       typecheck-result: ${{ steps.typecheck.outcome }}
@@ -127,7 +127,7 @@ jobs:
         run: |
           echo "Attempting to auto-fix lint issues..."
           npm run lint:fix 2>&1 | tee logs/lint-fix.log || true
-          
+
           if ! git diff --quiet; then
             echo "Auto-fixes applied. Committing changes..."
             git config user.name "github-actions[bot]"
@@ -280,7 +280,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             // Helper function to read log file with truncation
             function readLog(logPath, maxLines = 500) {
               try {
@@ -307,7 +307,7 @@ jobs:
             const typecheckResult = '${{ needs.build.outputs.typecheck-result }}';
             const testResult = '${{ needs.build.outputs.test-result }}';
             const buildResult = '${{ needs.build.outputs.build-result }}';
-            
+
             const lintDuration = formatDuration('${{ needs.build.outputs.lint-duration }}');
             const typecheckDuration = formatDuration('${{ needs.build.outputs.typecheck-duration }}');
             const testDuration = formatDuration('${{ needs.build.outputs.test-duration }}');
@@ -318,7 +318,7 @@ jobs:
                             typecheckResult === 'success' && 
                             testResult === 'success' && 
                             buildResult === 'success';
-            
+
             const overallStatus = allPassed ? '✅ PASSED' : '❌ FAILED';
 
             // Helper to get status emoji
@@ -377,7 +377,7 @@ jobs:
 
             // Add full logs in collapsible sections
             comment += `<details>\n<summary>📋 Full Logs</summary>\n\n`;
-            
+
             const allLogs = [
               { name: 'Lint', file: 'logs/lint.log' },
               { name: 'Typecheck', file: 'logs/typecheck.log' },
@@ -392,7 +392,7 @@ jobs:
               comment += `\n\`\`\`\n\n`;
               comment += `</details>\n\n`;
             }
-            
+
             comment += `</details>\n\n`;
 
             // Auto-repair status
@@ -422,7 +422,7 @@ jobs:
             let botComment = null;
             let page = 1;
             const perPage = 100;
-            
+
             while (!botComment) {
               const { data: comments } = await github.rest.issues.listComments({
                 owner: context.repo.owner,
