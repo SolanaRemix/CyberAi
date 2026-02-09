@@ -80,12 +80,12 @@ The `comment-test-results` job:
 
 ### 🧪 Test Results
 
-| Stage     | Status | Duration | Details |
-| --------- | ------ | -------- | ------- |
-| Lint      | ✅     | 5s       | Passed  |
-| Typecheck | ✅     | 12s      | Passed  |
-| Tests     | ✅     | 1m 23s   | Passed  |
-| Build     | ✅     | 45s      | Passed  |
+| Stage | Status | Duration | Details |
+|-------|--------|----------|---------|
+| Lint | ✅ | 5s | Passed |
+| Typecheck | ✅ | 12s | Passed |
+| Tests | ✅ | 1m 23s | Passed |
+| Build | ✅ | 45s | Passed |
 
 ### 🔧 Auto-Repair Status
 
