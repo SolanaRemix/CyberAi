@@ -44,7 +44,7 @@ RUN npm run build
 
 # Run tests (optional - comment out for faster builds)
 RUN npm run typecheck
-RUN npm test -- --run
+RUN npm test
 
 # Stage 5: Production image
 FROM node:20-alpine AS production
@@ -67,9 +67,6 @@ COPY --chown=nodejs:nodejs --from=deps /app/node_modules ./node_modules
 
 # Copy built application from builder stage
 COPY --chown=nodejs:nodejs --from=builder /app/dist ./dist
-COPY --chown=nodejs:nodejs --from=builder /app/src ./src
-COPY --chown=nodejs:nodejs --from=builder /app/contracts ./contracts
-COPY --chown=nodejs:nodejs --from=builder /app/prompts ./prompts
 
 # Set environment variables
 ENV NODE_ENV=production

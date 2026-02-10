@@ -156,13 +156,13 @@ make test-watch
 | Command | Description |
 |---------|-------------|
 | `npm run build` | Standard TypeScript build |
-| `npm run build:advanced` | Production build with advanced script |
-| `npm run build:dev` | Development build |
+| `npm run build:advanced` | Production build with advanced script (requires bash) |
+| `npm run build:dev` | Development build (requires bash) |
 | `npm run build:watch` | Watch mode for incremental builds |
 | `npm run build:esbuild` | Build with esbuild bundler |
 | `npm run build:esbuild:watch` | esbuild watch mode |
-| `npm run clean` | Clean build artifacts |
-| `npm run clean:all` | Deep clean including node_modules |
+| `npm run clean` | Clean build artifacts (cross-platform via rimraf) |
+| `npm run clean:all` | Deep clean including node_modules (cross-platform) |
 
 ### Makefile Targets
 

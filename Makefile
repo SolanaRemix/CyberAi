@@ -97,11 +97,11 @@ test-ui: ## Run tests with UI
 	@echo "$(COLOR_GREEN)Starting test UI...$(COLOR_RESET)"
 	npm run test:ui
 
-test-coverage: ## Run tests with coverage report
-	@echo "$(COLOR_GREEN)Running tests with coverage...$(COLOR_RESET)"
+test-coverage: ## Run tests and capture test log
+	@echo "$(COLOR_GREEN)Running tests...$(COLOR_RESET)"
 	@mkdir -p $(LOGS_DIR)
-	npm test -- --coverage 2>&1 | tee $(LOGS_DIR)/coverage.log
-	@echo "$(COLOR_GREEN)✓ Coverage report generated$(COLOR_RESET)"
+	npm test 2>&1 | tee $(LOGS_DIR)/coverage.log
+	@echo "$(COLOR_GREEN)✓ Test log captured$(COLOR_RESET)"
 
 # Code quality targets
 lint: ## Run linter

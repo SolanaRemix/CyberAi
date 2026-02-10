@@ -29,8 +29,8 @@
     "docker:run": "docker run -p 3000:3000 cyberai:latest",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "clean": "rm -rf dist build .cache node_modules/.cache",
-    "clean:all": "npm run clean && rm -rf node_modules"
+    "clean": "rimraf dist build .cache node_modules/.cache",
+    "clean:all": "npm run clean && rimraf node_modules"
   },
   "dependencies": {
     "openai": "^6.18.0"
@@ -40,10 +40,13 @@
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "@vitest/ui": "^4.0.18",
+    "esbuild": "^0.27.3",
     "eslint": "^9.39.2",
     "globals": "^17.3.0",
     "prettier": "^3.0.0",
+    "rimraf": "^6.1.2",
     "tsx": "^4.21.0",
+    "turbo": "^2.8.3",
     "typescript": "^5.7.0",
     "vitest": "^4.0.18"
   }

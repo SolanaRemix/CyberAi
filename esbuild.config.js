@@ -42,7 +42,7 @@ const mainConfig = {
   banner: {
     js: `#!/usr/bin/env node
 // CyberAi v${pkg.version}
-// Built with esbuild at ${new Date().toISOString()}
+// Built with esbuild
 `,
   },
 };
