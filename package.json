@@ -7,6 +7,11 @@
   "scripts": {
     "resolve-conflicts": "tsx scripts/SmartBrainConflictResolver.mts",
     "build": "tsc",
+    "build:advanced": "bash scripts/advanced-build.sh production",
+    "build:dev": "bash scripts/advanced-build.sh development",
+    "build:watch": "tsc --watch",
+    "build:esbuild": "node esbuild.config.js",
+    "build:esbuild:watch": "node esbuild.config.js --watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
@@ -19,7 +24,13 @@
     "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,json,yml,yaml,md}\"",
     "verify-vercel-disconnect": "bash scripts/verify-vercel-disconnect.sh",
     "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write ."
+    "prettier:write": "prettier --write .",
+    "docker:build": "docker build -t cyberai:latest .",
+    "docker:run": "docker run -p 3000:3000 cyberai:latest",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "clean": "rimraf dist build .cache node_modules/.cache",
+    "clean:all": "npm run clean && rimraf node_modules"
   },
   "dependencies": {
     "openai": "^6.18.0"
@@ -29,10 +40,13 @@
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "@vitest/ui": "^4.0.18",
+    "esbuild": "^0.27.3",
     "eslint": "^9.39.2",
     "globals": "^17.3.0",
     "prettier": "^3.0.0",
+    "rimraf": "^6.1.2",
     "tsx": "^4.21.0",
+    "turbo": "^2.8.3",
     "typescript": "^5.7.0",
     "vitest": "^4.0.18"
   }

@@ -77,3 +77,12 @@ Thumbs.db
 
 *.backup
 *.resolved
+
+# Build system
+.turbo/
+.cache/
+.eslintcache
+.tsbuildinfo
+
+# Docker
+.docker/

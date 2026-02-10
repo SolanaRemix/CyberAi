@@ -1,0 +1,144 @@
+# CyberAi Docker Compose Configuration
+# =======================================================
+# Advanced multi-service orchestration for development and production
+
+version: '3.9'
+
+# Use environment variable for version
+x-common-labels: &common-labels
+  com.cyberai.version: ${CYBERAI_VERSION:-1.1.0}
+
+services:
+  # Main CyberAi application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+      args:
+        - NODE_ENV=production
+    image: cyberai:latest
+    container_name: cyberai-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+    networks:
+      - cyberai-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      <<: *common-labels
+      com.cyberai.service: app
+
+  # Development service
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    image: cyberai:dev
+    container_name: cyberai-dev
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+      - "5173:5173"  # Vite dev server
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./logs:/app/logs
+    networks:
+      - cyberai-network
+    command: npm run dev
+    labels:
+      <<: *common-labels
+      com.cyberai.service: dev
+    profiles:
+      - dev
+
+  # Site service (Astro) - uses default nginx on port 80
+  site:
+    build:
+      context: ./site
+      dockerfile: Dockerfile
+    image: cyberai-site:latest
+    container_name: cyberai-site
+    restart: unless-stopped
+    ports:
+      - "4321:80"  # Map host 4321 to container 80 (nginx default)
+    environment:
+      - NODE_ENV=production
+    networks:
+      - cyberai-network
+    labels:
+      <<: *common-labels
+      com.cyberai.service: site
+    profiles:
+      - site
+
+  # Redis cache (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: cyberai-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - cyberai-network
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    labels:
+      <<: *common-labels
+      com.cyberai.service: redis
+    profiles:
+      - cache
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: cyberai-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./logs/nginx:/var/log/nginx
+    depends_on:
+      - app
+      - site
+    networks:
+      - cyberai-network
+    labels:
+      <<: *common-labels
+      com.cyberai.service: nginx
+    profiles:
+      - proxy
+
+networks:
+  cyberai-network:
+    driver: bridge
+    name: cyberai-network
+
+volumes:
+  redis-data:
+    name: cyberai-redis-data

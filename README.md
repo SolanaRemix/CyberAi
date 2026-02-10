@@ -165,6 +165,47 @@ npm run preview
 
 See [Contract Documentation](https://cyberai.network/docs/contracts) for details.
 
+## 🏗️ Advanced Build System
+
+CyberAi includes a comprehensive build system with multiple tools and configurations for various development and deployment scenarios.
+
+### Build Tools
+
+- **Makefile**: Cross-platform automation with 30+ targets
+- **TypeScript Compiler (tsc)**: Primary build tool
+- **esbuild**: Advanced bundling with tree-shaking and minification
+- **Turbo**: Monorepo orchestration with intelligent caching
+- **Docker**: Multi-stage containerization with optimization
+
+### Quick Build Commands
+
+```bash
+# Using Makefile (recommended)
+make help           # Show all available targets
+make build          # Build the project
+make test           # Run tests
+make quality        # Run all quality checks
+make ci             # Full CI pipeline
+
+# Using npm scripts
+npm run build               # Standard build
+npm run build:advanced      # Production build with optimization
+npm run build:esbuild       # Build with esbuild bundler
+npm run docker:build        # Build Docker image
+npm run docker:up           # Start Docker Compose services
+```
+
+### Advanced Features
+
+- **Multi-platform builds**: Linux, macOS, Windows
+- **Multiple Node.js versions**: 18, 20, 21
+- **Build caching**: Intelligent caching with Turbo
+- **Build verification**: Automatic output validation
+- **Build information**: Metadata generation (version, commit, timestamp)
+- **Quality gates**: Integrated linting, type checking, and testing
+
+For complete build system documentation, see [BUILD.md](BUILD.md).
+
 ## 🚀 Deployment
 
 CyberAi is deployed using **GitHub Pages** with automatic deployment on push to the main branch.
