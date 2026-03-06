@@ -20,10 +20,11 @@ import {
 // ────────────────────────────────────────────────────────────
 
 describe('Role enum', () => {
-  it('should have admin, operator, and user values', () => {
+  it('should have admin, operator, user, and guest values', () => {
     expect(Role.Admin).toBe('admin');
     expect(Role.Operator).toBe('operator');
     expect(Role.User).toBe('user');
+    expect(Role.Guest).toBe('guest');
   });
 });
 
@@ -114,6 +115,29 @@ describe('hasPermission — User', () => {
   }
 });
 
+describe('hasPermission — Guest', () => {
+  const allActions: Action[] = [
+    'view:agents',
+    'view:repos',
+    'view:logs',
+    'view:dashboards',
+    'view:chat',
+    'view:docs',
+    'manage:deploy',
+    'manage:workflows',
+    'manage:contracts',
+    'manage:terminal',
+    'manage:agent-tools',
+    'admin:all',
+  ];
+
+  for (const action of allActions) {
+    it(`should deny guest '${action}'`, () => {
+      expect(hasPermission(Role.Guest, action)).toBe(false);
+    });
+  }
+});
+
 // ────────────────────────────────────────────────────────────
 // guards.ts — ROUTE_REQUIREMENTS
 // ────────────────────────────────────────────────────────────
@@ -177,6 +201,20 @@ describe('canAccessRoute', () => {
     expect(canAccessRoute(Role.User, '/audit')).toBe(false);
   });
 
+  it('guest cannot access any protected routes', () => {
+    expect(canAccessRoute(Role.Guest, '/app')).toBe(false);
+    expect(canAccessRoute(Role.Guest, '/dashboard')).toBe(false);
+    expect(canAccessRoute(Role.Guest, '/operators')).toBe(false);
+    expect(canAccessRoute(Role.Guest, '/audit')).toBe(false);
+    expect(canAccessRoute(Role.Guest, '/dashboard/admin')).toBe(false);
+  });
+
+  it('guest can access public (unlisted) routes', () => {
+    expect(canAccessRoute(Role.Guest, '/')).toBe(true);
+    expect(canAccessRoute(Role.Guest, '/docs')).toBe(true);
+    expect(canAccessRoute(Role.Guest, '/pricing')).toBe(true);
+  });
+
   it('public routes (not listed) are always accessible', () => {
     expect(canAccessRoute(Role.User, '/')).toBe(true);
     expect(canAccessRoute(Role.User, '/docs')).toBe(true);
@@ -214,6 +252,14 @@ describe('canUseFeature', () => {
     expect(canUseFeature(Role.User, 'workflow-execution')).toBe(false);
   });
 
+  it('guest cannot use any feature', () => {
+    expect(canUseFeature(Role.Guest, 'chat-authenticated')).toBe(false);
+    expect(canUseFeature(Role.Guest, 'agent-management')).toBe(false);
+    expect(canUseFeature(Role.Guest, 'workflow-execution')).toBe(false);
+    expect(canUseFeature(Role.Guest, 'admin-panel')).toBe(false);
+    expect(canUseFeature(Role.Guest, 'repo-viewer')).toBe(false);
+  });
+
   it('unknown feature key is always denied', () => {
     expect(canUseFeature(Role.Admin, 'nonexistent-feature')).toBe(false);
     expect(canUseFeature(Role.User, 'nonexistent-feature')).toBe(false);
@@ -227,6 +273,12 @@ describe('canUseFeature', () => {
 describe('getUnauthorizedRedirect', () => {
   it('returns unauthorized redirect for User role', () => {
     const redirect = getUnauthorizedRedirect(Role.User);
+    expect(redirect).toContain('/login');
+    expect(redirect).toContain('unauthorized');
+  });
+
+  it('returns unauthorized redirect for Guest role', () => {
+    const redirect = getUnauthorizedRedirect(Role.Guest);
     expect(redirect).toContain('/login');
     expect(redirect).toContain('unauthorized');
   });
@@ -257,6 +309,8 @@ describe('assertRouteAccess', () => {
     expect(() => assertRouteAccess(Role.User, '/dashboard')).toThrow();
     expect(() => assertRouteAccess(Role.Operator, '/dashboard/admin')).toThrow();
     expect(() => assertRouteAccess(Role.User, '/audit')).toThrow();
+    expect(() => assertRouteAccess(Role.Guest, '/app')).toThrow();
+    expect(() => assertRouteAccess(Role.Guest, '/dashboard')).toThrow();
   });
 
   it('error message includes role and path', () => {

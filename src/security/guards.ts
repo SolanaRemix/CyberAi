@@ -64,7 +64,7 @@ export function canUseFeature(role: Role, feature: string): boolean {
  * resource it is not authorized for.
  */
 export function getUnauthorizedRedirect(role: Role): string {
-  if (role === Role.User) {
+  if (role === Role.Guest || role === Role.User) {
     return '/login?reason=unauthorized';
   }
   return '/login?reason=insufficient-permissions';
