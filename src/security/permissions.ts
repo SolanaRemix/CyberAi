@@ -3,9 +3,9 @@
  * Defines actions and permission checks for each role.
  *
  * CANONICAL DATA SOURCE: src/security/role-permissions.json
- * The client-side copy in public/rbac-permissions.js is generated from the
- * same JSON file.  Update role-permissions.json to change permissions —
- * do NOT edit the three copies independently.
+ * The client-side copy in public/rbac-permissions.js is manually mirrored
+ * from that JSON.  Update role-permissions.json to change permissions —
+ * do NOT edit the two copies independently.
  */
 
 import { Role } from './roles.js';
@@ -29,6 +29,7 @@ const ROLE_PERMISSIONS: Record<Role, ReadonlySet<Action>> = {
   [Role.Admin]: new Set<Action>(rolePermissionsData.admin as Action[]),
   [Role.Operator]: new Set<Action>(rolePermissionsData.operator as Action[]),
   [Role.User]: new Set<Action>(rolePermissionsData.user as Action[]),
+  [Role.Guest]: new Set<Action>(rolePermissionsData.guest as Action[]),
 };
 
 /**
