@@ -23,6 +23,7 @@
   /* Neo Glow FX aliases */
   --neo-primary: var(--accent);
   --neo-accent: var(--accent-dark);
+  --neo-secondary: #ff006e;
   --neo-success: #06ffa5;
   --neo-warning: #ffbe0b;
   --neo-danger: #ff4d6a;
