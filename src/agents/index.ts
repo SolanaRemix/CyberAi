@@ -1,8 +1,9 @@
 /**
- * CyberAi Agent System
- * Manages AI agents for security auditing, code analysis, and automation
+ * GOD-SWARM ULTRA — Agent System
+ * Manages AI agents for the swarm platform
  */
 
+// Legacy CyberAi agent types (preserved for backward compatibility)
 export interface Agent {
   id: string;
   name: string;
@@ -25,3 +26,14 @@ export class AgentManager {
     return Array.from(this.agents.values());
   }
 }
+
+// GOD-SWARM ULTRA agent implementations
+export * from './base.js';
+export * from './planner.js';
+export * from './code-gen.js';
+export * from './security.js';
+export * from './devops.js';
+export * from './research.js';
+export * from './trading.js';
+export * from './repair.js';
+export * from './registry.js';

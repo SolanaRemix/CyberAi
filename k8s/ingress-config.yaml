@@ -1,0 +1,69 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cyberai-ingress
+  namespace: cyberai-production
+  labels:
+    managed-by: god-swarm-ultra
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - cyberai.network
+        - api.cyberai.network
+      secretName: cyberai-tls
+  rules:
+    - host: api.cyberai.network
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: god-swarm-api
+                port:
+                  number: 80
+    - host: cyberai.network
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: god-swarm-web
+                port:
+                  number: 80
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: god-swarm-api-pdb
+  namespace: cyberai-production
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: god-swarm-api
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cyberai-config
+  namespace: cyberai-production
+  labels:
+    managed-by: god-swarm-ultra
+data:
+  NODE_ENV: production
+  LOG_LEVEL: info
+  SWARM_NAME: "GOD-SWARM ULTRA"
+  SWARM_VERSION: "1.0.0"
+  MAX_CONCURRENT_WORKFLOWS: "50"
+  TASK_TIMEOUT_MS: "300000"
+  HEARTBEAT_INTERVAL_MS: "30000"
+  ENABLE_TELEMETRY: "true"
+  ENABLE_SELF_IMPROVEMENT: "true"
