@@ -160,7 +160,7 @@
         },
         "badge": {
           "type": "string",
-          "description": "Short 2-letter badge label shown in avatars",
+          "description": "Short 2–4 character badge label shown in avatars",
           "maxLength": 4
         },
         "icon": {
