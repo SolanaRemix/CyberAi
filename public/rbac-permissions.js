@@ -12,9 +12,29 @@
 
 window.CYBER_RBAC = {
   rolePermissions: {
-    admin:    new Set(['view:agents','view:repos','view:logs','view:dashboards','view:chat','view:docs','manage:deploy','manage:workflows','manage:contracts','manage:terminal','manage:agent-tools','admin:all']),
-    operator: new Set(['manage:workflows','manage:contracts','manage:terminal','manage:agent-tools','view:chat','view:docs']),
-    user:     new Set(['view:chat','view:docs']),
-    guest:    new Set([]),
+    admin: new Set([
+      'view:agents',
+      'view:repos',
+      'view:logs',
+      'view:dashboards',
+      'view:chat',
+      'view:docs',
+      'manage:deploy',
+      'manage:workflows',
+      'manage:contracts',
+      'manage:terminal',
+      'manage:agent-tools',
+      'admin:all',
+    ]),
+    operator: new Set([
+      'manage:workflows',
+      'manage:contracts',
+      'manage:terminal',
+      'manage:agent-tools',
+      'view:chat',
+      'view:docs',
+    ]),
+    user: new Set(['view:chat', 'view:docs']),
+    guest: new Set([]),
   },
 };

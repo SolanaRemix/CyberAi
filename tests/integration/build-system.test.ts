@@ -155,7 +155,7 @@ describe('Build Artifacts', () => {
     // This test verifies the path resolution works
     // In CI with advanced build, build-info.json would be validated
     expect(typeof existsSync(buildInfoPath)).toBe('boolean');
-    
+
     // If build-info exists, validate its structure
     if (existsSync(buildInfoPath)) {
       const buildInfo = JSON.parse(readFileSync(buildInfoPath, 'utf8'));

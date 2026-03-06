@@ -20,15 +20,18 @@ CyberAi now includes a sophisticated build system with multiple build tools and 
 ## 🔧 Build Tools
 
 ### 1. **Makefile**
+
 Cross-platform build automation with comprehensive targets for development and production.
 
 **Key Features:**
+
 - Color-coded output for better readability
 - Parallel execution support
 - Comprehensive help system
 - Quality gates and verification
 
 **Usage:**
+
 ```bash
 make help           # Display all available targets
 make install        # Install dependencies
@@ -38,11 +41,13 @@ make quality        # Run all quality checks
 ```
 
 ### 2. **TypeScript Compiler (tsc)**
+
 Primary build tool for TypeScript compilation.
 
 **Configuration:** `tsconfig.json`
 
 **Usage:**
+
 ```bash
 npm run build              # Standard build
 npm run build:watch        # Watch mode
@@ -50,11 +55,13 @@ npm run typecheck          # Type check only
 ```
 
 ### 3. **esbuild**
+
 Advanced bundling with optimization and tree-shaking.
 
 **Configuration:** `esbuild.config.js`
 
 **Features:**
+
 - Fast compilation
 - Code splitting
 - Tree shaking
@@ -62,34 +69,40 @@ Advanced bundling with optimization and tree-shaking.
 - Source maps
 
 **Usage:**
+
 ```bash
 npm run build:esbuild        # Build with esbuild
 npm run build:esbuild:watch  # Watch mode
 ```
 
 ### 4. **Turbo**
+
 Monorepo build orchestration with intelligent caching.
 
 **Configuration:** `turbo.json`
 
 **Features:**
+
 - Parallel execution
 - Incremental builds
 - Remote caching
 - Task dependencies
 
 **Usage:**
+
 ```bash
 turbo run build      # Run build with turbo
 turbo run test       # Run tests with caching
 ```
 
 ### 5. **Advanced Build Script**
+
 Comprehensive build orchestration script.
 
 **Location:** `scripts/advanced-build.sh`
 
 **Features:**
+
 - Multi-stage builds
 - Environment configuration
 - Quality checks integration
@@ -97,6 +110,7 @@ Comprehensive build orchestration script.
 - Detailed logging
 
 **Usage:**
+
 ```bash
 npm run build:advanced     # Production build
 npm run build:dev          # Development build
@@ -109,6 +123,7 @@ VERBOSE=true npm run build:advanced
 ## 🚀 Quick Start
 
 ### Basic Build
+
 ```bash
 # Clone and setup
 git clone https://github.com/SolanaRemix/CyberAi.git
@@ -126,6 +141,7 @@ npm test
 ```
 
 ### Production Build
+
 ```bash
 # Using Makefile
 make build-prod
@@ -138,6 +154,7 @@ make ci
 ```
 
 ### Development Workflow
+
 ```bash
 # Start in watch mode
 make build-watch
@@ -153,37 +170,39 @@ make test-watch
 
 ### NPM Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run build` | Standard TypeScript build |
-| `npm run build:advanced` | Production build with advanced script (requires bash) |
-| `npm run build:dev` | Development build (requires bash) |
-| `npm run build:watch` | Watch mode for incremental builds |
-| `npm run build:esbuild` | Build with esbuild bundler |
-| `npm run build:esbuild:watch` | esbuild watch mode |
-| `npm run clean` | Clean build artifacts (cross-platform via rimraf) |
-| `npm run clean:all` | Deep clean including node_modules (cross-platform) |
+| Command                       | Description                                           |
+| ----------------------------- | ----------------------------------------------------- |
+| `npm run build`               | Standard TypeScript build                             |
+| `npm run build:advanced`      | Production build with advanced script (requires bash) |
+| `npm run build:dev`           | Development build (requires bash)                     |
+| `npm run build:watch`         | Watch mode for incremental builds                     |
+| `npm run build:esbuild`       | Build with esbuild bundler                            |
+| `npm run build:esbuild:watch` | esbuild watch mode                                    |
+| `npm run clean`               | Clean build artifacts (cross-platform via rimraf)     |
+| `npm run clean:all`           | Deep clean including node_modules (cross-platform)    |
 
 ### Makefile Targets
 
-| Target | Description |
-|--------|-------------|
-| `make help` | Display help |
-| `make install` | Install dependencies |
-| `make build` | Build project |
-| `make build-prod` | Production build |
-| `make build-watch` | Watch mode |
-| `make test` | Run tests |
-| `make lint` | Run linter |
-| `make typecheck` | Type checking |
-| `make quality` | All quality checks |
-| `make clean` | Clean artifacts |
-| `make ci` | Full CI pipeline |
+| Target             | Description          |
+| ------------------ | -------------------- |
+| `make help`        | Display help         |
+| `make install`     | Install dependencies |
+| `make build`       | Build project        |
+| `make build-prod`  | Production build     |
+| `make build-watch` | Watch mode           |
+| `make test`        | Run tests            |
+| `make lint`        | Run linter           |
+| `make typecheck`   | Type checking        |
+| `make quality`     | All quality checks   |
+| `make clean`       | Clean artifacts      |
+| `make ci`          | Full CI pipeline     |
 
 ## ⚙️ Configuration Files
 
 ### `tsconfig.json`
+
 TypeScript compiler configuration.
+
 ```json
 {
   "compilerOptions": {
@@ -196,9 +215,11 @@ TypeScript compiler configuration.
 ```
 
 ### `esbuild.config.js`
+
 esbuild bundler configuration with multiple entry points.
 
 **Key Features:**
+
 - Multiple bundles (main, agents, contracts, security, utils)
 - Production minification
 - Source maps
@@ -206,18 +227,22 @@ esbuild bundler configuration with multiple entry points.
 - Watch mode support
 
 ### `turbo.json`
+
 Turbo monorepo configuration.
 
 **Pipeline Configuration:**
+
 - Build dependencies
 - Caching strategies
 - Output directories
 - Environment variables
 
 ### `Makefile`
+
 Cross-platform build automation.
 
 **Variables:**
+
 - `NODE_VERSION`: Target Node.js version
 - `BUILD_DIR`: Build output directory
 - `LOGS_DIR`: Logs directory
@@ -225,9 +250,11 @@ Cross-platform build automation.
 ## 🐳 Docker Support
 
 ### Dockerfile
+
 Multi-stage Docker build with optimization.
 
 **Stages:**
+
 1. **base**: Base image with system dependencies
 2. **deps**: Production dependencies
 3. **dev-deps**: Development dependencies
@@ -236,6 +263,7 @@ Multi-stage Docker build with optimization.
 6. **development**: Development image
 
 **Usage:**
+
 ```bash
 # Build production image
 docker build -t cyberai:latest .
@@ -248,9 +276,11 @@ docker run -p 3000:3000 cyberai:latest
 ```
 
 ### docker-compose.yml
+
 Multi-service orchestration.
 
 **Services:**
+
 - `app`: Main application (production)
 - `dev`: Development service
 - `site`: Astro site
@@ -258,6 +288,7 @@ Multi-service orchestration.
 - `nginx`: Reverse proxy (optional)
 
 **Usage:**
+
 ```bash
 # Start all services
 docker-compose up -d
@@ -273,6 +304,7 @@ docker-compose down
 ```
 
 **NPM Scripts:**
+
 ```bash
 npm run docker:build    # Build Docker image
 npm run docker:run      # Run container
@@ -283,9 +315,11 @@ npm run docker:down     # Docker Compose down
 ## 🔄 CI/CD Integration
 
 ### GitHub Actions Workflow
+
 Location: `.github/workflows/advanced-build.yml`
 
 **Jobs:**
+
 1. **build-matrix**: Multi-platform builds (Ubuntu, macOS, Windows)
 2. **optimized-build**: Production-optimized build
 3. **docker-build**: Docker image build test
@@ -293,6 +327,7 @@ Location: `.github/workflows/advanced-build.yml`
 5. **benchmark**: Performance benchmarks
 
 **Features:**
+
 - Multi-OS testing
 - Multiple Node.js versions
 - Build artifacts upload
@@ -300,6 +335,7 @@ Location: `.github/workflows/advanced-build.yml`
 - Performance metrics
 
 **Trigger:**
+
 ```bash
 # Automatically on push/PR to main/develop
 # Manual trigger via workflow_dispatch
@@ -308,6 +344,7 @@ Location: `.github/workflows/advanced-build.yml`
 ## 🎯 Advanced Features
 
 ### 1. **Parallel Builds**
+
 ```bash
 # Using Make parallel execution
 make -j4 build test lint
@@ -317,6 +354,7 @@ turbo run build test --parallel
 ```
 
 ### 2. **Incremental Builds**
+
 ```bash
 # TypeScript incremental
 npm run build:watch
@@ -326,14 +364,17 @@ npm run build:esbuild:watch
 ```
 
 ### 3. **Build Caching**
+
 - TypeScript: `.tsbuildinfo`
 - Turbo: `.turbo/cache`
 - Docker: BuildKit cache
 
 ### 4. **Build Information**
+
 Generated file: `dist/build-info.json`
 
 Contains:
+
 - Version
 - Build mode
 - Timestamp
@@ -342,6 +383,7 @@ Contains:
 - Platform info
 
 ### 5. **Quality Gates**
+
 ```bash
 # Run all quality checks
 make quality
@@ -353,7 +395,9 @@ make test
 ```
 
 ### 6. **Build Verification**
+
 Automatic verification of:
+
 - Build output existence
 - Required files
 - Build info generation
@@ -363,6 +407,7 @@ Automatic verification of:
 ### Common Issues
 
 #### Build Fails with "Out of Memory"
+
 ```bash
 # Increase Node memory
 export NODE_OPTIONS="--max-old-space-size=4096"
@@ -370,11 +415,13 @@ npm run build
 ```
 
 #### Permission Denied on Scripts
+
 ```bash
 chmod +x scripts/advanced-build.sh
 ```
 
 #### Docker Build Slow
+
 ```bash
 # Use BuildKit
 DOCKER_BUILDKIT=1 docker build .
@@ -384,13 +431,16 @@ cat .dockerignore
 ```
 
 #### Makefile Not Found
+
 Ensure you're in the project root:
+
 ```bash
 cd /home/runner/work/CyberAi/CyberAi
 make help
 ```
 
 ### Clean Build
+
 ```bash
 # Clean and rebuild
 make clean-all
@@ -399,6 +449,7 @@ make build
 ```
 
 ### Verbose Output
+
 ```bash
 # With advanced script
 VERBOSE=true npm run build:advanced
@@ -410,12 +461,14 @@ make build V=1
 ## 📊 Build Metrics
 
 ### Build Times (Approximate)
+
 - Standard build: ~5-10s
 - Advanced build: ~20-30s
 - Docker build: ~2-3 min
 - Full CI pipeline: ~5-10 min
 
 ### Output Sizes
+
 - TypeScript output: ~500KB - 2MB
 - esbuild bundle: ~300KB - 1MB (minified)
 - Docker image: ~200-400MB
@@ -423,6 +476,7 @@ make build V=1
 ## 🔐 Security
 
 ### Best Practices
+
 1. Use multi-stage Docker builds
 2. Run as non-root user in containers
 3. Scan dependencies regularly
@@ -430,6 +484,7 @@ make build V=1
 5. Implement build verification
 
 ### Security Features
+
 - Non-root Docker user
 - Minimal base images
 - Dependency scanning
@@ -446,6 +501,7 @@ make build V=1
 ## 🤝 Contributing
 
 When adding new build features:
+
 1. Update this documentation
 2. Add tests for new build targets
 3. Update CI/CD workflows

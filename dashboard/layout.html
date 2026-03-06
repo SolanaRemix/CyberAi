@@ -17,17 +17,31 @@
         --accent-glow: rgba(0, 234, 255, 0.45);
       }
 
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-      html, body {
+      html,
+      body {
         height: 100%;
         background: var(--bg);
         color: var(--text);
-        font-family: system-ui, -apple-system, sans-serif;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
       }
 
       /* ── Shell ── */
-      .dashboard-shell { display: flex; flex-direction: column; min-height: 100vh; }
+      .dashboard-shell {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
       /* ── Header ── */
       .dashboard-header {
@@ -69,7 +83,8 @@
         transition: all 0.2s;
       }
 
-      .header-nav a:hover, .header-nav a.active {
+      .header-nav a:hover,
+      .header-nav a.active {
         color: var(--accent);
         border-bottom-color: var(--accent);
         text-shadow: 0 0 6px var(--accent-glow);
@@ -106,20 +121,28 @@
         transition: all 0.25s;
       }
 
-      .mobile-menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
-      .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
-      .mobile-menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+      .mobile-menu-btn.open span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+      }
+      .mobile-menu-btn.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .mobile-menu-btn.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+      }
 
       /* ── Sidebar overlay (mobile) ── */
       .sidebar-overlay {
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         z-index: 149;
       }
 
-      .sidebar-overlay.open { display: block; }
+      .sidebar-overlay.open {
+        display: block;
+      }
 
       /* ── Sidebar ── */
       .sidebar {
@@ -133,14 +156,18 @@
 
         /* Mobile: slide-in drawer */
         position: fixed;
-        top: 0; left: 0; bottom: 0;
+        top: 0;
+        left: 0;
+        bottom: 0;
         z-index: 150;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         display: flex;
       }
 
-      .sidebar.open { transform: translateX(0); }
+      .sidebar.open {
+        transform: translateX(0);
+      }
 
       .sidebar-group-label {
         font-size: 0.68rem;
@@ -163,7 +190,8 @@
         transition: all 0.2s;
       }
 
-      .sidebar a:hover, .sidebar a.active {
+      .sidebar a:hover,
+      .sidebar a.active {
         color: var(--accent);
         background: rgba(0, 234, 255, 0.06);
         border-left-color: var(--accent);
@@ -175,7 +203,11 @@
       }
 
       /* ── Body ── */
-      .dashboard-body { display: flex; flex: 1; overflow: hidden; }
+      .dashboard-body {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
 
       /* ── Main area ── */
       .main-area {
@@ -185,8 +217,12 @@
       }
 
       /* ── Section panels ── */
-      .dash-section { display: none; }
-      .dash-section.active { display: block; }
+      .dash-section {
+        display: none;
+      }
+      .dash-section.active {
+        display: block;
+      }
 
       .section-header {
         display: flex;
@@ -217,8 +253,12 @@
         margin-bottom: 1.25rem;
       }
 
-      .rbac-banner.visible { display: flex; }
-      .rbac-banner a { color: var(--accent); }
+      .rbac-banner.visible {
+        display: flex;
+      }
+      .rbac-banner a {
+        color: var(--accent);
+      }
 
       /* ── Stat cards ── */
       .cards-grid {
@@ -279,24 +319,48 @@
         vertical-align: middle;
       }
 
-      .data-table tr:hover td { background: rgba(0, 234, 255, 0.03); }
+      .data-table tr:hover td {
+        background: rgba(0, 234, 255, 0.03);
+      }
 
       /* ── Status dots / badges ── */
       .status-dot {
         display: inline-block;
-        width: 8px; height: 8px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         margin-right: 0.4rem;
         vertical-align: middle;
       }
 
-      .status-dot.running { background: var(--accent); box-shadow: 0 0 5px var(--accent-glow); animation: pulse 1.5s ease-in-out infinite; }
-      .status-dot.success { background: #06ffa5; }
-      .status-dot.failed  { background: #ff4d6a; }
-      .status-dot.idle    { background: var(--text-dim); }
-      .status-dot.active  { background: var(--accent); box-shadow: 0 0 5px var(--accent-glow); }
+      .status-dot.running {
+        background: var(--accent);
+        box-shadow: 0 0 5px var(--accent-glow);
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+      .status-dot.success {
+        background: #06ffa5;
+      }
+      .status-dot.failed {
+        background: #ff4d6a;
+      }
+      .status-dot.idle {
+        background: var(--text-dim);
+      }
+      .status-dot.active {
+        background: var(--accent);
+        box-shadow: 0 0 5px var(--accent-glow);
+      }
 
-      @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity: 0.4; } }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
 
       .badge {
         font-size: 0.72rem;
@@ -307,9 +371,18 @@
         white-space: nowrap;
       }
 
-      .badge.cyan { border-color: var(--accent); color: var(--accent); }
-      .badge.red  { border-color: #ff4d6a; color: #ff4d6a; }
-      .badge.success{ border-color: #06ffa5; color: #06ffa5; }
+      .badge.cyan {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .badge.red {
+        border-color: #ff4d6a;
+        color: #ff4d6a;
+      }
+      .badge.success {
+        border-color: #06ffa5;
+        color: #06ffa5;
+      }
 
       /* ── Buttons ── */
       .btn {
@@ -324,13 +397,30 @@
         color: var(--accent);
       }
 
-      .btn:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 8px var(--accent-glow); }
+      .btn:hover {
+        background: var(--accent);
+        color: var(--bg);
+        box-shadow: 0 0 8px var(--accent-glow);
+      }
 
-      .btn-solid { background: var(--accent); color: var(--bg); }
-      .btn-solid:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+      .btn-solid {
+        background: var(--accent);
+        color: var(--bg);
+      }
+      .btn-solid:hover {
+        background: var(--accent-dark);
+        border-color: var(--accent-dark);
+      }
 
-      .btn-danger { border-color: #ff4d6a; color: #ff4d6a; }
-      .btn-danger:hover { background: #ff4d6a; color: #fff; box-shadow: none; }
+      .btn-danger {
+        border-color: #ff4d6a;
+        color: #ff4d6a;
+      }
+      .btn-danger:hover {
+        background: #ff4d6a;
+        color: #fff;
+        box-shadow: none;
+      }
 
       /* ── Log viewer ── */
       .log-viewer {
@@ -346,9 +436,15 @@
         line-height: 1.7;
       }
 
-      .log-viewer .log-line.accent { color: var(--accent); }
-      .log-viewer .log-line.success { color: #06ffa5; }
-      .log-viewer .log-line.error { color: #ff4d6a; }
+      .log-viewer .log-line.accent {
+        color: var(--accent);
+      }
+      .log-viewer .log-line.success {
+        color: #06ffa5;
+      }
+      .log-viewer .log-line.error {
+        color: #ff4d6a;
+      }
 
       /* ── Settings form ── */
       .settings-form {
@@ -375,7 +471,9 @@
         color: var(--text);
         font-size: 0.88rem;
         outline: none;
-        transition: border-color 0.2s, box-shadow 0.2s;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
       }
 
       .form-group input:focus,
@@ -384,7 +482,9 @@
         box-shadow: 0 0 6px var(--accent-glow);
       }
 
-      .form-group select option { background: var(--bg-panel); }
+      .form-group select option {
+        background: var(--bg-panel);
+      }
 
       /* ── Admin panel ── */
       .admin-grid {
@@ -410,13 +510,23 @@
         box-shadow: 0 0 10px var(--accent-glow);
       }
 
-      .admin-card h3 { font-size: 0.88rem; font-weight: 700; }
-      .admin-card p { font-size: 0.78rem; color: var(--text-dim); }
+      .admin-card h3 {
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+      .admin-card p {
+        font-size: 0.78rem;
+        color: var(--text-dim);
+      }
 
       /* ── Desktop breakpoints ── */
       @media (min-width: 769px) {
-        .mobile-menu-btn { display: none; }
-        .header-nav { display: flex; }
+        .mobile-menu-btn {
+          display: none;
+        }
+        .header-nav {
+          display: flex;
+        }
 
         .sidebar {
           position: static;
@@ -425,8 +535,12 @@
           width: 220px;
         }
 
-        .sidebar-overlay { display: none !important; }
-        .main-area { padding: 2rem; }
+        .sidebar-overlay {
+          display: none !important;
+        }
+        .main-area {
+          padding: 2rem;
+        }
       }
     </style>
   </head>
@@ -436,7 +550,6 @@
       Values: 'admin' | 'operator' | 'user' | 'guest'
     -->
     <div class="dashboard-shell" id="dash" data-role="admin">
-
       <!-- Header -->
       <header class="dashboard-header">
         <a href="/" class="logo">🔒 CyberAi</a>
@@ -447,7 +560,12 @@
           <a href="/docs">Docs</a>
         </nav>
         <span class="role-badge" id="role-label">admin</span>
-        <button class="mobile-menu-btn" id="sidebar-toggle" aria-label="Toggle sidebar" aria-expanded="false">
+        <button
+          class="mobile-menu-btn"
+          id="sidebar-toggle"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
           <span></span><span></span><span></span>
         </button>
       </header>
@@ -462,21 +580,36 @@
           <a href="#" class="active" data-section="overview" aria-label="Overview">📊 Overview</a>
 
           <span class="sidebar-group-label">Manage</span>
-          <a href="#" data-section="agents" data-requires="view:agents" aria-label="Agents">🤖 Agents</a>
-          <a href="#" data-section="contracts" data-requires="manage:contracts" aria-label="Contracts">📜 Contracts</a>
-          <a href="#" data-section="workflows" data-requires="manage:workflows" aria-label="Workflows">⚙️ Workflows</a>
+          <a href="#" data-section="agents" data-requires="view:agents" aria-label="Agents"
+            >🤖 Agents</a
+          >
+          <a
+            href="#"
+            data-section="contracts"
+            data-requires="manage:contracts"
+            aria-label="Contracts"
+            >📜 Contracts</a
+          >
+          <a
+            href="#"
+            data-section="workflows"
+            data-requires="manage:workflows"
+            aria-label="Workflows"
+            >⚙️ Workflows</a
+          >
 
           <span class="sidebar-group-label">Monitor</span>
           <a href="#" data-section="logs" data-requires="view:logs" aria-label="Logs">📋 Logs</a>
 
           <span class="sidebar-group-label">System</span>
-          <a href="#" data-section="settings" data-requires="manage:deploy" aria-label="Settings">🔧 Settings</a>
+          <a href="#" data-section="settings" data-requires="manage:deploy" aria-label="Settings"
+            >🔧 Settings</a
+          >
           <a href="#" data-section="admin" data-requires="admin:all" aria-label="Admin">👑 Admin</a>
         </aside>
 
         <!-- Main -->
         <main class="main-area">
-
           <!-- ── Overview ── -->
           <section class="dash-section active" id="section-overview">
             <div class="section-header">
@@ -500,7 +633,17 @@
                 <div class="value">2</div>
               </div>
             </div>
-            <h2 style="font-size:0.9rem;color:var(--text-dim);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.04em;">Quick Status</h2>
+            <h2
+              style="
+                font-size: 0.9rem;
+                color: var(--text-dim);
+                margin-bottom: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+              "
+            >
+              Quick Status
+            </h2>
             <table class="data-table">
               <thead>
                 <tr>
@@ -510,10 +653,26 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td>🔒 CyberAi</td><td><span class="status-dot running"></span>running</td><td>now</td></tr>
-                <tr><td>🧠 Copilot Core</td><td><span class="status-dot running"></span>running</td><td>1 min ago</td></tr>
-                <tr><td>🤖 Example Agent</td><td><span class="status-dot idle"></span>idle</td><td>5 min ago</td></tr>
-                <tr><td>📱 Terminal Mobile</td><td><span class="status-dot idle"></span>idle</td><td>12 min ago</td></tr>
+                <tr>
+                  <td>🔒 CyberAi</td>
+                  <td><span class="status-dot running"></span>running</td>
+                  <td>now</td>
+                </tr>
+                <tr>
+                  <td>🧠 Copilot Core</td>
+                  <td><span class="status-dot running"></span>running</td>
+                  <td>1 min ago</td>
+                </tr>
+                <tr>
+                  <td>🤖 Example Agent</td>
+                  <td><span class="status-dot idle"></span>idle</td>
+                  <td>5 min ago</td>
+                </tr>
+                <tr>
+                  <td>📱 Terminal Mobile</td>
+                  <td><span class="status-dot idle"></span>idle</td>
+                  <td>12 min ago</td>
+                </tr>
               </tbody>
             </table>
           </section>
@@ -523,7 +682,9 @@
             <div class="rbac-banner" id="agents-rbac"></div>
             <div class="section-header">
               <h1>Agents</h1>
-              <button class="btn btn-solid" id="register-agent-btn" aria-label="Register new agent">+ Register</button>
+              <button class="btn btn-solid" id="register-agent-btn" aria-label="Register new agent">
+                + Register
+              </button>
             </div>
             <table class="data-table">
               <thead>
@@ -541,28 +702,44 @@
                   <td><span class="badge">security</span></td>
                   <td><span class="badge cyan">cyan</span></td>
                   <td><span class="status-dot running"></span>running</td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">Details</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      Details
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>🧠 Copilot Core</td>
                   <td><span class="badge">analysis</span></td>
                   <td><span class="badge cyan">cyan</span></td>
                   <td><span class="status-dot running"></span>running</td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">Details</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      Details
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>🤖 Example Agent</td>
                   <td><span class="badge">template</span></td>
                   <td><span class="badge cyan">cyan</span></td>
                   <td><span class="status-dot idle"></span>idle</td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">Details</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      Details
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>📱 Terminal Mobile</td>
                   <td><span class="badge">mobile</span></td>
                   <td><span class="badge cyan">cyan</span></td>
                   <td><span class="status-dot idle"></span>idle</td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">Details</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      Details
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -591,21 +768,33 @@
                   <td><span class="badge">agent</span></td>
                   <td>cyberai</td>
                   <td><span class="badge red">No</span></td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">Audit</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      Audit
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>copilot-core.json</td>
                   <td><span class="badge">agent</span></td>
                   <td>GitHub</td>
                   <td><span class="badge success">Yes</span></td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">View</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      View
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>terminal-mobile.json</td>
                   <td><span class="badge">agent</span></td>
                   <td>SolanaRemix</td>
                   <td><span class="badge red">No</span></td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">Audit</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      Audit
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -618,7 +807,7 @@
               <h1>Workflows</h1>
               <button class="btn btn-solid" id="wf-run-btn" aria-label="Run workflow">▶ Run</button>
             </div>
-            <table class="data-table" style="margin-bottom:1.25rem;">
+            <table class="data-table" style="margin-bottom: 1.25rem">
               <thead>
                 <tr>
                   <th>Workflow</th>
@@ -634,32 +823,49 @@
                   <td><span class="badge cyan">🔒 CyberAi</span></td>
                   <td><span class="status-dot running"></span>running</td>
                   <td>2m 14s</td>
-                  <td><button class="btn btn-danger" style="font-size:0.75rem;padding:0.2rem 0.6rem">Stop</button></td>
+                  <td>
+                    <button
+                      class="btn btn-danger"
+                      style="font-size: 0.75rem; padding: 0.2rem 0.6rem"
+                    >
+                      Stop
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>contract-validation</td>
                   <td><span class="badge">🤖 Example Agent</span></td>
                   <td><span class="status-dot success"></span>success</td>
                   <td>0m 42s</td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">Re-run</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      Re-run
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>mobile-bootstrap</td>
                   <td><span class="badge">📱 Terminal Mobile</span></td>
                   <td><span class="status-dot idle"></span>idle</td>
                   <td>—</td>
-                  <td><button class="btn" style="font-size:0.75rem;padding:0.2rem 0.6rem">Run</button></td>
+                  <td>
+                    <button class="btn" style="font-size: 0.75rem; padding: 0.2rem 0.6rem">
+                      Run
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
-            <h3 style="font-size:0.85rem;color:var(--text-dim);margin-bottom:0.5rem;">Execution Log</h3>
+            <h3 style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.5rem">
+              Execution Log
+            </h3>
             <div class="log-viewer" id="wf-log">
               <div class="log-line accent">▶ security-audit started</div>
-              <div class="log-line">  Scanning contracts/agents/…</div>
-              <div class="log-line success">  ✓ example-agent — OK</div>
-              <div class="log-line success">  ✓ copilot-core — OK</div>
-              <div class="log-line success">  ✓ terminal-mobile — OK</div>
-              <div class="log-line">  Running RBAC guard checks…</div>
+              <div class="log-line">Scanning contracts/agents/…</div>
+              <div class="log-line success">✓ example-agent — OK</div>
+              <div class="log-line success">✓ copilot-core — OK</div>
+              <div class="log-line success">✓ terminal-mobile — OK</div>
+              <div class="log-line">Running RBAC guard checks…</div>
             </div>
           </section>
 
@@ -671,13 +877,23 @@
               <button class="btn" id="clear-logs-btn" aria-label="Clear logs">Clear</button>
             </div>
             <div class="log-viewer" id="audit-log">
-              <div class="log-line">[2026-03-06 00:50:01] INFO  User login: admin@cyberai.network</div>
-              <div class="log-line accent">[2026-03-06 00:50:14] INFO  Workflow security-audit started</div>
-              <div class="log-line success">[2026-03-06 00:50:56] OK    contract-validation completed</div>
-              <div class="log-line">[2026-03-06 00:51:03] INFO  RBAC check: admin → /dashboard/admin ✓</div>
-              <div class="log-line">[2026-03-06 00:51:20] INFO  Agent copilot-core registered</div>
-              <div class="log-line success">[2026-03-06 00:51:35] OK    All contracts validated</div>
-              <div class="log-line">[2026-03-06 00:51:58] INFO  Chat session started — user mode</div>
+              <div class="log-line">
+                [2026-03-06 00:50:01] INFO User login: admin@cyberai.network
+              </div>
+              <div class="log-line accent">
+                [2026-03-06 00:50:14] INFO Workflow security-audit started
+              </div>
+              <div class="log-line success">
+                [2026-03-06 00:50:56] OK contract-validation completed
+              </div>
+              <div class="log-line">
+                [2026-03-06 00:51:03] INFO RBAC check: admin → /dashboard/admin ✓
+              </div>
+              <div class="log-line">[2026-03-06 00:51:20] INFO Agent copilot-core registered</div>
+              <div class="log-line success">[2026-03-06 00:51:35] OK All contracts validated</div>
+              <div class="log-line">
+                [2026-03-06 00:51:58] INFO Chat session started — user mode
+              </div>
             </div>
           </section>
 
@@ -687,7 +903,7 @@
             <div class="section-header">
               <h1>Settings</h1>
             </div>
-            <form class="settings-form" onsubmit="return false">
+            <form class="settings-form" onsubmit="return false;">
               <div class="form-group">
                 <label for="api-endpoint">API Endpoint</label>
                 <input id="api-endpoint" type="url" value="https://api.cyberai.network" />
@@ -726,25 +942,27 @@
               <div class="admin-card">
                 <h3>👥 User Management</h3>
                 <p>Manage users, roles, and permissions across the platform.</p>
-                <button class="btn" style="margin-top:0.5rem">Manage Users</button>
+                <button class="btn" style="margin-top: 0.5rem">Manage Users</button>
               </div>
               <div class="admin-card">
                 <h3>🔐 RBAC Config</h3>
                 <p>Configure role-based access control rules and action mappings.</p>
-                <button class="btn" style="margin-top:0.5rem">Edit RBAC</button>
+                <button class="btn" style="margin-top: 0.5rem">Edit RBAC</button>
               </div>
               <div class="admin-card">
                 <h3>🚀 Deploy Controls</h3>
                 <p>Trigger deployments, manage GitHub Pages builds, and roll back.</p>
-                <button class="btn" style="margin-top:0.5rem">Deploy</button>
+                <button class="btn" style="margin-top: 0.5rem">Deploy</button>
               </div>
               <div class="admin-card">
                 <h3>📦 Agent Registry</h3>
                 <p>Register, update, or decommission agents in the ecosystem.</p>
-                <button class="btn" style="margin-top:0.5rem">Registry</button>
+                <button class="btn" style="margin-top: 0.5rem">Registry</button>
               </div>
             </div>
-            <h3 style="font-size:0.85rem;color:var(--text-dim);margin-bottom:0.5rem;">System Health</h3>
+            <h3 style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.5rem">
+              System Health
+            </h3>
             <div class="log-viewer">
               <div class="log-line success">✓ RBAC system: active</div>
               <div class="log-line success">✓ Agent registry: 4 agents</div>
@@ -752,7 +970,6 @@
               <div class="log-line accent">• Workflow security-audit: running</div>
             </div>
           </section>
-
         </main>
       </div>
     </div>
@@ -767,25 +984,30 @@
       const currentRole = dash.dataset.role || 'guest';
       const perms = ROLE_PERMISSIONS[currentRole] || ROLE_PERMISSIONS.guest;
 
-      function can(action) { return perms.has(action); }
+      function can(action) {
+        return perms.has(action);
+      }
 
       // ── Update role badge ──
       document.getElementById('role-label').textContent = currentRole;
 
       // ── Section RBAC banners ──
       const SECTION_REQUIREMENTS = {
-        agents:    'view:agents',
+        agents: 'view:agents',
         contracts: 'manage:contracts',
         workflows: 'manage:workflows',
-        logs:      'view:logs',
-        settings:  'manage:deploy',
-        admin:     'admin:all',
+        logs: 'view:logs',
+        settings: 'manage:deploy',
+        admin: 'admin:all',
       };
 
       for (const [section, action] of Object.entries(SECTION_REQUIREMENTS)) {
         const banner = document.getElementById(section + '-rbac');
         if (banner && !can(action)) {
-          banner.innerHTML = '🔒 This section requires the <strong>' + action + '</strong> permission. <a href="/login">Sign in with a higher-privilege account.</a>';
+          banner.innerHTML =
+            '🔒 This section requires the <strong>' +
+            action +
+            '</strong> permission. <a href="/login">Sign in with a higher-privilege account.</a>';
           banner.classList.add('visible');
         }
       }
@@ -802,7 +1024,7 @@
 
       // ── Section navigation ──
       const sidebarLinks = document.querySelectorAll('.sidebar a[data-section]');
-      const sections     = document.querySelectorAll('.dash-section');
+      const sections = document.querySelectorAll('.dash-section');
 
       function showSection(id) {
         sidebarLinks.forEach(a => a.classList.toggle('active', a.dataset.section === id));
@@ -820,8 +1042,8 @@
       });
 
       // ── Mobile sidebar ──
-      const sidebarToggle  = document.getElementById('sidebar-toggle');
-      const sidebar        = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      const sidebar = document.getElementById('sidebar');
       const sidebarOverlay = document.getElementById('sidebar-overlay');
 
       function closeSidebar() {
@@ -858,7 +1080,10 @@
       // ── Clear logs btn ──
       document.getElementById('clear-logs-btn').addEventListener('click', () => {
         if (!can('view:logs')) return;
-        document.getElementById('audit-log').innerHTML = '<div class="log-line accent">— Log cleared at ' + new Date().toLocaleTimeString() + ' —</div>';
+        document.getElementById('audit-log').innerHTML =
+          '<div class="log-line accent">— Log cleared at ' +
+          new Date().toLocaleTimeString() +
+          ' —</div>';
       });
     </script>
   </body>

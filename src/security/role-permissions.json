@@ -1,6 +1,26 @@
 {
-  "admin":    ["view:agents","view:repos","view:logs","view:dashboards","view:chat","view:docs","manage:deploy","manage:workflows","manage:contracts","manage:terminal","manage:agent-tools","admin:all"],
-  "operator": ["manage:workflows","manage:contracts","manage:terminal","manage:agent-tools","view:chat","view:docs"],
-  "user":     ["view:chat","view:docs"],
-  "guest":    []
+  "admin": [
+    "view:agents",
+    "view:repos",
+    "view:logs",
+    "view:dashboards",
+    "view:chat",
+    "view:docs",
+    "manage:deploy",
+    "manage:workflows",
+    "manage:contracts",
+    "manage:terminal",
+    "manage:agent-tools",
+    "admin:all"
+  ],
+  "operator": [
+    "manage:workflows",
+    "manage:contracts",
+    "manage:terminal",
+    "manage:agent-tools",
+    "view:chat",
+    "view:docs"
+  ],
+  "user": ["view:chat", "view:docs"],
+  "guest": []
 }

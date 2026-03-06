@@ -1,11 +1,11 @@
-import fs from "fs";
-import path from "path";
-import readline from "readline";
-import OpenAI from "openai";
+import fs from 'fs';
+import path from 'path';
+import readline from 'readline';
+import OpenAI from 'openai';
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 function ask(q) {
@@ -18,13 +18,13 @@ async function loadAgent(agentName) {
     console.error(`❌ Agent contract not found: ${agentPath}`);
     process.exit(1);
   }
-  return JSON.parse(fs.readFileSync(agentPath, "utf8"));
+  return JSON.parse(fs.readFileSync(agentPath, 'utf8'));
 }
 
 async function run() {
   const agentName = process.argv[2];
   if (!agentName) {
-    console.error("Usage: npx tsx scripts/agent-runtime.mts <agent-name>");
+    console.error('Usage: npx tsx scripts/agent-runtime.mts <agent-name>');
     process.exit(1);
   }
 
@@ -34,39 +34,37 @@ async function run() {
   console.log(`📄 Description: ${agent.description}\n`);
 
   const client = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
+    apiKey: process.env.OPENAI_API_KEY,
   });
 
-  const messages = [
-    { role: "system", content: agent.prompts?.system || "You are an AI agent." }
-  ];
+  const messages = [{ role: 'system', content: agent.prompts?.system || 'You are an AI agent.' }];
 
   while (true) {
-    const userInput = await ask("You: ");
+    const userInput = await ask('You: ');
     if (!userInput.trim()) continue;
-    if (userInput === "/exit") break;
+    if (userInput === '/exit') break;
 
-    messages.push({ role: "user", content: userInput });
+    messages.push({ role: 'user', content: userInput });
 
-    console.log("Agent:");
+    console.log('Agent:');
 
     const stream = await client.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: 'gpt-4o-mini',
       messages,
-      stream: true
+      stream: true,
     });
 
-    let fullResponse = "";
+    let fullResponse = '';
 
     for await (const chunk of stream) {
-      const token = chunk.choices?.[0]?.delta?.content || "";
+      const token = chunk.choices?.[0]?.delta?.content || '';
       process.stdout.write(token);
       fullResponse += token;
     }
 
-    console.log("\n");
+    console.log('\n');
 
-    messages.push({ role: "assistant", content: fullResponse });
+    messages.push({ role: 'assistant', content: fullResponse });
   }
 
   rl.close();

@@ -26,9 +26,9 @@ export type Action =
   | 'admin:all';
 
 const ROLE_PERMISSIONS: Record<Role, ReadonlySet<Action>> = {
-  [Role.Admin]:    new Set<Action>(rolePermissionsData.admin    as Action[]),
+  [Role.Admin]: new Set<Action>(rolePermissionsData.admin as Action[]),
   [Role.Operator]: new Set<Action>(rolePermissionsData.operator as Action[]),
-  [Role.User]:     new Set<Action>(rolePermissionsData.user     as Action[]),
+  [Role.User]: new Set<Action>(rolePermissionsData.user as Action[]),
 };
 
 /**
