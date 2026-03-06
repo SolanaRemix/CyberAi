@@ -156,7 +156,8 @@
         "color": {
           "type": "string",
           "description": "Theme color for the agent. Use 'cyan' for the hybrid dark+cyan theme.",
-          "enum": ["cyan"]
+          "enum": ["cyan", "blue", "green", "magenta"],
+          "default": "cyan"
         },
         "badge": {
           "type": "string",
