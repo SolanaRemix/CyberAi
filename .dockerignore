@@ -55,7 +55,6 @@ docs
 !README.md
 
 # CI/CD
-.github
 .circleci
 .travis.yml
 .gitlab-ci.yml
