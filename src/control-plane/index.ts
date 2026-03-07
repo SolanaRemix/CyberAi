@@ -104,7 +104,6 @@ export class ControlPlane {
 
     // Assign task to runner
     this.engine.updateTaskStatus(task.id, 'queued');
-    runner.capacity.currentJobs++;
 
     // In a real system, this would dispatch to the runner over the network
   }
