@@ -11,7 +11,6 @@ import type {
   Task,
   TaskOutput,
   AgentCapabilities,
-  LearningPolicy,
 } from '../swarm/types.js';
 
 export interface AgentExecutionContext {

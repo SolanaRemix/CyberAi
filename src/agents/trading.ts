@@ -227,10 +227,10 @@ ${result.portfolioRecommendation}
 
 ## Trade Signals
 ${result.signals
-  .map(
-    s => `| ${s.token} | **${s.action.toUpperCase()}** | ${(s.confidence * 100).toFixed(0)}% | ${s.rationale} |`,
-  )
-  .join('\n')}
+    .map(
+      s => `| ${s.token} | **${s.action.toUpperCase()}** | ${(s.confidence * 100).toFixed(0)}% | ${s.rationale} |`,
+    )
+    .join('\n')}
 
 ## Risk Warnings
 ${result.riskWarnings.map(w => `⚠️ ${w}`).join('\n')}

@@ -74,9 +74,9 @@ export class SwarmPlanner {
       input: { prompt: s.description },
       dependsOn: s.dependsOn
         ? s.dependsOn.map(dep => {
-            const idx = plan.steps.findIndex(ps => ps.name === dep);
-            return idx >= 0 ? `step-${idx}` : dep;
-          })
+          const idx = plan.steps.findIndex(ps => ps.name === dep);
+          return idx >= 0 ? `step-${idx}` : dep;
+        })
         : i > 0
           ? [`step-${i - 1}`]
           : undefined,
@@ -158,7 +158,7 @@ export class SwarmPlanner {
     ) {
       steps.push({
         name: 'Security Audit',
-        description: `Perform security audit and vulnerability scanning`,
+        description: 'Perform security audit and vulnerability scanning',
         agentType: 'security',
         priority: 'high',
         estimatedDurationMs: 15000,

@@ -193,7 +193,7 @@ export class SwarmRunner {
     successRate: number;
     avgDurationMs: number;
     currentLoad: number;
-  } {
+    } {
     const completed = this.completedJobs;
     const successful = completed.filter(j => j.exitCode === 0).length;
     const durations = completed

@@ -267,11 +267,11 @@ ${plan.rootCause}
 
 ### Actions
 ${plan.actions
-  .map(
-    (a, i) => `${i + 1}. **${a.description}** _(${a.risk} risk, ${(a.confidence * 100).toFixed(0)}% confidence)_
+    .map(
+      (a, i) => `${i + 1}. **${a.description}** _(${a.risk} risk, ${(a.confidence * 100).toFixed(0)}% confidence)_
    ${a.command ? `\`\`\`bash\n   ${a.command}\n   \`\`\`` : ''}`,
-  )
-  .join('\n\n')}
+    )
+    .join('\n\n')}
 
 ## Rollback Strategy
 ${plan.rollbackStrategy}

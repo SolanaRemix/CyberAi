@@ -116,7 +116,7 @@ export const gitTools: ToolDefinition[] = [
     description: 'Get repository status',
     category: 'git',
     schema: { type: 'object', properties: { repoPath: { type: 'string' } } },
-    executor: async (args) => {
+    executor: async (_args) => {
       return { success: true, data: { branch: 'main', changes: [], status: 'clean' } };
     },
   },

@@ -5,7 +5,6 @@
 
 import { randomUUID } from 'crypto';
 import { ControlPlane } from '../../src/control-plane/index.js';
-import { SwarmEngine } from '../../src/swarm/engine.js';
 import type { Workflow } from '../../src/swarm/types.js';
 
 export interface CLIOptions {
@@ -40,28 +39,28 @@ export class GodSwarmCLI {
     const [command, subcommand, ...rest] = args;
 
     switch (command) {
-      case 'init':
-        return this.init(rest);
-      case 'agent':
-        return this.handleAgent(subcommand, rest);
-      case 'workflow':
-        return this.handleWorkflow(subcommand, rest);
-      case 'deploy':
-        return this.handleDeploy(subcommand, rest);
-      case 'status':
-        return this.status();
-      case 'run':
-        return this.run(subcommand, rest);
-      case 'help':
-      case '--help':
-      case '-h':
-        return this.help();
-      case 'version':
-      case '--version':
-      case '-v':
-        return this.version();
-      default:
-        return { success: false, error: `Unknown command: ${command}. Run 'godswarm help' for usage.` };
+    case 'init':
+      return this.init(rest);
+    case 'agent':
+      return this.handleAgent(subcommand, rest);
+    case 'workflow':
+      return this.handleWorkflow(subcommand, rest);
+    case 'deploy':
+      return this.handleDeploy(subcommand, rest);
+    case 'status':
+      return this.status();
+    case 'run':
+      return this.run(subcommand, rest);
+    case 'help':
+    case '--help':
+    case '-h':
+      return this.help();
+    case 'version':
+    case '--version':
+    case '-v':
+      return this.version();
+    default:
+      return { success: false, error: `Unknown command: ${command}. Run 'godswarm help' for usage.` };
     }
   }
 
@@ -93,16 +92,16 @@ export class GodSwarmCLI {
 
   private async handleAgent(subcommand: string, args: string[]): Promise<CLIResult> {
     switch (subcommand) {
-      case 'list':
-        return this.agentList();
-      case 'create':
-        return this.agentCreate(args);
-      case 'status':
-        return this.agentStatus(args[0]);
-      case 'logs':
-        return this.agentLogs(args[0]);
-      default:
-        return { success: false, error: `Unknown agent command: ${subcommand}. Use: list|create|status|logs` };
+    case 'list':
+      return this.agentList();
+    case 'create':
+      return this.agentCreate(args);
+    case 'status':
+      return this.agentStatus(args[0]);
+    case 'logs':
+      return this.agentLogs(args[0]);
+    default:
+      return { success: false, error: `Unknown agent command: ${subcommand}. Use: list|create|status|logs` };
     }
   }
 
@@ -152,16 +151,16 @@ export class GodSwarmCLI {
 
   private async handleWorkflow(subcommand: string, args: string[]): Promise<CLIResult> {
     switch (subcommand) {
-      case 'list':
-        return this.workflowList();
-      case 'run':
-        return this.workflowRun(args);
-      case 'status':
-        return this.workflowStatus(args[0]);
-      case 'create':
-        return this.workflowCreate(args);
-      default:
-        return { success: false, error: `Unknown workflow command: ${subcommand}. Use: list|run|status|create` };
+    case 'list':
+      return this.workflowList();
+    case 'run':
+      return this.workflowRun(args);
+    case 'status':
+      return this.workflowStatus(args[0]);
+    case 'create':
+      return this.workflowCreate(args);
+    default:
+      return { success: false, error: `Unknown workflow command: ${subcommand}. Use: list|run|status|create` };
     }
   }
 

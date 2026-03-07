@@ -3,7 +3,6 @@
  * Central orchestration and lifecycle management
  */
 
-import { randomUUID } from 'crypto';
 import { SwarmEngine } from '../swarm/engine.js';
 import { AgentRegistry } from '../agents/registry.js';
 import type { Workflow, WorkflowRun, Task, Runner } from '../swarm/types.js';

@@ -226,8 +226,8 @@ Date: ${date}
 - **Risk Score**: ${result.riskScore}/100
 - **Total Findings**: ${result.findings.length}
 ${Object.entries(severityCounts)
-  .map(([sev, count]) => `- **${sev.charAt(0).toUpperCase() + sev.slice(1)}**: ${count}`)
-  .join('\n')}
+    .map(([sev, count]) => `- **${sev.charAt(0).toUpperCase() + sev.slice(1)}**: ${count}`)
+    .join('\n')}
 
 ## Findings
 
@@ -235,16 +235,16 @@ ${
   result.findings.length === 0
     ? '_No findings_'
     : result.findings
-        .map(
-          f => `### [${f.severity.toUpperCase()}] ${f.title}
+      .map(
+        f => `### [${f.severity.toUpperCase()}] ${f.title}
 ${f.cweId ? `**CWE**: ${f.cweId}  ` : ''}${f.cvssScore !== undefined ? `**CVSS**: ${f.cvssScore}` : ''}
 ${f.location ? `**Location**: ${f.location}` : ''}
 
 ${f.description}
 
 **Recommendation**: ${f.recommendation}`,
-        )
-        .join('\n\n---\n\n')
+      )
+      .join('\n\n---\n\n')
 }
 
 ## Recommendations

@@ -11,7 +11,6 @@ import { SwarmIntelligenceEngine, SelfImprovementLoop } from './intelligence.js'
 import type {
   SwarmAgent,
   Task,
-  TaskGraph,
   Workflow,
   WorkflowRun,
   SwarmEvent,
@@ -212,15 +211,15 @@ export class SwarmEngine {
     const tasks = Array.from(this.tasks.values());
     return {
       totalAgents: this.agents.size,
-      activeAgents: Array.from(this.agents.values()).filter(a => a.status === 'running').size,
+      activeAgents: Array.from(this.agents.values()).filter(a => a.status === 'running').length,
       totalRunners: this.runners.size,
       availableRunners: Array.from(this.runners.values()).filter(
         r => r.status === 'available',
-      ).size,
+      ).length,
       totalWorkflows: this.workflows.size,
       activeWorkflowRuns: Array.from(this.workflowRuns.values()).filter(
         r => r.status === 'running',
-      ).size,
+      ).length,
       totalTasks: tasks.length,
       completedTasks: tasks.filter(t => t.status === 'completed').length,
       failedTasks: tasks.filter(t => t.status === 'failed').length,

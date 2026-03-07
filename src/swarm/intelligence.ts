@@ -3,7 +3,6 @@
  * Coordinates multi-agent interactions: consensus, debate, parallel solving
  */
 
-import { randomUUID } from 'crypto';
 import type { SwarmConsensus, SwarmDebate } from './types.js';
 
 export interface ConsensusRequest {

@@ -104,7 +104,7 @@ export class ResearchAgent extends BaseAgent {
       sources: [
         { title: 'Academic Research Papers', url: 'https://arxiv.org', excerpt: `Recent papers on ${topic}` },
         { title: 'Industry Documentation', excerpt: `Best practices for ${topic}` },
-        { title: 'Open Source Projects', url: 'https://github.com', excerpt: `Reference implementations` },
+        { title: 'Open Source Projects', url: 'https://github.com', excerpt: 'Reference implementations' },
       ],
       confidence: 0.75,
       timestamp: new Date(),
@@ -130,11 +130,11 @@ ${result.keyFindings.map((f, i) => `${i + 1}. ${f}`).join('\n')}
 
 ## Sources
 ${result.sources
-  .map(
-    s => `- **${s.title}**${s.url ? ` — [Link](${s.url})` : ''}
+    .map(
+      s => `- **${s.title}**${s.url ? ` — [Link](${s.url})` : ''}
   ${s.excerpt ?? ''}`,
-  )
-  .join('\n')}
+    )
+    .join('\n')}
 
 ## Confidence Assessment
 **Confidence**: ${(result.confidence * 100).toFixed(0)}%

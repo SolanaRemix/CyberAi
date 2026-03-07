@@ -3,7 +3,7 @@
  * Decomposes complex tasks into executable subtasks
  */
 
-import type { AgentExecutionContext, ToolFunction } from './base.js';
+import type { AgentExecutionContext } from './base.js';
 import type { TaskOutput } from '../swarm/types.js';
 import { BaseAgent } from './base.js';
 import { SwarmPlanner } from '../swarm/planner.js';

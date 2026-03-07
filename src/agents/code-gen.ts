@@ -191,7 +191,7 @@ class Implementation:
       files: [
         { path: 'src/implementation.py', content, language: 'Python' },
       ],
-      explanation: `Generated Python implementation skeleton`,
+      explanation: 'Generated Python implementation skeleton',
     };
   }
 
@@ -229,7 +229,7 @@ contract GeneratedContract {
       files: [
         { path: 'contracts/GeneratedContract.sol', content, language: 'Solidity' },
       ],
-      explanation: `Generated Solidity contract skeleton`,
+      explanation: 'Generated Solidity contract skeleton',
     };
   }
 

@@ -87,17 +87,17 @@ export class GitHubIntegration extends BaseIntegration {
     });
   }
 
-  async listPRs(owner: string, repo: string): Promise<IntegrationResult<GitHubPR[]>> {
+  async listPRs(_owner: string, _repo: string): Promise<IntegrationResult<GitHubPR[]>> {
     return this.result([]);
   }
 
   async createPR(
-    owner: string,
-    repo: string,
+    _owner: string,
+    _repo: string,
     title: string,
     headBranch: string,
     baseBranch: string,
-    body?: string,
+    _body?: string,
   ): Promise<IntegrationResult<GitHubPR>> {
     return this.result({
       number: Math.floor(Math.random() * 1000),
@@ -110,11 +110,11 @@ export class GitHubIntegration extends BaseIntegration {
   }
 
   async triggerWorkflow(
-    owner: string,
-    repo: string,
-    workflowId: string,
-    ref: string,
-    inputs?: Record<string, string>,
+    _owner: string,
+    _repo: string,
+    _workflowId: string,
+    _ref: string,
+    _inputs?: Record<string, string>,
   ): Promise<IntegrationResult<{ runId: number }>> {
     return this.result({ runId: Math.floor(Math.random() * 100000) });
   }
@@ -153,7 +153,7 @@ export class DockerHubIntegration extends BaseIntegration {
     });
   }
 
-  async listTags(repository: string): Promise<IntegrationResult<string[]>> {
+  async listTags(_repository: string): Promise<IntegrationResult<string[]>> {
     return this.result(['latest', '1.0.0', '1.0.1']);
   }
 }
@@ -181,7 +181,7 @@ export class AWSIntegration extends BaseIntegration {
   async deployECS(
     clusterName: string,
     serviceName: string,
-    taskDefinition: string,
+    _taskDefinition: string,
   ): Promise<IntegrationResult<AWSResource>> {
     return this.result({
       resourceType: 'ecs-service',
@@ -194,8 +194,8 @@ export class AWSIntegration extends BaseIntegration {
 
   async deployLambda(
     functionName: string,
-    zipBuffer: Buffer | string,
-    runtime: string,
+    _zipBuffer: Buffer | string,
+    _runtime: string,
   ): Promise<IntegrationResult<AWSResource>> {
     return this.result({
       resourceType: 'lambda-function',
@@ -230,7 +230,7 @@ export class SolanaIntegration extends BaseIntegration {
     });
   }
 
-  async getBalance(publicKey: string): Promise<IntegrationResult<{ sol: number; lamports: number }>> {
+  async getBalance(_publicKey: string): Promise<IntegrationResult<{ sol: number; lamports: number }>> {
     // In production: call Solana JSON-RPC
     const lamports = Math.floor(Math.random() * 1000000000);
     return this.result({ sol: lamports / 1e9, lamports });
@@ -273,7 +273,7 @@ export class EthereumIntegration extends BaseIntegration {
     });
   }
 
-  async getBalance(address: string): Promise<IntegrationResult<{ eth: number; wei: bigint }>> {
+  async getBalance(_address: string): Promise<IntegrationResult<{ eth: number; wei: bigint }>> {
     const wei = BigInt(Math.floor(Math.random() * 1e18));
     return this.result({ eth: Number(wei) / 1e18, wei });
   }
