@@ -61,7 +61,16 @@ export class SwarmRunner {
   }
 
   get info(): Runner {
-    return { ...this.runner };
+    return {
+      id: this.runner.id,
+      name: this.runner.name,
+      status: this.runner.status,
+      capacity: {
+        ...this.runner.capacity,
+      },
+      tags: [...this.runner.tags],
+      lastHeartbeat: new Date(this.runner.lastHeartbeat),
+    };
   }
 
   get id(): string {
