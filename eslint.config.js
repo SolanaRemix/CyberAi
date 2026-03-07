@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
+import prettier from 'eslint-config-prettier';
 
 export default [
   js.configs.recommended,
@@ -23,10 +24,6 @@ export default [
       '@typescript-eslint': tsPlugin,
     },
     rules: {
-      indent: ['error', 2],
-      'linebreak-style': ['error', 'unix'],
-      quotes: ['error', 'single'],
-      semi: ['error', 'always'],
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
@@ -46,6 +43,7 @@ export default [
       '@typescript-eslint/no-require-imports': 'off',
     },
   },
+  prettier,
   {
     ignores: [
       'node_modules/',

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cyberai-production
+  labels:
+    environment: production
+    managed-by: god-swarm-ultra
+    version: '1.0.0'
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cyberai-staging
+  labels:
+    environment: staging
+    managed-by: god-swarm-ultra

@@ -14,6 +14,14 @@
     "declarationMap": true,
     "sourceMap": true
   },
-  "include": ["src/**/*", "contracts/**/*.ts", "prompts/**/*.ts", "tools/**/*.ts"],
+  "include": [
+    "src/**/*",
+    "contracts/**/*.ts",
+    "prompts/**/*.ts",
+    "tools/**/*.ts",
+    "config/**/*.ts",
+    "cli/src/**/*.ts",
+    "sdk/src/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist", "build", "scripts/**/*", "tests/**/*"]
 }

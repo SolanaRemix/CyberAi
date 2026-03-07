@@ -8,6 +8,11 @@ version: '3.9'
 x-common-labels: &common-labels
   com.cyberai.version: ${CYBERAI_VERSION:-1.1.0}
 
+x-swarm-labels: &swarm-labels
+  com.cyberai.version: ${CYBERAI_VERSION:-1.1.0}
+  com.godswarm.version: '1.0.0'
+  managed-by: god-swarm-ultra
+
 services:
   # Main CyberAi application
   app:
@@ -140,11 +145,119 @@ services:
     profiles:
       - proxy
 
+  # ──────────────────────────────────────────────────────────────────────────
+  # GOD-SWARM ULTRA Services
+  # ──────────────────────────────────────────────────────────────────────────
+
+  # GOD-SWARM Control Plane API
+  swarm-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: cyberai/god-swarm-api:latest
+    container_name: cyberai-swarm-api
+    restart: unless-stopped
+    ports:
+      - '3010:3000'
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - SERVICE_NAME=swarm-api
+      - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/cyberai}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - JWT_SECRET=${JWT_SECRET:-dev-secret-change-in-production}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - SWARM_MAX_CONCURRENT_WORKFLOWS=${SWARM_MAX_CONCURRENT_WORKFLOWS:-50}
+      - ENABLE_SELF_IMPROVEMENT=${ENABLE_SELF_IMPROVEMENT:-true}
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - cyberai-network
+      - swarm-network
+    labels:
+      <<: *swarm-labels
+      com.cyberai.service: swarm-api
+    profiles:
+      - swarm
+
+  # GOD-SWARM Runner (auto-scales)
+  swarm-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: cyberai/god-swarm-runner:latest
+    container_name: cyberai-swarm-runner
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - SERVICE_NAME=swarm-runner
+      - CONTROL_PLANE_URL=http://swarm-api:3000
+      - RUNNER_MAX_CONCURRENT_JOBS=${RUNNER_MAX_CONCURRENT_JOBS:-5}
+      - RUNNER_TAGS=docker,linux,amd64
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    depends_on:
+      - swarm-api
+    networks:
+      - swarm-network
+    labels:
+      <<: *swarm-labels
+      com.cyberai.service: swarm-runner
+    # NOTE: The deploy section below applies only in Docker Swarm mode (docker stack deploy).
+    # It is ignored by `docker compose up` in standalone Compose mode.
+    # For local development, use `docker compose --profile swarm up --scale swarm-runner=3` instead.
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+    profiles:
+      - swarm
+
+  # PostgreSQL (for production swarm)
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: cyberai-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-cyberai}
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - swarm-network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    labels:
+      <<: *swarm-labels
+      com.cyberai.service: postgres
+    profiles:
+      - swarm
+
 networks:
   cyberai-network:
     driver: bridge
     name: cyberai-network
+  swarm-network:
+    driver: bridge
+    name: cyberai-swarm-network
 
 volumes:
   redis-data:
     name: cyberai-redis-data
+  postgres-data:
+    name: cyberai-postgres-data
