@@ -107,10 +107,10 @@ export class ModelRouter {
       }
     }
 
-    // Filter by cost constraint
+    // Filter by cost constraint (maxCostUsd is interpreted as max USD per 1k input tokens)
     if (criteria.maxCostUsd !== undefined) {
       const affordable = candidates.filter(
-        m => m.costPer1kInputTokens < criteria.maxCostUsd! * 100,
+        m => m.costPer1kInputTokens <= criteria.maxCostUsd!,
       );
       if (affordable.length > 0) {
         candidates = affordable;
