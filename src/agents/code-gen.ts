@@ -142,7 +142,7 @@ export default Implementation;
 `;
 
     const testContent = `import { describe, it, expect } from 'vitest';
-import Implementation from './implementation.js';
+import Implementation from '../src/implementation.js';
 
 describe('Implementation', () => {
   it('should instantiate', () => {
