@@ -195,14 +195,32 @@ export class SwarmEngine {
       task.output = output;
     }
 
-    this.emit(
-      status === 'completed'
-        ? 'task.completed'
-        : status === 'failed'
-          ? 'task.failed'
-          : 'task.started',
-      { taskId, status },
-    );
+    let eventType: SwarmEventType;
+    switch (status) {
+      case 'completed':
+        eventType = 'task.completed';
+        break;
+      case 'failed':
+        eventType = 'task.failed';
+        break;
+      case 'queued':
+        eventType = 'task.queued';
+        break;
+      case 'running':
+        eventType = 'task.started';
+        break;
+      case 'cancelled':
+        eventType = 'task.cancelled';
+        break;
+      case 'retrying':
+        eventType = 'task.retrying';
+        break;
+      default:
+        eventType = 'task.updated';
+        break;
+    }
+
+    this.emit(eventType, { taskId, status });
   }
 
   // ─── Natural Language Interface ────────────────────────────────────────────
