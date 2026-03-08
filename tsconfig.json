@@ -3,6 +3,7 @@
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "node",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
@@ -21,7 +22,11 @@
     "tools/**/*.ts",
     "config/**/*.ts",
     "cli/src/**/*.ts",
-    "sdk/src/**/*.ts"
+    "sdk/src/**/*.ts",
+    "api/src/**/*.ts",
+    "app/src/**/*",
+    "dashboard/src/**/*",
+    "terminal/src/**/*.ts"
   ],
   "exclude": ["node_modules", "dist", "build", "scripts/**/*", "tests/**/*"]
 }
