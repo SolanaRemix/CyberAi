@@ -32,7 +32,12 @@
     "clean": "rimraf dist build .cache node_modules/.cache",
     "clean:all": "npm run clean && rimraf node_modules",
     "dev:api": "tsx api/src/index.ts",
-    "start:api": "tsx api/src/index.ts"
+    "start:api": "tsx api/src/index.ts",
+    "cli": "tsx cli/src/index.ts",
+    "sdk:test": "vitest run tests/integration/stubs.test.ts",
+    "app:dev": "tsx app/src/main.tsx",
+    "dashboard:dev": "tsx dashboard/src/main.tsx",
+    "terminal": "tsx terminal/src/index.ts"
   },
   "dependencies": {
     "express": "^5.2.1",

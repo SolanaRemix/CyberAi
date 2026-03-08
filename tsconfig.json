@@ -24,7 +24,9 @@
     "cli/src/**/*.ts",
     "sdk/src/**/*.ts",
     "api/src/**/*.ts",
-    "app/src/**/*"
+    "app/src/**/*",
+    "dashboard/src/**/*",
+    "terminal/src/**/*.ts"
   ],
   "exclude": ["node_modules", "dist", "build", "scripts/**/*", "tests/**/*"]
 }
