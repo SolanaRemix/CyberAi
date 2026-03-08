@@ -11,10 +11,10 @@ describe("surface stubs", () => {
   });
 
   it("api server stub file exists", () => {
-    expect(existsSync(resolve("api/src/server.ts"))).toBe(true);
+    expect(existsSync(resolve(process.cwd(), "api/src/server.ts"))).toBe(true);
   });
 
   it("app main entry stub file exists", () => {
-    expect(existsSync(resolve("app/src/main.tsx"))).toBe(true);
+    expect(existsSync(resolve(process.cwd(), "app/src/main.tsx"))).toBe(true);
   });
 });

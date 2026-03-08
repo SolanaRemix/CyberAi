@@ -2,7 +2,7 @@ import express from "express";
 
 const app = express();
 
-app.get("/contracts", async (_req, res) => {
+app.get("/contracts", (_req, res) => {
   // minimal placeholder that returns an empty array
   res.json([]);
 });
