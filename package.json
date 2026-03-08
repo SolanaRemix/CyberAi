@@ -30,13 +30,21 @@
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "clean": "rimraf dist build .cache node_modules/.cache",
-    "clean:all": "npm run clean && rimraf node_modules"
+    "clean:all": "npm run clean && rimraf node_modules",
+    "dev:api": "tsx api/src/index.ts",
+    "start:api": "node dist/api/src/index.js"
   },
   "dependencies": {
-    "openai": "^6.18.0"
+    "express": "^5.2.1",
+    "openai": "^6.18.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^25.2.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "@vitest/ui": "^4.0.18",
