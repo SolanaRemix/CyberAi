@@ -5,8 +5,13 @@ function Dashboard() {
   return <div>CyberAi Dashboard</div>;
 }
 
-createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Dashboard />
-  </React.StrictMode>
-);
+if (typeof document !== "undefined") {
+  const rootElement = document.getElementById("root");
+  if (rootElement) {
+   createRoot(rootElement).render(
+     <React.StrictMode>
+       <Dashboard />
+     </React.StrictMode>
+   );
+  }
+}
