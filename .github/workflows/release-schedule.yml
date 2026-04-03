@@ -258,7 +258,7 @@ jobs:
           echo "✅ Changelog generated"
 
       - name: Upload changelog
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: release-changelog
           path: CHANGELOG_DRAFT.md
