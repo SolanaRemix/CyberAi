@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Acknowledge comment
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             await github.rest.reactions.createForIssueComment({
@@ -31,7 +31,7 @@ jobs:
 
       - name: Get PR details
         id: pr
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const pr = await github.rest.pulls.get({
@@ -67,7 +67,7 @@ jobs:
 
       - name: Add reaction on completion
         if: always()
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const reaction = '${{ job.status }}' === 'success' ? 'rocket' : 'confused';
