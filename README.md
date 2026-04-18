@@ -11,6 +11,24 @@
 
 CyberAi is the central control plane for the decentralized AI ecosystem, providing contract registry, automated workflows, and security tools for blockchain applications.
 
+## 🖼️ UI Screenshots
+
+### Landing Page
+
+![Landing Page UI](docs/screenshots/landing-page.png)
+
+### Admin Dashboard
+
+![Admin Dashboard UI](docs/screenshots/admin-dashboard.png)
+
+### User App
+
+![User App UI](docs/screenshots/user-app.png)
+
+### Dev Terminal
+
+![Dev Terminal UI](docs/screenshots/dev-terminal.png)
+
 ## 🚀 Quick Start
 
 ```bash
