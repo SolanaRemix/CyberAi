@@ -411,10 +411,7 @@ The CyberAi control-plane infrastructure bootstrap is **100% complete**. All req
 **No placeholder text remains** - all files contain complete, production-ready content.
 
 The repository is ready for:
-<<<<<<< HEAD
-=======
 
-> > > > > > > main
 
 - Active development
 - CI/CD pipeline execution

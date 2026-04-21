@@ -175,6 +175,33 @@ npm run build
 npm run preview
 ```
 
+### Implementation Commands & Functions
+
+```bash
+# Core quality gates
+npm run build
+npm run typecheck
+npm run test
+
+# Targeted validation
+npm run test:unit
+npm run test:integration
+
+# Frontend/dashboard workflows
+cd site && npm run dev
+cd site && npm run build
+```
+
+Key integration entry points used by the implementation:
+
+- `src/integrations/index.ts`
+  - `IntegrationManager.register(...)`
+  - `IntegrationManager.get(...)`
+  - `SolanaIntegration.getBalance(...)`
+  - `SolanaIntegration.getTransaction(...)`
+- `src/contracts/index.ts`
+  - Contract loading/validation exports for registry wiring
+
 ### Adding Contracts
 
 1. Create contract JSON in `contracts/agents/` or `contracts/repositories/`

@@ -22,12 +22,12 @@
     <!-- Header -->
     <header class="gradient-bg text-white shadow-lg">
       <div class="container mx-auto px-4 py-6">
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 class="text-3xl font-bold">🔒 SmartContractAudit</h1>
             <p class="text-sm opacity-90">Automated Smart Contract Security</p>
           </div>
-          <nav class="space-x-4">
+          <nav class="flex flex-wrap gap-x-4 gap-y-2 text-sm sm:text-base">
             <a href="#dashboard" class="hover:underline">Dashboard</a>
             <a href="#artifacts" class="hover:underline">Artifacts</a>
             <a href="billing.html" class="hover:underline">Billing</a>
@@ -43,7 +43,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-6 sm:py-8">
       <!-- Alert Banner -->
       <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
         <div class="flex">
@@ -58,8 +58,8 @@
           </div>
           <div class="ml-3">
             <p class="text-sm text-yellow-700">
-              <strong>Notice:</strong> This is a placeholder dashboard. To fully activate, configure
-              GitHub Actions and integrate with repository workflows.
+              <strong>Live Integration:</strong> Dashboard metrics auto-refresh from CyberAi GitHub
+              Actions workflow runs.
             </p>
           </div>
         </div>
@@ -71,7 +71,7 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-sm font-medium">Total Scans</p>
-              <p class="text-3xl font-bold text-gray-900">0</p>
+              <p id="total-scans" class="text-3xl font-bold text-gray-900">0</p>
             </div>
             <div class="bg-blue-100 rounded-full p-3">
               <svg
@@ -95,7 +95,7 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-sm font-medium">Issues Found</p>
-              <p class="text-3xl font-bold text-gray-900">0</p>
+              <p id="issues-found" class="text-3xl font-bold text-gray-900">0</p>
             </div>
             <div class="bg-yellow-100 rounded-full p-3">
               <svg
@@ -119,7 +119,7 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-sm font-medium">Fixed Issues</p>
-              <p class="text-3xl font-bold text-gray-900">0</p>
+              <p id="fixed-issues" class="text-3xl font-bold text-gray-900">0</p>
             </div>
             <div class="bg-green-100 rounded-full p-3">
               <svg
@@ -143,7 +143,7 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-sm font-medium">Last Scan</p>
-              <p class="text-xl font-bold text-gray-900">Never</p>
+              <p id="last-scan" class="text-xl font-bold text-gray-900">Never</p>
             </div>
             <div class="bg-purple-100 rounded-full p-3">
               <svg
@@ -170,27 +170,8 @@
           <h2 class="text-xl font-bold text-gray-900">Recent Scan Runs</h2>
         </div>
         <div class="px-6 py-8">
-          <div class="text-center text-gray-500">
-            <svg
-              class="mx-auto h-12 w-12 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              ></path>
-            </svg>
-            <p class="mt-2 text-sm">No scan runs yet. Configure GitHub Actions to see activity.</p>
-            <a
-              href="https://github.com/SolanaRemix/SmartContractAudit"
-              class="mt-4 inline-block text-blue-600 hover:text-blue-800"
-            >
-              View Setup Instructions →
-            </a>
+          <div id="recent-runs-content" class="text-center text-gray-500">
+            <p class="mt-2 text-sm">Loading recent workflow runs...</p>
           </div>
         </div>
       </div>
@@ -318,16 +299,67 @@
     </footer>
 
     <script>
-      // Placeholder for dynamic data loading
-      // In production, this would fetch real data from GitHub API or your backend
-      console.log('SmartContractAudit Dashboard loaded');
-      console.log('Configure GitHub Actions to populate data');
+      const dashboardState = { requestId: 0 };
 
-      // Example: Load stats from localStorage or API
-      document.addEventListener('DOMContentLoaded', function () {
-        // Future: Load actual scan data
-        // fetch('/api/scans').then(...)
-      });
+      function setText(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+      }
+
+      function renderRecentRuns(runs) {
+        const container = document.getElementById('recent-runs-content');
+        if (!container) return;
+
+        if (!runs.length) {
+          container.innerHTML = '<p class="mt-2 text-sm">No workflow runs found.</p>';
+          return;
+        }
+
+        container.className = 'space-y-3';
+        container.innerHTML = runs
+          .map(
+            run => `
+              <div class="rounded-lg border border-gray-200 p-4 text-left">
+                <p class="text-sm font-semibold text-gray-900">${run.name}</p>
+                <p class="text-xs text-gray-600">Status: ${run.status} · Conclusion: ${run.conclusion ?? 'in_progress'}</p>
+                <p class="text-xs text-gray-500">Updated: ${new Date(run.updated_at).toLocaleString()}</p>
+              </div>
+            `
+          )
+          .join('');
+      }
+
+      async function loadDashboardData() {
+        const requestId = ++dashboardState.requestId;
+        try {
+          const response = await fetch(
+            'https://api.github.com/repos/SolanaRemix/CyberAi/actions/runs?per_page=5',
+            { headers: { Accept: 'application/vnd.github+json' } }
+          );
+          if (!response.ok) throw new Error(`GitHub API request failed (${response.status})`);
+          const data = await response.json();
+          if (requestId !== dashboardState.requestId) return;
+
+          const runs = Array.isArray(data.workflow_runs) ? data.workflow_runs : [];
+          setText('total-scans', String(data.total_count ?? 0));
+          setText('issues-found', String(runs.filter(run => run.conclusion === 'failure').length));
+          setText('fixed-issues', String(runs.filter(run => run.conclusion === 'success').length));
+          setText(
+            'last-scan',
+            runs[0]?.updated_at ? new Date(runs[0].updated_at).toLocaleString() : 'Never'
+          );
+          renderRecentRuns(runs);
+        } catch (_error) {
+          if (requestId !== dashboardState.requestId) return;
+          const container = document.getElementById('recent-runs-content');
+          if (container) {
+            container.innerHTML =
+              '<p class="mt-2 text-sm text-red-600">Unable to load workflow runs right now.</p>';
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadDashboardData);
     </script>
   </body>
 </html>

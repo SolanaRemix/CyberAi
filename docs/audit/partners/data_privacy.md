@@ -2,7 +2,6 @@
 
 title: Data Privacy for Partners
 
-> > > > > > > origin/pr10
 
 # Data Privacy for Partners
 
@@ -122,12 +121,10 @@ For privacy questions:
 
 ## Resources
 
-> > > > > > > origin/pr9
 
 - [Main Privacy Policy](../../PRIVACY.md)
 - [Data Retention Policy](../../DATA_RETENTION.md)
 - [Security Policy](../../SECURITY.md)
-  <<<<<<< HEAD
 - [Partnership Agreement](partnerships.md)
 
 ## Certifications
@@ -258,7 +255,6 @@ Partners must:
 **Email**: privacy@cyberai.network  
 **Include**: Partner name, data types, processing description
 
-> > > > > > > origin/pr10
 
 ---
 

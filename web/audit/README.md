@@ -1,16 +1,3 @@
-> > > > > > > origin/pr10
-
-# Web Control Panel
-
-## Overview
-
-This directory contains a lightweight GitHub Pages scaffold for the SmartContractAudit control panel and billing interface.
-
-## Files
-
-- **index.html**: Main dashboard displaying scan results, artifacts, and project information
-- # **billing.html**: Sponsorship tiers and payment integration placeholder
-
 # Web Dashboard
 
 ## Overview
@@ -21,7 +8,6 @@ This directory contains a lightweight GitHub Pages scaffold for SmartContractAud
 
 - **index.html**: Main dashboard with scan results, artifacts, and quick links
 - **billing.html**: Payment integration page with multiple payment options
-  > > > > > > > origin/pr9
 - **README.md**: This file
 
 ## Features
@@ -740,7 +726,6 @@ custom: ['mailto:funding@cyberai.network'] # Billing inquiries
 
 Update FUNDING.yml with real values when ready.
 
-> > > > > > > origin/pr10
 
 ## Development
 
@@ -811,5 +796,3 @@ Improvements to the web interface are welcome!
 **Status**: Placeholder/Template  
 **Production Ready**: No (placeholders need real data)  
 **Security Reviewed**: Yes (no secrets included)
-
-> > > > > > > origin/pr10

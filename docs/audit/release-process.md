@@ -32,8 +32,3 @@ See [RELEASE.md](../RELEASE.md) for detailed procedures.
 
 _Last updated: 2026-01-01_
 
-> > > > > > > # origin/pr9
-> > > > > > >
-> > > > > > > **Next Major Release**: v2026.01.01  
-> > > > > > > **Current Version**: Check GitHub releases
-> > > > > > > origin/pr10

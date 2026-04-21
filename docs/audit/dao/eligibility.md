@@ -644,7 +644,6 @@ Eligibility criteria may be updated:
 
 Last updated: 2026-01-01
 
-> > > > > > > # origin/pr9
 
 # DAO Eligibility Criteria
 
@@ -920,4 +919,3 @@ Changes announced with:
 **Version**: 1.0  
 **Next Review**: 2026-06-01
 
-> > > > > > > origin/pr10

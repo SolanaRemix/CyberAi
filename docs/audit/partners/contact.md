@@ -93,7 +93,6 @@ Logs/Screenshots:
 [Attach relevant logs or screenshots]
 ```
 
-> > > > > > > origin/pr10
 
 ## Security
 
@@ -256,7 +255,6 @@ Currently, we operate globally from a central team. Regional contacts may be add
 **Primary Time Zone**: UTC  
 **Business Hours**: Monday-Friday, 9 AM - 5 PM UTC
 
-> > > > > > > origin/pr10
 
 ## Social Media
 
