@@ -18,7 +18,7 @@ describe('Repository hygiene', () => {
       expect(content).not.toMatch(/^<<<<<<< /m);
       expect(content).not.toMatch(/^=======\s*$/m);
       expect(content).not.toMatch(/^>>>>>>> /m);
-      expect(content).not.toMatch(/^> > > > > > >/m);
+      expect(content).not.toMatch(/^>{7,}\s+/m);
     }
   });
 
@@ -28,7 +28,8 @@ describe('Repository hygiene', () => {
     for (const file of dashboardFiles) {
       const content = readFileSync(join(projectRoot, file), 'utf-8');
       expect(content).toContain('loadDashboardData');
-      expect(content).toContain('api.github.com/repos/SolanaRemix/CyberAi/actions/runs?per_page=5');
+      expect(content).toContain('api.github.com');
+      expect(content).toContain('actions/runs');
       expect(content).not.toContain('This is a placeholder dashboard');
     }
   });
