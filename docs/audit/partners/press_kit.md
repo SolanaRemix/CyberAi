@@ -1,4 +1,3 @@
-## <<<<<<< HEAD
 
 title: Press Kit
 description: Brand assets and media resources for SmartContractAudit

@@ -1,4 +1,3 @@
-## <<<<<<< HEAD
 
 # Contact Information
 

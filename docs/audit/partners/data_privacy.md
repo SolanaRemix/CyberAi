@@ -1,4 +1,3 @@
-## <<<<<<< HEAD
 
 title: Data Privacy for Partners
 

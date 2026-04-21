@@ -1,4 +1,3 @@
-## <<<<<<< HEAD
 
 title: SLA and Support
 description: Service level agreements and support options for partners

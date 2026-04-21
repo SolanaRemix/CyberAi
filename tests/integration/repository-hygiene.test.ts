@@ -1,17 +1,28 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, readdirSync, statSync } from 'fs';
+import { join, relative } from 'path';
 
 const projectRoot = join(__dirname, '../..');
 
 describe('Repository hygiene', () => {
-  it('removes merge artifact markers from cleaned docs', () => {
-    const files = [
-      'BOOTSTRAP_REPORT.md',
-      'docs/audit/release-process.md',
-      'docs/audit/dao/README.md',
-      'web/audit/README.md',
-    ];
+  it('removes merge artifact markers from markdown docs', () => {
+    const skipDirs = new Set(['.git', 'node_modules', 'dist', 'build', '.cache']);
+    const files: string[] = [];
+    const queue = [projectRoot];
+
+    while (queue.length > 0) {
+      const current = queue.pop()!;
+      for (const entry of readdirSync(current)) {
+        const fullPath = join(current, entry);
+        const relPath = relative(projectRoot, fullPath);
+        const stat = statSync(fullPath);
+        if (stat.isDirectory()) {
+          if (!skipDirs.has(entry)) queue.push(fullPath);
+          continue;
+        }
+        if (entry.endsWith('.md')) files.push(relPath);
+      }
+    }
 
     for (const file of files) {
       const content = readFileSync(join(projectRoot, file), 'utf-8');
