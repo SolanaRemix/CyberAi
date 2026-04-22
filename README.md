@@ -195,8 +195,7 @@ cd site && npm run build
 Key integration entry points used by the implementation:
 
 - `src/integrations/index.ts`
-  - `IntegrationManager.register(...)`
-  - `IntegrationManager.get(...)`
+  - `IntegrationManager` instance methods: `manager.register(...)`, `manager.get(...)`
   - `SolanaIntegration.getBalance(...)`
   - `SolanaIntegration.getTransaction(...)`
 - `src/contracts/index.ts`

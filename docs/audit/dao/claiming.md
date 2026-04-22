@@ -2,8 +2,7 @@
 
 ## Overview
 
-This guide explains how to claim your SmartContractAudit DAO governance tokens after you've been included in an airdrop allocation.
-This guide explains how to claim your CyberAi DAO token allocation after a snapshot has been taken and the merkle tree has been generated.
+This guide explains how to claim your CyberAi DAO token allocation after you've been included in an airdrop allocation, a snapshot has been taken, and the merkle tree has been generated.
 
 
 ## Prerequisites
@@ -1307,4 +1306,3 @@ Before claiming, verify:
 **Last Updated**: 2026-01-01  
 **Claiming Status**: Not yet open (snapshot planning phase)  
 **Support**: GitHub Discussions (tag: `dao-claiming`)
-
