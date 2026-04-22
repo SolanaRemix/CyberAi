@@ -32,7 +32,6 @@ Snapshot is a gasless, off-chain voting platform used by SmartContractAudit DAO 
 
 ### Proposal Settings
 
-> > > > > > > origin/pr9
 
 ````json
 {
@@ -359,7 +358,6 @@ Bonus for staked tokens.
 ```markdown
 Title: [Proposal Name]
 
-> > > > > > > origin/pr9
 
 ## Summary
 
