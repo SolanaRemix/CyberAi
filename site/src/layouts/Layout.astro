@@ -34,7 +34,7 @@ const { title } = Astro.props;
         <ul class="nav-menu">
           <li><a href="/docs">Docs</a></li>
           <li><a href="/operators">Console</a></li>
-          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/dashboard" id="nav-dashboard-link">Dashboard</a></li>
           <li><a href="/smartbrain">SmartBrain</a></li>
           <li><a href="/audit">Audit</a></li>
           <li><a href="/pricing">Pricing</a></li>
@@ -106,10 +106,14 @@ const { title } = Astro.props;
       });
 
       const navLoginLink = document.getElementById('nav-login-link');
-      const hasSession = Boolean(window.CYBERAI_AUTH?.readSession?.());
+      const navDashboardLink = document.getElementById('nav-dashboard-link');
+      const hasSession = Boolean(window.CYBERAI_AUTH?.readSession?.()?.email);
+      if (navDashboardLink) {
+        navDashboardLink.closest('li')?.classList.toggle('no-session-hide', !hasSession);
+      }
       if (hasSession && navLoginLink) {
-        navLoginLink.textContent = 'Dashboard';
-        navLoginLink.setAttribute('href', '/dashboard');
+        navLoginLink.textContent = 'Switch Account';
+        navLoginLink.setAttribute('href', '/login?switch=1');
       }
     </script>
   </body>
@@ -243,6 +247,10 @@ const { title } = Astro.props;
     margin: 0.25rem 1rem;
     min-height: 44px;
     justify-content: center;
+  }
+
+  nav .nav-menu li.no-session-hide {
+    display: none;
   }
 
   nav .nav-menu a.login-link:hover {

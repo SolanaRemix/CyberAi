@@ -11,6 +11,7 @@ describe('Site auth and dashboard UX flows', () => {
     expect(loginPage).toContain('redirectAfterAuth');
     expect(loginPage).toContain('isAdminCredentials');
     expect(loginPage).toContain('persistSession');
+    expect(loginPage).toContain("searchParams.get('switch') === '1'");
   });
 
   it('gates dashboard access and reveals admin panel by role', () => {
@@ -22,6 +23,8 @@ describe('Site auth and dashboard UX flows', () => {
     expect(dashboardPage).toContain('id="dashboard-content"');
     expect(dashboardPage).toContain('id="admin-panel"');
     expect(dashboardPage).toContain('getRoleForSession');
+    expect(dashboardPage).toContain('/login?switch=1');
+    expect(dashboardPage).toContain("searchParams.get('section') === 'admin'");
   });
 
   it('centralizes auth session logic in shared helper script', () => {
@@ -29,6 +32,8 @@ describe('Site auth and dashboard UX flows', () => {
     expect(authHelper).toContain("SESSION_KEY = 'cyberai.auth.session.v1'");
     expect(authHelper).toContain('isAdminCredentials');
     expect(authHelper).toContain('getRoleForSession');
+    expect(authHelper).toContain('DEMO_AUTH_NOTICE');
+    expect(authHelper).toContain('safeGetItem');
   });
 
   it('adds neo flash glow utility for global UI effects', () => {

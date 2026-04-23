@@ -12,6 +12,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <p id="auth-feedback" class="auth-feedback" role="status" aria-live="polite"></p>
+        <p id="auth-disclaimer" class="auth-disclaimer"></p>
 
         <!-- Tab Navigation -->
         <div class="tab-nav">
@@ -301,6 +302,12 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 600;
   }
 
+  .auth-disclaimer {
+    margin-bottom: 1rem;
+    color: #9dc8d2;
+    font-size: 0.85rem;
+  }
+
   .form-options {
     display: flex;
     justify-content: space-between;
@@ -454,9 +461,14 @@ import Layout from '../layouts/Layout.astro';
   }
 
   const authFeedback = document.getElementById('auth-feedback');
+  const authDisclaimer = document.getElementById('auth-disclaimer');
   const showFeedback = (message) => {
     if (authFeedback) authFeedback.textContent = message;
   };
+
+  if (authDisclaimer) {
+    authDisclaimer.textContent = auth.DEMO_AUTH_NOTICE;
+  }
 
   const redirectAfterAuth = (role) => {
     if (role === 'admin') {
@@ -466,9 +478,16 @@ import Layout from '../layouts/Layout.astro';
     window.location.href = '/app';
   };
 
+  const searchParams = new URLSearchParams(window.location.search);
+  const isSwitchAccountFlow = searchParams.get('switch') === '1';
   const existingSession = auth.readSession();
   if (existingSession?.email) {
-    redirectAfterAuth(auth.getRoleForSession(existingSession));
+    if (!isSwitchAccountFlow) {
+      redirectAfterAuth(auth.getRoleForSession(existingSession));
+    } else {
+      auth.clearSession();
+      showFeedback('Switch account mode enabled. Sign in with a different account.');
+    }
   }
 
   // Tab switching
@@ -514,7 +533,11 @@ import Layout from '../layouts/Layout.astro';
       name: auth.toSessionName(email),
       loggedInAt: new Date().toISOString(),
     };
-    auth.persistSession(session, remember);
+    const persisted = auth.persistSession(session, remember);
+    if (!persisted) {
+      showFeedback('Unable to start session in this browser mode. Try disabling private mode.');
+      return;
+    }
     showFeedback('Signed in successfully. Redirecting...');
     redirectAfterAuth(role);
   });
@@ -549,7 +572,11 @@ import Layout from '../layouts/Layout.astro';
       name,
       loggedInAt: new Date().toISOString(),
     };
-    auth.persistSession(session, true);
+    const persisted = auth.persistSession(session, true);
+    if (!persisted) {
+      showFeedback('Unable to create a session in this browser mode. Try disabling private mode.');
+      return;
+    }
     showFeedback(`Account created for ${name}. Redirecting...`);
     redirectAfterAuth('user');
   });
@@ -563,8 +590,7 @@ import Layout from '../layouts/Layout.astro';
   });
 
   // Check for plan parameter
-  const urlParams = new URLSearchParams(window.location.search);
-  const plan = urlParams.get('plan');
+  const plan = searchParams.get('plan');
   if (plan) {
     // Switch to signup tab if coming from pricing
     document.querySelector('[data-tab="signup"]')?.click();

@@ -1,5 +1,7 @@
 (function () {
   const SESSION_KEY = 'cyberai.auth.session.v1';
+  const DEMO_AUTH_NOTICE =
+    'Static demo authentication only. Do not use for real privilege enforcement.';
   const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const ADMIN_EMAIL_ALLOWLIST = new Set(['admin@cyberai.network']);
   const ADMIN_PASSWORD_SHA256 =
@@ -12,9 +14,35 @@
     return prefix || fallback;
   };
 
+  const safeGetItem = (storage, key) => {
+    try {
+      return storage.getItem(key);
+    } catch {
+      return null;
+    }
+  };
+
+  const safeSetItem = (storage, key, value) => {
+    try {
+      storage.setItem(key, value);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const safeRemoveItem = (storage, key) => {
+    try {
+      storage.removeItem(key);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const readSession = () => {
     const stored =
-      localStorage.getItem(SESSION_KEY) ?? sessionStorage.getItem(SESSION_KEY);
+      safeGetItem(localStorage, SESSION_KEY) ?? safeGetItem(sessionStorage, SESSION_KEY);
     if (!stored) return null;
 
     try {
@@ -25,15 +53,15 @@
   };
 
   const persistSession = (session, remember = false) => {
-    localStorage.removeItem(SESSION_KEY);
-    sessionStorage.removeItem(SESSION_KEY);
+    safeRemoveItem(localStorage, SESSION_KEY);
+    safeRemoveItem(sessionStorage, SESSION_KEY);
     const targetStorage = remember ? localStorage : sessionStorage;
-    targetStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    return safeSetItem(targetStorage, SESSION_KEY, JSON.stringify(session));
   };
 
   const clearSession = () => {
-    localStorage.removeItem(SESSION_KEY);
-    sessionStorage.removeItem(SESSION_KEY);
+    safeRemoveItem(localStorage, SESSION_KEY);
+    safeRemoveItem(sessionStorage, SESSION_KEY);
   };
 
   const sha256 = async (value) => {
@@ -65,6 +93,7 @@
 
   window.CYBERAI_AUTH = {
     SESSION_KEY,
+    DEMO_AUTH_NOTICE,
     EMAIL_PATTERN,
     normalizeEmail,
     toSessionName,

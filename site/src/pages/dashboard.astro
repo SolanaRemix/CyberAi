@@ -101,6 +101,7 @@ import Layout from '../layouts/Layout.astro';
       <section class="neo-card admin-panel neo-glow-secondary neo-flash-glow" id="admin-panel" hidden>
         <h2>🛡️ Admin Dashboard</h2>
         <p class="admin-note">High-privilege controls for deployment, users, and RBAC settings.</p>
+        <p class="admin-disclaimer" id="admin-disclaimer"></p>
         <div class="admin-grid">
           <div class="admin-item">
             <h3>User Management</h3>
@@ -312,6 +313,12 @@ import Layout from '../layouts/Layout.astro';
     margin: 0.4rem 0 1rem;
   }
 
+  .admin-disclaimer {
+    color: #9dc8d2;
+    font-size: 0.82rem;
+    margin: 0 0 1rem;
+  }
+
   .admin-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -382,6 +389,7 @@ import Layout from '../layouts/Layout.astro';
   const authRequired = document.getElementById('auth-required');
   const dashboardContent = document.getElementById('dashboard-content');
   const adminPanel = document.getElementById('admin-panel');
+  const adminDisclaimer = document.getElementById('admin-disclaimer');
   const sessionSummary = document.getElementById('session-summary');
   const loginCta = document.getElementById('login-cta');
   const logoutCta = document.getElementById('logout-cta');
@@ -396,6 +404,10 @@ import Layout from '../layouts/Layout.astro';
     logoutCta?.removeAttribute('hidden');
     if (loginCta) {
       loginCta.textContent = 'Switch Account';
+      loginCta.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.href = '/login?switch=1';
+      });
     }
 
     const role = auth.getRoleForSession(session);
@@ -405,6 +417,17 @@ import Layout from '../layouts/Layout.astro';
 
     if (role === 'admin') {
       adminPanel?.removeAttribute('hidden');
+      if (adminDisclaimer) {
+        adminDisclaimer.textContent = auth.DEMO_AUTH_NOTICE;
+      }
+
+      const searchParams = new URLSearchParams(window.location.search);
+      const adminSectionRequested = searchParams.get('section') === 'admin';
+      if (adminSectionRequested) {
+        adminPanel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        adminPanel?.setAttribute('tabindex', '-1');
+        adminPanel?.focus();
+      }
     }
   }
 
