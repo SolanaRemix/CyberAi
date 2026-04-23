@@ -228,6 +228,25 @@
   animation: neo-border-flow 3s linear infinite;
 }
 
+/* Neo Flash Glow effect */
+@keyframes neo-flash-glow {
+  0%,
+  100% {
+    box-shadow:
+      var(--glow-md) var(--neo-primary),
+      inset var(--glow-sm) rgba(0, 234, 255, 0.18);
+  }
+  50% {
+    box-shadow:
+      var(--glow-xl) var(--neo-primary),
+      inset var(--glow-md) rgba(0, 234, 255, 0.36);
+  }
+}
+
+.neo-flash-glow {
+  animation: neo-flash-glow 2.4s ease-in-out infinite;
+}
+
 /* Status indicators with glow */
 .neo-status-active {
   display: inline-block;
@@ -286,6 +305,10 @@
 
 /* Accessibility: Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+  .neo-flash-glow {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {

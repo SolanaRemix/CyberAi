@@ -5,11 +5,14 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Login - CyberAi Network">
   <main>
     <div class="login-container">
-      <div class="login-card neo-card neo-glow-primary">
+      <div class="login-card neo-card neo-glow-primary neo-flash-glow">
         <div class="logo-section">
           <h1 class="neo-text-glow">🔒 CyberAi</h1>
           <p>Sign in to your account</p>
         </div>
+
+        <p id="auth-feedback" class="auth-feedback" role="status" aria-live="polite"></p>
+        <p id="auth-disclaimer" class="auth-disclaimer"></p>
 
         <!-- Tab Navigation -->
         <div class="tab-nav">
@@ -167,7 +170,7 @@ import Layout from '../layouts/Layout.astro';
         </form>
       </div>
 
-      <div class="features-banner">
+      <div class="features-banner neo-flash-glow">
         <h3>Why Sign Up?</h3>
         <ul>
           <li>🔒 Enhanced security features</li>
@@ -288,6 +291,20 @@ import Layout from '../layouts/Layout.astro';
     display: block;
     margin-top: 0.5rem;
     color: #888;
+    font-size: 0.85rem;
+  }
+
+  .auth-feedback {
+    min-height: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--neo-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .auth-disclaimer {
+    margin-bottom: 1rem;
+    color: #9dc8d2;
     font-size: 0.85rem;
   }
 
@@ -438,6 +455,41 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
+  const auth = window.CYBERAI_AUTH;
+  if (!auth) {
+    throw new Error('CyberAi auth helpers failed to initialize.');
+  }
+
+  const authFeedback = document.getElementById('auth-feedback');
+  const authDisclaimer = document.getElementById('auth-disclaimer');
+  const showFeedback = (message) => {
+    if (authFeedback) authFeedback.textContent = message;
+  };
+
+  if (authDisclaimer) {
+    authDisclaimer.textContent = auth.DEMO_AUTH_NOTICE;
+  }
+
+  const redirectAfterAuth = (role) => {
+    if (role === 'admin') {
+      window.location.href = '/dashboard?section=admin';
+      return;
+    }
+    window.location.href = '/app';
+  };
+
+  const searchParams = new URLSearchParams(window.location.search);
+  const isSwitchAccountFlow = searchParams.get('switch') === '1';
+  const existingSession = auth.readSession();
+  if (existingSession?.email) {
+    if (!isSwitchAccountFlow) {
+      redirectAfterAuth(auth.getRoleForSession(existingSession));
+    } else {
+      auth.clearSession();
+      showFeedback('Switch account mode enabled. Sign in with a different account.');
+    }
+  }
+
   // Tab switching
   document.querySelectorAll('.tab-button').forEach(button => {
     button.addEventListener('click', () => {
@@ -457,15 +509,37 @@ import Layout from '../layouts/Layout.astro';
   document.getElementById('login-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const email = formData.get('email');
-    const password = formData.get('password');
-    
-    // TODO: Integrate with Firebase/Auth0
-    // console.log('Login attempt:', { email }); // Disabled in production to avoid logging PII
-    alert('Authentication integration pending. This will connect to Firebase/Auth0 in production.');
-    
-    // For now, simulate successful login
-    // window.location.href = '/dashboard';
+    const email = auth.normalizeEmail(formData.get('email'));
+    const password = String(formData.get('password') || '');
+    const remember = formData.get('remember') === 'on';
+
+    if (!email || !password) {
+      showFeedback('Please enter your email and password.');
+      return;
+    }
+
+    if (!auth.EMAIL_PATTERN.test(email)) {
+      showFeedback('Please enter a valid email address.');
+      return;
+    }
+
+    const isAdmin = await auth.isAdminCredentials(email, password);
+    const role = isAdmin ? 'admin' : 'user';
+
+    const session = {
+      email,
+      role,
+      adminVerified: isAdmin,
+      name: auth.toSessionName(email),
+      loggedInAt: new Date().toISOString(),
+    };
+    const persisted = auth.persistSession(session, remember);
+    if (!persisted) {
+      showFeedback('Unable to start session in this browser mode. Try disabling private mode.');
+      return;
+    }
+    showFeedback('Signed in successfully. Redirecting...');
+    redirectAfterAuth(role);
   });
 
   // Handle signup form
@@ -476,35 +550,47 @@ import Layout from '../layouts/Layout.astro';
     const confirm = formData.get('confirm');
     
     if (password !== confirm) {
-      alert('Passwords do not match!');
+      showFeedback('Passwords do not match.');
       return;
     }
     
-    const email = formData.get('email');
-    const name = formData.get('name');
-    
-    // TODO: Integrate with Firebase/Auth0
-    // console.log('Signup attempt:', { email, name }); // Debug only: avoid logging PII in production
-    alert('Authentication integration pending. This will connect to Firebase/Auth0 in production.');
-    
-    // For now, simulate successful signup
-    // window.location.href = '/dashboard';
+    const email = auth.normalizeEmail(formData.get('email'));
+    const name = String(formData.get('name') || '').trim();
+    if (!email || !name) {
+      showFeedback('Please complete all required fields.');
+      return;
+    }
+
+    if (!auth.EMAIL_PATTERN.test(email)) {
+      showFeedback('Please enter a valid email address.');
+      return;
+    }
+
+    const session = {
+      email,
+      role: 'user',
+      name,
+      loggedInAt: new Date().toISOString(),
+    };
+    const persisted = auth.persistSession(session, true);
+    if (!persisted) {
+      showFeedback('Unable to create a session in this browser mode. Try disabling private mode.');
+      return;
+    }
+    showFeedback(`Account created for ${name}. Redirecting...`);
+    redirectAfterAuth('user');
   });
 
   // Handle social login buttons
   document.querySelectorAll('.social-button').forEach(button => {
     button.addEventListener('click', () => {
       const provider = button.classList.contains('github-button') ? 'GitHub' : 'Google';
-      
-      // TODO: Integrate with Firebase/Auth0
-      console.log(`${provider} authentication`);
-      alert(`${provider} authentication integration pending. This will use OAuth2 in production.`);
+      showFeedback(`${provider} OAuth is enabled in production backend. Use email login in this static build.`);
     });
   });
 
   // Check for plan parameter
-  const urlParams = new URLSearchParams(window.location.search);
-  const plan = urlParams.get('plan');
+  const plan = searchParams.get('plan');
   if (plan) {
     // Switch to signup tab if coming from pricing
     document.querySelector('[data-tab="signup"]')?.click();

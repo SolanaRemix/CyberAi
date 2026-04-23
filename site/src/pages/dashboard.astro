@@ -7,10 +7,22 @@ import Layout from '../layouts/Layout.astro';
     <div class="dashboard-hero">
       <h1 class="neo-text-glow">📊 <span class="text-gradient">CyberAi Dashboard</span></h1>
       <p class="tagline">Real-time monitoring and control center for your AI ecosystem</p>
+      <p id="session-summary" class="session-summary"></p>
+      <div class="hero-actions">
+        <a href="/login" class="neo-button neo-glow-primary" id="login-cta">Sign In</a>
+        <button class="neo-button" id="logout-cta" hidden>Sign Out</button>
+      </div>
     </div>
 
-    <div class="dashboard-grid">
-      <div class="neo-card status-card">
+    <div class="auth-required neo-card neo-glow-primary neo-flash-glow" id="auth-required" hidden>
+      <h2>Authentication Required</h2>
+      <p>Please sign in to access user and admin dashboard controls.</p>
+      <a href="/login" class="neo-button neo-glow-primary">Go to Login</a>
+    </div>
+
+    <div id="dashboard-content" hidden>
+      <div class="dashboard-grid">
+      <div class="neo-card status-card neo-flash-glow">
         <div class="card-header">
           <h2>System Status</h2>
           <span class="neo-status-active"></span>
@@ -31,25 +43,25 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <div class="neo-card metric-card">
+      <div class="neo-card metric-card neo-flash-glow">
         <h3>Active Agents</h3>
         <div class="metric-value neo-text-glow">12</div>
         <p class="metric-label">Running across ecosystem</p>
       </div>
 
-      <div class="neo-card metric-card">
+      <div class="neo-card metric-card neo-flash-glow">
         <h3>Smart Contracts</h3>
         <div class="metric-value neo-text-glow">48</div>
         <p class="metric-label">Deployed and verified</p>
       </div>
 
-      <div class="neo-card metric-card">
+      <div class="neo-card metric-card neo-flash-glow">
         <h3>Security Audits</h3>
         <div class="metric-value neo-text-glow">156</div>
         <p class="metric-label">Completed this month</p>
       </div>
 
-      <div class="neo-card activity-card">
+      <div class="neo-card activity-card neo-flash-glow">
         <h2>Recent Activity</h2>
         <ul class="activity-list">
           <li>
@@ -75,7 +87,7 @@ import Layout from '../layouts/Layout.astro';
         </ul>
       </div>
 
-      <div class="neo-card quick-actions">
+      <div class="neo-card quick-actions neo-flash-glow">
         <h2>Quick Actions</h2>
         <div class="actions-grid">
           <a href="/operators" class="neo-button neo-glow-primary">Operator Console</a>
@@ -84,6 +96,27 @@ import Layout from '../layouts/Layout.astro';
           <a href="/audit" class="neo-button">Run Audit</a>
         </div>
       </div>
+    </div>
+
+      <section class="neo-card admin-panel neo-glow-secondary neo-flash-glow" id="admin-panel" hidden>
+        <h2>🛡️ Admin Dashboard</h2>
+        <p class="admin-note">High-privilege controls for deployment, users, and RBAC settings.</p>
+        <p class="admin-disclaimer" id="admin-disclaimer"></p>
+        <div class="admin-grid">
+          <div class="admin-item">
+            <h3>User Management</h3>
+            <p>Manage account access and user role assignments.</p>
+          </div>
+          <div class="admin-item">
+            <h3>Deploy Controls</h3>
+            <p>Manage GitHub Pages deployments and release rollbacks.</p>
+          </div>
+          <div class="admin-item">
+            <h3>Audit Policies</h3>
+            <p>Update compliance and security guardrails.</p>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 </Layout>
@@ -118,6 +151,38 @@ import Layout from '../layouts/Layout.astro';
     font-size: clamp(1rem, 3vw, 1.3rem);
     color: #666;
     margin: 0;
+  }
+
+  .session-summary {
+    margin-top: 0.75rem;
+    color: var(--neo-primary);
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions .neo-button {
+    text-decoration: none;
+  }
+
+  .auth-required {
+    max-width: 780px;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+  }
+
+  .auth-required h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .auth-required p {
+    margin-bottom: 1.2rem;
   }
 
   .dashboard-grid {
@@ -239,6 +304,45 @@ import Layout from '../layouts/Layout.astro';
     gap: 1rem;
   }
 
+  .admin-panel {
+    margin-top: 1.5rem;
+  }
+
+  .admin-note {
+    color: #9dc8d2;
+    margin: 0.4rem 0 1rem;
+  }
+
+  .admin-disclaimer {
+    color: #9dc8d2;
+    font-size: 0.82rem;
+    margin: 0 0 1rem;
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .admin-item {
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    background: var(--glass-bg);
+    padding: 1rem;
+  }
+
+  .admin-item h3 {
+    margin: 0 0 0.5rem;
+    color: var(--neo-secondary);
+  }
+
+  .admin-item p {
+    margin: 0;
+    color: #9dc8d2;
+    font-size: 0.95rem;
+  }
+
   .neo-button {
     display: block;
     text-align: center;
@@ -274,3 +378,61 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 </style>
+
+<script>
+  const auth = window.CYBERAI_AUTH;
+  if (!auth) {
+    throw new Error('CyberAi auth helpers failed to initialize.');
+  }
+
+  const session = auth.readSession();
+  const authRequired = document.getElementById('auth-required');
+  const dashboardContent = document.getElementById('dashboard-content');
+  const adminPanel = document.getElementById('admin-panel');
+  const adminDisclaimer = document.getElementById('admin-disclaimer');
+  const sessionSummary = document.getElementById('session-summary');
+  const loginCta = document.getElementById('login-cta');
+  const logoutCta = document.getElementById('logout-cta');
+
+  if (!session?.email) {
+    authRequired?.removeAttribute('hidden');
+    if (sessionSummary) {
+      sessionSummary.textContent = 'Signed out. Please log in.';
+    }
+  } else {
+    dashboardContent?.removeAttribute('hidden');
+    logoutCta?.removeAttribute('hidden');
+    if (loginCta) {
+      loginCta.textContent = 'Switch Account';
+      loginCta.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.href = '/login?switch=1';
+      });
+    }
+
+    const role = auth.getRoleForSession(session);
+    if (sessionSummary) {
+      sessionSummary.textContent = `Signed in as ${session.email} (${role})`;
+    }
+
+    if (role === 'admin') {
+      adminPanel?.removeAttribute('hidden');
+      if (adminDisclaimer) {
+        adminDisclaimer.textContent = auth.DEMO_AUTH_NOTICE;
+      }
+
+      const searchParams = new URLSearchParams(window.location.search);
+      const adminSectionRequested = searchParams.get('section') === 'admin';
+      if (adminSectionRequested) {
+        adminPanel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        adminPanel?.setAttribute('tabindex', '-1');
+        adminPanel?.focus();
+      }
+    }
+  }
+
+  logoutCta?.addEventListener('click', () => {
+    auth.clearSession();
+    window.location.href = '/login';
+  });
+</script>
