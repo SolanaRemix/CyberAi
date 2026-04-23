@@ -16,6 +16,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/neo-glow-fx.css" />
+    <script src="/auth-session.js" is:inline></script>
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -37,7 +38,7 @@ const { title } = Astro.props;
           <li><a href="/smartbrain">SmartBrain</a></li>
           <li><a href="/audit">Audit</a></li>
           <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/login" class="login-link">Login</a></li>
+          <li><a href="/login" class="login-link" id="nav-login-link">Login</a></li>
           <li><a href="https://github.com/SolanaRemix/CyberAi" target="_blank">GitHub</a></li>
         </ul>
       </nav>
@@ -103,6 +104,13 @@ const { title } = Astro.props;
           menu?.classList.remove('active');
         });
       });
+
+      const navLoginLink = document.getElementById('nav-login-link');
+      const hasSession = Boolean(window.CYBERAI_AUTH?.readSession?.());
+      if (hasSession && navLoginLink) {
+        navLoginLink.textContent = 'Dashboard';
+        navLoginLink.setAttribute('href', '/dashboard');
+      }
     </script>
   </body>
 </html>
