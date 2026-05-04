@@ -39,7 +39,8 @@ export async function handleTask({ prompt, agent, user, io, socketId, ip }) {
   } catch (err) {
     status = "error";
     if (socketId) {
-      io.to(socketId).emit("ai_error", err instanceof Error ? err.message : "Agent execution failed");
+      const msg = err instanceof Error ? err.message : `Agent '${agent}' execution failed: ${String(err)}`;
+      io.to(socketId).emit("ai_error", msg);
     }
   }
 
