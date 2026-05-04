@@ -31,7 +31,7 @@ export async function handleTask({ prompt, agent, user, io, socketId, ip }) {
   const result = await runAgent(prompt, agent, io, socketId);
 
   // 3. Audit Log — include trace context for observability
-  logAction(user, "run_agent", agent, { socketId: socketId ?? undefined, ip });
+  logAction(user, "run_agent", agent, { socketId: socketId || undefined, ip });
 
   return result;
 }

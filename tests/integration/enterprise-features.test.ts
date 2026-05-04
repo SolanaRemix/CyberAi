@@ -69,10 +69,8 @@ describe("securityAI — validateTask", async () => {
     expect(result.allowed).toBe(false);
   });
 
-  it("blocks obfuscated input with extra whitespace (r m -r f)", async () => {
-    // Normalization should collapse "r m  -  r f" before matching "rm -rf"
-    // But the actual pattern after collapse is "r m - r f" which differs from "rm -rf",
-    // so we test the normalized-no-spaces variant that the normalizer can catch
+  it("blocks obfuscated input with extra whitespace between 'rm -rf'", async () => {
+    // Extra spaces are collapsed during normalization so "rm  -rf" becomes "rm -rf"
     const result = await validateTask("rm  -rf /", {});
     expect(result.allowed).toBe(false);
   });
@@ -230,13 +228,13 @@ describe("aiService — agent registry whitelist", async () => {
     emit: () => {},
   };
 
-  it("exports AGENT_REGISTRY as a Set", () => {
-    expect(AGENT_REGISTRY).toBeInstanceOf(Set);
+  it("exports AGENT_REGISTRY as a Map", () => {
+    expect(AGENT_REGISTRY).toBeInstanceOf(Map);
     expect(AGENT_REGISTRY.size).toBeGreaterThan(0);
   });
 
   it("accepts all registered agents without throwing", async () => {
-    for (const agent of AGENT_REGISTRY) {
+    for (const agent of AGENT_REGISTRY.keys()) {
       await expect(runAgent("test prompt", agent, mockIo, "s1")).resolves.toBeTruthy();
     }
   });

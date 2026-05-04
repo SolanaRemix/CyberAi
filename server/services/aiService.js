@@ -6,10 +6,15 @@
  */
 
 /**
- * Strict whitelist of valid agent names.
- * Any agent name not in this set will be rejected before execution.
+ * Strict whitelist of valid agent names mapped to their display labels.
+ * Only agents in this map are accepted by runAgent().
  */
-export const AGENT_REGISTRY = new Set(["scanner", "builder", "security", "deployer"]);
+export const AGENT_REGISTRY = new Map([
+  ["scanner", "Scanner"],
+  ["builder", "Builder"],
+  ["security", "Security"],
+  ["deployer", "Deployer"],
+]);
 
 /**
  * Execute a named agent against a prompt and broadcast the result.
@@ -22,18 +27,13 @@ export const AGENT_REGISTRY = new Set(["scanner", "builder", "security", "deploy
  * @throws {Error} When the agent name is not in the registry.
  */
 export async function runAgent(prompt, agent, io, socketId) {
-  if (!AGENT_REGISTRY.has(agent)) {
-    throw new Error(`Unknown agent: '${agent}'. Must be one of: ${[...AGENT_REGISTRY].join(", ")}`);
+  const label = AGENT_REGISTRY.get(agent);
+  if (!label) {
+    throw new Error(
+      `Unknown agent: '${agent}'. Must be one of: ${[...AGENT_REGISTRY.keys()].join(", ")}`,
+    );
   }
 
-  const labels = {
-    scanner: "Scanner",
-    builder: "Builder",
-    security: "Security",
-    deployer: "Deployer",
-  };
-
-  const label = labels[agent];
   const response = `[${label}] Processing: ${prompt}`;
 
   if (socketId) {

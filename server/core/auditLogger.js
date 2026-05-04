@@ -1,7 +1,7 @@
 /**
  * Audit Logger
  * Records every user action with a structured JSON entry.
- * Log format: { user, action, agent, timestamp, traceId, socketId, ip }
+ * Log format: { user, action, agent, timestamp, ...traceContext }
  *
  * The optional `context` parameter enriches log entries with trace information
  * that improves observability in production (log correlation, incident response).
@@ -16,15 +16,18 @@
  * @param {{ socketId?: string, ip?: string, traceId?: string }} [context] - Optional trace context.
  */
 export function logAction(user, action, agent, context = {}) {
+  // Only include context fields that have a defined value to keep logs clean
+  const traceFields = Object.fromEntries(
+    Object.entries(context).filter(([, v]) => v !== undefined),
+  );
+
   console.log(
     JSON.stringify({
       user: user.email,
       action,
       agent,
       timestamp: new Date().toISOString(),
-      ...(context.traceId !== undefined && { traceId: context.traceId }),
-      ...(context.socketId !== undefined && { socketId: context.socketId }),
-      ...(context.ip !== undefined && { ip: context.ip }),
+      ...traceFields,
     }),
   );
 }
