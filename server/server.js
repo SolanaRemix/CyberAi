@@ -33,7 +33,7 @@ app.post("/api/task", async (req, res) => {
     return res.status(403).json({ error: "Insufficient role" });
   }
 
-  const result = await handleTask({ prompt, agent, user, io, socketId: null });
+  const result = await handleTask({ prompt, agent, user, io, socketId: null, ip: req.ip });
   res.json({ success: true, result });
 });
 
@@ -59,6 +59,7 @@ io.on("connection", (socket) => {
       user,
       io,
       socketId: socket.id,
+      ip: socket.handshake.address,
     });
   });
 
