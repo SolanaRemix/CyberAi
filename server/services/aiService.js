@@ -34,8 +34,6 @@ export async function runAgent(prompt, agent, io, socketId) {
 
   if (socketId) {
     io.to(socketId).emit("ai_stream", response);
-  } else {
-    io.emit("ai_stream", response);
   }
 
   return response;

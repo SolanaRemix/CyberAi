@@ -24,8 +24,10 @@ app.use(express.json());
  */
 app.post("/api/task", async (req, res) => {
   const { prompt, agent } = req.body;
-  // In production replace this stub with real JWT decoding
-  const user = req.body.user ?? { email: "demo@cyberai", role: "admin" };
+  // NOTE: Replace with real JWT decoding in production.
+  // Default to the 'agent' service-level role (level 0) so unauthenticated
+  // callers are denied all user-level actions until JWT auth is in place.
+  const user = { email: "anonymous", role: "agent" };
 
   if (!checkRole(user, "developer")) {
     return res.status(403).json({ error: "Insufficient role" });
@@ -42,8 +44,10 @@ io.on("connection", (socket) => {
   console.log("Client connected:", socket.id);
 
   socket.on("run_task", async (data) => {
-    // In production replace this stub with real JWT decoding from socket handshake
-    const user = data.user ?? { email: "demo@cyberai", role: "admin" };
+    // NOTE: Replace with real JWT decoding from socket handshake auth in production.
+    // Never trust a role supplied by the client; default to service-level 'agent'
+    // role (level 0) so unauthenticated sockets are denied all user-level tasks.
+    const user = { email: "anonymous", role: "agent" };
 
     if (!checkRole(user, "developer")) {
       socket.emit("ai_error", "Insufficient role to run tasks");

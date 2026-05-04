@@ -21,7 +21,9 @@ export async function handleTask({ prompt, agent, user, io, socketId }) {
   // 1. Security Check
   const security = await validateTask(prompt, user);
   if (!security.allowed) {
-    io.to(socketId).emit("ai_error", security.reason);
+    if (socketId) {
+      io.to(socketId).emit("ai_error", security.reason);
+    }
     return;
   }
 

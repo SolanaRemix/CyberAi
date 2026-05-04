@@ -182,6 +182,30 @@ describe("orchestrator — handleTask", async () => {
     expect(emitted[0][0]).toBe("ai_error");
   });
 
+  it("does not broadcast when socketId is null and task is blocked", async () => {
+    const broadcastEmitted: Array<[string, unknown]> = [];
+    const toEmitted: Array<[string, unknown]> = [];
+    const io = {
+      to: (_id: string) => ({
+        emit: (event: string, data: unknown) => toEmitted.push([event, data]),
+      }),
+      emit: (event: string, data: unknown) => broadcastEmitted.push([event, data]),
+    };
+
+    const result = await handleTask({
+      prompt: "drop database users",
+      agent: "builder",
+      user: { email: "u@test.com", role: "developer" },
+      io,
+      socketId: null,
+    });
+
+    // Nothing should be broadcast to all sockets
+    expect(broadcastEmitted.length).toBe(0);
+    expect(toEmitted.length).toBe(0);
+    expect(result).toBeUndefined();
+  });
+
   it("executes a safe task and returns a result", async () => {
     const emitted: Array<[string, unknown]> = [];
     const io = {
