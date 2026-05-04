@@ -1,10 +1,14 @@
 /**
  * Audit Logger
  * Records every user action with a structured JSON entry.
- * Log format: { user, action, agent, timestamp, ...traceContext }
  *
- * The optional `context` parameter enriches log entries with trace information
- * that improves observability in production (log correlation, incident response).
+ * Log format:
+ *   { user, action, agent, status, durationMs, timestamp, [socketId], [ip], [traceId] }
+ *
+ * - `status`     — "success" or "error" so that every log entry is queryable by outcome.
+ * - `durationMs` — wall-clock time (ms) the agent took to execute; helps spot latency regressions.
+ * - Trace fields (socketId, ip, traceId) are included only when provided, keeping logs lean
+ *   for callers that do not have that context (e.g. background jobs).
  */
 
 /**
@@ -13,7 +17,7 @@
  * @param {{ email: string }} user - The acting user.
  * @param {string} action - The action performed (e.g. "run_agent").
  * @param {string} agent - The agent involved (e.g. "builder").
- * @param {{ socketId?: string, ip?: string, traceId?: string }} [context] - Optional trace context.
+ * @param {{ status?: "success"|"error", durationMs?: number, socketId?: string, ip?: string, traceId?: string }} [context] - Execution context.
  */
 export function logAction(user, action, agent, context = {}) {
   // Only include context fields that have a defined value to keep logs clean
@@ -26,6 +30,8 @@ export function logAction(user, action, agent, context = {}) {
       user: user.email,
       action,
       agent,
+      status: context.status ?? "success",
+      durationMs: context.durationMs ?? 0,
       timestamp: new Date().toISOString(),
       ...traceFields,
     }),

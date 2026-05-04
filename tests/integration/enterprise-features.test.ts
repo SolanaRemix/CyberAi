@@ -129,6 +129,8 @@ describe("auditLogger — logAction", async () => {
     expect(entry.action).toBe("run_agent");
     expect(entry.agent).toBe("builder");
     expect(typeof entry.timestamp).toBe("string");
+    expect(entry.status).toBe("success");
+    expect(typeof entry.durationMs).toBe("number");
   });
 
   it("includes trace context fields when provided", () => {
@@ -148,6 +150,23 @@ describe("auditLogger — logAction", async () => {
     expect(entry.socketId).toBe("socket-abc");
     expect(entry.ip).toBe("127.0.0.1");
     expect(entry.traceId).toBe("trace-xyz");
+  });
+
+  it("includes status and durationMs when provided", () => {
+    const logs: string[] = [];
+    const originalLog = console.log;
+    console.log = (msg: string) => logs.push(msg);
+
+    logAction({ email: "dev@cyberai" }, "run_agent", "scanner", {
+      status: "error",
+      durationMs: 42,
+    });
+
+    console.log = originalLog;
+
+    const entry = JSON.parse(logs[0]);
+    expect(entry.status).toBe("error");
+    expect(entry.durationMs).toBe(42);
   });
 
   it("omits trace context fields when not provided", () => {
@@ -332,6 +351,63 @@ describe("orchestrator — handleTask", async () => {
     expect(result).toContain("Builder");
     // ai_stream was emitted
     expect(emitted.some(([ev]) => ev === "ai_stream")).toBe(true);
+  });
+
+  it("logs status=success and durationMs on a successful task", async () => {
+    const logs: string[] = [];
+    const originalLog = console.log;
+    console.log = (msg: string) => logs.push(msg);
+
+    const io = {
+      to: (_id: string) => ({ emit: () => {} }),
+      emit: () => {},
+    };
+
+    await handleTask({
+      prompt: "build a login form",
+      agent: "builder",
+      user: { email: "u@test.com", role: "developer" },
+      io,
+      socketId: "socket-3",
+    });
+
+    console.log = originalLog;
+
+    const entry = JSON.parse(logs[0]);
+    expect(entry.status).toBe("success");
+    expect(typeof entry.durationMs).toBe("number");
+    expect(entry.durationMs).toBeGreaterThanOrEqual(0);
+  });
+
+  it("logs status=error and emits ai_error when agent throws", async () => {
+    const logs: string[] = [];
+    const originalLog = console.log;
+    console.log = (msg: string) => logs.push(msg);
+
+    const emitted: Array<[string, unknown]> = [];
+    const io = {
+      to: (_id: string) => ({
+        emit: (event: string, data: unknown) => emitted.push([event, data]),
+      }),
+      emit: () => {},
+    };
+
+    // "unknown-agent" is not in AGENT_REGISTRY so runAgent will throw
+    const result = await handleTask({
+      prompt: "build something",
+      agent: "unknown-agent",
+      user: { email: "u@test.com", role: "developer" },
+      io,
+      socketId: "socket-4",
+    });
+
+    console.log = originalLog;
+
+    expect(result).toBeUndefined();
+    expect(emitted.some(([ev]) => ev === "ai_error")).toBe(true);
+    const entry = JSON.parse(logs[0]);
+    expect(entry.status).toBe("error");
+    expect(typeof entry.durationMs).toBe("number");
   });
 });
 
