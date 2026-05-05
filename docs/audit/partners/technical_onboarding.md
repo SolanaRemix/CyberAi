@@ -1,4 +1,3 @@
-
 title: Technical Onboarding
 
 ```bash

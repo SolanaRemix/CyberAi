@@ -4,7 +4,6 @@
 
 This guide explains how to claim your CyberAi DAO token allocation after you've been included in an airdrop allocation, a snapshot has been taken, and the merkle tree has been generated.
 
-
 ## Prerequisites
 
 Before you can claim:
@@ -1175,7 +1174,6 @@ A: Contact team immediately. Will be refilled from treasury.
 ---
 
 Last updated: 2026-01-01
-
 
 - Official website URL
 - Contract address

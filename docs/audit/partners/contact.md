@@ -1,4 +1,3 @@
-
 # Contact Information
 
 ## General Contact
@@ -91,7 +90,6 @@ Actual Behavior:
 Logs/Screenshots:
 [Attach relevant logs or screenshots]
 ```
-
 
 ## Security
 
@@ -253,7 +251,6 @@ Currently, we operate globally from a central team. Regional contacts may be add
 
 **Primary Time Zone**: UTC  
 **Business Hours**: Monday-Friday, 9 AM - 5 PM UTC
-
 
 ## Social Media
 

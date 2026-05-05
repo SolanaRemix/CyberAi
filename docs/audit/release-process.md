@@ -31,4 +31,3 @@ See [RELEASE.md](../RELEASE.md) for detailed procedures.
 ---
 
 _Last updated: 2026-01-01_
-

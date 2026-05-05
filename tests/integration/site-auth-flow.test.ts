@@ -17,7 +17,7 @@ describe('Site auth and dashboard UX flows', () => {
   it('gates dashboard access and reveals admin panel by role', () => {
     const dashboardPage = readFileSync(
       join(projectRoot, 'site/src/pages/dashboard.astro'),
-      'utf-8',
+      'utf-8'
     );
     expect(dashboardPage).toContain('id="auth-required"');
     expect(dashboardPage).toContain('id="dashboard-content"');

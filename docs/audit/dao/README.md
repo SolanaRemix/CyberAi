@@ -498,7 +498,6 @@ For DAO governance questions:
 
 Last updated: 2026-01-01
 
-
 # DAO Documentation
 
 ## Overview
@@ -616,4 +615,3 @@ See GOVERNANCE.md for how DAO governance integrates with project governance.
 
 **Last Updated**: 2026-01-01  
 **Status**: Planning/Development
-
