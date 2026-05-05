@@ -16,10 +16,10 @@ import { logAction } from "./auditLogger.js";
  * The audit log always fires — on success AND on agent execution errors —
  * so every execution attempt is traceable.
  *
- * @param {{ prompt: string, agent: string, user: object, io: object, socketId: string|null, ip?: string }} params
+ * @param {{ prompt: string, agent: string, user: object, io: object, socketId: string|null, ip?: string, traceId?: string }} params
  * @returns {Promise<string|undefined>} Agent result, or undefined when blocked or errored.
  */
-export async function handleTask({ prompt, agent, user, io, socketId, ip }) {
+export async function handleTask({ prompt, agent, user, io, socketId, ip, traceId }) {
   // 1. Security Check — fail-closed: blocked tasks never reach the agent layer
   const security = await validateTask(prompt, user);
   if (!security.allowed) {
@@ -52,6 +52,7 @@ export async function handleTask({ prompt, agent, user, io, socketId, ip }) {
     durationMs,
     socketId: socketId || undefined,
     ip,
+    traceId,
   });
 
   return result;

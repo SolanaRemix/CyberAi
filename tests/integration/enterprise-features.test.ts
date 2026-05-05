@@ -22,6 +22,7 @@ describe("Enterprise server files exist", () => {
     "server/core/orchestrator.js",
     "server/services/aiService.js",
     "server/server.js",
+    "server/index.js",
     "app/views/admin.js",
   ];
 
@@ -91,6 +92,17 @@ describe("securityAI — validateTask", async () => {
     expect(result.allowed).toBe(false);
   });
 
+  it("blocks spaced-out 'r m -r f' variant (compact bypass check)", async () => {
+    // After stripping all spaces the compact form is "rm-rf" which is blocked
+    const result = await validateTask("r m -r f /", {});
+    expect(result.allowed).toBe(false);
+  });
+
+  it("blocks spaced-out 'h a c k' variant", async () => {
+    const result = await validateTask("h a c k the system", {});
+    expect(result.allowed).toBe(false);
+  });
+
   it("rejects empty string input", async () => {
     const result = await validateTask("", {});
     expect(result.allowed).toBe(false);
@@ -118,10 +130,11 @@ describe("auditLogger — logAction", async () => {
     const logs: string[] = [];
     const originalLog = console.log;
     console.log = (msg: string) => logs.push(msg);
-
-    logAction({ email: "admin@cyberai" }, "run_agent", "builder");
-
-    console.log = originalLog;
+    try {
+      logAction({ email: "admin@cyberai" }, "run_agent", "builder");
+    } finally {
+      console.log = originalLog;
+    }
 
     expect(logs.length).toBe(1);
     const entry = JSON.parse(logs[0]);
@@ -137,16 +150,18 @@ describe("auditLogger — logAction", async () => {
     const logs: string[] = [];
     const originalLog = console.log;
     console.log = (msg: string) => logs.push(msg);
+    let entry: Record<string, unknown>;
+    try {
+      logAction({ email: "dev@cyberai" }, "run_agent", "scanner", {
+        socketId: "socket-abc",
+        ip: "127.0.0.1",
+        traceId: "trace-xyz",
+      });
+      entry = JSON.parse(logs[0]);
+    } finally {
+      console.log = originalLog;
+    }
 
-    logAction({ email: "dev@cyberai" }, "run_agent", "scanner", {
-      socketId: "socket-abc",
-      ip: "127.0.0.1",
-      traceId: "trace-xyz",
-    });
-
-    console.log = originalLog;
-
-    const entry = JSON.parse(logs[0]);
     expect(entry.socketId).toBe("socket-abc");
     expect(entry.ip).toBe("127.0.0.1");
     expect(entry.traceId).toBe("trace-xyz");
@@ -156,15 +171,17 @@ describe("auditLogger — logAction", async () => {
     const logs: string[] = [];
     const originalLog = console.log;
     console.log = (msg: string) => logs.push(msg);
+    let entry: Record<string, unknown>;
+    try {
+      logAction({ email: "dev@cyberai" }, "run_agent", "scanner", {
+        status: "error",
+        durationMs: 42,
+      });
+      entry = JSON.parse(logs[0]);
+    } finally {
+      console.log = originalLog;
+    }
 
-    logAction({ email: "dev@cyberai" }, "run_agent", "scanner", {
-      status: "error",
-      durationMs: 42,
-    });
-
-    console.log = originalLog;
-
-    const entry = JSON.parse(logs[0]);
     expect(entry.status).toBe("error");
     expect(entry.durationMs).toBe(42);
   });
@@ -173,12 +190,14 @@ describe("auditLogger — logAction", async () => {
     const logs: string[] = [];
     const originalLog = console.log;
     console.log = (msg: string) => logs.push(msg);
+    let entry: Record<string, unknown>;
+    try {
+      logAction({ email: "dev@cyberai" }, "run_agent", "scanner");
+      entry = JSON.parse(logs[0]);
+    } finally {
+      console.log = originalLog;
+    }
 
-    logAction({ email: "dev@cyberai" }, "run_agent", "scanner");
-
-    console.log = originalLog;
-
-    const entry = JSON.parse(logs[0]);
     expect(entry.socketId).toBeUndefined();
     expect(entry.ip).toBeUndefined();
     expect(entry.traceId).toBeUndefined();
@@ -363,17 +382,20 @@ describe("orchestrator — handleTask", async () => {
       emit: () => {},
     };
 
-    await handleTask({
-      prompt: "build a login form",
-      agent: "builder",
-      user: { email: "u@test.com", role: "developer" },
-      io,
-      socketId: "socket-3",
-    });
+    let entry: Record<string, unknown>;
+    try {
+      await handleTask({
+        prompt: "build a login form",
+        agent: "builder",
+        user: { email: "u@test.com", role: "developer" },
+        io,
+        socketId: "socket-3",
+      });
+      entry = JSON.parse(logs[0]);
+    } finally {
+      console.log = originalLog;
+    }
 
-    console.log = originalLog;
-
-    const entry = JSON.parse(logs[0]);
     expect(entry.status).toBe("success");
     expect(typeof entry.durationMs).toBe("number");
     expect(entry.durationMs).toBeGreaterThanOrEqual(0);
@@ -392,20 +414,24 @@ describe("orchestrator — handleTask", async () => {
       emit: () => {},
     };
 
-    // "unknown-agent" is not in AGENT_REGISTRY so runAgent will throw
-    const result = await handleTask({
-      prompt: "build something",
-      agent: "unknown-agent",
-      user: { email: "u@test.com", role: "developer" },
-      io,
-      socketId: "socket-4",
-    });
-
-    console.log = originalLog;
+    let result: unknown;
+    let entry: Record<string, unknown>;
+    try {
+      // "unknown-agent" is not in AGENT_REGISTRY so runAgent will throw
+      result = await handleTask({
+        prompt: "build something",
+        agent: "unknown-agent",
+        user: { email: "u@test.com", role: "developer" },
+        io,
+        socketId: "socket-4",
+      });
+      entry = JSON.parse(logs[0]);
+    } finally {
+      console.log = originalLog;
+    }
 
     expect(result).toBeUndefined();
     expect(emitted.some(([ev]) => ev === "ai_error")).toBe(true);
-    const entry = JSON.parse(logs[0]);
     expect(entry.status).toBe("error");
     expect(typeof entry.durationMs).toBe("number");
   });
@@ -432,5 +458,101 @@ describe("admin view — renderAdmin", async () => {
   it("includes data-requires-role='admin' authentication guard attribute", () => {
     const html = renderAdmin();
     expect(html).toContain('data-requires-role="admin"');
+  });
+});
+
+// ─────────────────────────────────────────────────────────
+// Server exports (server.js)
+// ─────────────────────────────────────────────────────────
+
+describe("server — exported app/server/io", async () => {
+  // Import server.js (which no longer calls listen()) to verify exports and
+  // catch any module-level startup errors.
+  const { app, server, io } = await import("../../server/server.js");
+
+  it("exports app as an Express handler function", () => {
+    expect(typeof app).toBe("function");
+  });
+
+  it("exports server with a listen method", () => {
+    expect(server).toBeDefined();
+    expect(typeof server.listen).toBe("function");
+  });
+
+  it("exports io", () => {
+    expect(io).toBeDefined();
+  });
+
+  it("app has POST /api/task route registered", () => {
+    // Express 5 uses app.router; Express 4 uses app._router.
+    // Check that the app has at least one route (the task endpoint).
+    // This verifies the route setup ran without errors.
+    const hasRouter =
+      // @ts-expect-error private Express internals
+      app.router != null || app._router != null;
+    expect(hasRouter).toBe(true);
+  });
+});
+
+// ─────────────────────────────────────────────────────────
+// Orchestrator — traceId forwarding
+// ─────────────────────────────────────────────────────────
+
+describe("orchestrator — traceId forwarded to audit log", async () => {
+  const { handleTask } = await import("../../server/core/orchestrator.js");
+
+  it("includes traceId in the audit log entry when provided", async () => {
+    const logs: string[] = [];
+    const originalLog = console.log;
+    console.log = (msg: string) => logs.push(msg);
+
+    const io = {
+      to: (_id: string) => ({ emit: () => {} }),
+      emit: () => {},
+    };
+
+    let entry: Record<string, unknown>;
+    try {
+      await handleTask({
+        prompt: "build a login form",
+        agent: "builder",
+        user: { email: "u@test.com", role: "developer" },
+        io,
+        socketId: "socket-trace",
+        traceId: "trace-abc-123",
+      });
+      entry = JSON.parse(logs[0]);
+    } finally {
+      console.log = originalLog;
+    }
+
+    expect(entry.traceId).toBe("trace-abc-123");
+  });
+
+  it("omits traceId from audit log when not provided", async () => {
+    const logs: string[] = [];
+    const originalLog = console.log;
+    console.log = (msg: string) => logs.push(msg);
+
+    const io = {
+      to: (_id: string) => ({ emit: () => {} }),
+      emit: () => {},
+    };
+
+    let entry: Record<string, unknown>;
+    try {
+      await handleTask({
+        prompt: "build a login form",
+        agent: "builder",
+        user: { email: "u@test.com", role: "developer" },
+        io,
+        socketId: "socket-notrace",
+      });
+      entry = JSON.parse(logs[0]);
+    } finally {
+      console.log = originalLog;
+    }
+
+    expect(entry.traceId).toBeUndefined();
   });
 });

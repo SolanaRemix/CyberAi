@@ -4,21 +4,27 @@
  * Blocks malicious inputs before they reach any agent.
  *
  * Defense-in-depth approach:
- *  1. Normalize the input (collapse whitespace, strip zero-width / homoglyph
- *     characters) so that trivial obfuscation like "r m -r f" is caught.
- *  2. Check against the blocked-keyword list on the normalized form.
+ *  1. Normalize the input: strip zero-width / invisible Unicode characters,
+ *     lowercase, and collapse whitespace.
+ *  2. Check the normalized form against blocked keywords.
+ *  3. Also check a whitespace-stripped ("compact") form so that spaced-out
+ *     variants like "r m -r f" are caught (compact → "rm-rf").
  *
  * NOTE: This is a rule-based first line of defense.  For production deployments
  * it should be complemented by a semantic/LLM-based classifier that can detect
  * more sophisticated jailbreak attempts and context-dependent threats.
+ * Homoglyph substitution is NOT covered by this layer.
  */
 
 const BLOCKED_KEYWORDS = ["rm -rf", "rm-rf", "drop database", "dropdatabase", "hack"];
 
+// Space-free versions of each keyword used for the compact-form check.
+const BLOCKED_KEYWORDS_COMPACT = BLOCKED_KEYWORDS.map((kw) => kw.replace(/\s/g, ""));
+
 /**
  * Normalize a task string to defeat simple obfuscation.
- * - Lowercases the input.
  * - Strips common zero-width and invisible Unicode characters.
+ * - Lowercases the input.
  * - Collapses runs of whitespace to a single space.
  *
  * @param {string} input
@@ -50,9 +56,11 @@ export async function validateTask(task, user) {
   }
 
   const normalized = normalizeInput(task);
+  // Compact form strips all spaces to catch spaced-out variants like "r m -r f"
+  const compact = normalized.replace(/\s/g, "");
 
-  for (const word of BLOCKED_KEYWORDS) {
-    if (normalized.includes(word)) {
+  for (let i = 0; i < BLOCKED_KEYWORDS.length; i++) {
+    if (normalized.includes(BLOCKED_KEYWORDS[i]) || compact.includes(BLOCKED_KEYWORDS_COMPACT[i])) {
       return {
         allowed: false,
         reason: "Dangerous command detected",
