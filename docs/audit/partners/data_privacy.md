@@ -1,6 +1,4 @@
-
 title: Data Privacy for Partners
-
 
 # Data Privacy for Partners
 
@@ -119,7 +117,6 @@ For privacy questions:
 🔒 **Security**: security@cuberai.example
 
 ## Resources
-
 
 - [Main Privacy Policy](../../PRIVACY.md)
 - [Data Retention Policy](../../DATA_RETENTION.md)
@@ -253,7 +250,6 @@ Partners must:
 
 **Email**: privacy@cyberai.network  
 **Include**: Partner name, data types, processing description
-
 
 ---
 

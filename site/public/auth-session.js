@@ -4,10 +4,12 @@
     'Static demo authentication only. Do not use for real privilege enforcement.';
   const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const ADMIN_EMAIL_ALLOWLIST = new Set(['admin@cyberai.network']);
-  const ADMIN_PASSWORD_SHA256 =
-    '21d3a1e091ab80715f5eab32844ae63792ba667e86f4fe31a68a228cc4ba3957';
+  const ADMIN_PASSWORD_SHA256 = '21d3a1e091ab80715f5eab32844ae63792ba667e86f4fe31a68a228cc4ba3957';
 
-  const normalizeEmail = (value) => String(value || '').trim().toLowerCase();
+  const normalizeEmail = value =>
+    String(value || '')
+      .trim()
+      .toLowerCase();
 
   const toSessionName = (email, fallback = 'user') => {
     const prefix = normalizeEmail(email).split('@')[0];
@@ -64,11 +66,11 @@
     safeRemoveItem(sessionStorage, SESSION_KEY);
   };
 
-  const sha256 = async (value) => {
+  const sha256 = async value => {
     const encoded = new TextEncoder().encode(String(value || ''));
     const hashBuffer = await crypto.subtle.digest('SHA-256', encoded);
     return Array.from(new Uint8Array(hashBuffer))
-      .map((byte) => byte.toString(16).padStart(2, '0'))
+      .map(byte => byte.toString(16).padStart(2, '0'))
       .join('');
   };
 
@@ -82,7 +84,7 @@
     return passwordHash === ADMIN_PASSWORD_SHA256;
   };
 
-  const getRoleForSession = (session) => {
+  const getRoleForSession = session => {
     if (!session?.email) return 'user';
     const normalizedEmail = normalizeEmail(session.email);
     if (session.adminVerified === true && ADMIN_EMAIL_ALLOWLIST.has(normalizedEmail)) {

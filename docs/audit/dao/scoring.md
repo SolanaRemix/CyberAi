@@ -1,6 +1,5 @@
 This document defines how contributor scores are calculated for DAO token distribution. The scoring system aims to be fair, transparent, and resistant to gaming.
 
-
 ## Base Scoring Formula
 
 ```
@@ -145,7 +144,6 @@ This document details how contributions are scored for DAO token allocation in C
 ```
 
 Total Score = Σ (Base Points × LOC Multiplier × Impact Multiplier × Time Multiplier) + Bonuses
-
 
 ```
 

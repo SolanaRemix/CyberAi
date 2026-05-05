@@ -726,7 +726,6 @@ custom: ['mailto:funding@cyberai.network'] # Billing inquiries
 
 Update FUNDING.yml with real values when ready.
 
-
 ## Development
 
 ### Local Testing

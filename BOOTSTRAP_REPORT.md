@@ -412,7 +412,6 @@ Some placeholder text may still remain in non-critical documentation or web cont
 
 The repository is ready for:
 
-
 - Active development
 - CI/CD pipeline execution
 - GitHub Pages deployment
