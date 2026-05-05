@@ -85,9 +85,13 @@ export async function validateTask(task, _user) {
 
   for (const [normPattern, compactPattern] of BLOCKED_PATTERNS) {
     const matchesNorm =
-      normPattern instanceof RegExp ? normPattern.test(normalized) : normalized.includes(normPattern);
+      normPattern instanceof RegExp
+        ? normPattern.test(normalized)
+        : normalized.includes(normPattern);
     const matchesCompact =
-      compactPattern instanceof RegExp ? compactPattern.test(compact) : compact.includes(compactPattern);
+      compactPattern instanceof RegExp
+        ? compactPattern.test(compact)
+        : compact.includes(compactPattern);
 
     if (matchesNorm || matchesCompact) {
       return {
