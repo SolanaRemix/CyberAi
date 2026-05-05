@@ -4,9 +4,15 @@
  *
  * Authentication guard:
  *   The caller must verify the current user has the 'admin' role before
- *   invoking renderAdmin(). The returned markup includes a data attribute
- *   (`data-requires-role="admin"`) that client-side route guards should check.
- *   If authentication state is not present, redirect to the login page.
+ *   invoking renderAdmin(). The returned markup uses `data-requires="admin:all"`,
+ *   which matches the action-based guard contract used throughout the app
+ *   (dashboard/layout.html, app/layout.html). Client-side guard scripts that
+ *   process `[data-requires]` attributes will hide this panel for non-admins.
+ *
+ * Live audit logs:
+ *   The inline script connects to the Socket.IO server and subscribes to
+ *   'audit_log' events emitted to the 'admins' room by the audit logger.
+ *   Entries appear in real time inside the #logs container.
  */
 
 /**
@@ -17,10 +23,23 @@
  */
 export function renderAdmin() {
   return `
-    <div class="glass" data-requires-role="admin">
+    <div class="glass" data-requires="admin:all">
       <h2>Admin Panel</h2>
       <div>Audit Logs (live)</div>
       <div id="logs"></div>
     </div>
+    <script>
+      (function () {
+        if (typeof io === 'undefined') return;
+        var socket = io();
+        socket.on('audit_log', function (entry) {
+          var el = document.getElementById('logs');
+          if (!el) return;
+          var row = document.createElement('pre');
+          row.textContent = JSON.stringify(entry, null, 2);
+          el.prepend(row);
+        });
+      })();
+    </script>
   `;
 }

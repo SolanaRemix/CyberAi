@@ -33,6 +33,8 @@
     "clean:all": "npm run clean && rimraf node_modules",
     "dev:api": "tsx api/src/index.ts",
     "start:api": "tsx api/src/index.ts",
+    "dev:enterprise": "node server/index.js",
+    "start:enterprise": "node server/index.js",
     "cli": "tsx cli/src/index.ts",
     "test:integration:stubs": "vitest run tests/integration/stubs.test.ts",
     "app:dev": "tsx app/src/main.tsx",

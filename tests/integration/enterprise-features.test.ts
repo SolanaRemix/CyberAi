@@ -215,6 +215,41 @@ describe("auditLogger — logAction", async () => {
   });
 });
 
+describe("auditLogger — setIO broadcast", async () => {
+  const { logAction, setIO } = await import("../../server/core/auditLogger.js");
+
+  it("exports setIO", () => {
+    expect(typeof setIO).toBe("function");
+  });
+
+  it("emits audit_log to admins room when io is registered", () => {
+    const adminsEmitted: unknown[] = [];
+    const mockIo = {
+      to: (room: string) => ({
+        emit: (event: string, data: unknown) => {
+          if (room === "admins" && event === "audit_log") adminsEmitted.push(data);
+        },
+      }),
+    };
+
+    const logs: string[] = [];
+    const originalLog = console.log;
+    console.log = (msg: string) => logs.push(msg);
+    try {
+      // @ts-expect-error partial mock
+      setIO(mockIo);
+      logAction({ email: "admin@cyberai" }, "run_agent", "builder", { status: "success" });
+    } finally {
+      console.log = originalLog;
+      // Reset io so other tests are not affected
+      setIO(null as never);
+    }
+
+    expect(adminsEmitted.length).toBe(1);
+    expect((adminsEmitted[0] as Record<string, unknown>).action).toBe("run_agent");
+  });
+});
+
 // ─────────────────────────────────────────────────────────
 // RBAC
 // ─────────────────────────────────────────────────────────
@@ -262,6 +297,107 @@ describe("rbac — checkRole", async () => {
   it("unknown role is always denied", () => {
     const unknown = { role: "unknown" };
     expect(checkRole(unknown, "auditor")).toBe(false);
+  });
+});
+
+// ─────────────────────────────────────────────────────────
+// Server — canonical role mapping (operator/user/guest)
+// ─────────────────────────────────────────────────────────
+
+describe("server — canonical role mapping for web-app tokens", async () => {
+  const { default: request } = await import("supertest");
+  const { app } = await import("../../server/server.js");
+
+  it("operator token is mapped to developer and can execute tasks", async () => {
+    // operator (canonical) → developer (server layer) → passes RBAC
+    const token = Buffer.from(JSON.stringify({ email: "op@test.com", role: "operator" })).toString(
+      "base64url",
+    );
+    const res = await request(app)
+      .post("/api/task")
+      .set("Authorization", `Bearer ${token}`)
+      .send({ prompt: "build a login form", agent: "builder" });
+
+    expect(res.status).toBe(200);
+  });
+
+  it("user token is mapped to auditor and is denied (below developer)", async () => {
+    // user (canonical) → auditor (server layer) → fails RBAC
+    const token = Buffer.from(JSON.stringify({ email: "u@test.com", role: "user" })).toString(
+      "base64url",
+    );
+    const res = await request(app)
+      .post("/api/task")
+      .set("Authorization", `Bearer ${token}`)
+      .send({ prompt: "build a login form", agent: "builder" });
+
+    expect(res.status).toBe(403);
+  });
+
+  it("guest token is mapped to agent and is denied", async () => {
+    // guest (canonical) → agent (server layer) → fails RBAC
+    const token = Buffer.from(JSON.stringify({ email: "g@test.com", role: "guest" })).toString(
+      "base64url",
+    );
+    const res = await request(app)
+      .post("/api/task")
+      .set("Authorization", `Bearer ${token}`)
+      .send({ prompt: "build a login form", agent: "builder" });
+
+    expect(res.status).toBe(403);
+  });
+});
+
+// ─────────────────────────────────────────────────────────
+// Orchestrator — blocked returns null, error returns undefined
+// ─────────────────────────────────────────────────────────
+
+describe("orchestrator — distinct return values for blocked vs agent-error", async () => {
+  const { handleTask } = await import("../../server/core/orchestrator.js");
+
+  const io = {
+    to: (_id: string) => ({ emit: () => {} }),
+    emit: () => {},
+  };
+
+  it("returns null (not undefined) when Security AI blocks the task", async () => {
+    const logs: string[] = [];
+    const orig = console.log;
+    console.log = (m: string) => logs.push(m);
+    let result: unknown;
+    try {
+      result = await handleTask({
+        prompt: "rm -rf /",
+        agent: "builder",
+        user: { email: "u@test.com", role: "developer" },
+        io,
+        socketId: null,
+      });
+    } finally {
+      console.log = orig;
+    }
+    expect(result).toBeNull();
+    expect(result).not.toBeUndefined();
+  });
+
+  it("returns undefined (not null) when agent throws", async () => {
+    const logs: string[] = [];
+    const orig = console.log;
+    console.log = (m: string) => logs.push(m);
+    let result: unknown;
+    try {
+      result = await handleTask({
+        prompt: "build something",
+        agent: "unknown-agent",
+        user: { email: "u@test.com", role: "developer" },
+        io,
+        socketId: null,
+      });
+    } finally {
+      console.log = orig;
+    }
+    expect(result).toBeUndefined();
+    expect(result).not.toBeNull();
   });
 });
 
@@ -331,7 +467,7 @@ describe("orchestrator — handleTask", async () => {
       socketId: "socket-1",
     });
 
-    expect(result).toBeUndefined();
+    expect(result).toBeNull();
     expect(emitted.length).toBe(1);
     expect(emitted[0][0]).toBe("ai_error");
   });
@@ -357,7 +493,7 @@ describe("orchestrator — handleTask", async () => {
     // Nothing should be broadcast to all sockets
     expect(broadcastEmitted.length).toBe(0);
     expect(toEmitted.length).toBe(0);
-    expect(result).toBeUndefined();
+    expect(result).toBeNull();
   });
 
   it("executes a safe task and returns a result", async () => {
@@ -466,9 +602,14 @@ describe("admin view — renderAdmin", async () => {
     expect(html).toContain('id="logs"');
   });
 
-  it("includes data-requires-role='admin' authentication guard attribute", () => {
+  it("includes data-requires='admin:all' authentication guard attribute (canonical action-based contract)", () => {
     const html = renderAdmin();
-    expect(html).toContain('data-requires-role="admin"');
+    expect(html).toContain('data-requires="admin:all"');
+  });
+
+  it("includes a Socket.IO live audit log subscription script", () => {
+    const html = renderAdmin();
+    expect(html).toContain("socket.on('audit_log'");
   });
 });
 

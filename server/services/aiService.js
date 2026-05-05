@@ -17,7 +17,8 @@ export const AGENT_REGISTRY = new Map([
 ]);
 
 /**
- * Execute a named agent against a prompt and broadcast the result.
+ * Execute a named agent against a prompt and emit the result only to the
+ * originating socket (not broadcast to all clients).
  *
  * @param {string} prompt - The user's task prompt.
  * @param {string} agent  - The target agent name (must be in AGENT_REGISTRY).
@@ -30,14 +31,15 @@ export async function runAgent(prompt, agent, io, socketId) {
   const label = AGENT_REGISTRY.get(agent);
   if (!label) {
     throw new Error(
-      `Unknown agent: '${agent}'. Must be one of: ${[...AGENT_REGISTRY.keys()].join(", ")}`,
+      `Unknown agent: '${agent}'. Must be one of: ${[...AGENT_REGISTRY.keys()].join(', ')}`,
     );
   }
 
   const response = `[${label}] Processing: ${prompt}`;
 
   if (socketId) {
-    io.to(socketId).emit("ai_stream", response);
+    // Emit only to the originating socket, not to all connected clients
+    io.to(socketId).emit('ai_stream', response);
   }
 
   return response;

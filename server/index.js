@@ -6,12 +6,12 @@
  * in tests and other modules without binding a port.
  */
 
-import { server } from "./server.js";
+import { server } from './server.js';
 
 const PORT = process.env.PORT ?? 3000;
 
 server.listen(PORT, () => {
   process.stderr.write(
-    JSON.stringify({ event: "server_started", port: Number(PORT) }) + "\n",
+    JSON.stringify({ event: 'server_started', port: Number(PORT) }) + '\n',
   );
 });

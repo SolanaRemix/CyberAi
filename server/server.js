@@ -19,30 +19,72 @@
  *
  * What the stub does provide:
  *   - A real code path for elevated roles so the API is testable end-to-end.
- *   - A `VALID_ROLES` allowlist that rejects any role string not in the set,
- *     which limits damage if someone sends a non-existent role name.
+ *   - Support for both server-layer roles (admin/developer/auditor/agent) AND the
+ *     canonical web-app roles (admin/operator/user/guest from src/security/roles.ts);
+ *     canonical roles are mapped to their server-layer equivalents via CANONICAL_ROLE_MAP.
+ *   - A `VALID_ROLES` set that rejects any role string not in either set, which limits
+ *     damage if someone sends a non-existent role name.
  *   - An anonymous fallback (`agent`, level 0) for requests with no token, so
  *     unauthenticated callers are still rejected by the RBAC check.
  */
 
-import express from "express";
-import http from "http";
-import { Server } from "socket.io";
-import { handleTask } from "./core/orchestrator.js";
-import { checkRole } from "./core/rbac.js";
-import { logAction } from "./core/auditLogger.js";
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import { handleTask } from './core/orchestrator.js';
+import { checkRole } from './core/rbac.js';
+import { logAction, setIO } from './core/auditLogger.js';
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: "*" } });
+const io = new Server(server, { cors: { origin: '*' } });
+
+// Register the io instance with the audit logger so every audit entry is also
+// broadcast to the 'admins' Socket.IO room for the live Admin Panel.
+setIO(io);
 
 app.use(express.json());
 
-// Set of roles the auth stub is allowed to grant.
-// Any role value not in this set is discarded and falls back to "agent".
-const VALID_ROLES = new Set(["admin", "developer", "auditor", "agent"]);
+// ─── Role resolution ──────────────────────────────────────────────────────────
 
-// ─── Auth helpers ────────────────────────────────────────────────────────────
+/**
+ * Mapping from canonical web-app roles (src/security/roles.ts) to server-layer roles.
+ * Allows tokens issued by the existing auth system to work with this server's RBAC.
+ *   operator → developer  (can execute tasks)
+ *   user     → auditor    (read-only)
+ *   guest    → agent      (no task access)
+ */
+const CANONICAL_ROLE_MAP = {
+  operator: 'developer',
+  user: 'auditor',
+  guest: 'agent',
+};
+
+/**
+ * Set of role strings accepted in bearer tokens — both server-layer roles and
+ * canonical web-app roles. Any role value not in this set is discarded and falls
+ * back to 'agent'.
+ */
+const VALID_ROLES = new Set([
+  ...Object.keys(CANONICAL_ROLE_MAP), // operator, user, guest  (canonical web-app roles)
+  'admin',
+  'developer',
+  'auditor',
+  'agent', // server-layer roles
+]);
+
+/**
+ * Map a token role to its server-layer equivalent.
+ * Canonical roles are converted; server-layer roles pass through unchanged.
+ *
+ * @param {string} tokenRole
+ * @returns {string}
+ */
+function resolveRole(tokenRole) {
+  return CANONICAL_ROLE_MAP[tokenRole] ?? tokenRole;
+}
+
+// ─── Auth helpers ─────────────────────────────────────────────────────────────
 
 /**
  * Attempt to extract user identity from an Authorization Bearer token.
@@ -54,23 +96,23 @@ const VALID_ROLES = new Set(["admin", "developer", "auditor", "agent"]);
  */
 function resolveUser(req) {
   try {
-    const authHeader = req.headers.authorization ?? "";
-    const token = authHeader.replace(/^Bearer\s+/i, "");
+    const authHeader = req.headers.authorization ?? '';
+    const token = authHeader.replace(/^Bearer\s+/i, '');
     if (token) {
-      const payload = JSON.parse(Buffer.from(token, "base64url").toString("utf8"));
+      const payload = JSON.parse(Buffer.from(token, 'base64url').toString('utf8'));
       if (
-        typeof payload.email === "string" &&
+        typeof payload.email === 'string' &&
         payload.email &&
-        typeof payload.role === "string" &&
+        typeof payload.role === 'string' &&
         VALID_ROLES.has(payload.role)
       ) {
-        return { email: payload.email, role: payload.role };
+        return { email: payload.email, role: resolveRole(payload.role) };
       }
     }
   } catch {
     // Invalid / missing token — fall through to anonymous default
   }
-  return { email: "anonymous", role: "agent" };
+  return { email: 'anonymous', role: 'agent' };
 }
 
 /**
@@ -83,22 +125,22 @@ function resolveUser(req) {
  */
 function resolveSocketUser(socket) {
   try {
-    const token = socket.handshake.auth?.token ?? "";
+    const token = socket.handshake.auth?.token ?? '';
     if (token) {
-      const payload = JSON.parse(Buffer.from(token, "base64url").toString("utf8"));
+      const payload = JSON.parse(Buffer.from(token, 'base64url').toString('utf8'));
       if (
-        typeof payload.email === "string" &&
+        typeof payload.email === 'string' &&
         payload.email &&
-        typeof payload.role === "string" &&
+        typeof payload.role === 'string' &&
         VALID_ROLES.has(payload.role)
       ) {
-        return { email: payload.email, role: payload.role };
+        return { email: payload.email, role: resolveRole(payload.role) };
       }
     }
   } catch {
     // Invalid / missing token — fall through to anonymous default
   }
-  return { email: "anonymous", role: "agent" };
+  return { email: 'anonymous', role: 'agent' };
 }
 
 // ─── REST endpoint ────────────────────────────────────────────────────────────
@@ -107,14 +149,21 @@ function resolveSocketUser(socket) {
  * POST /api/task
  * Body: { prompt, agent, traceId? }
  * Authorization: Bearer <token>  (stub — see resolveUser above)
+ *
+ * Response status codes:
+ *   200 — Task executed successfully.
+ *   400 — Task was blocked by Security AI (prompt violated security policy).
+ *   400 — Agent execution failed (unknown agent name or runtime error).
+ *   403 — Caller's role is insufficient (RBAC denial, audit-logged).
  */
-app.post("/api/task", async (req, res) => {
+app.post('/api/task', async (req, res) => {
   const { prompt, agent, traceId } = req.body;
   const user = resolveUser(req);
 
-  if (!checkRole(user, "developer")) {
-    logAction(user, "rbac_denied", "rest:/api/task", { status: "error" });
-    return res.status(403).json({ error: "Insufficient role" });
+  if (!checkRole(user, 'developer')) {
+    // Log the denial with the requested agent name so the audit trail shows what was attempted
+    logAction(user, 'rbac_denied', agent ?? null, { status: 'error', ip: req.ip });
+    return res.status(403).json({ error: 'Insufficient role' });
   }
 
   const result = await handleTask({
@@ -124,11 +173,16 @@ app.post("/api/task", async (req, res) => {
     io,
     socketId: null,
     ip: req.ip,
-    traceId: traceId || req.headers["x-trace-id"] || undefined,
+    traceId: traceId || req.headers['x-trace-id'] || undefined,
   });
 
+  if (result === null) {
+    // Security AI blocked the prompt (bad user input)
+    return res.status(400).json({ error: 'Task was blocked by security policy' });
+  }
   if (result === undefined) {
-    return res.status(400).json({ error: "Task was blocked or failed to execute" });
+    // Agent threw during execution
+    return res.status(400).json({ error: 'Agent execution failed' });
   }
 
   res.json({ success: true, result });
@@ -136,23 +190,30 @@ app.post("/api/task", async (req, res) => {
 
 // ─── Socket.IO ────────────────────────────────────────────────────────────────
 
-io.on("connection", (socket) => {
+io.on('connection', socket => {
   // Operational events go to stderr so they don't pollute the stdout JSON audit stream
-  process.stderr.write(JSON.stringify({ event: "client_connected", socketId: socket.id }) + "\n");
+  process.stderr.write(JSON.stringify({ event: 'client_connected', socketId: socket.id }) + '\n');
 
-  socket.on("run_task", async (data) => {
+  // Admins join the 'admins' room to receive live audit_log broadcasts for the Admin Panel
+  const connectedUser = resolveSocketUser(socket);
+  if (connectedUser.role === 'admin') {
+    socket.join('admins');
+  }
+
+  socket.on('run_task', async data => {
     // Guard: data must be an object (client may emit null or primitive)
-    const safeData = data !== null && typeof data === "object" ? data : {};
+    const safeData = data !== null && typeof data === 'object' ? data : {};
 
     const user = resolveSocketUser(socket);
 
-    if (!checkRole(user, "developer")) {
-      logAction(user, "rbac_denied", "socket:run_task", {
-        status: "error",
+    if (!checkRole(user, 'developer')) {
+      // Log the denial with the requested agent name so the audit trail shows what was attempted
+      logAction(user, 'rbac_denied', safeData.agent ?? null, {
+        status: 'error',
         socketId: socket.id,
         ip: socket.handshake.address,
       });
-      socket.emit("ai_error", "Insufficient role to run tasks");
+      socket.emit('ai_error', 'Insufficient role to run tasks');
       return;
     }
 
@@ -166,9 +227,9 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("disconnect", () => {
+  socket.on('disconnect', () => {
     process.stderr.write(
-      JSON.stringify({ event: "client_disconnected", socketId: socket.id }) + "\n",
+      JSON.stringify({ event: 'client_disconnected', socketId: socket.id }) + '\n',
     );
   });
 });
