@@ -242,7 +242,7 @@ describe("auditLogger — setIO broadcast", async () => {
     } finally {
       console.log = originalLog;
       // Reset io so other tests are not affected
-      setIO(null as never);
+      setIO(null);
     }
 
     expect(adminsEmitted.length).toBe(1);

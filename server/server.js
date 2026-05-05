@@ -152,12 +152,17 @@ function resolveSocketUser(socket) {
  *
  * Response status codes:
  *   200 — Task executed successfully.
- *   400 — Task was blocked by Security AI (prompt violated security policy).
- *   400 — Agent execution failed (unknown agent name or runtime error).
+ *   400 — Task was blocked by Security AI (body.error = "Task was blocked by security policy").
+ *   400 — Agent execution failed   (body.error = "Agent execution failed").
+ *         Both prompt-policy failures and agent-level failures use 400 because both are
+ *         client-input errors in this API (bad prompt or unknown agent name). Callers can
+ *         distinguish the two cases by inspecting the `error` field in the response body.
  *   403 — Caller's role is insufficient (RBAC denial, audit-logged).
  */
 app.post('/api/task', async (req, res) => {
-  const { prompt, agent, traceId } = req.body;
+  const { prompt, traceId } = req.body;
+  // Normalise agent to string-or-null to avoid logging `undefined` in the audit trail
+  const agent = typeof req.body.agent === 'string' ? req.body.agent : null;
   const user = resolveUser(req);
 
   if (!checkRole(user, 'developer')) {

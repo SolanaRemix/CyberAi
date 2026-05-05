@@ -30,7 +30,11 @@ export function renderAdmin() {
     </div>
     <script>
       (function () {
-        if (typeof io === 'undefined') return;
+        if (typeof io === 'undefined') {
+          var el = document.getElementById('logs');
+          if (el) el.textContent = 'Live updates unavailable: Socket.IO not loaded.';
+          return;
+        }
         var socket = io();
         socket.on('audit_log', function (entry) {
           var el = document.getElementById('logs');

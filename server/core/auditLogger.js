@@ -24,7 +24,7 @@ let _io = null;
  * Register the Socket.IO server instance so audit entries are also broadcast
  * to the 'admins' room for the live Admin Panel.
  *
- * @param {import('socket.io').Server} ioInstance
+ * @param {import('socket.io').Server | null} ioInstance
  */
 export function setIO(ioInstance) {
   _io = ioInstance;
