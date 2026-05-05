@@ -17,7 +17,7 @@
  * @param {{ email: string }} user - The acting user.
  * @param {string} action - The action performed (e.g. "run_agent").
  * @param {string} agent - The agent involved (e.g. "builder").
- * @param {{ status?: "success"|"error", durationMs?: number, socketId?: string, ip?: string, traceId?: string }} [context] - Execution context.
+ * @param {{ status?: "success"|"error"|"blocked", durationMs?: number, socketId?: string, ip?: string, traceId?: string }} [context] - Execution context.
  */
 export function logAction(user, action, agent, context = {}) {
   // Only include context fields that have a defined value to keep logs clean

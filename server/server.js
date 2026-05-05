@@ -9,14 +9,20 @@
  * -------------------
  * `resolveUser` / `resolveSocketUser` read an Authorization Bearer token and
  * try to base64url-decode a JSON payload `{ email, role }`.
- * ⚠️  THIS IS NOT SECURE — the token signature is NOT verified.
- * Replace both helpers with proper JWT verification before any production use.
  *
- * The important property this stub provides: there IS a code path for callers
- * with elevated roles (developer / admin) to pass the RBAC check.  An
- * unauthenticated request still falls back to the `agent` role (level 0)
- * which is below the `developer` minimum, so unauthenticated callers are
- * still rejected.
+ * ⚠️  SECURITY WARNING — THIS STUB MUST NOT BE USED IN PRODUCTION:
+ *   - The token is decoded but the signature is NEVER verified.
+ *   - Any client can forge a token with `{ "email": "x", "role": "admin" }` and
+ *     bypass RBAC entirely.
+ *   - Replace both helpers with a proper JWT library (e.g. `jsonwebtoken`) that
+ *     verifies the signature against a server-side secret before extracting claims.
+ *
+ * What the stub does provide:
+ *   - A real code path for elevated roles so the API is testable end-to-end.
+ *   - A `VALID_ROLES` allowlist that rejects any role string not in the set,
+ *     which limits damage if someone sends a non-existent role name.
+ *   - An anonymous fallback (`agent`, level 0) for requests with no token, so
+ *     unauthenticated callers are still rejected by the RBAC check.
  */
 
 import express from "express";
@@ -24,6 +30,7 @@ import http from "http";
 import { Server } from "socket.io";
 import { handleTask } from "./core/orchestrator.js";
 import { checkRole } from "./core/rbac.js";
+import { logAction } from "./core/auditLogger.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -106,6 +113,7 @@ app.post("/api/task", async (req, res) => {
   const user = resolveUser(req);
 
   if (!checkRole(user, "developer")) {
+    logAction(user, "rbac_denied", "rest:/api/task", { status: "error" });
     return res.status(403).json({ error: "Insufficient role" });
   }
 
@@ -133,20 +141,28 @@ io.on("connection", (socket) => {
   process.stderr.write(JSON.stringify({ event: "client_connected", socketId: socket.id }) + "\n");
 
   socket.on("run_task", async (data) => {
+    // Guard: data must be an object (client may emit null or primitive)
+    const safeData = data !== null && typeof data === "object" ? data : {};
+
     const user = resolveSocketUser(socket);
 
     if (!checkRole(user, "developer")) {
+      logAction(user, "rbac_denied", "socket:run_task", {
+        status: "error",
+        socketId: socket.id,
+        ip: socket.handshake.address,
+      });
       socket.emit("ai_error", "Insufficient role to run tasks");
       return;
     }
 
     await handleTask({
-      ...data,
+      ...safeData,
       user,
       io,
       socketId: socket.id,
       ip: socket.handshake.address,
-      traceId: data.traceId,
+      traceId: safeData.traceId,
     });
   });
 

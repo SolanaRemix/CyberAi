@@ -13,7 +13,7 @@ import { logAction } from "./auditLogger.js";
 /**
  * Handle an incoming task by running it through the security layer,
  * executing the requested agent, and recording the action in the audit log.
- * The audit log always fires — on success AND on agent execution errors —
+ * The audit log always fires — on success, agent errors, AND blocked tasks —
  * so every execution attempt is traceable.
  *
  * @param {{ prompt: string, agent: string, user: object, io: object, socketId: string|null, ip?: string, traceId?: string }} params
@@ -26,6 +26,14 @@ export async function handleTask({ prompt, agent, user, io, socketId, ip, traceI
     if (socketId) {
       io.to(socketId).emit("ai_error", security.reason);
     }
+    // Audit the blocked attempt so every security-relevant event is traceable
+    logAction(user, "run_agent", agent, {
+      status: "blocked",
+      durationMs: 0,
+      socketId: socketId || undefined,
+      ip,
+      traceId,
+    });
     return;
   }
 

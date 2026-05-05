@@ -6,9 +6,14 @@
  * Defense-in-depth approach:
  *  1. Normalize the input: strip zero-width / invisible Unicode characters,
  *     lowercase, and collapse whitespace.
- *  2. Check the normalized form against blocked keywords.
+ *  2. Check the normalized form against blocked patterns.
  *  3. Also check a whitespace-stripped ("compact") form so that spaced-out
  *     variants like "r m -r f" are caught (compact → "rm-rf").
+ *
+ * Pattern matching:
+ *  - String patterns use substring inclusion.
+ *  - Regex patterns (e.g. "hack") use word-boundary matching to avoid false
+ *    positives: "hackathon landing page" and "lifehacks" are NOT blocked.
  *
  * NOTE: This is a rule-based first line of defense.  For production deployments
  * it should be complemented by a semantic/LLM-based classifier that can detect
@@ -16,10 +21,29 @@
  * Homoglyph substitution is NOT covered by this layer.
  */
 
-const BLOCKED_KEYWORDS = ["rm -rf", "rm-rf", "drop database", "dropdatabase", "hack"];
-
-// Space-free versions of each keyword used for the compact-form check.
-const BLOCKED_KEYWORDS_COMPACT = BLOCKED_KEYWORDS.map((kw) => kw.replace(/\s/g, ""));
+/**
+ * Each entry is [normalizedPattern, compactPattern].
+ * A string means substring match; a RegExp means regex test.
+ *
+ * The compact-form entry lets a single rule catch both:
+ *   "rm -rf"    (normal typed form, matched by normalized check)
+ *   "rm-rf"     (no-space form, matched by compact check)
+ *   "r m -r f"  (spaced-out form: compact → "rm-rf", matched by compact check)
+ *
+ * "hack" uses a word-boundary regex so that "hackathon" and "lifehacks" are
+ * not falsely flagged as dangerous.  The compact-form entry also uses
+ * word-boundary so that "h a c k" alone (compact → "hack") is still caught.
+ *
+ * @type {Array<[string|RegExp, string|RegExp]>}
+ */
+const BLOCKED_PATTERNS = [
+  // Catches: "rm -rf" (normalized), "rm-rf" / "r m -r f" (compact → "rm-rf")
+  ["rm -rf", "rm-rf"],
+  // Catches: "drop database" (normalized), "dropdatabase" / "d r o p …" (compact → "dropdatabase")
+  ["drop database", "dropdatabase"],
+  // Word-boundary regex avoids false positives like "hackathon" or "lifehacks"
+  [/\bhack\b/, /\bhack\b/],
+];
 
 /**
  * Normalize a task string to defeat simple obfuscation.
@@ -59,8 +83,13 @@ export async function validateTask(task, user) {
   // Compact form strips all spaces to catch spaced-out variants like "r m -r f"
   const compact = normalized.replace(/\s/g, "");
 
-  for (let i = 0; i < BLOCKED_KEYWORDS.length; i++) {
-    if (normalized.includes(BLOCKED_KEYWORDS[i]) || compact.includes(BLOCKED_KEYWORDS_COMPACT[i])) {
+  for (const [normPattern, compactPattern] of BLOCKED_PATTERNS) {
+    const matchesNorm =
+      normPattern instanceof RegExp ? normPattern.test(normalized) : normalized.includes(normPattern);
+    const matchesCompact =
+      compactPattern instanceof RegExp ? compactPattern.test(compact) : compact.includes(compactPattern);
+
+    if (matchesNorm || matchesCompact) {
       return {
         allowed: false,
         reason: "Dangerous command detected",
