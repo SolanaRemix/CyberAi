@@ -80,6 +80,11 @@ export async function validateTask(task, _user) {
   }
 
   const normalized = normalizeInput(task);
+  // Reject inputs that consist entirely of invisible/zero-width characters
+  // (they pass the raw trim() guard above but normalize to an empty string).
+  if (normalized === '') {
+    return { allowed: false, reason: 'Invalid task: empty or non-string input' };
+  }
   // Compact form strips all spaces to catch spaced-out variants like "r m -r f"
   const compact = normalized.replace(/\s/g, '');
 

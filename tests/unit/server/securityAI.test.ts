@@ -120,6 +120,14 @@ describe('validateTask — edge cases', () => {
     expect(result.reason).toBe('Invalid task: empty or non-string input');
   });
 
+  it('should reject a string of only zero-width/invisible characters', async () => {
+    // These pass raw trim() but normalize to '' after invisible-char stripping
+    const zwOnly = '\u200B\u200C\u200D\uFEFF\u00AD';
+    const result = await validateTask(zwOnly, undefined);
+    expect(result.allowed).toBe(false);
+    expect(result.reason).toBe('Invalid task: empty or non-string input');
+  });
+
   it('should reject a non-string input (number)', async () => {
     // @ts-expect-error — intentionally testing JS runtime behaviour
     const result = await validateTask(42, undefined);
