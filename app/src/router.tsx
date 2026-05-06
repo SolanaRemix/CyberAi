@@ -1,6 +1,17 @@
 import { useEffect } from 'react';
 import { renderAdmin } from '../views/admin.js';
 
+/** Minimal interface for the Socket.IO client returned by `window.io()`. */
+interface SocketClient {
+  on: (event: string, handler: (data: unknown) => void) => void;
+  disconnect: () => void;
+}
+
+/** Narrow type for the global `window.io` Socket.IO factory (if loaded). */
+interface WindowWithIO extends Window {
+  io?: (opts?: { auth?: { token?: string } }) => SocketClient;
+}
+
 /**
  * Admin panel sub-component.
  * Renders the static admin markup (via renderAdmin) and sets up the live
@@ -11,19 +22,18 @@ import { renderAdmin } from '../views/admin.js';
  */
 function AdminPanel() {
   useEffect(() => {
-    const w = window as unknown as Record<string, unknown>;
-    if (typeof w['io'] !== 'function') {
+    const w = window as WindowWithIO;
+    if (typeof w.io !== 'function') {
       const el = document.getElementById('logs');
       if (el) el.textContent = 'Live updates unavailable: Socket.IO not loaded.';
       return;
     }
     // Pass the stored auth token so the server can resolve the admin role
     // and admit this socket to the 'admins' room for audit broadcasts.
-    const token = localStorage.getItem('cyberai-token') ?? '';
-    const socket = (w['io'] as (opts: object) => { on: Function; disconnect: Function })({
-      auth: { token },
-    });
-    socket.on('audit_log', (entry: unknown) => {
+    const token =
+      typeof localStorage !== 'undefined' ? (localStorage.getItem('cyberai-token') ?? '') : '';
+    const socket = w.io({ auth: { token } });
+    socket.on('audit_log', entry => {
       const el = document.getElementById('logs');
       if (!el) return;
       const row = document.createElement('pre');
