@@ -38,9 +38,9 @@
  */
 const BLOCKED_PATTERNS = [
   // Catches: "rm -rf" (normalized), "rm-rf" / "r m -r f" (compact → "rm-rf")
-  ["rm -rf", "rm-rf"],
+  ['rm -rf', 'rm-rf'],
   // Catches: "drop database" (normalized), "dropdatabase" / "d r o p …" (compact → "dropdatabase")
-  ["drop database", "dropdatabase"],
+  ['drop database', 'dropdatabase'],
   // Word-boundary regex avoids false positives like "hackathon" or "lifehacks"
   [/\bhack\b/, /\bhack\b/],
 ];
@@ -59,10 +59,10 @@ function normalizeInput(input) {
     input
       // Remove zero-width / invisible Unicode characters that can split keywords
       // eslint-disable-next-line no-control-regex
-      .replace(/[\u0000-\u001F\u007F\u00AD\u200B-\u200D\u2060\uFEFF]/g, "")
+      .replace(/[\u0000-\u001F\u007F\u00AD\u200B-\u200D\u2060\uFEFF]/g, '')
       .toLowerCase()
       // Collapse all whitespace (spaces, tabs, newlines) to a single space
-      .replace(/\s+/g, " ")
+      .replace(/\s+/g, ' ')
       .trim()
   );
 }
@@ -70,29 +70,37 @@ function normalizeInput(input) {
 /**
  * Validate a task prompt before it is executed by an agent.
  *
- * @param {string} task - The task prompt submitted by the user.
- * @param {object} user - The user object (unused for now; reserved for future per-user rules).
+ * @param {object} _user - The user object (reserved for future per-user rules).
  * @returns {Promise<{allowed: boolean, reason?: string}>}
  */
-export async function validateTask(task, user) {
-  if (typeof task !== "string" || task.trim() === "") {
-    return { allowed: false, reason: "Invalid task: empty or non-string input" };
+export async function validateTask(task, _user) {
+  if (typeof task !== 'string' || task.trim() === '') {
+    return { allowed: false, reason: 'Invalid task: empty or non-string input' };
   }
 
   const normalized = normalizeInput(task);
+  // Reject inputs that consist entirely of invisible/zero-width characters
+  // (they pass the raw trim() guard above but normalize to an empty string).
+  if (normalized === '') {
+    return { allowed: false, reason: 'Invalid task: empty or non-string input' };
+  }
   // Compact form strips all spaces to catch spaced-out variants like "r m -r f"
-  const compact = normalized.replace(/\s/g, "");
+  const compact = normalized.replace(/\s/g, '');
 
   for (const [normPattern, compactPattern] of BLOCKED_PATTERNS) {
     const matchesNorm =
-      normPattern instanceof RegExp ? normPattern.test(normalized) : normalized.includes(normPattern);
+      normPattern instanceof RegExp
+        ? normPattern.test(normalized)
+        : normalized.includes(normPattern);
     const matchesCompact =
-      compactPattern instanceof RegExp ? compactPattern.test(compact) : compact.includes(compactPattern);
+      compactPattern instanceof RegExp
+        ? compactPattern.test(compact)
+        : compact.includes(compactPattern);
 
     if (matchesNorm || matchesCompact) {
       return {
         allowed: false,
-        reason: "Dangerous command detected",
+        reason: 'Dangerous command detected',
       };
     }
   }

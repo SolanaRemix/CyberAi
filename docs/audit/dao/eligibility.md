@@ -644,7 +644,6 @@ Eligibility criteria may be updated:
 
 Last updated: 2026-01-01
 
-
 # DAO Eligibility Criteria
 
 ## Overview
@@ -918,4 +917,3 @@ Changes announced with:
 **Last Updated**: 2026-01-01  
 **Version**: 1.0  
 **Next Review**: 2026-06-01
-
