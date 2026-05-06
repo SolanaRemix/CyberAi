@@ -10,9 +10,12 @@
  *   process `[data-requires]` attributes will hide this panel for non-admins.
  *
  * Live audit logs:
- *   The inline script connects to the Socket.IO server and subscribes to
+ *   The inline script below connects to the Socket.IO server and subscribes to
  *   'audit_log' events emitted to the 'admins' room by the audit logger.
- *   Entries appear in real time inside the #logs container.
+ *   NOTE: when this markup is injected via React's dangerouslySetInnerHTML the
+ *   inline <script> is inert — the parent component (app/src/router.tsx) sets
+ *   up the equivalent subscription via useEffect after the markup is mounted.
+ *   The script is retained here as the canonical template for non-React use.
  */
 
 /**
@@ -35,7 +38,10 @@ export function renderAdmin() {
           if (el) el.textContent = 'Live updates unavailable: Socket.IO not loaded.';
           return;
         }
-        var socket = io();
+        // Pass the stored auth token so the server resolves this socket as admin
+        // and admits it to the 'admins' room for live audit_log broadcasts.
+        var token = (typeof localStorage !== 'undefined' && localStorage.getItem('cyberai-token')) || '';
+        var socket = io({ auth: { token: token } });
         socket.on('audit_log', function (entry) {
           var el = document.getElementById('logs');
           if (!el) return;

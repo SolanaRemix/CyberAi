@@ -611,6 +611,11 @@ describe("admin view — renderAdmin", async () => {
     const html = renderAdmin();
     expect(html).toContain("socket.on('audit_log'");
   });
+
+  it("passes auth token in the Socket.IO connection to join the admins room", () => {
+    const html = renderAdmin();
+    expect(html).toContain("auth: { token:");
+  });
 });
 
 // ─────────────────────────────────────────────────────────
@@ -884,3 +889,58 @@ describe("orchestrator — traceId forwarded to audit log", async () => {
   });
 });
 
+// ─────────────────────────────────────────────────────────
+// Server — null/missing body guard
+// ─────────────────────────────────────────────────────────
+
+describe("server — null/missing request body returns 4xx not 500", async () => {
+  const { default: request } = await import("supertest");
+  const { app } = await import("../../server/server.js");
+
+  it("POST /api/task with no body returns 403 (not 500)", async () => {
+    // No Content-Type / no body — express.json() sets req.body to undefined;
+    // the null guard ensures we return a clean 4xx instead of throwing.
+    const res = await request(app).post("/api/task");
+    // Unauthenticated caller gets 403 (RBAC denial) — not a 500 crash.
+    expect(res.status).toBe(403);
+  });
+
+  it("POST /api/task with null JSON body returns 4xx not 500", async () => {
+    // Explicitly send 'null' as the JSON body.
+    const res = await request(app)
+      .post("/api/task")
+      .set("Content-Type", "application/json")
+      .send("null");
+    // Unauthenticated caller gets 403; either way it must not be 500.
+    expect(res.status).not.toBe(500);
+  });
+});
+
+// ─────────────────────────────────────────────────────────
+// Server — production gate for stub auth
+// ─────────────────────────────────────────────────────────
+
+describe("server — stub auth is disabled in production mode", async () => {
+  const { default: request } = await import("supertest");
+  const { app } = await import("../../server/server.js");
+
+  it("forged developer token is rejected (returns 403) when NODE_ENV=production", async () => {
+    const token = Buffer.from(
+      JSON.stringify({ email: "dev@test.com", role: "developer" }),
+    ).toString("base64url");
+
+    const originalEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = "production";
+    try {
+      const res = await request(app)
+        .post("/api/task")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ prompt: "build a login form", agent: "builder" });
+      // In production mode the stub is disabled; the caller falls back to
+      // anonymous agent (level 0) which fails the developer RBAC check.
+      expect(res.status).toBe(403);
+    } finally {
+      process.env.NODE_ENV = originalEnv;
+    }
+  });
+});

@@ -26,6 +26,12 @@
  *     damage if someone sends a non-existent role name.
  *   - An anonymous fallback (`agent`, level 0) for requests with no token, so
  *     unauthenticated callers are still rejected by the RBAC check.
+ *
+ * Production gate:
+ *   The token-decoding path is disabled when NODE_ENV === 'production'.
+ *   All requests fall through to the anonymous agent default in that mode,
+ *   ensuring this stub cannot be exploited in production deployments before
+ *   a real JWT verification library replaces it.
  */
 
 import express from 'express';
@@ -95,22 +101,27 @@ function resolveRole(tokenRole) {
  * @returns {{ email: string, role: string }}
  */
 function resolveUser(req) {
-  try {
-    const authHeader = req.headers.authorization ?? '';
-    const token = authHeader.replace(/^Bearer\s+/i, '');
-    if (token) {
-      const payload = JSON.parse(Buffer.from(token, 'base64url').toString('utf8'));
-      if (
-        typeof payload.email === 'string' &&
-        payload.email &&
-        typeof payload.role === 'string' &&
-        VALID_ROLES.has(payload.role)
-      ) {
-        return { email: payload.email, role: resolveRole(payload.role) };
+  // ⚠️ The decoded-token path is disabled in production mode.
+  // Set NODE_ENV=production to enforce anonymous-only access until a real
+  // JWT verification library (e.g. `jsonwebtoken`) replaces this stub.
+  if (process.env.NODE_ENV !== 'production') {
+    try {
+      const authHeader = req.headers.authorization ?? '';
+      const token = authHeader.replace(/^Bearer\s+/i, '');
+      if (token) {
+        const payload = JSON.parse(Buffer.from(token, 'base64url').toString('utf8'));
+        if (
+          typeof payload.email === 'string' &&
+          payload.email &&
+          typeof payload.role === 'string' &&
+          VALID_ROLES.has(payload.role)
+        ) {
+          return { email: payload.email, role: resolveRole(payload.role) };
+        }
       }
+    } catch {
+      // Invalid / missing token — fall through to anonymous default
     }
-  } catch {
-    // Invalid / missing token — fall through to anonymous default
   }
   return { email: 'anonymous', role: 'agent' };
 }
@@ -124,21 +135,26 @@ function resolveUser(req) {
  * @returns {{ email: string, role: string }}
  */
 function resolveSocketUser(socket) {
-  try {
-    const token = socket.handshake.auth?.token ?? '';
-    if (token) {
-      const payload = JSON.parse(Buffer.from(token, 'base64url').toString('utf8'));
-      if (
-        typeof payload.email === 'string' &&
-        payload.email &&
-        typeof payload.role === 'string' &&
-        VALID_ROLES.has(payload.role)
-      ) {
-        return { email: payload.email, role: resolveRole(payload.role) };
+  // ⚠️ The decoded-token path is disabled in production mode.
+  // Set NODE_ENV=production to enforce anonymous-only access until a real
+  // JWT verification library (e.g. `jsonwebtoken`) replaces this stub.
+  if (process.env.NODE_ENV !== 'production') {
+    try {
+      const token = socket.handshake.auth?.token ?? '';
+      if (token) {
+        const payload = JSON.parse(Buffer.from(token, 'base64url').toString('utf8'));
+        if (
+          typeof payload.email === 'string' &&
+          payload.email &&
+          typeof payload.role === 'string' &&
+          VALID_ROLES.has(payload.role)
+        ) {
+          return { email: payload.email, role: resolveRole(payload.role) };
+        }
       }
+    } catch {
+      // Invalid / missing token — fall through to anonymous default
     }
-  } catch {
-    // Invalid / missing token — fall through to anonymous default
   }
   return { email: 'anonymous', role: 'agent' };
 }
@@ -160,9 +176,11 @@ function resolveSocketUser(socket) {
  *   403 — Caller's role is insufficient (RBAC denial, audit-logged).
  */
 app.post('/api/task', async (req, res) => {
-  const { prompt, traceId } = req.body;
+  // Guard against missing/null body to return a clean 4xx instead of a 500
+  const body = req.body != null && typeof req.body === 'object' ? req.body : {};
+  const { prompt, traceId } = body;
   // Normalise agent to string-or-null to avoid logging `undefined` in the audit trail
-  const agent = typeof req.body.agent === 'string' ? req.body.agent : null;
+  const agent = typeof body.agent === 'string' ? body.agent : null;
   const user = resolveUser(req);
 
   if (!checkRole(user, 'developer')) {
