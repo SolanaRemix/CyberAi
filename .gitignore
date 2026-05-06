@@ -74,6 +74,7 @@ Thumbs.db
 *.d.ts.map
 !commitlint.config.js
 !dao/**/*.js
+!app/views/admin.d.ts
 
 *.backup
 *.resolved
