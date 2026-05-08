@@ -4,315 +4,194 @@
 [![CodeQL](https://github.com/SolanaRemix/CyberAi/workflows/CodeQL/badge.svg)](https://github.com/SolanaRemix/CyberAi/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://nodejs.org/)
-[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://cyberai.network)
-![CI](https://github.com/SolanaRemix/CyberAi/actions/workflows/ci-deploy.yml/badge.svg)
 
-**AI-Powered Smart Contract Security & Orchestration Platform**
+**Enterprise AI orchestration for secure contract and workflow operations.**
 
-CyberAi is the central control plane for the decentralized AI ecosystem, providing contract registry, automated workflows, and security tools for blockchain applications.
+CyberAi provides an enterprise control plane with RBAC-protected task execution, live audit streams, and CI-driven delivery.
 
-## 🖼️ UI Screenshots
+## Enterprise Dashboard Views
 
-### Landing Page
+### Operations Overview
 
-![Landing Page UI](docs/screenshots/landing-page.png)
+![Enterprise Operations Dashboard](docs/screenshots/admin-dashboard.png)
 
-### Admin Dashboard
+### Audit + Terminal Operations
 
-![Admin Dashboard UI](docs/screenshots/admin-dashboard.png)
+![Enterprise Terminal and Audit Stream](docs/screenshots/dev-terminal.png)
 
-### User App
+### User Workspace
 
-![User App UI](docs/screenshots/user-app.png)
+![Enterprise User Workspace](docs/screenshots/user-app.png)
 
-### Dev Terminal
+### Platform Landing
 
-![Dev Terminal UI](docs/screenshots/dev-terminal.png)
+![Enterprise Platform Landing](docs/screenshots/landing-page.png)
 
-## 🚀 Quick Start
+## Enterprise Parameters
 
-```bash
-# Clone the repository
-git clone https://github.com/SolanaRemix/CyberAi.git
-cd CyberAi
+### Runtime and Security Parameters
 
-# Run bootstrap (installs dependencies, validates contracts, builds site)
-./tools/bootstrap/bootstrap.sh
+| Parameter    | Scope                                    | Default           | Notes                                                                                                                            |
+| ------------ | ---------------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `NODE_ENV`   | `server/server.js` auth behavior         | `development`     | In `production`, token-decoding auth stubs are disabled and requests fall back to anonymous role unless real auth is integrated. |
+| `PORT`       | `server/index.js` listener               | `3000`            | Port for enterprise API + Socket.IO service.                                                                                     |
+| `ROLE_MODEL` | `src/security/*` + `server/core/rbac.js` | action-based RBAC | Web/app canonical roles are mapped to server-layer roles for task execution.                                                     |
 
-# Start development server
-cd site && npm run dev
-```
+### RBAC Roles and Mappings
 
-Visit [cyberai.network](https://cyberai.network) for full documentation.
+Canonical app roles (`src/security/roles.ts`):
 
-## 📁 Repository Structure
+| Role       | Typical Access                           |
+| ---------- | ---------------------------------------- |
+| `admin`    | Full platform/admin access (`admin:all`) |
+| `operator` | Workflow + deployment operations         |
+| `user`     | Read/chat-level access                   |
+| `guest`    | Restricted/public access                 |
 
-```
-CyberAi/
-├── contracts/          # Machine-readable contracts for ecosystem participants
-│   ├── agents/        # AI agent contracts
-│   ├── repos/         # Repository contracts
-│   └── contract.schema.json
-├── prompts/           # Operator-grade instruction prompts
-│   ├── agents/        # Agent prompts
-│   ├── operators/     # Operator prompts
-│   ├── systems/       # System prompts
-│   └── workflows/     # Workflow prompts
-├── src/               # Core source code
-│   ├── agents/        # Agent implementations
-│   ├── contracts/     # Contract validation
-│   ├── security/      # Security tools
-│   └── utils/         # Shared utilities
-├── tests/             # Test suites
-│   ├── unit/          # Unit tests
-│   └── integration/   # Integration tests
-├── tools/             # Operational tools
-│   ├── bootstrap/     # Bootstrap script
-│   └── audit/         # Audit script
-├── site/              # Main Astro site (cyberai.network)
-│   └── src/
-│       ├── pages/     # Documentation and site pages
-│       └── layouts/   # Page layouts
-├── docs/              # Documentation portal (🚧 Under Development)
-├── app/               # Main application (🚧 Under Development)
-├── dashboard/         # Dashboard interface (🚧 Under Development)
-├── terminal/          # Terminal interface (🚧 Under Development)
-├── smartbrain/        # SmartBrain AI (🚧 Under Development)
-├── audit/             # Audit tools (🚧 Under Development)
-├── api/               # API documentation (🚧 Under Development)
-├── scripts/           # Build and automation scripts
-└── .github/
-    ├── workflows/     # CI/CD workflows
-    └── copilot/       # GitHub Copilot agent configuration
-```
+Server execution roles (`server/core/rbac.js`):
 
-## 🏗️ Architecture
+| Role        | Level | Execution Access             |
+| ----------- | ----- | ---------------------------- |
+| `admin`     | 3     | Full                         |
+| `developer` | 2     | Task execution allowed       |
+| `auditor`   | 1     | Read-only                    |
+| `agent`     | 0     | No privileged task execution |
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      CyberAi Platform                        │
-│                   cyberai.network (Main)                     │
-└──────────────────────┬──────────────────────────────────────┘
-                       │
-       ┌───────────────┼───────────────┬──────────────┐
-       │               │               │              │
-┌──────▼──────┐ ┌─────▼─────┐ ┌──────▼──────┐ ┌────▼─────┐
-│ Documentation│ │ Dashboard │ │  Terminal   │ │   API    │
-│    Portal    │ │ Interface │ │  Interface  │ │ Gateway  │
-└──────────────┘ └───────────┘ └─────────────┘ └──────────┘
-   docs.*          dashboard.*    terminal.*       api.*
-       │               │               │              │
-       └───────────────┼───────────────┴──────────────┘
-                       │
-       ┌───────────────┼───────────────┬──────────────┐
-       │               │               │              │
-┌──────▼──────┐ ┌─────▼─────┐ ┌──────▼──────┐ ┌────▼─────┐
-│ SmartBrain  │ │   Audit   │ │ GitAntivirus│ │   Main   │
-│     AI      │ │   Tools   │ │   Scanner   │ │   App    │
-└─────────────┘ └───────────┘ └─────────────┘ └──────────┘
- smartbrain.*     audit.*                        app.*
-       │               │               │              │
-       └───────────────┴───────────────┴──────────────┘
-                       │
-              ┌────────▼────────┐
-              │  Contract Layer │
-              │  ┌───────────┐  │
-              │  │  Agents   │  │
-              │  ├───────────┤  │
-              │  │   Repos   │  │
-              │  ├───────────┤  │
-              │  │  Runners  │  │
-              │  └───────────┘  │
-              └─────────────────┘
-```
+Canonical-to-server mapping (`server/server.js`):
 
-## 🔑 Key Features
+- `operator -> developer`
+- `user -> auditor`
+- `guest -> agent`
 
-### Contract Registry
+## Enterprise Environment Variables
 
-Machine-readable contracts define capabilities, requirements, and metadata for:
+The enterprise deployment runbooks standardize the following variables:
 
-- **Agents**: AI services for security audits, code analysis, and automation
-- **Repositories**: Code repositories providing functionality
-- **Runners**: Execution environments for agents
+| Variable              | Required                         | Example                                     | Purpose                                                              |
+| --------------------- | -------------------------------- | ------------------------------------------- | -------------------------------------------------------------------- |
+| `LLAMA_API_KEY`       | Yes (enterprise AI integrations) | `LLAMA_API_KEY=llama_live_0123456789abcdef` | Authenticates enterprise LLM provider integrations.                  |
+| `MARKETPLACE_ENABLED` | Yes                              | `MARKETPLACE_ENABLED=true`                  | Enables/disables enterprise marketplace workflows deterministically. |
 
-### Automation Tools
-
-- **Bootstrap**: Verifies environment, installs dependencies, validates contracts, builds site
-- **Audit**: Validates contracts, workflows, and site integrity
-
-### GitHub Pages Site
-
-Static site powered by Astro, serving:
-
-- Comprehensive documentation
-- Contract browsing
-- API reference
-- Quickstart guides
-
-## 🛠️ Development
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-- Git
-
-### Local Development
+### Reproducible `.env` Example
 
 ```bash
-# Install dependencies
-npm install
-
-# Validate contracts
-./tools/audit/audit.sh
-
-# Build site
-cd site
-npm run build
-
-# Preview site
-npm run preview
+cat > .env.enterprise <<'ENV'
+NODE_ENV=production
+PORT=3000
+LLAMA_API_KEY=llama_live_0123456789abcdef
+MARKETPLACE_ENABLED=true
+ENV
 ```
 
-### Implementation Commands & Functions
+### Reproducible Runtime Check
 
 ```bash
-# Core quality gates
-npm run build
+set -a
+source ./.env.enterprise
+set +a
+
+node -e "console.log({
+  hasLlamaApiKey: Boolean(process.env.LLAMA_API_KEY),
+  marketplaceEnabled: process.env.MARKETPLACE_ENABLED === 'true',
+  nodeEnv: process.env.NODE_ENV,
+  port: Number(process.env.PORT || 3000)
+})"
+```
+
+## CI/CD Workflows
+
+| Workflow                      | File                                                                      | Trigger                                                       | Purpose                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| CI                            | `.github/workflows/ci.yml`                                                | `push`, `pull_request` on `main`                              | Lint, typecheck, test, and build gates.                                           |
+| Advanced Build Matrix         | `.github/workflows/advanced-build.yml`                                    | `push`, `pull_request` on `main/develop`, `workflow_dispatch` | Multi-OS build matrix, optimized build artifact, Docker build test, verification. |
+| CodeQL Security Scanning      | `.github/workflows/codeql.yml`                                            | `push`, `pull_request`, scheduled weekly, manual              | Security and quality analysis for JavaScript code.                                |
+| Lint                          | `.github/workflows/lint.yml`                                              | GitHub event-driven                                           | Dedicated lint enforcement pipeline.                                              |
+| Dependency Review             | `.github/workflows/dependency-review.yml`                                 | Pull requests                                                 | Dependency policy enforcement.                                                    |
+| Deploy Pages                  | `.github/workflows/pages-deploy.yml`                                      | Mainline deployment events                                    | Build and deploy GitHub Pages docs/site.                                          |
+| Release Management / Schedule | `.github/workflows/release.yml`, `.github/workflows/release-schedule.yml` | Manual + schedule                                             | Release automation and cadence controls.                                          |
+
+## Advanced Build System
+
+CyberAi keeps the enterprise build pipeline deterministic across local development, CI, and containerized release flows.
+
+- **Primary compiler:** `npm run build` (`tsc`)
+- **Type gate:** `npm run typecheck`
+- **Quality gate:** `npm run lint && npm run test`
+- **Optimized pipeline:** `npm run build:advanced`
+- **Container pipeline:** `npm run docker:build`
+- **Full build reference:** [BUILD.md](BUILD.md)
+
+## Structured Run Guides
+
+### 1) Local Development Guide
+
+```bash
+# 1. Install dependencies
+npm ci
+
+# 2. Quality gates
+npm run lint
 npm run typecheck
 npm run test
 
-# Targeted validation
+# 3. Start enterprise server
+npm run dev:enterprise
+```
+
+Optional targeted runs:
+
+```bash
 npm run test:unit
 npm run test:integration
-
-# Frontend/dashboard workflows
-cd site && npm run dev
-cd site && npm run build
 ```
 
-Key integration entry points used by the implementation:
-
-- `src/integrations/index.ts`
-  - `IntegrationManager` instance methods: `manager.register(...)`, `manager.get(...)`
-  - `SolanaIntegration.getBalance(...)`
-  - `SolanaIntegration.getTransaction(...)`
-- `src/contracts/index.ts`
-  - Contract loading/validation exports for registry wiring
-
-### Adding Contracts
-
-1. Create contract JSON in `contracts/agents/` or `contracts/repositories/`
-2. Validate: `ajv validate -s contracts/contract.schema.json -d "contracts/agents/your-contract.json" --strict=false`
-3. Submit PR
-
-See [Contract Documentation](https://cyberai.network/docs/contracts) for details.
-
-## 🏗️ Advanced Build System
-
-CyberAi includes a comprehensive build system with multiple tools and configurations for various development and deployment scenarios.
-
-### Build Tools
-
-- **Makefile**: Cross-platform automation with 30+ targets
-- **TypeScript Compiler (tsc)**: Primary build tool
-- **esbuild**: Advanced bundling with tree-shaking and minification
-- **Turbo**: Monorepo orchestration with intelligent caching
-- **Docker**: Multi-stage containerization with optimization
-
-### Quick Build Commands
+### 2) Container Build Guide
 
 ```bash
-# Using Makefile (recommended)
-make help           # Show all available targets
-make build          # Build the project
-make test           # Run tests
-make quality        # Run all quality checks
-make ci             # Full CI pipeline
+# Build image
+npm run docker:build
 
-# Using npm scripts
-npm run build               # Standard build
-npm run build:advanced      # Production build with optimization
-npm run build:esbuild       # Build with esbuild bundler
-npm run docker:build        # Build Docker image
-npm run docker:up           # Start Docker Compose services
+# Run container with enterprise variables
+docker run --rm -p 3000:3000 \
+  --env-file ./.env.enterprise \
+  cyberai:latest
 ```
 
-### Advanced Features
-
-- **Multi-platform builds**: Linux, macOS, Windows
-- **Multiple Node.js versions**: 18, 20, 21
-- **Build caching**: Intelligent caching with Turbo
-- **Build verification**: Automatic output validation
-- **Build information**: Metadata generation (version, commit, timestamp)
-- **Quality gates**: Integrated linting, type checking, and testing
-
-For complete build system documentation, see [BUILD.md](BUILD.md).
-
-## 🚀 Deployment
-
-CyberAi is deployed using **GitHub Pages** with automatic deployment on push to the main branch.
-
-### Hosting
-
-- **Platform**: GitHub Pages
-- **Domain**: [cyberai.network](https://cyberai.network)
-- **Build System**: Astro static site generator
-- **Deployment**: Automated via GitHub Actions
-
-### Deployment Process
-
-1. Push changes to the main branch
-2. GitHub Actions automatically builds the site
-3. Site is deployed to GitHub Pages
-4. Changes are live at cyberai.network
-
-### Vercel Migration
-
-This project has been fully migrated from Vercel to GitHub Pages. A `vercel.json` configuration file is included to disable Vercel builds and prevent deployment conflicts.
-
-If you're experiencing issues migrating from Vercel, use our diagnostic tool:
+Compose option:
 
 ```bash
-# Run the Vercel issue scanner
-bash tools/vercel-scanner.sh
+npm run docker:up
+npm run docker:down
 ```
 
-This tool will:
+### 3) Production Deployment Guide
 
-- Check for Vercel configuration files
-- Identify Vercel-specific dependencies
-- Verify GitHub Pages setup
-- Provide migration guidance
+1. Create production secrets/environment variables (`LLAMA_API_KEY`, `MARKETPLACE_ENABLED`, `NODE_ENV`, `PORT`) in your deployment platform.
+2. Push to `main` to trigger CI and deployment workflows.
+3. Verify the pipeline status in GitHub Actions for CI, Advanced Build Matrix, and CodeQL.
+4. Run a smoke check against the enterprise endpoint:
 
-**Note**: The `vercel.json` file explicitly disables Vercel deployments. If the Vercel GitHub App is still connected to your repository, it will see this configuration and skip builds.
+```bash
+curl -sS -X POST http://localhost:3000/api/task \
+  -H 'Content-Type: application/json' \
+  -d '{"prompt":"health-check","agent":"builder"}'
+```
 
-## 📚 Documentation
+## Repository Structure
 
-- [Quickstart Guide](https://cyberai.network/docs/quickstart)
-- [Architecture Overview](https://cyberai.network/docs/architecture)
-- [Operations Runbook](https://cyberai.network/docs/runbook)
-- [Contract Specification](https://cyberai.network/docs/contracts)
+```
+CyberAi/
+├── app/                     # App shell and enterprise views
+├── server/                  # Enterprise API + Socket.IO backend
+├── src/security/            # Canonical RBAC model and guards
+├── contracts/               # Contract definitions
+├── tests/                   # Unit + integration tests
+├── .github/workflows/       # CI/CD automation
+└── docs/                    # Documentation assets and guides
+```
 
-## 🤝 Contributing
+## Contributing, Security, License
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
-
-## 🔒 Security
-
-See [SECURITY.md](SECURITY.md) for security policies and vulnerability reporting.
-
-## 📄 License
-
-Licensed under the Apache 2.0 License. See [LICENSE](LICENSE) for details.
-
-## 🌐 Links
-
-- **Website**: [cyberai.network](https://cyberai.network)
-- **GitHub**: [SolanaRemix/CyberAi](https://github.com/SolanaRemix/CyberAi)
-- **Documentation**: [cyberai.network/docs](https://cyberai.network/docs)
-
----
-
-Built with ❤️ by the CyberAi community
+- Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Security policy: [SECURITY.md](SECURITY.md)
+- License: [LICENSE](LICENSE)
