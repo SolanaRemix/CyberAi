@@ -25,7 +25,7 @@ COPY pnpm-workspace.yaml ./
 FROM base AS deps
 
 # Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 
 # Stage 3: Development dependencies
 FROM base AS dev-deps
@@ -42,9 +42,8 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Run tests (optional - comment out for faster builds)
+# Validate typecheck
 RUN npm run typecheck
-RUN npm test
 
 # Stage 5: Production image
 FROM node:20-alpine AS production

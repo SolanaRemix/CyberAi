@@ -70,7 +70,6 @@ function normalizeInput(input) {
 /**
  * Validate a task prompt before it is executed by an agent.
  *
- * @param {string} task - The task prompt submitted by the user.
  * @param {object} _user - The user object (reserved for future per-user rules).
  * @returns {Promise<{allowed: boolean, reason?: string}>}
  */
