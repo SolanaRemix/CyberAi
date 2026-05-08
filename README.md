@@ -12,46 +12,50 @@ CyberAi provides an enterprise control plane with RBAC-protected task execution,
 ## Enterprise Dashboard Views
 
 ### Operations Overview
+
 ![Enterprise Operations Dashboard](docs/screenshots/admin-dashboard.png)
 
 ### Audit + Terminal Operations
+
 ![Enterprise Terminal and Audit Stream](docs/screenshots/dev-terminal.png)
 
 ### User Workspace
+
 ![Enterprise User Workspace](docs/screenshots/user-app.png)
 
 ### Platform Landing
+
 ![Enterprise Platform Landing](docs/screenshots/landing-page.png)
 
 ## Enterprise Parameters
 
 ### Runtime and Security Parameters
 
-| Parameter | Scope | Default | Notes |
-| --- | --- | --- | --- |
-| `NODE_ENV` | `server/server.js` auth behavior | `development` | In `production`, token-decoding auth stubs are disabled and requests fall back to anonymous role unless real auth is integrated. |
-| `PORT` | `server/index.js` listener | `3000` | Port for enterprise API + Socket.IO service. |
-| `ROLE_MODEL` | `src/security/*` + `server/core/rbac.js` | action-based RBAC | Web/app canonical roles are mapped to server-layer roles for task execution. |
+| Parameter    | Scope                                    | Default           | Notes                                                                                                                            |
+| ------------ | ---------------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `NODE_ENV`   | `server/server.js` auth behavior         | `development`     | In `production`, token-decoding auth stubs are disabled and requests fall back to anonymous role unless real auth is integrated. |
+| `PORT`       | `server/index.js` listener               | `3000`            | Port for enterprise API + Socket.IO service.                                                                                     |
+| `ROLE_MODEL` | `src/security/*` + `server/core/rbac.js` | action-based RBAC | Web/app canonical roles are mapped to server-layer roles for task execution.                                                     |
 
 ### RBAC Roles and Mappings
 
 Canonical app roles (`src/security/roles.ts`):
 
-| Role | Typical Access |
-| --- | --- |
-| `admin` | Full platform/admin access (`admin:all`) |
-| `operator` | Workflow + deployment operations |
-| `user` | Read/chat-level access |
-| `guest` | Restricted/public access |
+| Role       | Typical Access                           |
+| ---------- | ---------------------------------------- |
+| `admin`    | Full platform/admin access (`admin:all`) |
+| `operator` | Workflow + deployment operations         |
+| `user`     | Read/chat-level access                   |
+| `guest`    | Restricted/public access                 |
 
 Server execution roles (`server/core/rbac.js`):
 
-| Role | Level | Execution Access |
-| --- | --- | --- |
-| `admin` | 3 | Full |
-| `developer` | 2 | Task execution allowed |
-| `auditor` | 1 | Read-only |
-| `agent` | 0 | No privileged task execution |
+| Role        | Level | Execution Access             |
+| ----------- | ----- | ---------------------------- |
+| `admin`     | 3     | Full                         |
+| `developer` | 2     | Task execution allowed       |
+| `auditor`   | 1     | Read-only                    |
+| `agent`     | 0     | No privileged task execution |
 
 Canonical-to-server mapping (`server/server.js`):
 
@@ -63,10 +67,10 @@ Canonical-to-server mapping (`server/server.js`):
 
 The enterprise deployment runbooks standardize the following variables:
 
-| Variable | Required | Example | Purpose |
-| --- | --- | --- | --- |
-| `LLAMA_API_KEY` | Yes (enterprise AI integrations) | `LLAMA_API_KEY=llama_live_0123456789abcdef` | Authenticates enterprise LLM provider integrations. |
-| `MARKETPLACE_ENABLED` | Yes | `MARKETPLACE_ENABLED=true` | Enables/disables enterprise marketplace workflows deterministically. |
+| Variable              | Required                         | Example                                     | Purpose                                                              |
+| --------------------- | -------------------------------- | ------------------------------------------- | -------------------------------------------------------------------- |
+| `LLAMA_API_KEY`       | Yes (enterprise AI integrations) | `LLAMA_API_KEY=llama_live_0123456789abcdef` | Authenticates enterprise LLM provider integrations.                  |
+| `MARKETPLACE_ENABLED` | Yes                              | `MARKETPLACE_ENABLED=true`                  | Enables/disables enterprise marketplace workflows deterministically. |
 
 ### Reproducible `.env` Example
 
@@ -96,15 +100,15 @@ node -e "console.log({
 
 ## CI/CD Workflows
 
-| Workflow | File | Trigger | Purpose |
-| --- | --- | --- | --- |
-| CI | `.github/workflows/ci.yml` | `push`, `pull_request` on `main` | Lint, typecheck, test, and build gates. |
-| Advanced Build Matrix | `.github/workflows/advanced-build.yml` | `push`, `pull_request` on `main/develop`, `workflow_dispatch` | Multi-OS build matrix, optimized build artifact, Docker build test, verification. |
-| CodeQL Security Scanning | `.github/workflows/codeql.yml` | `push`, `pull_request`, scheduled weekly, manual | Security and quality analysis for JavaScript code. |
-| Lint | `.github/workflows/lint.yml` | GitHub event-driven | Dedicated lint enforcement pipeline. |
-| Dependency Review | `.github/workflows/dependency-review.yml` | Pull requests | Dependency policy enforcement. |
-| Deploy Pages | `.github/workflows/pages-deploy.yml` | Mainline deployment events | Build and deploy GitHub Pages docs/site. |
-| Release Management / Schedule | `.github/workflows/release.yml`, `.github/workflows/release-schedule.yml` | Manual + schedule | Release automation and cadence controls. |
+| Workflow                      | File                                                                      | Trigger                                                       | Purpose                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| CI                            | `.github/workflows/ci.yml`                                                | `push`, `pull_request` on `main`                              | Lint, typecheck, test, and build gates.                                           |
+| Advanced Build Matrix         | `.github/workflows/advanced-build.yml`                                    | `push`, `pull_request` on `main/develop`, `workflow_dispatch` | Multi-OS build matrix, optimized build artifact, Docker build test, verification. |
+| CodeQL Security Scanning      | `.github/workflows/codeql.yml`                                            | `push`, `pull_request`, scheduled weekly, manual              | Security and quality analysis for JavaScript code.                                |
+| Lint                          | `.github/workflows/lint.yml`                                              | GitHub event-driven                                           | Dedicated lint enforcement pipeline.                                              |
+| Dependency Review             | `.github/workflows/dependency-review.yml`                                 | Pull requests                                                 | Dependency policy enforcement.                                                    |
+| Deploy Pages                  | `.github/workflows/pages-deploy.yml`                                      | Mainline deployment events                                    | Build and deploy GitHub Pages docs/site.                                          |
+| Release Management / Schedule | `.github/workflows/release.yml`, `.github/workflows/release-schedule.yml` | Manual + schedule                                             | Release automation and cadence controls.                                          |
 
 ## Advanced Build System
 

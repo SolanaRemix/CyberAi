@@ -21,58 +21,58 @@ _Generated: 2026-05-08 09:04:33Z (UTC)_
 
 ## Active Non-Merged Branches (keep for review/merge decision)
 
-| Branch | Status | Behind main | Ahead main | Last commit | Commit subject |
-| --- | --- | ---: | ---: | --- | --- |
-| `copilot/upgrade-cyberai-enterprise-ready` | `diverged` | 7 | 21 | 2026-05-08 | Merge pull request #145 from SolanaRemix/copilot/sub-pr-136 |
-| `copilot/sub-pr-136` | `diverged` | 7 | 20 | 2026-05-08 | fix(ci): load docker image for local run in advanced build workflow |
-| `copilot/setup-cyberai-repository-layout` | `diverged` | 365 | 19 | 2026-01-11 | Fix audit script to validate contracts in correct directory |
-| `pr-81` | `diverged` | 156 | 2 | 2026-03-05 | Apply Prettier formatting fixes |
-| `cyberai/pipeline-bootstrap` | `diverged` | 375 | 1 | 2026-01-09 | CyberAi Pipeline Bootstrap: structure, workflows, agent.yaml |
-| `copilot/fix-broken-links-and-optimizations` | `diverged` | 236 | 1 | 2026-02-05 | Merge pull request #38 from SolanaRemix/main |
+| Branch                                       | Status     | Behind main | Ahead main | Last commit | Commit subject                                                      |
+| -------------------------------------------- | ---------- | ----------: | ---------: | ----------- | ------------------------------------------------------------------- |
+| `copilot/upgrade-cyberai-enterprise-ready`   | `diverged` |           7 |         21 | 2026-05-08  | Merge pull request #145 from SolanaRemix/copilot/sub-pr-136         |
+| `copilot/sub-pr-136`                         | `diverged` |           7 |         20 | 2026-05-08  | fix(ci): load docker image for local run in advanced build workflow |
+| `copilot/setup-cyberai-repository-layout`    | `diverged` |         365 |         19 | 2026-01-11  | Fix audit script to validate contracts in correct directory         |
+| `pr-81`                                      | `diverged` |         156 |          2 | 2026-03-05  | Apply Prettier formatting fixes                                     |
+| `cyberai/pipeline-bootstrap`                 | `diverged` |         375 |          1 | 2026-01-09  | CyberAi Pipeline Bootstrap: structure, workflows, agent.yaml        |
+| `copilot/fix-broken-links-and-optimizations` | `diverged` |         236 |          1 | 2026-02-05  | Merge pull request #38 from SolanaRemix/main                        |
 
 ## Merged Cleanup Candidates
 
-| Branch | Status | Behind main | Ahead main | Last commit |
-| --- | --- | ---: | ---: | --- |
-| `copilot/74595548202-fix-ci-typecheck-failure` | `merged-into-main` | 4 | 0 | 2026-05-06 |
-| `copilot/add-build-md-and-pages-deploy-yml` | `merged-into-main` | 6 | 0 | 2026-05-06 |
-| `copilot/add-minimal-stubs-tests` | `merged-into-main` | 72 | 0 | 2026-04-17 |
-| `copilot/add-professional-auto-commenting-system` | `merged-into-main` | 211 | 0 | 2026-02-08 |
-| `copilot/automate-fixes-for-pr-36` | `merged-into-main` | 264 | 0 | 2026-02-05 |
-| `copilot/create-god-swarm-ultra-platform` | `merged-into-main` | 129 | 0 | 2026-03-07 |
-| `copilot/fix-ci-failures-eslint-issues` | `merged-into-main` | 12 | 0 | 2026-05-06 |
-| `copilot/fix-ci-failures-prettier-issues` | `merged-into-main` | 14 | 0 | 2026-05-05 |
-| `copilot/fix-ci-in-pr-136` | `merged-into-main` | 20 | 0 | 2026-05-05 |
-| `copilot/fix-ci-job-failures` | `merged-into-main` | 16 | 0 | 2026-05-06 |
-| `copilot/fix-eslint-dependency-issue` | `merged-into-main` | 23 | 0 | 2026-05-05 |
-| `copilot/fix-eslint-flat-config-issues` | `merged-into-main` | 163 | 0 | 2026-04-03 |
-| `copilot/fix-github-actions-job` | `merged-into-main` | 18 | 0 | 2026-05-05 |
-| `copilot/fix-issue-in-cyber-ai` | `merged-into-main` | 273 | 0 | 2026-02-05 |
-| `copilot/fix-ui-ux-rebuild-app-structure` | `merged-into-main` | 42 | 0 | 2026-04-23 |
-| `copilot/initialize-control-plane-infrastructure` | `merged-into-main` | 289 | 0 | 2026-02-04 |
-| `copilot/integrate-advanced-build-files` | `merged-into-main` | 197 | 0 | 2026-02-10 |
-| `copilot/migrate-code-and-documentation` | `merged-into-main` | 381 | 0 | 2026-01-03 |
-| `copilot/optimize-cyberai-ui-ux` | `merged-into-main` | 147 | 0 | 2026-03-06 |
-| `copilot/rebuild-lock-json-files` | `merged-into-main` | 326 | 0 | 2026-02-04 |
-| `copilot/remove-dead-artifacts-and-update-readme` | `merged-into-main` | 46 | 0 | 2026-04-22 |
-| `copilot/remove-vercel-and-migrate-to-github-pages` | `merged-into-main` | 281 | 0 | 2026-02-05 |
-| `copilot/set-primary-domain-github-pages` | `merged-into-main` | 366 | 0 | 2026-01-10 |
-| `copilot/sub-pr-27` | `merged-into-main` | 324 | 0 | 2026-02-05 |
-| `copilot/sub-pr-27-again` | `merged-into-main` | 325 | 0 | 2026-02-05 |
-| `copilot/sub-pr-27-another-one` | `merged-into-main` | 324 | 0 | 2026-02-05 |
-| `copilot/sub-pr-27-yet-again` | `merged-into-main` | 315 | 0 | 2026-02-05 |
-| `copilot/sub-pr-38` | `merged-into-main` | 245 | 0 | 2026-02-05 |
-| `copilot/sub-pr-38-again` | `merged-into-main` | 241 | 0 | 2026-02-05 |
-| `copilot/sub-pr-38-another-one` | `merged-into-main` | 239 | 0 | 2026-02-05 |
-| `copilot/sub-pr-50` | `merged-into-main` | 193 | 0 | 2026-02-10 |
-| `copilot/sub-pr-50-again` | `merged-into-main` | 190 | 0 | 2026-02-10 |
-| `copilot/sub-pr-50-another-one` | `merged-into-main` | 188 | 0 | 2026-02-10 |
-| `copilot/sub-pr-50-yet-again` | `merged-into-main` | 189 | 0 | 2026-02-10 |
-| `copilot/transition-to-github-pages` | `merged-into-main` | 278 | 0 | 2026-02-05 |
-| `feature/fix-ci` | `merged-into-main` | 218 | 0 | 2026-02-08 |
-| `feature/vercel-deploy` | `merged-into-main` | 180 | 0 | 2026-02-10 |
-| `fix-npm-error` | `merged-into-main` | 207 | 0 | 2026-02-08 |
-| `fix-npm-script` | `merged-into-main` | 223 | 0 | 2026-02-07 |
+| Branch                                              | Status             | Behind main | Ahead main | Last commit |
+| --------------------------------------------------- | ------------------ | ----------: | ---------: | ----------- |
+| `copilot/74595548202-fix-ci-typecheck-failure`      | `merged-into-main` |           4 |          0 | 2026-05-06  |
+| `copilot/add-build-md-and-pages-deploy-yml`         | `merged-into-main` |           6 |          0 | 2026-05-06  |
+| `copilot/add-minimal-stubs-tests`                   | `merged-into-main` |          72 |          0 | 2026-04-17  |
+| `copilot/add-professional-auto-commenting-system`   | `merged-into-main` |         211 |          0 | 2026-02-08  |
+| `copilot/automate-fixes-for-pr-36`                  | `merged-into-main` |         264 |          0 | 2026-02-05  |
+| `copilot/create-god-swarm-ultra-platform`           | `merged-into-main` |         129 |          0 | 2026-03-07  |
+| `copilot/fix-ci-failures-eslint-issues`             | `merged-into-main` |          12 |          0 | 2026-05-06  |
+| `copilot/fix-ci-failures-prettier-issues`           | `merged-into-main` |          14 |          0 | 2026-05-05  |
+| `copilot/fix-ci-in-pr-136`                          | `merged-into-main` |          20 |          0 | 2026-05-05  |
+| `copilot/fix-ci-job-failures`                       | `merged-into-main` |          16 |          0 | 2026-05-06  |
+| `copilot/fix-eslint-dependency-issue`               | `merged-into-main` |          23 |          0 | 2026-05-05  |
+| `copilot/fix-eslint-flat-config-issues`             | `merged-into-main` |         163 |          0 | 2026-04-03  |
+| `copilot/fix-github-actions-job`                    | `merged-into-main` |          18 |          0 | 2026-05-05  |
+| `copilot/fix-issue-in-cyber-ai`                     | `merged-into-main` |         273 |          0 | 2026-02-05  |
+| `copilot/fix-ui-ux-rebuild-app-structure`           | `merged-into-main` |          42 |          0 | 2026-04-23  |
+| `copilot/initialize-control-plane-infrastructure`   | `merged-into-main` |         289 |          0 | 2026-02-04  |
+| `copilot/integrate-advanced-build-files`            | `merged-into-main` |         197 |          0 | 2026-02-10  |
+| `copilot/migrate-code-and-documentation`            | `merged-into-main` |         381 |          0 | 2026-01-03  |
+| `copilot/optimize-cyberai-ui-ux`                    | `merged-into-main` |         147 |          0 | 2026-03-06  |
+| `copilot/rebuild-lock-json-files`                   | `merged-into-main` |         326 |          0 | 2026-02-04  |
+| `copilot/remove-dead-artifacts-and-update-readme`   | `merged-into-main` |          46 |          0 | 2026-04-22  |
+| `copilot/remove-vercel-and-migrate-to-github-pages` | `merged-into-main` |         281 |          0 | 2026-02-05  |
+| `copilot/set-primary-domain-github-pages`           | `merged-into-main` |         366 |          0 | 2026-01-10  |
+| `copilot/sub-pr-27`                                 | `merged-into-main` |         324 |          0 | 2026-02-05  |
+| `copilot/sub-pr-27-again`                           | `merged-into-main` |         325 |          0 | 2026-02-05  |
+| `copilot/sub-pr-27-another-one`                     | `merged-into-main` |         324 |          0 | 2026-02-05  |
+| `copilot/sub-pr-27-yet-again`                       | `merged-into-main` |         315 |          0 | 2026-02-05  |
+| `copilot/sub-pr-38`                                 | `merged-into-main` |         245 |          0 | 2026-02-05  |
+| `copilot/sub-pr-38-again`                           | `merged-into-main` |         241 |          0 | 2026-02-05  |
+| `copilot/sub-pr-38-another-one`                     | `merged-into-main` |         239 |          0 | 2026-02-05  |
+| `copilot/sub-pr-50`                                 | `merged-into-main` |         193 |          0 | 2026-02-10  |
+| `copilot/sub-pr-50-again`                           | `merged-into-main` |         190 |          0 | 2026-02-10  |
+| `copilot/sub-pr-50-another-one`                     | `merged-into-main` |         188 |          0 | 2026-02-10  |
+| `copilot/sub-pr-50-yet-again`                       | `merged-into-main` |         189 |          0 | 2026-02-10  |
+| `copilot/transition-to-github-pages`                | `merged-into-main` |         278 |          0 | 2026-02-05  |
+| `feature/fix-ci`                                    | `merged-into-main` |         218 |          0 | 2026-02-08  |
+| `feature/vercel-deploy`                             | `merged-into-main` |         180 |          0 | 2026-02-10  |
+| `fix-npm-error`                                     | `merged-into-main` |         207 |          0 | 2026-02-08  |
+| `fix-npm-script`                                    | `merged-into-main` |         223 |          0 | 2026-02-07  |
 
 ## Deterministic Cleanup Commands
 
