@@ -10,10 +10,10 @@
  * Only agents in this map are accepted by runAgent().
  */
 export const AGENT_REGISTRY = new Map([
-  ["scanner", "Scanner"],
-  ["builder", "Builder"],
-  ["security", "Security"],
-  ["deployer", "Deployer"],
+  ['scanner', 'Scanner'],
+  ['builder', 'Builder'],
+  ['security', 'Security'],
+  ['deployer', 'Deployer'],
 ]);
 
 /**
@@ -31,7 +31,7 @@ export async function runAgent(prompt, agent, io, socketId) {
   const label = AGENT_REGISTRY.get(agent);
   if (!label) {
     throw new Error(
-      `Unknown agent: '${agent}'. Must be one of: ${[...AGENT_REGISTRY.keys()].join(', ')}`,
+      `Unknown agent: '${agent}'. Must be one of: ${[...AGENT_REGISTRY.keys()].join(', ')}`
     );
   }
 

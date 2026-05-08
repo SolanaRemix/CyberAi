@@ -43,7 +43,7 @@ export function setIO(ioInstance) {
 export function logAction(user, action, agent, context = {}) {
   // Only include context fields that have a defined value to keep logs clean
   const traceFields = Object.fromEntries(
-    Object.entries(context).filter(([, v]) => v !== undefined),
+    Object.entries(context).filter(([, v]) => v !== undefined)
   );
 
   const entry = {

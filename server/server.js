@@ -252,7 +252,7 @@ io.on('connection', socket => {
 
   socket.on('disconnect', () => {
     process.stderr.write(
-      JSON.stringify({ event: 'client_disconnected', socketId: socket.id }) + '\n',
+      JSON.stringify({ event: 'client_disconnected', socketId: socket.id }) + '\n'
     );
   });
 });
