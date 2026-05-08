@@ -93,8 +93,8 @@ node -e "console.log({
 | CodeQL Security Scanning      | `.github/workflows/codeql.yml`                                            | `push`, `pull_request`, scheduled weekly, manual              | Security and quality analysis for JavaScript code.                                |
 | Lint                          | `.github/workflows/lint.yml`                                              | GitHub event-driven                                           | Dedicated lint enforcement pipeline.                                              |
 | Dependency Review             | `.github/workflows/dependency-review.yml`                                 | Pull requests                                                 | Dependency policy enforcement.                                                    |
-| Deploy Pages                  | `.github/workflows/pages-deploy.yml`                                      | Mainline deployment events                                    | Build and deploy GitHub Pages docs/site.                                          |
-| Release Management / Schedule | `.github/workflows/release.yml`, `.github/workflows/release-schedule.yml` | Manual + schedule                                             | Release automation and cadence controls.                                          |
+| Deploy Pages                  | `.github/workflows/pages-deploy.yml`                                      | `push` on `main`, `workflow_dispatch`                         | Build and deploy GitHub Pages docs/site.                                          |
+| Release Management / Schedule | `.github/workflows/release.yml`, `.github/workflows/release-schedule.yml` | Tag `push` (`v*.*.*`), `schedule`, `workflow_dispatch`        | Release automation and cadence controls.                                          |
 
 ## Docker Build Matrix
 
