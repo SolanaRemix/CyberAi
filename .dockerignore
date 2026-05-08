@@ -23,6 +23,9 @@ out
 .next
 .nuxt
 .output
+
+# Logs
+logs
 *.log
 
 # Development
@@ -54,28 +57,14 @@ docs
 *.md
 !README.md
 
-# CI/CD
+# CI/CD (other platforms)
 .circleci
 .travis.yml
 .gitlab-ci.yml
 azure-pipelines.yml
 
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 # OS
-.DS_Store
 Thumbs.db
-
-# IDE
-.vscode
-.idea
-*.swp
-*.swo
 
 # Python
 __pycache__
