@@ -9,23 +9,9 @@
 
 CyberAi provides an enterprise control plane with RBAC-protected task execution, live audit streams, and CI-driven delivery.
 
-## Enterprise Dashboard Views
+## Enterprise Documentation Scope
 
-### Operations Overview
-
-![Enterprise Operations Dashboard](docs/screenshots/admin-dashboard.png)
-
-### Audit + Terminal Operations
-
-![Enterprise Terminal and Audit Stream](docs/screenshots/dev-terminal.png)
-
-### User Workspace
-
-![Enterprise User Workspace](docs/screenshots/user-app.png)
-
-### Platform Landing
-
-![Enterprise Platform Landing](docs/screenshots/landing-page.png)
+This README documents the current enterprise runtime and delivery model without legacy UI/UX screenshots.
 
 ## Enterprise Parameters
 
@@ -109,6 +95,28 @@ node -e "console.log({
 | Dependency Review             | `.github/workflows/dependency-review.yml`                                 | Pull requests                                                 | Dependency policy enforcement.                                                    |
 | Deploy Pages                  | `.github/workflows/pages-deploy.yml`                                      | Mainline deployment events                                    | Build and deploy GitHub Pages docs/site.                                          |
 | Release Management / Schedule | `.github/workflows/release.yml`, `.github/workflows/release-schedule.yml` | Manual + schedule                                             | Release automation and cadence controls.                                          |
+
+## Docker Build Matrix
+
+### Advanced build matrix (`.github/workflows/advanced-build.yml`)
+
+| Dimension        | Values                                                           |
+| ---------------- | ---------------------------------------------------------------- |
+| Operating system | `ubuntu-latest`, `macos-latest`, `windows-latest`                |
+| Node.js version  | `20`, `22`                                                       |
+| Gates per job    | `npm run typecheck`, `npm run lint`, `npm run build`, `npm test` |
+
+### Docker build test job (`.github/workflows/advanced-build.yml`)
+
+| Setting              | Value                                         |
+| -------------------- | --------------------------------------------- |
+| Builder              | `docker/setup-buildx-action@v4`               |
+| Build action         | `docker/build-push-action@v7`                 |
+| Context / Dockerfile | `.` / `./Dockerfile`                          |
+| Push / load          | `push: false`, `load: true`                   |
+| Tag                  | `cyberai:test`                                |
+| Target stage         | `production`                                  |
+| Runtime validation   | `docker run --rm cyberai:test node --version` |
 
 ## Advanced Build System
 
