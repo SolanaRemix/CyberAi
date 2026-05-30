@@ -1,4 +1,4 @@
-name: Release Management
+name: 🚀 Release Management
 
 on:
   push:
@@ -34,28 +34,31 @@ jobs:
 
       - name: Install dependencies
         run: |
-          if [ -f package.json ]; then
-            npm ci || npm install
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
           fi
 
       - name: Build project
         run: |
           if [ -f package.json ] && npm run build --if-present; then
-            echo "Build completed"
+            echo "Build step completed successfully 🚀"
           fi
 
       - name: Generate changelog
         id: changelog
         run: |
-          PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1) 2>/dev/null || echo "")
-          if [ -z "$PREVIOUS_TAG" ]; then
-            CHANGELOG=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 --first-parent 2>/dev/null || echo "")
+          if [ -n "$PREVIOUS_TAG" ]; then
+            echo "Changes since $PREVIOUS_TAG"
+            CHANGELOG=$(git log "$PREVIOUS_TAG"..HEAD --pretty=format:"- %s (%h)" --no-merges)
           else
-            CHANGELOG=$(git log $PREVIOUS_TAG..HEAD --pretty=format:"- %s (%h)" --no-merges)
+            CHANGELOG=$(git log --pretty=format:"- %s (%h)" --no-merges)
           fi
-          echo "changelog<<EOF" >> $GITHUB_OUTPUT
-          echo "$CHANGELOG" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "changelog<<EOF" >> $GITHUB_ENV
+          echo "$CHANGELOG" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v3
@@ -63,13 +66,15 @@ jobs:
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           body: |
-            ## Changes
-            ${{ steps.changelog.outputs.changelog }}
+            ## 🚀 New Release: ${{ github.ref_name }}
 
-            ## Installation
-            Download the assets below or install via package manager.
+            ### 🛠️ Changes:
+            ${{ env.changelog }}
+
+            ### 📦 Installation:
+            - Download your required assets below.
+            - Use package managers to install directly.
           draft: false
           prerelease: false
-          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
