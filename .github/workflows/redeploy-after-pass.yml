@@ -31,7 +31,7 @@ jobs:
           echo "Workflow run ID: ${{ github.event.workflow_run.id }}"
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
 
