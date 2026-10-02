@@ -1,1 +1,3 @@
-## ATOMIC LEDGER RECORD\n\nRepair applied securely on the ATOMIC LEDGER.\n
+## ATOMIC LEDGER RECORD
+
+Repair applied securely on the ATOMIC LEDGER.
